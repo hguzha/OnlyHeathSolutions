@@ -131,11 +131,21 @@ const NavLink = ({ href, label, onClick, className }) => (
     href={href}
     onClick={onClick}
     className={cn(
-      "text-sm transition",
+      "group relative inline-flex items-center transition-colors duration-300",
       className || "text-muted-foreground hover:text-foreground"
     )}
   >
-    {label}
+    <span className="relative">
+      {label}
+      {/* Luxury gold → teal underline */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 -bottom-1 h-[2px] w-0 rounded-full transition-all duration-300 group-hover:w-full"
+        style={{
+          background: `linear-gradient(90deg, #C6A75E, ${brand.colors.secondary})`,
+        }}
+      />
+    </span>
   </a>
 );
 
@@ -310,6 +320,7 @@ function MobileSwipeCarousel({ items }) {
 
 export default function OnlyHealthSolutionsSite() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   // Logo fallback: if the preferred filename isn't found in /public, fall back to older names.
   const [logoPath, setLogoPath] = useState(brand.logo1x);
   const [logo2xPath, setLogo2xPath] = useState(brand.logo2x);
@@ -519,14 +530,17 @@ export default function OnlyHealthSolutionsSite() {
     window.location.href = `${brand.emailHref}?subject=${subject}&body=${body}`;
   }
 
-  const nav = [
-    { href: "#services", label: "Services" },
-    { href: "#how", label: "How it works" },
+  const navPrimary = [
+    { href: "#services", label: "Only Health Solutions Private Care" },
     { href: "#about", label: "About" },
     { href: "#careers", label: "Careers" },
     { href: "#testimonials", label: "Reviews" },
-    { href: "#faq", label: "FAQ" },
     { href: "#contact", label: "Contact" },
+  ];
+
+  const navSecondary = [
+    { href: "#how", label: "How it works" },
+    { href: "#faq", label: "FAQ" },
     { href: "#gallery", label: "Gallery" },
   ];
 
@@ -567,20 +581,19 @@ export default function OnlyHealthSolutionsSite() {
       <header
         className={cn(
           "sticky top-0 z-50 transition-all",
-          scrolled
-            ? "border-b shadow-lg backdrop-blur"
-            : "border-b border-transparent bg-transparent"
+          scrolled ? "border-b shadow-lg backdrop-blur" : "border-b border-white/10"
         )}
         style={
           scrolled
             ? {
                 background:
-                  "linear-gradient(135deg, #0B1320 0%, #111B2E 100%)",
+                  "linear-gradient(135deg, rgba(11,19,32,0.92) 0%, rgba(17,27,46,0.88) 100%)",
+                backdropFilter: "blur(14px)",
               }
             : {
                 background:
-                  "linear-gradient(135deg, rgba(11,19,32,0.40) 0%, rgba(17,27,46,0.28) 100%)",
-                backdropFilter: "blur(10px)",
+                  "linear-gradient(135deg, rgba(11,19,32,0.55) 0%, rgba(17,27,46,0.40) 100%)",
+                backdropFilter: "blur(16px)",
               }
         }
       >
@@ -597,42 +610,44 @@ export default function OnlyHealthSolutionsSite() {
         </div>
 
         {/* Main nav */}
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 md:px-6">
-          <a href="#" className="group flex items-center gap-3">
-            <div className="flex items-center justify-center">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 md:px-6">
+          <a href="#main-content" className="group flex items-center gap-3 shrink-0">
               <img
                 src={logoPath}
                 srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                 alt={`${brand.name} logo`}
-                className="h-40 sm:h-48 md:h-50 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
+                className="h-50 sm:h-56 md:h-60 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
                 onError={onLogoError}
                 loading="eager"
                 decoding="async"
               />
-            </div>
-            <div className="leading-tight">
-              <div className="hidden sm:block">
-                <div className="text-sm font-semibold tracking-wide text-white">
-                  {brand.name}
-                </div>
-                <div className="mt-0.5 text-xs text-white/70">Private Home Care • Vinings, GA</div>
-              </div>
-            </div>
-          </a>
+            </a>
 
           {/* Center nav (desktop) */}
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-2 shadow-sm backdrop-blur md:flex"
+            className="relative hidden flex-1 items-center justify-center md:flex"
           >
-            {nav.map((n) => (
-              <NavLink
-                key={n.href}
-                href={n.href}
-                label={n.label}
-                className="rounded-full px-3 py-1.5 text-xs font-medium text-white/80 hover:bg-white/10 hover:text-white"
-              />
-            ))}
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-2 shadow-sm backdrop-blur">
+              {[...navPrimary, ...navSecondary].map((n, i, arr) => (
+                <React.Fragment key={n.href}>
+                  <NavLink
+                    href={n.href}
+                    label={n.label}
+                    className="rounded-full px-5 py-2.5 text-sm font-semibold text-white/85 hover:bg-white/10 hover:text-white"
+                  />
+                  {i < arr.length - 1 && (
+                    <span
+                      className="mx-2 h-5 w-px"
+                      style={{
+                        background: `linear-gradient(to bottom, transparent, #C6A75E, ${brand.colors.secondary}, transparent)`,
+                        opacity: 0.6,
+                      }}
+                    />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
           </nav>
 
           {/* Right CTAs (desktop) */}
@@ -689,7 +704,7 @@ export default function OnlyHealthSolutionsSite() {
                   <div className="mt-1">{brand.serviceArea}</div>
                 </div>
 
-                {nav.map((n) => (
+                {[...navPrimary, ...navSecondary].map((n) => (
                   <NavLink
                     key={n.href}
                     href={n.href}
@@ -715,6 +730,14 @@ export default function OnlyHealthSolutionsSite() {
             </div>
           </div>
         ) : null}
+        {/* Gold accent divider under header */}
+        <div
+          className="h-px w-full"
+          style={{
+            backgroundImage:
+              `linear-gradient(90deg, transparent, #C6A75E66, ${brand.colors.secondary}55, transparent)`,
+          }}
+        />
       </header>
 
       {/* Hero */}
@@ -1702,7 +1725,7 @@ export default function OnlyHealthSolutionsSite() {
               <div className="md:col-span-3">
                 <div className="text-sm font-semibold text-white">Explore</div>
                 <div className="mt-3 flex flex-col gap-2">
-                  {nav.map((n) => (
+                  {[...navPrimary, ...navSecondary].map((n) => (
                     <NavLink
                       key={n.href}
                       href={n.href}
