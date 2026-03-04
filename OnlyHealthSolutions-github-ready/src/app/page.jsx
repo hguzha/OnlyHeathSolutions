@@ -513,7 +513,7 @@ export default function OnlyHealthSolutionsSite() {
                 src={brand.logo1x}
                 srcSet={`${brand.logo1x} 1x, ${brand.logo2x} 2x`}
                 alt={`${brand.name} logo`}
-                className="h-24 sm:h-28 md:h-30 w-auto"
+                className="h-28 sm:h-32 md:h-38 w-auto"
                 loading="eager"
                 decoding="async"
               />
