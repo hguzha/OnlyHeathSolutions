@@ -610,13 +610,13 @@ export default function OnlyHealthSolutionsSite() {
         </div>
 
         {/* Main nav */}
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 md:px-6">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-5 md:px-6">
           <a href="#main-content" className="group flex items-center gap-3 shrink-0">
               <img
                 src={logoPath}
                 srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                 alt={`${brand.name} logo`}
-                className="h-50 sm:h-56 md:h-60 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
+                className="h-50 sm:h-54 md:h-58 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
                 onError={onLogoError}
                 loading="eager"
                 decoding="async"
@@ -626,15 +626,15 @@ export default function OnlyHealthSolutionsSite() {
           {/* Center nav (desktop) */}
           <nav
             aria-label="Primary"
-            className="relative hidden flex-1 items-center justify-center md:flex"
+            className="relative hidden flex-1 items-center justify-start md:flex ml-4"
           >
-            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-2 shadow-sm backdrop-blur">
+            <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-1.5 shadow-sm backdrop-blur">
               {[...navPrimary, ...navSecondary].map((n, i, arr) => (
                 <React.Fragment key={n.href}>
                   <NavLink
                     href={n.href}
                     label={n.label}
-                    className="rounded-full px-5 py-2.5 text-sm font-semibold text-white/85 hover:bg-white/10 hover:text-white"
+                    className="rounded-full px-3 py-2 text-sm font-semibold text-white/85 hover:bg-white/10 hover:text-white"
                   />
                   {i < arr.length - 1 && (
                     <span
@@ -651,7 +651,7 @@ export default function OnlyHealthSolutionsSite() {
           </nav>
 
           {/* Right CTAs (desktop) */}
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 md:flex ml-auto">
             <Button
               asChild
               variant="outline"
