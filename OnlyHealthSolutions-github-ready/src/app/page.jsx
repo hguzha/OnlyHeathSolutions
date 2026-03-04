@@ -69,8 +69,8 @@ const brand = {
   // - /public/logo@2x.png
   // - /public/favicon.ico
   // (I generated them for you—see chat downloads.)
-  logo1x: "/logo.png",
-  logo2x: "/logo@2x.png",
+  logo1x: "/only-health-solutions-logo.png",
+  logo2x: "/only-health-solutions-logo.png",
   favicon: "/favicon.ico",
 
   // Add your Google Business Profile reviews link here when ready
@@ -126,11 +126,14 @@ const Section = ({ id, eyebrow, title, subtitle, children, className }) => (
   </section>
 );
 
-const NavLink = ({ href, label, onClick }) => (
+const NavLink = ({ href, label, onClick, className }) => (
   <a
     href={href}
     onClick={onClick}
-    className="text-sm text-muted-foreground transition hover:text-foreground"
+    className={cn(
+      "text-sm transition",
+      className || "text-muted-foreground hover:text-foreground"
+    )}
   >
     {label}
   </a>
@@ -307,6 +310,25 @@ function MobileSwipeCarousel({ items }) {
 
 export default function OnlyHealthSolutionsSite() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Logo fallback: if the preferred filename isn't found in /public, fall back to older names.
+  const [logoPath, setLogoPath] = useState(brand.logo1x);
+  const [logo2xPath, setLogo2xPath] = useState(brand.logo2x);
+  const onLogoError = () => {
+    // Try the legacy filenames if the new one isn't deployed in the same project root.
+    if (logoPath !== "/logo.png") {
+      setLogoPath("/logo.png");
+      setLogo2xPath("/logo@2x.png");
+    }
+  };
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Dial helper: some in-app browsers/iframes behave better with a direct location change
   const dialNow = (e) => {
@@ -324,16 +346,31 @@ export default function OnlyHealthSolutionsSite() {
     } catch {}
   };
 
-  // ✅ Ensure favicon is set (works in most React setups)
+  // ✅ Ensure favicon + app icons are set
   useEffect(() => {
     if (typeof document === "undefined") return;
-    let link = document.querySelector('link[rel~="icon"]');
-    if (!link) {
-      link = document.createElement("link");
-      link.setAttribute("rel", "icon");
-      document.head.appendChild(link);
-    }
-    link.setAttribute("href", brand.favicon);
+
+    const upsert = (selector, attrs) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement("link");
+        document.head.appendChild(el);
+      }
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      return el;
+    };
+
+    // Favicon
+    upsert('link[rel~="icon"]', { rel: "icon", href: brand.favicon });
+
+    // Apple touch icon
+    upsert('link[rel="apple-touch-icon"]', {
+      rel: "apple-touch-icon",
+      href: "/apple-touch-icon.png",
+    });
+
+    // Web manifest (for mobile install / icons)
+    upsert('link[rel="manifest"]', { rel: "manifest", href: "/site.webmanifest" });
   }, []);
   const [form, setForm] = useState({
     name: "",
@@ -493,6 +530,28 @@ export default function OnlyHealthSolutionsSite() {
     { href: "#gallery", label: "Gallery" },
   ];
 
+  // Basic SEO: Organization / LocalBusiness schema
+  const jsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "HomeHealthCareService",
+      name: brand.name,
+      url: "https://www.onlyhealthsolutions.com/",
+      telephone: "+1-770-439-7666",
+      email: brand.emailDisplay,
+      areaServed: brand.serviceArea,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Vinings",
+        addressRegion: "GA",
+        postalCode: "30339",
+        addressCountry: "US",
+      },
+      logo: `https://www.onlyhealthsolutions.com${brand.logo1x}`,
+    }),
+    []
+  );
+
   return (
     <div
       className="min-h-screen text-foreground"
@@ -505,68 +564,111 @@ export default function OnlyHealthSolutionsSite() {
       }}
     >
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b bg-background/75 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
-          <a href="#" className="flex items-center gap-2">
+      <header
+        className={cn(
+          "sticky top-0 z-50 transition-all",
+          scrolled
+            ? "border-b shadow-lg backdrop-blur"
+            : "border-b border-transparent bg-transparent"
+        )}
+        style={
+          scrolled
+            ? {
+                background:
+                  "linear-gradient(135deg, #0B1320 0%, #111B2E 100%)",
+              }
+            : {
+                background:
+                  "linear-gradient(135deg, rgba(11,19,32,0.40) 0%, rgba(17,27,46,0.28) 100%)",
+                backdropFilter: "blur(10px)",
+              }
+        }
+      >
+        {/* Top bar spacer (desktop) */}
+        <div className="hidden md:block">
+          <div className="mx-auto max-w-6xl px-4 py-2 md:px-6" />
+          <div
+            className="h-px w-full"
+            style={{
+              backgroundImage:
+                `linear-gradient(90deg, transparent, ${brand.colors.secondary}55, ${brand.colors.primary}55, transparent)`,
+            }}
+          />
+        </div>
+
+        {/* Main nav */}
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 md:px-6">
+          <a href="#" className="group flex items-center gap-3">
             <div className="flex items-center justify-center">
               <img
-                src={brand.logo1x}
-                srcSet={`${brand.logo1x} 1x, ${brand.logo2x} 2x`}
+                src={logoPath}
+                srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                 alt={`${brand.name} logo`}
-                className="h-50 sm:h-54 md:h-60 w-auto"
+                className="h-40 sm:h-48 md:h-50 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
+                onError={onLogoError}
                 loading="eager"
                 decoding="async"
               />
             </div>
             <div className="leading-tight">
               <div className="hidden sm:block">
-                <div className="text-sm font-semibold" style={{ color: brand.colors.primary }}>
+                <div className="text-sm font-semibold tracking-wide text-white">
                   {brand.name}
                 </div>
-                <div className="text-xs text-muted-foreground">Private Home Care</div>
+                <div className="mt-0.5 text-xs text-white/70">Private Home Care • Vinings, GA</div>
               </div>
             </div>
           </a>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          {/* Center nav (desktop) */}
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-2 shadow-sm backdrop-blur md:flex"
+          >
             {nav.map((n) => (
-              <NavLink key={n.href} href={n.href} label={n.label} />
+              <NavLink
+                key={n.href}
+                href={n.href}
+                label={n.label}
+                className="rounded-full px-3 py-1.5 text-xs font-medium text-white/80 hover:bg-white/10 hover:text-white"
+              />
             ))}
           </nav>
 
+          {/* Right CTAs (desktop) */}
           <div className="hidden items-center gap-2 md:flex">
-            <Button asChild variant="outline" className="rounded-2xl">
-              <a href={brand.phoneHref} onClick={dialNow}>
-                <Phone className="mr-2 size-4" />
-                Call
-              </a>
-            </Button>
-            <Button
-              asChild
-              className="rounded-2xl text-white shadow-sm transition-all hover:shadow-md"
-              style={{
-                backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
-              }}
-            >
-              <a href="#contact">
-                Get a Care Plan <ArrowRight className="ml-2 size-4" />
-              </a>
-            </Button>
-          </div>
-
-          <div className="md:hidden">
             <Button
               asChild
               variant="outline"
-              className="mr-2 rounded-2xl"
+              className="rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white"
             >
               <a href={brand.phoneHref} onClick={dialNow} aria-label={`Call ${brand.name}`}>
                 <Phone className="mr-2 size-4" /> Call
               </a>
             </Button>
             <Button
+              asChild
+              className="rounded-full text-white shadow-sm transition-all hover:shadow-md"
+              style={{
+                backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
+              }}
+            >
+              <a href="#contact">
+                Request a Consult <ArrowRight className="ml-2 size-4" />
+              </a>
+            </Button>
+          </div>
+
+          {/* Mobile */}
+          <div className="md:hidden">
+            <Button asChild variant="outline" className="mr-2 rounded-full border-white/15 bg-white/5 text-white">
+              <a href={brand.phoneHref} onClick={dialNow} aria-label={`Call ${brand.name}`}>
+                <Phone className="mr-2 size-4" /> Call
+              </a>
+            </Button>
+            <Button
               variant="outline"
-              className="rounded-2xl"
+              className="rounded-full border-white/15 bg-white/5 text-white"
               onClick={() => setMobileOpen((v) => !v)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"
@@ -577,27 +679,35 @@ export default function OnlyHealthSolutionsSite() {
         </div>
 
         {mobileOpen ? (
-          <div id="mobile-nav" className="border-t md:hidden">
-            <div className="mx-auto max-w-6xl px-4 py-3">
+          <div id="mobile-nav" className="border-t border-white/10 md:hidden">
+            <div className="mx-auto max-w-6xl px-4 py-4">
               <div className="flex flex-col gap-3">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-xs text-white/75">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="size-3.5" /> {brand.addressLine}
+                  </div>
+                  <div className="mt-1">{brand.serviceArea}</div>
+                </div>
+
                 {nav.map((n) => (
                   <NavLink
                     key={n.href}
                     href={n.href}
                     label={n.label}
                     onClick={() => setMobileOpen(false)}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white"
                   />
                 ))}
-                <div className="mt-2 flex gap-2">
-                  <Button asChild variant="outline" className="w-full rounded-2xl">
-                    <a href={brand.phoneHref} onClick={dialNow}>
-                <Phone className="mr-2 size-4" />
-                Call
-              </a>
-                  </Button>
-                  <Button asChild className="w-full rounded-2xl">
+
+                <div className="mt-1 grid grid-cols-2 gap-2">
+                  <Button asChild className="w-full rounded-2xl" style={{ backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})` }}>
                     <a href="#contact" onClick={() => setMobileOpen(false)}>
                       Get started
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="w-full rounded-2xl border-white/15 bg-white/5 text-white">
+                    <a href={brand.phoneHref} onClick={dialNow}>
+                      Call now
                     </a>
                   </Button>
                 </div>
@@ -608,7 +718,19 @@ export default function OnlyHealthSolutionsSite() {
       </header>
 
       {/* Hero */}
-      <main>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"
+      >
+        Skip to content
+      </a>
+
+      <main id="main-content">
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <section
           className="relative overflow-hidden"
           style={{
@@ -619,8 +741,8 @@ export default function OnlyHealthSolutionsSite() {
             {/* Watermark logo */}
             <div className="absolute inset-0">
               <img
-                src={brand.logo1x}
-                srcSet={`${brand.logo1x} 1x, ${brand.logo2x} 2x`}
+                src={logoPath}
+                srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                 alt=""
                 aria-hidden="true"
                 className="absolute right-[-10%] top-1/2 w-[560px] -translate-y-1/2 rotate-6 opacity-[0.08] blur-[0.2px] md:w-[740px]"
@@ -1109,8 +1231,8 @@ export default function OnlyHealthSolutionsSite() {
                     <div className="flex items-start gap-3 rounded-2xl border p-4">
                       <div className="flex items-center justify-center rounded-2xl border bg-white/5 p-2">
                     <img
-                      src={brand.logo1x}
-                      srcSet={`${brand.logo1x} 1x, ${brand.logo2x} 2x`}
+                      src={logoPath}
+                      srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                       alt=""
                       aria-hidden="true"
                       className="h-8 w-auto opacity-80"
@@ -1492,84 +1614,164 @@ export default function OnlyHealthSolutionsSite() {
         {/* Footer */}
         <footer
           className="border-t text-white"
-          style={{ backgroundColor: brand.colors.secondary }}
+          style={{
+            background: "linear-gradient(135deg, #0B1320 0%, #111B2E 100%)",
+          }}
         >
-          <div className="mx-auto max-w-6xl px-4 py-10 md:px-6">
-            <div className="grid gap-6 md:grid-cols-12">
+          {/* Accent divider */}
+          <div
+            className="h-px w-full"
+            style={{
+              backgroundImage: `linear-gradient(90deg, transparent, ${brand.colors.secondary}66, ${brand.colors.primary}66, transparent)`,
+            }}
+          />
+
+          <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+            <div className="grid gap-8 md:grid-cols-12">
+              {/* Brand */}
               <div className="md:col-span-5">
-                <div className="flex items-center gap-2">
-                  <div
-                    className="grid size-10 place-items-center rounded-2xl text-white shadow-sm"
-                    style={{
-                      backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
-                    }}
-                  >
-                    <HeartPulse className="size-5" />
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-2 shadow-sm backdrop-blur">
+                    <img
+                      src={logoPath}
+                      srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
+                      alt={`${brand.name} logo`}
+                      className="h-10 w-auto"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold">{brand.name}</div>
-                    <div className="text-xs text-muted-foreground">
-                      Private Home Care Provider
+                    <div className="text-sm font-semibold tracking-wide text-white">
+                      {brand.name}
+                    </div>
+                    <div className="mt-0.5 text-xs text-white/70">
+                      Private Home Care • Vinings, GA
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 max-w-md text-sm text-muted-foreground">
-                  {brand.tagline}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Chip>Companionship</Chip>
-                  <Chip>Personal care</Chip>
-                  <Chip>Respite</Chip>
-                  <Chip>Post-hospital</Chip>
+
+                <p className="mt-4 max-w-md text-sm text-white/70">{brand.tagline}</p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {[
+                    "Nursing",
+                    "Personal Care",
+                    "Companion / Sitter",
+                    "Respite Support",
+                  ].map((t) => (
+                    <span
+                      key={t}
+                      className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75 backdrop-blur"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {/* CTA card */}
+                <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur">
+                  <div className="text-sm font-semibold text-white">Need care quickly?</div>
+                  <p className="mt-1 text-sm text-white/70">
+                    Call for a private consult. We’ll recommend next steps and a schedule.
+                  </p>
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                    <Button
+                      asChild
+                      className="rounded-2xl text-white shadow-sm transition-all hover:shadow-md"
+                      style={{
+                        backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
+                      }}
+                    >
+                      <a href="#contact">Request a Consult</a>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="rounded-2xl border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+                    >
+                      <a href={brand.phoneHref} onClick={dialNow}>
+                        <Phone className="mr-2 size-4" /> Call now
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
 
-              <div className="grid gap-2 md:col-span-3">
-                <div className="text-sm font-semibold">Explore</div>
-                {nav.map((n) => (
-                  <NavLink key={n.href} href={n.href} label={n.label} />
-                ))}
+              {/* Links */}
+              <div className="md:col-span-3">
+                <div className="text-sm font-semibold text-white">Explore</div>
+                <div className="mt-3 flex flex-col gap-2">
+                  {nav.map((n) => (
+                    <NavLink
+                      key={n.href}
+                      href={n.href}
+                      label={n.label}
+                      className="text-sm text-white/70 hover:text-white"
+                    />
+                  ))}
+                </div>
               </div>
 
+              {/* Contact */}
               <div className="md:col-span-4">
-                <div className="text-sm font-semibold">Contact</div>
-                <div className="mt-2 space-y-2 text-sm text-muted-foreground">
-                  <a className="flex items-center gap-2 hover:text-foreground" href={brand.phoneHref} onClick={dialNow}>
+                <div className="text-sm font-semibold text-white">Contact</div>
+                <div className="mt-3 space-y-2 text-sm">
+                  <a
+                    className="flex items-center gap-2 text-white/75 hover:text-white"
+                    href={brand.phoneHref}
+                    onClick={dialNow}
+                  >
                     <Phone className="size-4" /> {brand.phoneDisplay}
                   </a>
-                  <a className="flex items-center gap-2 hover:text-foreground" href={brand.emailHref}>
+                  <a
+                    className="flex items-center gap-2 text-white/75 hover:text-white"
+                    href={brand.emailHref}
+                  >
                     <Mail className="size-4" /> {brand.emailDisplay}
                   </a>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="size-4" /> {brand.serviceArea}
+                  <div className="flex items-start gap-2 text-white/75">
+                    <MapPin className="mt-0.5 size-4" />
+                    <div>
+                      <div>{brand.addressLine}</div>
+                      <div className="mt-1 text-xs text-white/60">{brand.serviceArea}</div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-5 rounded-2xl border p-4 text-xs text-muted-foreground">
-                  <div className="font-medium text-foreground">Disclaimer</div>
-                  This site is for informational purposes and does not provide
-                  medical advice. Services described are non-medical home care.
-                  (Edit to match your licensure and scope.)
+                <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5 text-xs text-white/70 shadow-sm backdrop-blur">
+                  <div className="text-xs font-semibold text-white">Disclaimer</div>
+                  <p className="mt-2">
+                    This site is for informational purposes and does not provide medical advice.
+                    Services described are private home care. (Edit to match your licensure and scope.)
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 flex flex-col gap-3 border-t pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+            {/* Bottom bar */}
+            <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src={brand.logo1x}
-                  srcSet={`${brand.logo1x} 1x, ${brand.logo2x} 2x`}
+                  src={logoPath}
+                  srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                   alt=""
                   aria-hidden="true"
                   className="h-6 w-auto opacity-50"
                   loading="lazy"
                   decoding="async"
                 />
-                <span>© {new Date().getFullYear()} {brand.name}. All rights reserved.</span>
+                <span>
+                  © {new Date().getFullYear()} {brand.name}. All rights reserved.
+                </span>
               </div>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-foreground">Privacy</a>
-                <a href="#" className="hover:text-foreground">Terms</a>
+                <a href="#" className="hover:text-white">
+                  Privacy
+                </a>
+                <a href="#" className="hover:text-white">
+                  Terms
+                </a>
               </div>
             </div>
           </div>
