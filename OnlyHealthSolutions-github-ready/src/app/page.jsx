@@ -394,16 +394,16 @@ export default function OnlyHealthSolutionsSite() {
   // Captions are written to match a luxury, reassuring tone.
   const personalCareImages = [
     {
-      src: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600&auto=format&fit=crop",
-      caption: "Gentle support with daily routines",
+      src: "/home-care-worker-1024x597.webp",
+      caption: "Caregiver supporting seniors at home with compassionate care",
     },
     {
-      src: "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1600&auto=format&fit=crop",
-      caption: "Companionship that feels like family",
+      src: "https://images.unsplash.com/photo-1584516150909-c43483ee7932?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      caption: "In-home nurse supporting a senior with daily care",
     },
     {
-      src: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?q=80&w=1600&auto=format&fit=crop",
-      caption: "Dignity-first personal care at home",
+      src: "https://images.unsplash.com/photo-1576765607924-3f5c5f94c8c7?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      caption: "Home health nurse and patient sharing a reassuring moment",
     },
   ];
 
@@ -411,28 +411,20 @@ export default function OnlyHealthSolutionsSite() {
   const galleryImages = [
     ...personalCareImages,
     {
-      src: "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1600&auto=format&fit=crop",
-      caption: "Medication reminders & wellness check-ins",
+      src: "https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      caption: "Professional nurse assisting a patient in a home setting",
     },
     {
-      src: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1600&auto=format&fit=crop",
-      caption: "Safe mobility & fall-prevention support",
+      src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      caption: "Supportive nurse helping a senior remain independent",
     },
     {
-      src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop",
-      caption: "Comfort-focused respite care",
+      src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      caption: "Personalized home health support for seniors",
     },
     {
-      src: "https://images.unsplash.com/photo-1581595220921-03c6d0483a1a?q=80&w=1600&auto=format&fit=crop",
-      caption: "Post-hospital support and recovery",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1584516150909-c43483ee7932?q=80&w=1600&auto=format&fit=crop",
-      caption: "Meal prep & hydration encouragement",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1600&auto=format&fit=crop",
-      caption: "Warm, attentive caregiving",
+      src: "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      caption: "Nurse and senior sharing a warm conversation at home",
     },
   ];
 
@@ -738,7 +730,7 @@ export default function OnlyHealthSolutionsSite() {
         {/* Background image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1576765607924-3f5c5f94c8c7?q=80&w=2000&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=2000&auto=format&fit=crop"
             alt="Caregiver and senior sitting together smiling at home"
             className="h-full w-full object-cover"
             loading="lazy"
@@ -797,7 +789,7 @@ export default function OnlyHealthSolutionsSite() {
               srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
               alt=""
               aria-hidden="true"
-              className="w-[1200px] max-w-none opacity-[0.10]"
+              className="w-[1200px] max-w-none opacity-[0.18]"
               loading="lazy"
               decoding="async"
             />
@@ -821,7 +813,7 @@ export default function OnlyHealthSolutionsSite() {
                 srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                 alt=""
                 aria-hidden="true"
-                className="absolute right-[-10%] top-1/2 w-[560px] -translate-y-1/2 rotate-6 opacity-[0.08] blur-[0.2px] md:w-[740px]"
+                className="absolute left-1/2 top-1/2 w-[700px] -translate-x-1/2 -translate-y-1/2 rotate-[8deg] opacity-[0.14] md:w-[900px]"
                 loading="lazy"
                 decoding="async"
               />
