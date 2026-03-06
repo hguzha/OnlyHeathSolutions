@@ -730,7 +730,7 @@ export default function OnlyHealthSolutionsSite() {
         {/* Background image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=2000&auto=format&fit=crop"
+            src="/vibrant-health-homecare.jpg"
             alt="Caregiver and senior sitting together smiling at home"
             className="h-full w-full object-cover"
             loading="lazy"
