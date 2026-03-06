@@ -398,7 +398,7 @@ export default function OnlyHealthSolutionsSite() {
       caption: "Gentle support with daily routines",
     },
     {
-      src: "https://images.unsplash.com/photo-1576765607924-3f5c5f94c8c7?q=80&w=1600&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1600&auto=format&fit=crop",
       caption: "Companionship that feels like family",
     },
     {
@@ -531,7 +531,8 @@ export default function OnlyHealthSolutionsSite() {
   }
 
   const navPrimary = [
-    { href: "#services", label: "Only Health Solutions Private Care" },
+    { href: "#", label: "Home" },
+    { href: "#services", label: "Services" },
     { href: "#about", label: "About" },
     { href: "#careers", label: "Careers" },
     { href: "#testimonials", label: "Reviews" },
@@ -626,7 +627,7 @@ export default function OnlyHealthSolutionsSite() {
           {/* Center nav (desktop) */}
           <nav
             aria-label="Primary"
-            className="relative hidden flex-1 items-center justify-start md:flex ml-4"
+            className="relative hidden flex-1 items-center justify-start md:flex ml-2 mr-auto"
           >
             <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-1.5 shadow-sm backdrop-blur">
               {[...navPrimary, ...navSecondary].map((n, i, arr) => (
@@ -651,26 +652,18 @@ export default function OnlyHealthSolutionsSite() {
           </nav>
 
           {/* Right CTAs (desktop) */}
-          <div className="hidden items-center gap-2 md:flex ml-auto">
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white"
-            >
-              <a href={brand.phoneHref} onClick={dialNow} aria-label={`Call ${brand.name}`}>
+          <div className="hidden md:flex items-center gap-3">
+            <Button asChild variant="outline" className="rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10">
+              <a href={brand.phoneHref} onClick={dialNow}>
                 <Phone className="mr-2 size-4" /> Call
               </a>
             </Button>
             <Button
               asChild
-              className="rounded-full text-white shadow-sm transition-all hover:shadow-md"
-              style={{
-                backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
-              }}
+              className="rounded-full text-white shadow-sm"
+              style={{ backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})` }}
             >
-              <a href="#contact">
-                Request a Consult <ArrowRight className="ml-2 size-4" />
-              </a>
+              <a href="#contact">Request a Consult</a>
             </Button>
           </div>
 
@@ -740,15 +733,55 @@ export default function OnlyHealthSolutionsSite() {
         />
       </header>
 
-      {/* Hero */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"
-      >
-        Skip to content
-      </a>
+      {/* Intro strip section */}
+      <section className="relative border-b overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1576765607924-3f5c5f94c8c7?q=80&w=2000&auto=format&fit=crop"
+            alt="Caregiver and senior sitting together smiling at home"
+            className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(120deg, ${brand.colors.secondary}AA 0%, ${brand.colors.primary}88 55%, rgba(0,0,0,0.55) 100%)`,
+              mixBlendMode: "multiply",
+            }}
+          />
 
+          {/* Soft brand glow */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(circle at 20% 25%, rgba(31,166,160,0.35), transparent 55%), radial-gradient(circle at 80% 75%, rgba(106,63,181,0.35), transparent 55%)",
+            }}
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 py-40 md:py-56 md:px-6 text-white">
+          <div className="max-w-2xl">
+            <div className="text-3xl font-semibold" style={{color:"#ffffff"}}>
+              Only Health Solutions
+            </div>
+            <p className="mt-4 text-lg text-white/90">
+              Compassionate in‑home support including nursing, personal care, and companion services designed to help families feel confident and supported.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero */}
       <main id="main-content">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"
+        >
+          Skip to content
+        </a>
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
@@ -756,10 +789,30 @@ export default function OnlyHealthSolutionsSite() {
         />
         <section
           className="relative overflow-hidden"
-          style={{
-            background: `linear-gradient(135deg, ${brand.colors.light} 0%, #ffffff 40%, ${brand.colors.light} 100%)`,
-          }}
         >
+          {/* Subtle logo watermark background */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <img
+              src={logoPath}
+              srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
+              alt=""
+              aria-hidden="true"
+              className="w-[1200px] max-w-none opacity-[0.10]"
+              loading="lazy"
+              decoding="async"
+            />
+
+            {/* soft brand gradient behind logo */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  `radial-gradient(circle at 30% 30%, ${brand.colors.secondary}22, transparent 55%), radial-gradient(circle at 70% 70%, ${brand.colors.primary}22, transparent 55%), linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.9))`,
+              }}
+            />
+          </div>
+
+          {/* Foreground glow + watermark */}
           <div className="pointer-events-none absolute inset-0">
             {/* Watermark logo */}
             <div className="absolute inset-0">
@@ -789,12 +842,13 @@ export default function OnlyHealthSolutionsSite() {
             />
           </div>
 
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-12 md:gap-8 md:px-6 md:py-20">
+<div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-16 md:flex-row md:items-start md:justify-between md:px-6 md:py-20">
+
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="md:col-span-7"
+              className="max-w-lg rounded-3xl border border-white/20 bg-black/55 text-white p-5 shadow-lg backdrop-blur-xl md:p-6 md:-ml-8 md:mr-auto"
             >
               <div className="flex flex-wrap items-center gap-2">
                 <Badge
@@ -803,17 +857,37 @@ export default function OnlyHealthSolutionsSite() {
                 >
                   Licensed/Insured? (Update)
                 </Badge>
-                <Chip>{brand.serviceArea}</Chip>
-                <Chip>Flexible scheduling</Chip>
+                <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80 backdrop-blur">
+                  {brand.serviceArea}
+                </span>
+                <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80 backdrop-blur">
+                  Flexible scheduling
+                </span>
               </div>
 
-              <h1
-                className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl"
-                style={{ color: brand.colors.primary }}
-              >
-                Care at home that feels <span style={{ color: brand.colors.primary }} className="underline">human</span>.
+              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-6xl">
+                Care at home that feels{" "}
+                <span
+                  className="relative inline-block"
+                  style={{
+                    backgroundImage: `linear-gradient(90deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  human
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-0 -bottom-1 h-[2px] w-full rounded-full"
+                    style={{
+                      background: `linear-gradient(90deg, #C6A75E, ${brand.colors.secondary})`,
+                      opacity: 0.9,
+                    }}
+                  />
+                </span>
+                .
               </h1>
-              <p className="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
+              <p className="mt-5 max-w-xl text-base text-white/85 md:text-lg">
                 {brand.tagline} From companionship to personal care, we support
                 independence, comfort, and peace of mind.
               </p>
@@ -863,9 +937,9 @@ export default function OnlyHealthSolutionsSite() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="md:col-span-5"
+              className="max-w-sm w-full md:absolute md:bottom-10 md:right-10"
             >
-              <Card className="rounded-3xl border/60 bg-background/80 shadow-sm backdrop-blur">
+              <Card className="rounded-3xl border/60 bg-white/95 shadow-lg backdrop-blur scale-[0.95]">
                 <CardHeader>
                   <CardTitle className="text-xl">Quick quote request</CardTitle>
                   <p className="text-sm text-muted-foreground">
@@ -969,10 +1043,24 @@ export default function OnlyHealthSolutionsSite() {
         {/* Services */}
         <Section
           id="services"
+          className="relative overflow-hidden"
           eyebrow="Services"
           title="Support that adapts to your needs"
           subtitle="Choose the level of care you need today—adjust as life changes. We provide private, non-medical home care." 
         >
+          {/* Logo background */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <img
+              src={logoPath}
+              srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
+              alt=""
+              aria-hidden="true"
+              className="w-[900px] max-w-none opacity-[0.05]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
           {/* Personal Care Photo Strip */}
           <div className="mb-10 grid gap-4 md:grid-cols-3">
             {personalCareImages.map((item, index) => (
@@ -1024,8 +1112,8 @@ export default function OnlyHealthSolutionsSite() {
                   </p>
                 </div>
                 <Button
-                  asChild
-                  className="rounded-2xl text-white shadow-sm transition-all hover:shadow-md"
+                      asChild
+                      className="w-full sm:w-auto rounded-2xl text-white shadow-sm transition-all hover:shadow-md"
                   style={{
                     backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
                   }}
@@ -1698,7 +1786,7 @@ export default function OnlyHealthSolutionsSite() {
                   <p className="mt-1 text-sm text-white/70">
                     Call for a private consult. We’ll recommend next steps and a schedule.
                   </p>
-                  <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
                     <Button
                       asChild
                       className="rounded-2xl text-white shadow-sm transition-all hover:shadow-md"
