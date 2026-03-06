@@ -419,11 +419,11 @@ export default function OnlyHealthSolutionsSite() {
       caption: "Supportive nurse helping a senior remain independent",
     },
     {
-      src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      src: "/senior-caretaker-combing-hair.jpg",
       caption: "Personalized home health support for seniors",
     },
     {
-      src: "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      src: "/home-nurse-1-1024x665.jpeg",
       caption: "Nurse and senior sharing a warm conversation at home",
     },
   ];
