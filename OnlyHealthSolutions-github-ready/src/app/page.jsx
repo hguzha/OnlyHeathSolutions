@@ -398,11 +398,11 @@ export default function OnlyHealthSolutionsSite() {
       caption: "Caregiver supporting seniors at home with compassionate care",
     },
     {
-      src: "https://images.unsplash.com/photo-1584516150909-c43483ee7932?q=80&w=1600&auto=format&fit=crop&cb=20260305",
-      caption: "In-home nurse supporting a senior with daily care",
+      src: "/1140-nurse-wheelchair-home-care-health.jpg",
+      caption: "In-home nurse supporting a senior in a wheelchair with daily care",
     },
     {
-      src: "https://images.unsplash.com/photo-1576765607924-3f5c5f94c8c7?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      src: "/1140x655-home-health-aide.jpg",
       caption: "Home health nurse and patient sharing a reassuring moment",
     },
   ];
@@ -411,11 +411,11 @@ export default function OnlyHealthSolutionsSite() {
   const galleryImages = [
     ...personalCareImages,
     {
-      src: "https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      src: "/Consider-a-Career-as-a-Home-Care-Nursing-Assistant.png",
       caption: "Professional nurse assisting a patient in a home setting",
     },
     {
-      src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop&cb=20260305",
+      src: "/GettyImages-1380716338.jpg",
       caption: "Supportive nurse helping a senior remain independent",
     },
     {
