@@ -754,7 +754,7 @@ export default function OnlyHealthSolutionsSite() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 py-40 md:py-56 md:px-6 text-white">
+        <div className="relative mx-auto max-w-7xl px-4 py-56 md:py-72 md:px-6 text-white">
           <div className="max-w-2xl">
             <div className="text-3xl font-semibold" style={{color:"#ffffff"}}>
               Only Health Solutions
