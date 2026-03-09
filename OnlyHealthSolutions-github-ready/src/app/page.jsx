@@ -609,7 +609,7 @@ export default function OnlyHealthSolutionsSite() {
                 src={logoPath}
                 srcSet={`${logoPath} 1x, ${logo2xPath} 2x`}
                 alt={`${brand.name} logo`}
-                className="h-40 sm:h-48 md:h-50 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
+                className="h-48 sm:h-52 md:h-56 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-105"
                 onError={onLogoError}
                 loading="eager"
                 decoding="async"
