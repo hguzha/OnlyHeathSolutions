@@ -65,12 +65,12 @@ const brand = {
   // Logo file added from upload
 
   // ✅ Put these files in your production /public folder:
-  // - /public/logo.svg
+  // - /public/logo.png
   // - /public/logo@2x.png
   // - /public/favicon.ico
   // (I generated them for you—see chat downloads.)
-  logo1x: "/logo.svg",
-  logo2x: "/logo.svg",
+  logo1x: "/logo1.png",
+  logo2x: "/logo1.png",
   favicon: "/favicon.ico",
 
   // Add your Google Business Profile reviews link here when ready
