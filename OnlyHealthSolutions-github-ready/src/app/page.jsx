@@ -69,8 +69,8 @@ const brand = {
   // - /public/logo@2x.png
   // - /public/favicon.ico
   // (I generated them for you—see chat downloads.)
-  logo1x: "/logo.png",
-  logo2x: "/logo.png",
+  logo1x: "/logo.svg",
+  logo2x: "/logo.svg",
   favicon: "/favicon.ico",
 
   // Add your Google Business Profile reviews link here when ready
