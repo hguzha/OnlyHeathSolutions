@@ -69,8 +69,8 @@ const brand = {
   // - /public/logo@2x.png
   // - /public/favicon.ico
   // (I generated them for you—see chat downloads.)
-  logo1x: "/only-health-solutions-logo-vector.svg",
-  logo2x: "/only-health-solutions-logo-vector.svg",
+  logo1x: "/logo2.png",
+  logo2x: "/logo2.png",
   favicon: "/favicon.ico",
 
   // Add your Google Business Profile reviews link here when ready
