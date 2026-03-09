@@ -65,7 +65,7 @@ const brand = {
   // Logo file added from upload
 
   // ✅ Put these files in your production /public folder:
-  // - /public/logo.png
+  // - /public/logo.svg
   // - /public/logo@2x.png
   // - /public/favicon.ico
   // (I generated them for you—see chat downloads.)
