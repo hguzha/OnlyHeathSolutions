@@ -20,18 +20,20 @@ export default function SiteHeader() {
           <img src={brand.logo} alt={brand.name} className="logo-img" />
         </Link>
 
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "18px",
-            fontWeight: 600,
-            fontSize: "15px",
-            flexWrap: "wrap",
-            flex: 1,
-            justifyContent: "center",
-          }}
-        >
+ <nav
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    fontWeight: 600,
+    fontSize: "14px",
+    flex: 1,
+    justifyContent: "center",
+    flexWrap: "nowrap",
+    whiteSpace: "nowrap",
+    overflow: "hidden"
+  }}
+>
           {navLinks.map((item, index) => {
             const isActive = pathname === item.href;
 
