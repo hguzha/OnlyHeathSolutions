@@ -109,7 +109,7 @@ export default function SiteHeader() {
   {brand.phoneDisplay}
 </a>
 
-<Link
+<a
   href="/services#new-client-inquiry"
   style={{
     display: "inline-flex",
@@ -118,13 +118,12 @@ export default function SiteHeader() {
     borderRadius: "999px",
     fontWeight: 600,
     color: "white",
-    background: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})`,
-    whiteSpace: "nowrap",
-    boxShadow: "0 8px 20px rgba(31,166,160,0.18)"
+    background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+    whiteSpace: "nowrap"
   }}
 >
   Request a Consult
-</Link>
+</a>
         </div>
       </div>
     </header>
