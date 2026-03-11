@@ -87,7 +87,7 @@ export default function Page() {
 
   return (
     <SiteShell>
-      <section className="relative border-b overflow-hidden h-[700px] md:h-[800px] lg:h-[900px]">
+      <section className="relative border-b overflow-hidden h-[800px] md:h-[900px] lg:h-[1000px]">
         <div className="absolute inset-0">
           <img
             src="/1140x655-home-health-aide.jpg"
@@ -122,7 +122,7 @@ export default function Page() {
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
-          <img src={brand.logo1x} alt="" aria-hidden="true" className="w-[1200px] max-w-none opacity-[0.18]" />
+          <img src={brand.logo1x} alt="" aria-hidden="true" className="w-[1400px] max-w-none opacity-[0.18]" />
           <div
             className="absolute inset-0"
             style={{
