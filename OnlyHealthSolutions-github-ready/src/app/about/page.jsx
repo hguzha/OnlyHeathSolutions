@@ -6,7 +6,7 @@ export default function AboutPage() {
       <PageHero
         title="About Only Health Solutions"
         subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
-        image="https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=2000&auto=format&fit=crop"
+        image="/1.webp"
         height={440}
       />
 
