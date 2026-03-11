@@ -32,7 +32,6 @@ export default function HomePage() {
                 Request a Free Consult
                 </Link>
                <Button asChild size="lg" variant="outline" className="rounded-2xl">
-             <Button asChild size="lg" variant="outline" className="rounded-2xl">
          <a href={brand.phoneHref} style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
            <Phone size={16} />
           {brand.phoneDisplay}
