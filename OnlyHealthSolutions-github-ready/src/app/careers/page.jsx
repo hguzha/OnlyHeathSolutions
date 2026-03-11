@@ -41,9 +41,7 @@ export default function CareersPage() {
         images={[
           "1000251260.jpg",
           "1000251261.png",
-          "1000251262.jpg",
           "1000251264.jpg",
-          "1000251272.jpg",
         ]}
       />
 
