@@ -221,4 +221,7 @@ img {
 .nav a:hover::after {
   width: 100%;
 }
+.nav a:hover .nav-active-line {
+  width: 100% !important;
+}
 }  
