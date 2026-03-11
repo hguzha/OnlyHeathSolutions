@@ -87,7 +87,7 @@ export default function Page() {
 
   return (
     <SiteShell>
-      <section className="relative border-b overflow-hidden h-[500px] md:h-[600px] lg:h-[700px]">
+      <section className="relative border-b overflow-hidden h-[400px] md:h-[500px] lg:h-[600px]">
         <div className="absolute inset-0">
           <img
             src="/1140-nurse-wheelchair-home-care-health.jpg"
