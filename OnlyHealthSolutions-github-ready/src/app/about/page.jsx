@@ -8,7 +8,7 @@ export default function AboutPage() {
         subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
         image="/1.webp"
         height={800}
-        background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
+        background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
       />
 
 <section
