@@ -35,10 +35,16 @@ export default function CareersPage() {
   return (
     <main>
       <PageHero
-        title="Careers"
+        title="Join Our Team"
         subtitle="Join a team dedicated to compassionate care, professionalism, and meaningful service."
-        image="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2000&auto=format&fit=crop"
-        height={440}
+        height={460}
+        images={[
+          "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1584516150909-c43483ee7932?q=80&w=2000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=2000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1576765607924-3f5c5f94c8c7?q=80&w=2000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000&auto=format&fit=crop",
+        ]}
       />
 
       <section className="section">
