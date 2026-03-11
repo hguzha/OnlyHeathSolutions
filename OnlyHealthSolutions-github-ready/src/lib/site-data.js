@@ -82,16 +82,31 @@ export const homeCards = [
 
 export const services = [
   {
+    icon: "Activity",  // You'll need to import and use actual icon components
     title: "Nursing",
-    text: "Skilled nursing care provided by licensed professionals, including monitoring, medication support, and coordination.",
+    bullets: [
+      "Licensed professional nurses",
+      "Medication management and monitoring",
+      "Care coordination",
+    ],
   },
   {
+    icon: "Heart",
     title: "Personal Care",
-    text: "Bathing, grooming, dressing, mobility support, and day-to-day assistance delivered with dignity and compassion.",
+    bullets: [
+      "Bathing and grooming assistance",
+      "Mobility and dressing support",
+      "Incontinence care and hygiene",
+    ],
   },
   {
+    icon: "Users",
     title: "Companion or Sitter",
-    text: "Companionship, supervision, light household help, and meaningful support that brings reassurance to families.",
+    bullets: [
+      "Social companionship",
+      "Meal preparation and light housekeeping",
+      "Supervision and emotional support",
+    ],
   },
 ];
 
