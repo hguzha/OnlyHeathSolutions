@@ -26,7 +26,7 @@ export default function SiteHeader() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: "20px",
+          gap: "18px",
         }}
       >
         <Link
@@ -35,7 +35,7 @@ export default function SiteHeader() {
             display: "flex",
             alignItems: "center",
             flexShrink: 0,
-            marginRight: "24px",
+            marginRight: "22px",
             minWidth: "fit-content",
           }}
         >
@@ -43,7 +43,7 @@ export default function SiteHeader() {
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: "120px",
+              height: "130px",
               width: "auto",
               display: "block",
             }}
