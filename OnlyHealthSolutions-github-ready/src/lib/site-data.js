@@ -30,6 +30,18 @@ export const navLinks = [
   { href: "/gallery", label: "Gallery" },
 ];
 
+export const navPrimary = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+];
+
+export const navSecondary = [
+  { href: "/reviews", label: "Reviews" },
+  { href: "/contact", label: "Contact" },
+  { href: "/how-it-works", label: "How It Works" },
+];
+
 export const homeCards = [
   {
     title: "Services",
