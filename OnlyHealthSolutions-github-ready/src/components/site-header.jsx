@@ -109,21 +109,9 @@ export default function SiteHeader() {
   {brand.phoneDisplay}
 </a>
 
-          <Link
-            href="/contact"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              padding: "10px 18px",
-              borderRadius: "999px",
-              fontWeight: 600,
-              color: "white",
-              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Request a Consult
-          </Link>
+<Link href="/services#new-client-inquiry">
+  Request a Consult
+</Link>
         </div>
       </div>
     </header>
