@@ -8,6 +8,14 @@ export const brand = {
   serviceArea:
     "Serving Cobb, Cherokee, Fulton, Douglas, Bartow, Paulding, Gwinnett, DeKalb, Coweta & Forsyth Counties, GA",
   logo: "/logo2.png",
+  logo1x: "/logo2.png",
+  tagline: "Care at home that feels human.",
+  smsHref: "sms:+17704397666",
+  colors: {
+    primary: "#C6A75E",      // Gold/tan accent color
+    secondary: "#6B7280",    // Gray accent color
+    light: "#0B1320",        // Dark background
+  },
 };
 
 export const navLinks = [
