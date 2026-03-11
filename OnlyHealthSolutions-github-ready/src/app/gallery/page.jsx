@@ -14,7 +14,7 @@ export default function GalleryPage() {
         title="Gallery"
         subtitle="A visual look at compassionate, supportive home care moments and daily assistance."
         image="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000&auto=format&fit=crop"
-        height={400}
+        height={300}
       />
 
       <section className="max-w-6xl mx-auto px-6 pt-12 pb-4 text-center">
