@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Only Health Solutions | Private Home Care Provider",
-  description: "Private home care services including nursing, personal care, and companion/sitter support.",
+  description: "Compassionate private home care including nursing, personal care, and companionship in Vinings, GA.",
   icons: { icon: "/favicon.ico" },
 };
 
