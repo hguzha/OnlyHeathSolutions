@@ -155,7 +155,7 @@ export default function SiteShell({ children }) {
             <div className="md:col-span-5">
               <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-2 shadow-sm backdrop-blur">
-                  <img src={brand.logo1x} alt={brand.name} className="h-20 w-auto" />
+                  <img src={brand.logo1x} alt={brand.name} className="h-40 w-auto" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold tracking-wide text-white">{brand.name}</div>
