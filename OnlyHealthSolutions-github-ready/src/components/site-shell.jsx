@@ -155,7 +155,7 @@ export default function SiteShell({ children }) {
             <div className="md:col-span-5">
               <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-2 shadow-sm backdrop-blur">
-                  <img src={brand.logo1x} alt={brand.name} className="h-30 w-auto" />
+                  <img src={brand.logo1x} alt={brand.name} className="h-20 w-auto" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold tracking-wide text-white">{brand.name}</div>
@@ -215,7 +215,7 @@ export default function SiteShell({ children }) {
 
           <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
-              <img src={brand.logo1x} alt="" aria-hidden="true" className="h-30 w-auto opacity-50" />
+              <img src={brand.logo1x} alt="" aria-hidden="true" className="h-20 w-auto opacity-50" />
               <span>© {new Date().getFullYear()} {brand.name}. All rights reserved.</span>
             </div>
             <div className="flex gap-4">
