@@ -36,10 +36,18 @@ export default function HomePage() {
              <Link className="btn btn-primary" href="/services#new-client-inquiry">
                 Request a Free Consult
                 </Link>
-                <a href={brand.phoneHref} className="btn btn-outline" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                  <Phone size={16} />
-                  {brand.phoneDisplay}
-                </a>
+                <a
+              className="btn btn-outline"
+              href={brand.phoneHref}
+              style={{
+              display: "inline-flex",
+             alignItems: "center",
+             gap: "8px"
+               }}
+               >
+            <Phone size={16} />
+           {brand.phoneDisplay}
+           </a>
               </div>
             </div>
 
