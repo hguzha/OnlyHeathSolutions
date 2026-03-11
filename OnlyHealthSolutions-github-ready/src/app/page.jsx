@@ -37,7 +37,7 @@ export default function HomePage() {
             </div>
 
             <div className="card">
-              <h3>Quick quote request</h3>
+              <h3>Leave Us a Message</h3>
               <p style={{ color: "#64748b" }}>
                 Tell us a bit about your needs. We’ll respond promptly.
               </p>
@@ -47,7 +47,7 @@ export default function HomePage() {
                 <input placeholder="Email" style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
                 <textarea placeholder="What kind of care are you looking for?" rows={5} style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
                 <button className="btn btn-primary" type="button">
-                  Send request
+                  Send Message
                 </button>
               </form>
             </div>
