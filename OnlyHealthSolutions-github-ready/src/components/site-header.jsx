@@ -28,7 +28,9 @@ export default function SiteHeader() {
   style={{
     display: "flex",
     alignItems: "center",
-    marginRight: "24px"
+    flexShrink: 0,
+    marginRight: "24px",
+    minWidth: "fit-content"
   }}
 >
   <img
@@ -36,7 +38,8 @@ export default function SiteHeader() {
     alt={brand.name}
     style={{
       height: "90px",
-      width: "auto"
+      width: "auto",
+      display: "block"
     }}
   />
 </Link>
