@@ -87,7 +87,7 @@ ${form.comments || "N/A"}`
 <div
   id="new-client-inquiry"
   style={{
-    background: "linear-gradient(180deg,#f0f9ff,#ffffff)",
+    background: "linear-gradient(135deg, #e6fbfa 0%, #f3f0ff 100%)",
     padding: "50px 30px",
     borderRadius: "24px",
     border: "1px solid #e2e8f0",
@@ -95,9 +95,17 @@ ${form.comments || "N/A"}`
     scrollMarginTop: "120px"
   }}
 >
-      <h3 style={{ marginTop: 0, fontSize: 28, fontWeight: 800 }}>
-        New Client Inquiry
-      </h3>
+     <h3
+  style={{
+    fontSize: "36px",
+    fontWeight: 800,
+    background: "linear-gradient(90deg,#1fa6a0,#6a3fb5)",
+    WebkitBackgroundClip: "text",
+    color: "transparent"
+  }}
+>
+  New Client Inquiry
+</h3>
       <p style={{ color: "#475569", marginBottom: 24 }}>
         Tell us about your care needs and we’ll review your inquiry by email.
       </p>
@@ -247,18 +255,21 @@ ${form.comments || "N/A"}`
           />
         </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary"
-          style={{
-            width: "100%",
-            border: "none",
-            cursor: "pointer",
-            fontSize: 16,
-          }}
-        >
-          Submit Inquiry
-        </button>
+<button
+  type="submit"
+  style={{
+    background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+    color: "white",
+    border: "none",
+    padding: "14px",
+    borderRadius: "14px",
+    fontWeight: 600,
+    cursor: "pointer",
+    marginTop: "10px"
+  }}
+>
+  Submit Inquiry
+</button>
       </form>
     </div>
   );
