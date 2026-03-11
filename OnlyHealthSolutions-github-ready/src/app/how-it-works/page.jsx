@@ -1,23 +1,31 @@
-import SiteShell from "@/components/site-shell";
-import Section from "@/components/section";
-import { steps } from "@/lib/site-data";
+import PageHero from "@/components/page-hero";
 
-export default function Page() {
+export default function HowItWorksPage() {
+  const steps = [
+    "Call for a quick consult",
+    "Receive a personalized care plan",
+    "Begin care with ongoing communication and support",
+  ];
+
   return (
-    <SiteShell>
-      <Section eyebrow="How it works" title="How it works" subtitle="A simple, supportive path from first call to ongoing care.">
+    <main>
+      <PageHero
+        title="How It Works"
+        subtitle="A simple, supportive process from the first conversation to ongoing care at home."
+        image="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000&auto=format&fit=crop"
+        height={440}
+      />
 
-<div className="grid gap-4 md:grid-cols-3">
-  {steps.map((s) => (
-    <div key={s.title} className="rounded-3xl border bg-white p-6 shadow-sm">
-      <s.icon className="size-8 text-slate-700" />
-      <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
-      <p className="mt-2 text-sm text-slate-600">{s.text}</p>
-    </div>
-  ))}
-</div>
-
-      </Section>
-    </SiteShell>
+      <section className="section">
+        <div className="container page-grid-3">
+          {steps.map((step, index) => (
+            <div key={step} className="card">
+              <h3>Step {index + 1}</h3>
+              <p style={{ color: "#64748b", lineHeight: 1.7 }}>{step}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
