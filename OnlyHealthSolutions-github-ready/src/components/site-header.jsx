@@ -56,9 +56,9 @@ export default function SiteHeader() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "14px",
-            fontWeight: 600,
-            fontSize: "14px",
+            gap: "12px",
+            fontWeight: 500,
+            fontSize: "12px",
             flex: 1,
             justifyContent: "flex-start",
             whiteSpace: "nowrap",
