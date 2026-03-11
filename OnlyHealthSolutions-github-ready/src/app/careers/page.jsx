@@ -47,7 +47,14 @@ export default function CareersPage() {
 
       <section className="section">
         <div className="container">
-          <div className="page-grid-3">
+          <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "24px",
+    marginTop: "30px"
+  }}
+>
             {roles.map((role) => {
               const Icon = role.icon;
               return (
