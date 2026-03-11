@@ -73,16 +73,28 @@ export default function SiteHeader() {
   })}
 </nav>        
 
-        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <a className="btn btn-outline" href={brand.phoneHref}>
-            <Phone size={16} style={{ marginRight: 8, verticalAlign: "middle" }} />
-            Call
-          </a>
-          <Link className="btn btn-primary" href="/contact">
-            Request a Consult
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+<div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+
+  <a
+    href={brand.phoneHref}
+    className="btn btn-outline"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "6px",
+      border: "1px solid rgba(255,255,255,0.3)",
+      color: "white",
+      padding: "8px 14px",
+      borderRadius: "20px"
+    }}
+  >
+    <Phone size={16} />
+    Call
+  </a>
+
+  <Link className="btn btn-primary" href="/contact">
+    Request a Consult
+  </Link>
+
+</div>
 }
