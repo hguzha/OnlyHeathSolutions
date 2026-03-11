@@ -20,18 +20,16 @@ export default function SiteHeader() {
           <img src={brand.logo} alt={brand.name} className="logo-img" />
         </Link>
 
- <nav
+<nav
   style={{
     display: "flex",
     alignItems: "center",
-    gap: "14px",
+    gap: "16px",
     fontWeight: 600,
-    fontSize: "14px",
+    fontSize: "15px",
     flex: 1,
     justifyContent: "center",
-    flexWrap: "nowrap",
-    whiteSpace: "nowrap",
-    overflow: "hidden"
+    whiteSpace: "nowrap"
   }}
 >
           {navLinks.map((item, index) => {
@@ -78,14 +76,15 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        <div
-          style={{
-            display: "flex",
-            gap: 12,
-            alignItems: "center",
-            flexShrink: 0,
-          }}
-        >
+<div
+  style={{
+    display: "flex",
+    gap: 12,
+    alignItems: "center",
+    flexShrink: 0,
+    marginLeft: "20px"
+  }}
+>
           <a
             href={brand.phoneHref}
             style={{
