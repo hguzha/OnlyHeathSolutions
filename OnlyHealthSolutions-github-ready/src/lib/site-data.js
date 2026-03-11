@@ -1,4 +1,3 @@
-import { Stethoscope, HandHeart, Users } from "lucide-react";
 
 export const brand = {
   name: "Only Health Solutions",
