@@ -32,24 +32,27 @@ export default function HomePage() {
                 Private, compassionate home care tailored to your loved one. From companionship
                 to personal care, we support independence, comfort, and peace of mind.
               </p>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
-             <Link className="btn btn-primary" href="/services#new-client-inquiry">
-                Request a Free Consult
-                </Link>
-                <a
-              className="btn btn-outline"
-              href={brand.phoneHref}
-              style={{
-              display: "inline-flex",
-             alignItems: "center",
-             gap: "8px"
-               }}
-               >
-            <Phone size={16} />
-           {brand.phoneDisplay}
-           </a>
-              </div>
-            </div>
+       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
+  <Link className="btn btn-primary" href="/services#new-client-inquiry">
+    Request a Free Consult
+  </Link>
+
+  <a
+    href={brand.phoneHref}
+    className="btn btn-outline"
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+      color: "#0f172a",
+      background: "#ffffff",
+      border: "1px solid #d1d5db",
+      whiteSpace: "nowrap"
+    }}
+  >
+    {brand.phoneDisplay}
+  </a>
+</div>
 
             <div
            className="card"
