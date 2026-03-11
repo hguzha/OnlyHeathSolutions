@@ -84,13 +84,11 @@ ${form.comments || "N/A"}`
   }
 
   return (
-      <div id="new-client-inquiry" className="card"
-      style={{
-        marginTop: 32,
-        background: "#e0f7fa",
-        borderRadius: 20,
-      }}
-    >
+  <div
+  id="new-client-inquiry"
+  className="card"
+  style={{ scrollMarginTop: "120px" }}
+>
       <h3 style={{ marginTop: 0, fontSize: 28, fontWeight: 800 }}>
         New Client Inquiry
       </h3>
