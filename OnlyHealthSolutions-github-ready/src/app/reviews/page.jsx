@@ -5,10 +5,10 @@ export default function ReviewsPage() {
   return (
     <main>
       <PageHero
-        title="Reviews"
+        //title="Reviews"
         subtitle="See why families trust Only Health Solutions for respectful, responsive care at home."
         image="reviews.jpg"
-        height={400}
+        height={600}
       />
 
       <section className="section">
