@@ -224,4 +224,7 @@ img {
 .nav a:hover .nav-active-line {
   width: 100% !important;
 }
+  html {
+  scroll-behavior: smooth;
+}
 }  
