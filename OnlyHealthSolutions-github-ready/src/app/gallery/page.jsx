@@ -17,8 +17,8 @@ export default function GalleryPage() {
         height={600}
       />
 
-      <section className="max-w-6xl mx-auto px-6 py-12 text-center">
-  <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+      <section className="max-w-6xl mx-auto px-6 pt-12 pb-4 text-center">
+  <p className="text-gray-600 max-w-3xl mx-auto mb-4 leading-relaxed">
     These images represent the compassion, dignity, and joy that guide our care every day.
     While some photos are illustrative, they reflect the meaningful connections and quality
     of life we work to bring to each client and family we serve.
@@ -26,7 +26,7 @@ export default function GalleryPage() {
 </section>
       
       <section className="section">
-        <div className="container gallery-grid">
+        <div className="container gallery-grid mt-4">
           {images.map((src, index) => (
             <div key={index} className="gallery-card">
               <img src={src} alt={`Gallery image ${index + 1}`} />
