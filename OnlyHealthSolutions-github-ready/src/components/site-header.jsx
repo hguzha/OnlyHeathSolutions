@@ -50,7 +50,7 @@ export default function SiteHeader() {
     alignItems: "center",
     gap: "12px",
     fontWeight: 600,
-    fontSize: "12px",
+    fontSize: "14px",
     flex: 1,
     justifyContent: "flex-start",
     whiteSpace: "nowrap"
