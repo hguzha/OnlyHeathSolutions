@@ -15,7 +15,7 @@ export default function SiteHeader() {
         borderBottom: "2px solid #d4af37",
       }}
     >
-      <<div
+      <div
   className="container topbar-inner"
   style={{
     display: "flex",
