@@ -27,8 +27,8 @@ export default function HomePage() {
                 to personal care, we support independence, comfort, and peace of mind.
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
-                <Link className="btn btn-primary" href="/contact">
-                  Request a free consult
+             <Link className="btn btn-primary" href="/services#new-client-inquiry">
+                Request a Free Consult
                 </Link>
                 <a className="btn btn-outline" href={brand.phoneHref} style={{ background: "white" }}>
                   {brand.phoneDisplay}
