@@ -84,8 +84,7 @@ ${form.comments || "N/A"}`
   }
 
   return (
-    <div
-      className="card"
+      <div id="new-client-inquiry" className="card"
       style={{
         marginTop: 32,
         background: "#e0f7fa",
