@@ -53,8 +53,7 @@ export default function HomePage() {
     {brand.phoneDisplay}
   </a>
 </div>
-
-            <div
+        <div
            className="card"
              style={{
              height: "100%",
