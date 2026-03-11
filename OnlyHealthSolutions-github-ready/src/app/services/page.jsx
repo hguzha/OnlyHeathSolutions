@@ -1,4 +1,5 @@
 import PageHero from "@/components/page-hero";
+import ServiceCard from "@/components/service-card";
 import { services } from "@/lib/site-data";
 
 export default function ServicesPage() {
@@ -14,11 +15,8 @@ export default function ServicesPage() {
       <section className="section">
         <div className="container">
           <div className="page-grid-3">
-            {services.map((item) => (
-              <div key={item.title} className="card">
-                <h3>{item.title}</h3>
-                <p style={{ color: "#64748b", lineHeight: 1.7 }}>{item.text}</p>
-              </div>
+            {services.map((service) => (
+              <ServiceCard key={service.title} {...service} />
             ))}
           </div>
         </div>
