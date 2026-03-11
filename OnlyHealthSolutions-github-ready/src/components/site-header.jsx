@@ -16,9 +16,13 @@ export default function SiteHeader() {
       }}
     >
       <div className="container topbar-inner">
-        <Link href="/">
-          <img src={brand.logo} alt={brand.name} className="logo-img" />
-        </Link>
+<Link href="/" style={{ marginRight: "40px", flexShrink: 0 }}>
+  <img
+    src={brand.logo}
+    alt={brand.name}
+    style={{ height: "90px", width: "auto" }}
+  />
+</Link>
 
 <nav
   style={{
@@ -28,7 +32,8 @@ export default function SiteHeader() {
     fontWeight: 600,
     fontSize: "15px",
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    marginLeft: "10px",
     whiteSpace: "nowrap"
   }}
 >
@@ -82,7 +87,7 @@ export default function SiteHeader() {
     gap: 12,
     alignItems: "center",
     flexShrink: 0,
-    marginLeft: "20px"
+    marginLeft: "auto"
   }}
 >
           <a
