@@ -90,24 +90,24 @@ export default function SiteHeader() {
     marginLeft: "auto"
   }}
 >
-          <a
-            href={brand.phoneHref}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "10px 16px",
-              borderRadius: "999px",
-              border: "1px solid rgba(255,255,255,0.25)",
-              background: "rgba(255,255,255,0.06)",
-              color: "#ffffff",
-              fontWeight: 600,
-              whiteSpace: "nowrap",
-            }}
-          >
-            <Phone size={16} />
-            <span>Call</span>
-          </a>
+<a
+  href={brand.phoneHref}
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    padding: "10px 16px",
+    borderRadius: "999px",
+    border: "1px solid rgba(255,255,255,0.25)",
+    background: "rgba(255,255,255,0.06)",
+    color: "#ffffff",
+    fontWeight: 600,
+    whiteSpace: "nowrap"
+  }}
+>
+  <Phone size={16} />
+  {brand.phoneDisplay}
+</a>
 
           <Link
             href="/contact"
