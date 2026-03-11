@@ -43,7 +43,7 @@ export default function CareersPage() {
           "1000251261.png",
           "1000251262.jpg",
           "1000251264.jpg",
-          "we are hiring.jpg",
+          "1000251272.jpg",
         ]}
       />
 
