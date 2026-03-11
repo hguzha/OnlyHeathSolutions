@@ -15,7 +15,12 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container">
-          <div className="page-grid-2" style={{ alignItems: "start" }}>
+          <div
+            className="page-grid-2"
+             style={{
+            alignItems: "stretch"
+             }}
+             >
             <div className="card" style={{ background: "rgba(0,0,0,0.72)", color: "white" }}>
               <div style={{ display: "inline-block", padding: "6px 12px", borderRadius: 999, background: "#1fa6a0", fontSize: 12, fontWeight: 700 }}>
                 Private Home Care
@@ -38,12 +43,19 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="card">
+            <div
+           className="card"
+             style={{
+             height: "100%",
+             display: "flex",
+             flexDirection: "column"
+              }}
+               >
               <h3>Leave Us a Message</h3>
               <p style={{ color: "#64748b" }}>
                 Tell us a bit about your needs. We’ll respond promptly.
               </p>
-              <form style={{ display: "grid", gap: 12, marginTop: 18 }}>
+                <form style={{ display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
                 <input placeholder="Your name" style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
                 <input placeholder="Phone" style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
                 <input placeholder="Email" style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
