@@ -122,7 +122,7 @@ export default function Page() {
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
-          <img src={brand.logo1x} alt="" aria-hidden="true" className="w-[1400px] max-w-none opacity-[0.18]" />
+          <img src={brand.logo1x} alt="" aria-hidden="true" className="w-[1800px] max-w-none opacity-[0.18]" />
           <div
             className="absolute inset-0"
             style={{
@@ -137,7 +137,7 @@ export default function Page() {
             src={brand.logo1x}
             alt=""
             aria-hidden="true"
-            className="w-[900px] max-w-none rotate-[8deg] opacity-[0.14]"
+            className="w-[1200px] max-w-none rotate-[8deg] opacity-[0.14]"
           />
         </div>
 
