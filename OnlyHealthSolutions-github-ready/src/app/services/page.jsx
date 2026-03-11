@@ -1,20 +1,28 @@
-import SiteShell from "@/components/site-shell";
-import Section from "@/components/section";
-import ServiceCard from "@/components/service-card";
-import MobileSwipeCarousel from "@/components/mobile-swipe-carousel";
-import { services, galleryImages } from "@/lib/site-data";
+import PageHero from "@/components/page-hero";
+import { services } from "@/lib/site-data";
 
-export default function Page() {
+export default function ServicesPage() {
   return (
-    <SiteShell>
-      <Section eyebrow="Services" title="Services" subtitle="Flexible private home care tailored to your needs.">
+    <main>
+      <PageHero
+        title="Services"
+        subtitle="Flexible private home care tailored to your loved one’s routines, comfort, and safety."
+        image="https://images.unsplash.com/photo-1584516150909-c43483ee7932?q=80&w=2000&auto=format&fit=crop"
+        height={500}
+      />
 
-<div className="grid gap-4 md:grid-cols-3">
-  {services.map((s) => <ServiceCard key={s.title} icon={s.icon} title={s.title} bullets={s.bullets} />)}
-</div>
-<div className="mt-8"><MobileSwipeCarousel items={galleryImages} /></div>
-
-      </Section>
-    </SiteShell>
+      <section className="section">
+        <div className="container">
+          <div className="page-grid-3">
+            {services.map((item) => (
+              <div key={item.title} className="card">
+                <h3>{item.title}</h3>
+                <p style={{ color: "#64748b", lineHeight: 1.7 }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
