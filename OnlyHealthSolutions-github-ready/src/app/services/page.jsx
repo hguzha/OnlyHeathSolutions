@@ -1,7 +1,7 @@
 import PageHero from "@/components/page-hero";
 import ServiceCard from "@/components/service-card";
 import MobileSwipeCarousel from "@/components/mobile-swipe-carousel";
-import { careProcess, serviceCards, galleryImages, brand } from "@/lib/site-data";
+import { services, galleryImages, brand } from "@/lib/site-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
