@@ -37,21 +37,22 @@ export default function HomePage() {
     Request a Free Consult
   </Link>
 
-  <a
-    href={brand.phoneHref}
-    className="btn btn-outline"
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "8px",
-      color: "#0f172a",
-      background: "#ffffff",
-      border: "1px solid #d1d5db",
-      whiteSpace: "nowrap"
-    }}
-  >
-    {brand.phoneDisplay}
-  </a>
+<a
+  href={brand.phoneHref}
+  className="btn btn-outline"
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    color: "#0f172a",
+    background: "#ffffff",
+    border: "1px solid #d1d5db",
+    whiteSpace: "nowrap"
+  }}
+>
+  <Phone size={16} />
+  {brand.phoneDisplay}
+</a>
 </div>
     </div>
         <div
