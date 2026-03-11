@@ -37,7 +37,7 @@ export default function CareersPage() {
       <PageHero
         title="Join Our Team"
         subtitle="Join a team dedicated to compassionate care, professionalism, and meaningful service."
-        height={900}
+        height={800}
         images={[
           "join our team.jpg",
           "old job new job.jpg",
