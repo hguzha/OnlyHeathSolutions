@@ -1,28 +1,42 @@
-import SiteShell from "@/components/site-shell";
-import Section from "@/components/section";
-import ContactForm from "@/components/contact-form";
+import PageHero from "@/components/page-hero";
 import { brand } from "@/lib/site-data";
-import { Phone, Mail, MapPin } from "lucide-react";
 
-export default function Page() {
+export default function ContactPage() {
   return (
-    <SiteShell>
-      <Section eyebrow="Contact" title="Contact" subtitle="Call, email, or send a message to build your care plan.">
+    <main>
+      <PageHero
+        title="Contact"
+        subtitle="Connect with our team to ask questions, discuss care options, or request a consultation."
+        image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2000&auto=format&fit=crop"
+        height={360}
+      />
 
-<div className="grid gap-4 md:grid-cols-12">
-  <div className="rounded-3xl border bg-white p-6 shadow-sm md:col-span-5">
-    <div className="space-y-4 text-sm">
-      <a href={brand.phoneHref} className="flex items-center gap-2"><Phone className="size-4" /> {brand.phoneDisplay}</a>
-      <a href={brand.emailHref} className="flex items-center gap-2"><Mail className="size-4" /> {brand.emailDisplay}</a>
-      <div className="flex items-center gap-2"><MapPin className="size-4" /> {brand.addressLine}</div>
-    </div>
-  </div>
-  <div className="rounded-3xl border bg-white p-6 shadow-sm md:col-span-7">
-    <ContactForm />
-  </div>
-</div>
+      <section className="section">
+        <div className="container page-grid-2">
+          <div className="card">
+            <h3>Contact Info</h3>
+            <div style={{ display: "grid", gap: 12, marginTop: 16, color: "#64748b" }}>
+              <a href={brand.phoneHref}>{brand.phoneDisplay}</a>
+              <a href={brand.emailHref}>{brand.emailDisplay}</a>
+              <div>{brand.addressLine}</div>
+              <div>{brand.serviceArea}</div>
+            </div>
+          </div>
 
-      </Section>
-    </SiteShell>
+          <div className="card">
+            <h3>Request Care</h3>
+            <form style={{ display: "grid", gap: 12, marginTop: 18 }}>
+              <input placeholder="Your name" style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
+              <input placeholder="Phone" style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
+              <input placeholder="Email" style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
+              <textarea placeholder="How can we help?" rows={6} style={{ padding: 12, borderRadius: 12, border: "1px solid #dbe2ea" }} />
+              <button className="btn btn-primary" type="button">
+                Send request
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
