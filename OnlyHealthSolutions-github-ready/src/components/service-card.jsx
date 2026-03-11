@@ -4,7 +4,6 @@ const iconMap = {
   Activity,
   Heart,
   Users,
-  Stethoscope,
 };
 
 export default function ServiceCard({ icon: iconName, title, bullets }) {
