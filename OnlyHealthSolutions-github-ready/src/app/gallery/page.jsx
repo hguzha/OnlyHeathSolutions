@@ -17,6 +17,16 @@ export default function GalleryPage() {
         height={600}
       />
 
+      <section className="max-w-6xl mx-auto px-6 py-12 text-center">
+  <h1 className="text-3xl font-bold mb-4">Gallery</h1>
+
+  <p className="text-gray-600 max-w-3xl mx-auto">
+    These images represent the compassion, dignity, and joy that guide our care every day.
+    While some photos are illustrative, they reflect the meaningful connections and quality
+    of life we work to bring to each client and family we serve.
+  </p>
+</section>
+      
       <section className="section">
         <div className="container gallery-grid">
           {images.map((src, index) => (
