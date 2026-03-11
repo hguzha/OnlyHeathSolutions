@@ -64,7 +64,7 @@ export default function SiteHeader() {
                 <Link
                   href={item.href}
                   style={{
-                    padding: "4px 6px",
+                    padding: "10px 10px",
                     position: "relative",
                     color: isActive ? "#ffffff" : "rgba(255,255,255,0.9)",
                     whiteSpace: "nowrap",
