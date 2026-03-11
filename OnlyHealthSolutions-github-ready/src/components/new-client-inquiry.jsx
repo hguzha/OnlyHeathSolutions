@@ -84,10 +84,16 @@ ${form.comments || "N/A"}`
   }
 
   return (
-  <div
+<div
   id="new-client-inquiry"
-  className="card"
-  style={{ scrollMarginTop: "120px" }}
+  style={{
+    background: "linear-gradient(180deg,#f0f9ff,#ffffff)",
+    padding: "50px 30px",
+    borderRadius: "24px",
+    border: "1px solid #e2e8f0",
+    marginTop: "40px",
+    scrollMarginTop: "120px"
+  }}
 >
       <h3 style={{ marginTop: 0, fontSize: 28, fontWeight: 800 }}>
         New Client Inquiry
