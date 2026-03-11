@@ -90,7 +90,7 @@ export default function Page() {
       <section className="relative border-b overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000&auto=format&fit=crop"
+            src="/public/1140x655-home-health-aide.jpg"
             alt="Luxury home care"
             className="h-full w-full object-cover"
           />
