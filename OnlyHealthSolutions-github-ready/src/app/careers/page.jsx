@@ -1,8 +1,13 @@
 import PageHero from "@/components/page-hero";
-import { Users, BriefcaseMedical, HeartHandshake, Mail } from "lucide-react";
+import { Users, BriefcaseMedical, HeartHandshake, Stethoscope, Mail } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 const roles = [
+  {
+    title: "Registered Nurse (RN)",
+    icon: Stethoscope,
+    text: "Provide advanced nursing care, clinical oversight, and coordination with physicians to ensure high-quality care for clients at home."
+  },
   {
     title: "Certified Nursing Assistant (CNA)",
     icon: Users,
