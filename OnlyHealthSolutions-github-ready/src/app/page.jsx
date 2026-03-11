@@ -38,7 +38,6 @@ export default function HomePage() {
           {brand.phoneDisplay}
           </a>
           </Button>
-              </Button>
               </div>
             </div>
 
