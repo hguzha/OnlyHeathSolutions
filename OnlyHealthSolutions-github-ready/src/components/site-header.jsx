@@ -95,7 +95,9 @@ export default function SiteHeader() {
   <Link className="btn btn-primary" href="/contact">
     Request a Consult
   </Link>
-
-</div>
- );        
+  
+        </div>
+      </div>
+    </header>
+  );
 }
