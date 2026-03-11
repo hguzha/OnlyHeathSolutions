@@ -65,7 +65,12 @@ export default function HomePage() {
             understand what Only Health Solutions offers and go directly where they need to go.
           </p>
 
-          <div className="page-grid-3" style={{ marginTop: 28 }}>
+          <div
+           className="page-grid-3"
+           style={{
+          alignItems: "stretch"
+           }}
+            >
             {homeCards.map((item) => (
               <div key={item.title} className="card">
                 <h3>{item.title}</h3>
@@ -79,7 +84,15 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="card" style={{ marginTop: 28 }}>
+          <div
+              className="card"
+              style={{
+               height: "100%",
+               display: "flex",
+             flexDirection: "column",
+              justifyContent: "space-between"
+             }}
+             >
             <h3>Ready to get started?</h3>
             <p style={{ color: "#64748b" }}>
               Whether you want to review services, ask a question, or request a consultation,
