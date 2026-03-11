@@ -4,11 +4,6 @@ import { brand } from "@/lib/site-data";
 
 const roles = [
   {
-    title: "Registered Nurse (RN)",
-    icon: Stethoscope,
-    text: "Provide advanced nursing care, clinical oversight, and coordination with physicians to ensure high-quality care for clients at home.",
-  },
-  {
     title: "Certified Nursing Assistant (CNA)",
     icon: Users,
     text: "Support clients with personal care, mobility, daily routines, and compassionate assistance in the home.",
