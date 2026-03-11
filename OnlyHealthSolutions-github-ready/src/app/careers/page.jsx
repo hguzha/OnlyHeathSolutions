@@ -35,7 +35,7 @@ export default function CareersPage() {
   return (
     <main>
       <PageHero
-        title="Join Our Team"
+        //title="Join Our Team"
         subtitle="Join a team dedicated to compassionate care, professionalism, and meaningful service."
         height={600}
         images={[
