@@ -109,7 +109,7 @@ export default function SiteHeader() {
   {brand.phoneDisplay}
 </a>
 
-<Link href="/services#new-client-inquiry">
+<Link href="/contact">
   Request a Consult
 </Link>
         </div>
