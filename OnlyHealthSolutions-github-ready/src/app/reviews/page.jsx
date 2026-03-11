@@ -7,7 +7,7 @@ export default function ReviewsPage() {
       <PageHero
         title="Reviews"
         subtitle="See why families trust Only Health Solutions for respectful, responsive care at home."
-        image="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=2000&auto=format&fit=crop"
+        image="reviews.jpg"
         height={400}
       />
 
