@@ -1,27 +1,50 @@
-import { CheckCircle2 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { brand } from "@/lib/site-data";
-export default function ServiceCard({ icon: Icon, title, bullets }) {
+import { CheckCircle2, Activity, Heart, Users } from "lucide-react";
+
+const iconMap = {
+  Activity,
+  Heart,
+  Users,
+};
+
+export default function ServiceCard({ icon: iconName, title, bullets }) {
+  const Icon = iconMap[iconName];
+  
   return (
-    <Card className="group h-full rounded-2xl border/60 bg-white/80 shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-md">
-      <CardHeader>
-        <div className="mb-3 flex items-center gap-3">
-          <div className="grid size-10 place-items-center rounded-2xl text-white shadow-sm" style={{ backgroundImage: `linear-gradient(135deg, ${brand.colors.secondary}, ${brand.colors.primary})` }}>
-            <Icon className="size-5" />
-          </div>
-          <CardTitle className="text-lg">{title}</CardTitle>
+    <div className="card">
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+            width: 44,
+            height: 44,
+            borderRadius: 14,
+            display: "grid",
+            placeItems: "center",
+            color: "white"
+          }}
+        >
+          {Icon && <Icon size={20} />}
         </div>
-      </CardHeader>
-      <CardContent>
-        <ul className="space-y-2 text-sm text-slate-600">
-          {bullets.map((b) => (
-            <li key={b} className="flex gap-2">
-              <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
-              <span>{b}</span>
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-    </Card>
+
+        <h3 style={{ margin: 0 }}>{title}</h3>
+      </div>
+
+      <ul style={{ marginTop: 18, paddingLeft: 0, listStyle: "none" }}>
+        {bullets?.map((b) => (
+          <li
+            key={b}
+            style={{
+              display: "flex",
+              gap: 10,
+              marginBottom: 10,
+              color: "#64748b"
+            }}
+          >
+            <CheckCircle2 size={16} />
+            {b}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
