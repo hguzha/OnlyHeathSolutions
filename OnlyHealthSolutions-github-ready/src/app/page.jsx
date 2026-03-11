@@ -87,10 +87,10 @@ export default function Page() {
 
   return (
     <SiteShell>
-      <section className="relative border-b overflow-hidden h-[400px] md:h-[500px] lg:h-[600px]">
+      <section className="relative border-b overflow-hidden h-[600px] md:h-[700px] lg:h-[800px]">
         <div className="absolute inset-0">
           <img
-            src="/1140-nurse-wheelchair-home-care-health.jpg"
+            src="/1140x655-home-health-aide.jpg"
             alt="Luxury home care"
             className="h-full w-full object-cover"
           />
