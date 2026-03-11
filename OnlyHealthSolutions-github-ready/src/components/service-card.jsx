@@ -1,16 +1,21 @@
-import { CheckCircle2, Activity, Heart, Users } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
-const iconMap = {
-  Activity,
-  Heart,
-  Users,
-};
-
-export default function ServiceCard({ icon: iconName, title, bullets }) {
-  const Icon = iconMap[iconName];
-  
+export default function ServiceCard({ icon: Icon, title, image, bullets }) {
   return (
     <div className="card">
+
+      <img
+        src={image}
+        alt={title}
+        style={{
+          width: "100%",
+          height: "200px",
+          objectFit: "cover",
+          borderRadius: "18px",
+          marginBottom: "16px"
+        }}
+      />
+
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         <div
           style={{
@@ -23,14 +28,14 @@ export default function ServiceCard({ icon: iconName, title, bullets }) {
             color: "white"
           }}
         >
-          {Icon && <Icon size={20} />}
+          <Icon size={20} />
         </div>
 
         <h3 style={{ margin: 0 }}>{title}</h3>
       </div>
 
       <ul style={{ marginTop: 18, paddingLeft: 0, listStyle: "none" }}>
-        {bullets?.map((b) => (
+        {bullets.map((b) => (
           <li
             key={b}
             style={{
