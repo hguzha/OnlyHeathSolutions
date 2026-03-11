@@ -1,23 +1,27 @@
-import SiteShell from "@/components/site-shell";
-import Section from "@/components/section";
-import { Users } from "lucide-react";
+import PageHero from "@/components/page-hero";
 
-export default function Page() {
+export default function CareersPage() {
   return (
-    <SiteShell>
-      <Section eyebrow="Careers" title="Careers" subtitle="Build a meaningful career in care.">
+    <main>
+      <PageHero
+        title="Careers"
+        subtitle="Join a team dedicated to compassionate care, professionalism, and meaningful service."
+        image="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2000&auto=format&fit=crop"
+        height={440}
+      />
 
-<div className="grid gap-4 md:grid-cols-3">
-  {["Certified Nursing Assistant (CNA)","Licensed Practical Nurse (LPN)","Companion / Sitter"].map((role) => (
-    <div key={role} className="rounded-3xl border bg-white p-6 shadow-sm">
-      <Users className="size-8 text-slate-700" />
-      <h3 className="mt-4 text-lg font-semibold">{role}</h3>
-      <p className="mt-2 text-sm text-slate-600">Join a team that values compassion, professionalism, and growth.</p>
-    </div>
-  ))}
-</div>
-
-      </Section>
-    </SiteShell>
+      <section className="section">
+        <div className="container page-grid-3">
+          {["Certified Nursing Assistant (CNA)", "Licensed Practical Nurse (LPN)", "Companion / Sitter"].map((role) => (
+            <div key={role} className="card">
+              <h3>{role}</h3>
+              <p style={{ color: "#64748b", lineHeight: 1.7 }}>
+                Join a team that values compassion, professionalism, and growth.
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
