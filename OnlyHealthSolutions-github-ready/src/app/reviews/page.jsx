@@ -1,19 +1,27 @@
-import SiteShell from "@/components/site-shell";
-import Section from "@/components/section";
-import TestimonialCard from "@/components/testimonial-card";
+import PageHero from "@/components/page-hero";
+import { reviews } from "@/lib/site-data";
 
-export default function Page() {
+export default function ReviewsPage() {
   return (
-    <SiteShell>
-      <Section eyebrow="Reviews" title="Reviews" subtitle="Trusted by families who value compassionate, dependable care.">
+    <main>
+      <PageHero
+        title="Reviews"
+        subtitle="See why families trust Only Health Solutions for respectful, responsive care at home."
+        image="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=2000&auto=format&fit=crop"
+        height={400}
+      />
 
-<div className="grid gap-4 md:grid-cols-3">
-  <TestimonialCard name="A. Johnson" role="Daughter of client" quote="The caregiver was kind, punctual, and truly attentive. We finally felt supported and informed." />
-  <TestimonialCard name="M. Rivera" role="Client" quote="They listened to my routine and respected my independence. It made a big difference." />
-  <TestimonialCard name="S. Patel" role="Family caregiver" quote="Respite care helped me recharge. Communication was easy and the team was responsive." />
-</div>
-
-      </Section>
-    </SiteShell>
+      <section className="section">
+        <div className="container page-grid-3">
+          {reviews.map((item) => (
+            <div key={item.name} className="card">
+              <h3>{item.name}</h3>
+              <div style={{ color: "#64748b", marginBottom: 12 }}>{item.role}</div>
+              <p style={{ color: "#64748b", lineHeight: 1.7 }}>“{item.quote}”</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
