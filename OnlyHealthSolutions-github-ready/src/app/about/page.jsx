@@ -7,7 +7,7 @@ export default function AboutPage() {
         title="About Only Health Solutions"
         subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
         image="/1.webp"
-        height={440}
+        height={1400}
       />
 
 <section
