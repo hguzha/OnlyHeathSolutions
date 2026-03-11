@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PageHero from "@/components/page-hero";
 import { brand, homeCards } from "@/lib/site-data";
+import { Phone } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -30,9 +31,14 @@ export default function HomePage() {
              <Link className="btn btn-primary" href="/services#new-client-inquiry">
                 Request a Free Consult
                 </Link>
-                <a className="btn btn-outline" href={brand.phoneHref} style={{ background: "white" }}>
-                  {brand.phoneDisplay}
-                </a>
+               <Button asChild size="lg" variant="outline" className="rounded-2xl">
+             <Button asChild size="lg" variant="outline" className="rounded-2xl">
+         <a href={brand.phoneHref} style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+           <Phone size={16} />
+          {brand.phoneDisplay}
+          </a>
+          </Button>
+              </Button>
               </div>
             </div>
 
