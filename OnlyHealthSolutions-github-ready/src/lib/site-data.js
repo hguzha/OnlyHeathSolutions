@@ -1,3 +1,5 @@
+import { Stethoscope, HandHeart, Users } from "lucide-react";
+
 export const brand = {
   name: "Only Health Solutions",
   phoneDisplay: "(770) 439-7666",
@@ -80,34 +82,45 @@ export const homeCards = [
   },
 ];
 
+import { Stethoscope, HandHeart, Users } from "lucide-react";
+
 export const services = [
   {
-    icon: "Activity",  // You'll need to import and use actual icon components
+    icon: Stethoscope,
     title: "Nursing",
+    image:
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600&auto=format&fit=crop",
     bullets: [
-      "Licensed professional nurses",
-      "Medication management and monitoring",
-      "Care coordination",
-    ],
+      "Skilled nursing care provided by licensed professionals",
+      "Medication administration and management",
+      "Wound care and chronic condition monitoring",
+      "Health assessments and care coordination with physicians"
+    ]
   },
   {
-    icon: "Heart",
+    icon: HandHeart,
     title: "Personal Care",
+    image:
+      "https://images.unsplash.com/photo-1584516150909-c43483ee7932?q=80&w=1600&auto=format&fit=crop",
     bullets: [
-      "Bathing and grooming assistance",
-      "Mobility and dressing support",
-      "Incontinence care and hygiene",
-    ],
+      "Assistance with bathing, grooming, and dressing",
+      "Mobility support and safe transfers",
+      "Toileting and hygiene support",
+      "Daily routines delivered with dignity"
+    ]
   },
   {
-    icon: "Users",
-    title: "Companion or Sitter",
+    icon: Users,
+    title: "Companion / Sitter",
+    image:
+      "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1600&auto=format&fit=crop",
     bullets: [
-      "Social companionship",
-      "Meal preparation and light housekeeping",
-      "Supervision and emotional support",
-    ],
-  },
+      "Companionship and conversation",
+      "Safety supervision and fall prevention",
+      "Light housekeeping and meal preparation",
+      "Respite support for family caregivers"
+    ]
+  }
 ];
 
 export const reviews = [
