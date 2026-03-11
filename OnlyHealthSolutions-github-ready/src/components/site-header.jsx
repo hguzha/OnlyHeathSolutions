@@ -15,12 +15,29 @@ export default function SiteHeader() {
         borderBottom: "2px solid #d4af37",
       }}
     >
-      <div className="container topbar-inner">
-<Link href="/" style={{ marginRight: "40px", flexShrink: 0 }}>
+      <<div
+  className="container topbar-inner"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between"
+  }}
+>
+<Link
+  href="/"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    marginRight: "24px"
+  }}
+>
   <img
     src={brand.logo}
     alt={brand.name}
-    style={{ height: "90px", width: "auto" }}
+    style={{
+      height: "90px",
+      width: "auto"
+    }}
   />
 </Link>
 
@@ -28,12 +45,11 @@ export default function SiteHeader() {
   style={{
     display: "flex",
     alignItems: "center",
-    gap: "16px",
+    gap: "14px",
     fontWeight: 600,
-    fontSize: "15px",
+    fontSize: "14px",
     flex: 1,
     justifyContent: "flex-start",
-    marginLeft: "10px",
     whiteSpace: "nowrap"
   }}
 >
@@ -84,9 +100,8 @@ export default function SiteHeader() {
 <div
   style={{
     display: "flex",
-    gap: 12,
+    gap: 10,
     alignItems: "center",
-    flexShrink: 0,
     marginLeft: "auto"
   }}
 >
