@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
       <body>
         <SiteHeader />
           {children}
-        <ChatWidget />
         <ChatButtons />
         <SiteFooter />
       </body>
