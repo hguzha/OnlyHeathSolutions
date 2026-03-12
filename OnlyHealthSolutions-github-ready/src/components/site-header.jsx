@@ -149,7 +149,6 @@ export default function SiteHeader() {
     </Link>
   </div>
 </div>
-      )}
 
       <style jsx>{`
         @media (max-width: 980px) {
