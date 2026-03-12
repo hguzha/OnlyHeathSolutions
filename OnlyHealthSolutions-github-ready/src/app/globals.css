@@ -224,34 +224,7 @@ select {
   max-width: 100%;
 }
 
-@media (max-width: 900px) {
-  .container {
-    padding: 0 16px;
-  }
-
-  .page-grid-2,
-  .page-grid-3,
-  .gallery-grid,
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-card img {
-    height: 220px;
-  }
-
-  .hero-content h1 {
-    font-size: 34px;
-    line-height: 1.1;
-  }
-
-  .hero-content p {
-    font-size: 16px;
-  }
-
-  .logo-img {
-    height: 72px;
-  }
+/* New Client Inquiry */
 .new-client-inquiry {
   width: 100%;
 }
@@ -302,10 +275,39 @@ select {
   flex: 0 0 auto;
 }
 
+@media (max-width: 900px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .page-grid-2,
+  .page-grid-3,
+  .gallery-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-card img {
+    height: 220px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+    line-height: 1.1;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .logo-img {
+    height: 72px;
+  }
+}
+
 @media (max-width: 700px) {
   .inquiry-two-col,
   .inquiry-check-grid {
     grid-template-columns: 1fr;
   }
-}
 }
