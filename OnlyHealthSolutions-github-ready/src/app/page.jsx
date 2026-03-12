@@ -89,12 +89,7 @@ export default function HomePage() {
             understand what Only Health Solutions offers and go directly where they need to go.
           </p>
 
-          <div
-           className="page-grid-3"
-           style={{
-          alignItems: "stretch"
-           }}
-            >
+          <div className="page-grid-3" style={{ alignItems: "stretch" }}>
             {homeCards.map((item) => (
               <div key={item.title} className="card">
                 <h3>{item.title}</h3>
