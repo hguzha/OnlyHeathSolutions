@@ -26,11 +26,13 @@ export default function GalleryPage() {
 </section>
       
       <section className="section">
-        <div className="container gallery-grid mt-4">
-          {images.map((src, index) => (
-            <div key={index} className="gallery-card">
-              <img src={src} alt={`Gallery image ${index + 1}`} />
-            </div>
+       <div className="gallery-grid">
+       {images.map((src, index) => (
+       <div key={index} className="gallery-card">
+       <img src={src} alt={`Gallery image ${index + 1}`} />
+       </div>
+  ))}
+</div>
           ))}
         </div>
       </section>
