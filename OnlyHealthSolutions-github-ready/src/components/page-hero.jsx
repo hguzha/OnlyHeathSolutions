@@ -23,6 +23,7 @@ export default function PageHero({
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  
   return (
     <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ position: "relative", width: "100%", height }}>
