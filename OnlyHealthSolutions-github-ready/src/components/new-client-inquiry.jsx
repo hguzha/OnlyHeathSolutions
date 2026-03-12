@@ -111,7 +111,7 @@ ${form.comments || "N/A"}`
       </p>
 
       <form onSubmit={handleSubmit} style={{ display: "grid", gap: 18 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+        <div className="inquiry-two-col">
           <div>
             <label>First Name (required)</label>
             <input
@@ -159,7 +159,7 @@ ${form.comments || "N/A"}`
 
         <div>
           <label>How can we be of service?</label>
-          <div style={checkboxGridStyle}>
+          <div className="inquiry-check-grid">
             {serviceOptions.map((item) => (
               <label key={item} style={optionLabelStyle}>
                 <input
@@ -175,7 +175,7 @@ ${form.comments || "N/A"}`
 
         <div>
           <label>Where will services be provided?</label>
-          <div style={radioGroupStyle}>
+          <div className="inquiry-radio-grid">
             {[
               "At My Residence",
               "Relative's Home",
@@ -282,19 +282,6 @@ const inputStyle = {
   borderRadius: 12,
   border: "1px solid #cbd5e1",
   background: "white",
-};
-
-const checkboxGridStyle = {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gap: 10,
-  marginTop: 10,
-};
-
-const radioGroupStyle = {
-  display: "grid",
-  gap: 10,
-  marginTop: 10,
 };
 
 const optionLabelStyle = {
