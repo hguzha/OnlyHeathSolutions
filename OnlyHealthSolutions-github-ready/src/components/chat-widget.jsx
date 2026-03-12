@@ -15,7 +15,7 @@ export default function ChatWidget() {
         onClick={() => setOpen(!open)}
         style={{
           position: "fixed",
-          bottom: "120px",
+          bottom: "130px",
           right: "24px",
           width: "60px",
           height: "60px",
