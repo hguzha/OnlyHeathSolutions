@@ -252,48 +252,54 @@ select {
   .logo-img {
     height: 72px;
   }
-  .inquiry-two-col {
+.new-client-inquiry {
+  width: 100%;
+}
+
+.inquiry-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.inquiry-field {
+  min-width: 0;
+}
+
+.inquiry-field label {
+  display: block;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.inquiry-two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
 .inquiry-check-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-top: 10px;
 }
 
 .inquiry-radio-grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 10px;
 }
 
-@media (max-width: 700px) {
-  .inquiry-two-col,
-  .inquiry-check-grid {
-    grid-template-columns: 1fr;
-  }
-}
-  .inquiry-two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+.inquiry-option {
+  min-width: 0;
+  padding: 8px 0;
 }
 
-.inquiry-check-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.inquiry-radio-grid {
-  display: grid;
-  gap: 10px;
-  margin-top: 10px;
+.inquiry-option input {
+  width: auto;
+  max-width: none;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 700px) {
