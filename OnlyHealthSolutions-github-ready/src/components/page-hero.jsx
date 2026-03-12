@@ -27,21 +27,12 @@ export default function PageHero({
     <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ position: "relative", width: "100%", height }}>
         {slides.map((src, index) => (
-          <img
-            key={src}
-            src={src}
-            alt={title}
-            className="hero-img"
-            style={{
-              height,
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              objectFit: "cover",
-              opacity: index === current ? 1 : 0,
-              transition: "opacity 1s ease-in-out",
-            }}
-          />
+      <img
+        src={image}
+       alt={title}
+       className="hero-img"
+      style={{ height: "clamp(260px, 55vw, 520px)" }}
+       />
         ))}
 
         {/* softer overlay */}
