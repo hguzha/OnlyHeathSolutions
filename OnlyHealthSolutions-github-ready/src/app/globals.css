@@ -227,4 +227,32 @@ img {
   html {
   scroll-behavior: smooth;
 }
+  .page-grid-2,
+.page-grid-3,
+.gallery-grid,
+.footer-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.page-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.page-grid-3,
+.gallery-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.footer-grid {
+  grid-template-columns: 1.2fr 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .page-grid-2,
+  .page-grid-3,
+  .gallery-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
 }  
