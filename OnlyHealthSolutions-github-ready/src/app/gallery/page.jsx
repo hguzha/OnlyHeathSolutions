@@ -31,8 +31,6 @@ export default function GalleryPage() {
        <div key={index} className="gallery-card">
        <img src={src} alt={`Gallery image ${index + 1}`} />
        </div>
-  ))}
-</div>
           ))}
         </div>
       </section>
