@@ -84,35 +84,38 @@ ${form.comments || "N/A"}`
   }
 
   return (
-<div
-  id="new-client-inquiry"
-  style={{
-    background: "linear-gradient(135deg, #e6fbfa 0%, #f3f0ff 100%)",
-    padding: "50px 30px",
-    borderRadius: "24px",
-    border: "1px solid #e2e8f0",
-    marginTop: "40px",
-    scrollMarginTop: "120px"
-  }}
->
-     <h3
-  style={{
-    fontSize: "36px",
-    fontWeight: 800,
-    background: "linear-gradient(90deg,#1fa6a0,#6a3fb5)",
-    WebkitBackgroundClip: "text",
-    color: "transparent"
-  }}
->
-  New Client Inquiry
-</h3>
-      <p style={{ color: "#475569", marginBottom: 24 }}>
+    <section
+      id="new-client-inquiry"
+      className="new-client-inquiry"
+      style={{
+        background: "linear-gradient(135deg, #e6fbfa 0%, #f3f0ff 100%)",
+        padding: "50px 30px",
+        borderRadius: "24px",
+        border: "1px solid #e2e8f0",
+        marginTop: "40px",
+        scrollMarginTop: "120px",
+      }}
+    >
+      <h2
+        style={{
+          fontSize: "36px",
+          fontWeight: 800,
+          background: "linear-gradient(90deg,#1fa6a0,#6a3fb5)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+          margin: 0,
+        }}
+      >
+        New Client Inquiry
+      </h2>
+
+      <p style={{ color: "#475569", marginTop: 12, marginBottom: 24 }}>
         Tell us about your care needs and we’ll review your inquiry by email.
       </p>
 
-      <form onSubmit={handleSubmit} style={{ display: "grid", gap: 18 }}>
+      <form onSubmit={handleSubmit} className="inquiry-form">
         <div className="inquiry-two-col">
-          <div>
+          <div className="inquiry-field">
             <label>First Name (required)</label>
             <input
               type="text"
@@ -123,7 +126,7 @@ ${form.comments || "N/A"}`
             />
           </div>
 
-          <div>
+          <div className="inquiry-field">
             <label>Last Name (required)</label>
             <input
               type="text"
@@ -135,7 +138,7 @@ ${form.comments || "N/A"}`
           </div>
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>Email (required)</label>
           <input
             type="email"
@@ -146,7 +149,7 @@ ${form.comments || "N/A"}`
           />
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>Phone (required)</label>
           <input
             type="tel"
@@ -157,11 +160,11 @@ ${form.comments || "N/A"}`
           />
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>How can we be of service?</label>
           <div className="inquiry-check-grid">
             {serviceOptions.map((item) => (
-              <label key={item} style={optionLabelStyle}>
+              <label key={item} className="inquiry-option" style={optionLabelStyle}>
                 <input
                   type="checkbox"
                   checked={form.services.includes(item)}
@@ -173,7 +176,7 @@ ${form.comments || "N/A"}`
           </div>
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>Where will services be provided?</label>
           <div className="inquiry-radio-grid">
             {[
@@ -182,7 +185,7 @@ ${form.comments || "N/A"}`
               "Assisted Living Community",
               "Other",
             ].map((item) => (
-              <label key={item} style={optionLabelStyle}>
+              <label key={item} className="inquiry-option" style={optionLabelStyle}>
                 <input
                   type="radio"
                   name="location"
@@ -195,11 +198,11 @@ ${form.comments || "N/A"}`
           </div>
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>What days do you need service?</label>
           <div className="inquiry-check-grid">
             {dayOptions.map((item) => (
-              <label key={item} style={optionLabelStyle}>
+              <label key={item} className="inquiry-option" style={optionLabelStyle}>
                 <input
                   type="checkbox"
                   checked={form.days.includes(item)}
@@ -211,11 +214,11 @@ ${form.comments || "N/A"}`
           </div>
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>How many hours of service do you need per day?</label>
           <div className="inquiry-check-grid">
             {hourOptions.map((item) => (
-              <label key={item} style={optionLabelStyle}>
+              <label key={item} className="inquiry-option" style={optionLabelStyle}>
                 <input
                   type="checkbox"
                   checked={form.hours.includes(item)}
@@ -227,11 +230,11 @@ ${form.comments || "N/A"}`
           </div>
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>How soon would you like to start?</label>
           <div className="inquiry-radio-grid">
             {startOptions.map((item) => (
-              <label key={item} style={optionLabelStyle}>
+              <label key={item} className="inquiry-option" style={optionLabelStyle}>
                 <input
                   type="radio"
                   name="startTimeframe"
@@ -244,7 +247,7 @@ ${form.comments || "N/A"}`
           </div>
         </div>
 
-        <div>
+        <div className="inquiry-field">
           <label>Additional Comments</label>
           <textarea
             rows={5}
@@ -255,24 +258,24 @@ ${form.comments || "N/A"}`
           />
         </div>
 
-<button
-  type="submit"
-  style={{
-    background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
-    color: "white",
-    border: "none",
-    padding: "14px",
-    borderRadius: "14px",
-    fontWeight: 600,
-    cursor: "pointer",
-    marginTop: "10px",
-    width: "100%"
-  }}
->
-  Submit Inquiry
-</button>
+        <button
+          type="submit"
+          style={{
+            background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+            color: "white",
+            border: "none",
+            padding: "14px",
+            borderRadius: "14px",
+            fontWeight: 600,
+            cursor: "pointer",
+            marginTop: "10px",
+            width: "100%",
+          }}
+        >
+          Submit Inquiry
+        </button>
       </form>
-    </div>
+    </section>
   );
 }
 
