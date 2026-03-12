@@ -265,7 +265,8 @@ ${form.comments || "N/A"}`
     borderRadius: "14px",
     fontWeight: 600,
     cursor: "pointer",
-    marginTop: "10px"
+    marginTop: "10px",
+    width: "100%"
   }}
 >
   Submit Inquiry
