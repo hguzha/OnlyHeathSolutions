@@ -2,6 +2,7 @@ import "./globals.css";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import ChatButtons from "@/components/chat-buttons";
+import ChatWidget from "@/components/chat-widget";
 
 export const metadata = {
   title: "Only Health Solutions | Private Home Care Provider",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body>
         <SiteHeader />
           {children}
+        <ChatWidget />
         <ChatButtons />
         <SiteFooter />
       </body>
