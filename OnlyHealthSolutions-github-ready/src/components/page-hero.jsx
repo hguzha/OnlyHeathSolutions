@@ -10,7 +10,7 @@ export default function PageHero({
   images = [],
   height = 420,
 }) {
-  const slides = images.length > 0 ? images : [image];
+  const slides = images.length > 0 ? images : image ? [image] : [];
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -23,27 +23,36 @@ export default function PageHero({
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  
+  if (!slides.length) return null;
+
   return (
     <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ position: "relative", width: "100%", height }}>
         {slides.map((src, index) => (
-      <img
-        src={image}
-       alt={title}
-       className="hero-img"
-      style={{ height: "clamp(260px, 55vw, 520px)" }}
-       />
+          <img
+            key={`${src}-${index}`}
+            src={src}
+            alt={title}
+            className="hero-img"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              opacity: index === current ? 1 : 0,
+              transition: "opacity 0.9s ease-in-out",
+            }}
+          />
         ))}
 
-        {/* softer overlay */}
         <div
           className="hero-overlay"
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(120deg, rgba(31,166,160,0.42) 0%, rgba(106,63,181,0.34) 55%, rgba(0,0,0,0.38) 100%)",
+              "linear-gradient(120deg, rgba(31,166,160,0.28) 0%, rgba(106,63,181,0.22) 55%, rgba(0,0,0,0.30) 100%)",
           }}
         />
 
@@ -52,11 +61,23 @@ export default function PageHero({
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(circle at 20% 25%, rgba(31,166,160,0.12), transparent 55%), radial-gradient(circle at 80% 75%, rgba(106,63,181,0.10), transparent 55%)",
+              "radial-gradient(circle at 20% 25%, rgba(31,166,160,0.10), transparent 55%), radial-gradient(circle at 80% 75%, rgba(106,63,181,0.08), transparent 55%)",
           }}
         />
 
-        <div className="hero-content">
+        <div
+          className="hero-content"
+          style={{
+            position: "absolute",
+            bottom: "50px",
+            left: 0,
+            right: 0,
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+            alignItems: "flex-end",
+          }}
+        >
           <div className="container">
             <div
               style={{
@@ -66,13 +87,33 @@ export default function PageHero({
                 border: "1px solid rgba(255,255,255,0.2)",
                 background: "rgba(255,255,255,0.08)",
                 marginBottom: 18,
+                color: "white",
               }}
             >
               {brand.name}
             </div>
 
-            <h1>{title}</h1>
-            <p>{subtitle}</p>
+            <h1
+              style={{
+                fontSize: "52px",
+                fontWeight: 800,
+                marginBottom: "12px",
+                color: "white",
+              }}
+            >
+              {title}
+            </h1>
+
+            <p
+              style={{
+                fontSize: "20px",
+                maxWidth: "760px",
+                margin: "0 auto",
+                color: "white",
+              }}
+            >
+              {subtitle}
+            </p>
 
             {slides.length > 1 && (
               <div
@@ -81,6 +122,7 @@ export default function PageHero({
                   gap: 8,
                   marginTop: 22,
                   alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 {slides.map((_, index) => (
@@ -96,9 +138,7 @@ export default function PageHero({
                       border: "none",
                       cursor: "pointer",
                       background:
-                        index === current
-                          ? "#d4af37"
-                          : "rgba(255,255,255,0.55)",
+                        index === current ? "#d4af37" : "rgba(255,255,255,0.55)",
                       transition: "all 0.3s ease",
                     }}
                   />
