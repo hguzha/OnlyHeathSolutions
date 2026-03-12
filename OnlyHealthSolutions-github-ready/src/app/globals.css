@@ -252,4 +252,28 @@ select {
   .logo-img {
     height: 72px;
   }
+  .inquiry-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.inquiry-check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.inquiry-radio-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+  .inquiry-two-col,
+  .inquiry-check-grid {
+    grid-template-columns: 1fr;
+  }
 }
