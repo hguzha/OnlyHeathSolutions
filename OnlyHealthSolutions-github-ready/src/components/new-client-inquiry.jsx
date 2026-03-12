@@ -197,7 +197,7 @@ ${form.comments || "N/A"}`
 
         <div>
           <label>What days do you need service?</label>
-          <div style={checkboxGridStyle}>
+          <div className="inquiry-check-grid">
             {dayOptions.map((item) => (
               <label key={item} style={optionLabelStyle}>
                 <input
@@ -213,7 +213,7 @@ ${form.comments || "N/A"}`
 
         <div>
           <label>How many hours of service do you need per day?</label>
-          <div style={checkboxGridStyle}>
+          <div className="inquiry-check-grid">
             {hourOptions.map((item) => (
               <label key={item} style={optionLabelStyle}>
                 <input
@@ -229,7 +229,7 @@ ${form.comments || "N/A"}`
 
         <div>
           <label>How soon would you like to start?</label>
-          <div style={radioGroupStyle}>
+          <div className="inquiry-radio-grid">
             {startOptions.map((item) => (
               <label key={item} style={optionLabelStyle}>
                 <input
