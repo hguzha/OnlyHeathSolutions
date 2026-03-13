@@ -3,7 +3,6 @@ import PageHeroVideo from "@/components/page-hero-video";
 import SignatureServices from "@/components/signature-services";
 import WhyChooseUs from "@/components/why-choose-us";
 import TestimonialStrip from "@/components/testimonial-strip";
-import NewClientInquiry from "@/components/new-client-inquiry";
 
 export default function HomePage() {
   return (
@@ -65,11 +64,6 @@ export default function HomePage() {
       <SignatureServices />
       <WhyChooseUs />
       <TestimonialStrip />
-      <section className="section">
-        <div className="container">
-          <NewClientInquiry />
-        </div>
-      </section>
     </FixedBackgroundShell>
   );
 }
