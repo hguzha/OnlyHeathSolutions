@@ -6,11 +6,33 @@ import TestimonialStrip from "@/components/testimonial-strip";
 import CargivingGallery from "@/components/caregiving-gallery";
 
 export default function HomePage() {
+  const caregivingImages = [
+    {
+      src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=600&auto=format&fit=crop",
+      alt: "Caregiver assisting elderly client"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1631217314830-4580eec82f25?q=80&w=600&auto=format&fit=crop",
+      alt: "Healthcare professional with patient"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1584308666744-24d5f400f6f4?q=80&w=600&auto=format&fit=crop",
+      alt: "In-home care support"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579154204601-01d82979d485?q=80&w=600&auto=format&fit=crop",
+      alt: "Compassionate care moment"
+    },
+  ];
+
   return (
     <FixedBackgroundShell>
-      <PageHeroVideo />
+      {/* Smaller Hero Video */}
+      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "40px 20px" }}>
+        <PageHeroVideo />
+      </div>
       
-      <div style={{ position: "relative", marginTop: "-4rem", zIndex: 10 }}>
+      <div style={{ position: "relative", marginTop: "-2rem", zIndex: 10 }}>
         <div className="container">
           <div
             style={{
@@ -63,8 +85,89 @@ export default function HomePage() {
       </div>
 
       <SignatureServices />
+
+      {/* First Row - 2 Images */}
+      <section style={{ padding: "60px 0" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
+            <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)" }}>
+              <img src={caregivingImages[0].src} alt={caregivingImages[0].alt} style={{ width: "100%", height: "400px", objectFit: "cover" }} />
+            </div>
+            <div>
+              <p style={{ color: "#64748b", fontWeight: "600", fontSize: "14px", margin: "0 0 10px" }}>COMPASSIONATE CARE</p>
+              <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#0f172a", margin: "0 0 16px" }}>
+                Personalized Support You Can Trust
+              </h2>
+              <p style={{ color: "#64748b", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+                Our caregivers provide respectful, dignified assistance tailored to each client's unique needs. We believe in preserving independence while offering the support families need for peace of mind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Second Row - Text Left, Image Right */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, rgba(31, 166, 160, 0.05), rgba(106, 63, 181, 0.05))" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
+            <div>
+              <p style={{ color: "#64748b", fontWeight: "600", fontSize: "14px", margin: "0 0 10px" }}>PROFESSIONAL CARE</p>
+              <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#0f172a", margin: "0 0 16px" }}>
+                Skilled Support at Home
+              </h2>
+              <p style={{ color: "#64748b", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+                From nursing care to companion support, our trained professionals deliver clinical excellence with a personal touch. Your loved ones deserve care that's both skilled and compassionate.
+              </p>
+            </div>
+            <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)" }}>
+              <img src={caregivingImages[1].src} alt={caregivingImages[1].alt} style={{ width: "100%", height: "400px", objectFit: "cover" }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <WhyChooseUs />
-      <CargivingGallery />
+
+      {/* Third Row - Image Left, Text Right */}
+      <section style={{ padding: "60px 0" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
+            <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)" }}>
+              <img src={caregivingImages[2].src} alt={caregivingImages[2].alt} style={{ width: "100%", height: "400px", objectFit: "cover" }} />
+            </div>
+            <div>
+              <p style={{ color: "#64748b", fontWeight: "600", fontSize: "14px", margin: "0 0 10px" }}>FAMILY SUPPORT</p>
+              <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#0f172a", margin: "0 0 16px" }}>
+                Peace of Mind for Families
+              </h2>
+              <p style={{ color: "#64748b", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+                We understand that finding the right care is deeply personal. Our team works closely with families to create custom care plans that fit your loved one's lifestyle and health needs perfectly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fourth Row - Text Left, Image Right */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, rgba(31, 166, 160, 0.05), rgba(106, 63, 181, 0.05))" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
+            <div>
+              <p style={{ color: "#64748b", fontWeight: "600", fontSize: "14px", margin: "0 0 10px" }}>QUALITY EXCELLENCE</p>
+              <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#0f172a", margin: "0 0 16px" }}>
+                Excellence in Every Interaction
+              </h2>
+              <p style={{ color: "#64748b", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+                Only Health Solutions is committed to the highest standards of care. From thorough screening and training to ongoing support and communication, we ensure quality at every step.
+              </p>
+            </div>
+            <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)" }}>
+              <img src={caregivingImages[3].src} alt={caregivingImages[3].alt} style={{ width: "100%", height: "400px", objectFit: "cover" }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <TestimonialStrip />
     </FixedBackgroundShell>
   );
