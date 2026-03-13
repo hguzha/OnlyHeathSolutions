@@ -2,28 +2,34 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { brand, navLinks } from "@/lib/site-data";
 import { HeartHandshake, Users, Stethoscope, BedDouble, Brain, CalendarHeart } from "lucide-react";
 
 // Services dropdown data
 const serviceItems = [
-  { href: "/services", label: "All Services", isHeader: true },
-  { href: "/services#personal-care", label: "Personal Care Assistance", icon: HeartHandshake },
-  { href: "/services#companion-care", label: "Companion Care", icon: Users },
-  { href: "/services#post-hospital-care", label: "Post-Hospital Support", icon: Stethoscope },
-  { href: "/services#respite-care", label: "Respite Care", icon: CalendarHeart },
-  { href: "/services#nursing-care", label: "Skilled Nursing Care", icon: Stethoscope },
-  { href: "/services#dementia-care", label: "Alzheimer's & Dementia Care", icon: Brain },
-  { href: "/services#live-in-care", label: "Live-In & Extended Care", icon: BedDouble },
+  { label: "All Services", href: "/services", isHeader: true },
+  { label: "Personal Care Assistance", href: "/services?service=personal-care", icon: HeartHandshake },
+  { label: "Companion Care", href: "/services?service=companion-care", icon: Users },
+  { label: "Post-Hospital Support", href: "/services?service=post-hospital-care", icon: Stethoscope },
+  { label: "Respite Care", href: "/services?service=respite-care", icon: CalendarHeart },
+  { label: "Skilled Nursing Care", href: "/services?service=nursing-care", icon: Stethoscope },
+  { label: "Alzheimer's & Dementia Care", href: "/services?service=dementia-care", icon: Brain },
+  { label: "Live-In & Extended Care", href: "/services?service=live-in-care", icon: BedDouble },
 ];
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+
+  const handleServiceClick = (href) => {
+    setServicesDropdownOpen(false);
+    router.push(href);
+  };
 
   return (
     <header
@@ -168,12 +174,12 @@ export default function SiteHeader() {
                       {serviceItems.map((service, idx) => {
                         if (service.isHeader) {
                           return (
-                            <Link
+                            <button
                               key={service.href}
-                              href={service.href}
-                              onClick={() => setServicesDropdownOpen(false)}
+                              onClick={() => handleServiceClick(service.href)}
                               style={{
                                 display: "block",
+                                width: "100%",
                                 padding: "10px 12px",
                                 color: "#ffffff",
                                 fontWeight: 700,
@@ -183,6 +189,10 @@ export default function SiteHeader() {
                                 marginBottom: "4px",
                                 borderRadius: "6px",
                                 transition: "background 0.2s ease",
+                                background: "none",
+                                border: "none",
+                                cursor: "pointer",
+                                textAlign: "left",
                               }}
                               onMouseEnter={(e) => {
                                 e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)";
@@ -192,25 +202,29 @@ export default function SiteHeader() {
                               }}
                             >
                               {service.label}
-                            </Link>
+                            </button>
                           );
                         }
 
                         const Icon = service.icon;
                         return (
-                          <Link
+                          <button
                             key={service.href}
-                            href={service.href}
-                            onClick={() => setServicesDropdownOpen(false)}
+                            onClick={() => handleServiceClick(service.href)}
                             style={{
                               display: "flex",
                               alignItems: "center",
                               gap: "10px",
+                              width: "100%",
                               padding: "10px 12px",
                               color: "rgba(255,255,255,0.8)",
                               textDecoration: "none",
                               borderRadius: "6px",
                               transition: "all 0.2s ease",
+                              background: "none",
+                              border: "none",
+                              cursor: "pointer",
+                              textAlign: "left",
                             }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)";
@@ -223,7 +237,7 @@ export default function SiteHeader() {
                           >
                             {Icon && <Icon size={14} />}
                             <span style={{ fontSize: "13px" }}>{service.label}</span>
-                          </Link>
+                          </button>
                         );
                       })}
                     </div>
@@ -388,12 +402,12 @@ export default function SiteHeader() {
                         {serviceItems.map((service) => {
                           const Icon = service.icon;
                           return (
-                            <Link
+                            <button
                               key={service.href}
-                              href={service.href}
                               onClick={() => {
                                 setMobileOpen(false);
                                 setMobileServicesOpen(false);
+                                handleServiceClick(service.href);
                               }}
                               style={{
                                 display: "flex",
@@ -404,11 +418,15 @@ export default function SiteHeader() {
                                 textDecoration: "none",
                                 fontSize: service.isHeader ? "13px" : "12px",
                                 fontWeight: service.isHeader ? 600 : 500,
+                                background: "none",
+                                border: "none",
+                                cursor: "pointer",
+                                textAlign: "left",
                               }}
                             >
                               {Icon && !service.isHeader && <Icon size={14} />}
                               {service.label}
-                            </Link>
+                            </button>
                           );
                         })}
                       </div>
