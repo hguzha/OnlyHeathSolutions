@@ -52,35 +52,35 @@ export default function AboutPage() {
       gap: "80px"
     }}
   >
-    <div className="card" style={{ background: "linear-gradient(135deg, rgba(31, 166, 160, 0.1), rgba(106, 63, 181, 0.1))", backdropFilter: "blur(10px)" }}>
+    <div className="card" style={{ background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)", padding: "32px", borderRadius: "12px" }}>
       <h3
   style={{
     fontSize: "34px",
     fontWeight: 800,
     marginBottom: "14px",
-    color: "#0f172a"
+    color: "#ffffff"
   }}
 >
   Our Mission
 </h3>
-      <p style={{ color: "#64748b", lineHeight: 1.7 }}>
+      <p style={{ color: "#ffffff", lineHeight: 1.7 }}>
         Our mission is to provide compassionate and personalized support that enables individuals to remain safely and comfortably in their own homes. We are dedicated to upholding dignity, respect, and independence as central principles of our service. Through customized care plans and attentive assistance, we strive to improve the quality of life for each client.
         Establishing meaningful relationships is integral to our approach, as we aim to build trust with clients and their families. Our primary objective is to foster security and well-being, guaranteeing that every individual receives the highest standard of care in a familiar environment. Our commitment extends to supporting families, offering assurance and peace of mind throughout the care process.
       </p>
     </div>
 
-    <div className="card" style={{ background: "linear-gradient(135deg, rgba(31, 166, 160, 0.1), rgba(106, 63, 181, 0.1))", backdropFilter: "blur(10px)" }}>
+    <div className="card" style={{ background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)", padding: "32px", borderRadius: "12px" }}>
      <h3
   style={{
     fontSize: "34px",
     fontWeight: 800,
     marginBottom: "14px",
-    color: "#0f172a"
+    color: "#ffffff"
   }}
 >
   Why Families Choose Us
 </h3>
-      <p style={{ color: "#64748b", lineHeight: 1.7 }}>
+      <p style={{ color: "#ffffff", lineHeight: 1.7 }}>
         Families choose Only Health Solutions for private home care because we offer compassionate, individualized support. By tailoring care plans to each person's needs and preferences, our trained caregivers provide attentive assistance that prioritizes independence, comfort, and dignity at home. We build trusting relationships with clients and families, delivering both practical care and emotional reassurance. Our holistic approach ensures the highest standard of care in a supportive environment.
         Our dedication to respect, dignity, and independence distinguishes us. Through customized services and genuine compassion, we consistently deliver reliable care families can trust. We guide and support families throughout the care process, improving quality of life and fostering a sense of security and well-being for clients, families, and caregivers.
       </p>
