@@ -16,6 +16,7 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <NewClientInquiry />
+          <PageHeroVideo />
         </div>
       </section>
     </FixedBackgroundShell>
