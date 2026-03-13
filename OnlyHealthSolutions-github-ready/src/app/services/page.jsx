@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageHero from "@/components/page-hero";
 import { HeartHandshake, Users, Stethoscope, BedDouble, Brain, CalendarHeart } from "lucide-react";
 
@@ -65,6 +65,30 @@ const services = [
 
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState(null);
+
+  // Handle hash-based navigation on mount and when hash changes
+  useEffect(() => {
+    const hash = window.location.hash.slice(1); // Remove the # symbol
+    if (hash) {
+      setSelectedService(hash);
+      // Scroll to the service detail section
+      setTimeout(() => {
+        const element = document.getElementById("service-detail");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, []);
+
+  // Update URL hash when service is selected
+  useEffect(() => {
+    if (selectedService) {
+      window.location.hash = selectedService;
+    } else {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  }, [selectedService]);
 
   const activeService = selectedService ? services.find(s => s.slug === selectedService) : null;
 
@@ -137,7 +161,7 @@ export default function ServicesPage() {
             </div>
           ) : (
             // Service Detail View
-            <div>
+            <div id="service-detail">
               <button
                 onClick={() => setSelectedService(null)}
                 style={{
