@@ -3,12 +3,26 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { brand, navLinks } from "@/lib/site-data";
+
+const serviceLinks = [
+  { href: "/services/nursing", label: "Nursing" },
+  { href: "/services/personal-care", label: "Personal Care" },
+  { href: "/services/companion", label: "Companion / Sitter" },
+  { href: "/services/respite", label: "Respite Care" },
+  { href: "/services/dementia-care", label: "Dementia Support" },
+  { href: "/services/post-hospital", label: "Post-Hospital Support" },
+];
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+
+  const nonServiceLinks = navLinks.filter((item) => item.href !== "/services");
+  const serviceActive =
+    pathname === "/services" || pathname.startsWith("/services/");
 
   return (
     <header
@@ -62,17 +76,23 @@ export default function SiteHeader() {
             whiteSpace: "nowrap",
           }}
         >
-          {navLinks.map((item, index) => {
-            const isActive = pathname === item.href;
+          {nonServiceLinks.map((item, index) => {
+            const insertServicesAfter = item.href === "/";
 
             return (
-              <div key={item.href} style={{ display: "flex", alignItems: "center" }}>
+              <div
+                key={item.href}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <Link
                   href={item.href}
                   style={{
                     padding: "5px 6px",
                     position: "relative",
-                    color: isActive ? "#ffffff" : "rgba(255,255,255,0.9)",
+                    color:
+                      pathname === item.href
+                        ? "#ffffff"
+                        : "rgba(255,255,255,0.9)",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -82,7 +102,7 @@ export default function SiteHeader() {
                       position: "absolute",
                       left: 0,
                       bottom: "-6px",
-                      width: isActive ? "100%" : "0%",
+                      width: pathname === item.href ? "100%" : "0%",
                       height: "2px",
                       background: "#d4af37",
                       transition: "width 0.3s ease",
@@ -90,7 +110,110 @@ export default function SiteHeader() {
                   />
                 </Link>
 
-                {index < navLinks.length - 1 && (
+                <div
+                  style={{
+                    height: "16px",
+                    width: "1px",
+                    background: "rgba(255,255,255,0.25)",
+                    marginLeft: "6px",
+                  }}
+                />
+
+                {insertServicesAfter && (
+                  <>
+                    <div
+                      className="services-dropdown"
+                      style={{
+                        position: "relative",
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: "6px",
+                        marginRight: "6px",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          padding: "5px 6px",
+                          background: "transparent",
+                          border: "none",
+                          color: serviceActive
+                            ? "#ffffff"
+                            : "rgba(255,255,255,0.9)",
+                          fontWeight: 600,
+                          fontSize: "14px",
+                          cursor: "pointer",
+                          position: "relative",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        Services
+                        <ChevronDown size={15} />
+                        <span
+                          style={{
+                            position: "absolute",
+                            left: 0,
+                            bottom: "-6px",
+                            width: serviceActive ? "100%" : "0%",
+                            height: "2px",
+                            background: "#d4af37",
+                            transition: "width 0.3s ease",
+                          }}
+                        />
+                      </button>
+
+                      <div
+                        className="services-dropdown-menu"
+                        style={{
+                          position: "absolute",
+                          top: "100%",
+                          left: 0,
+                          minWidth: "250px",
+                          background: "#ffffff",
+                          borderRadius: "16px",
+                          padding: "12px",
+                          boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
+                          display: "none",
+                          flexDirection: "column",
+                          gap: "6px",
+                          zIndex: 1001,
+                          marginTop: "14px",
+                        }}
+                      >
+                        {serviceLinks.map((service) => (
+                          <Link
+                            key={service.href}
+                            href={service.href}
+                            style={{
+                              color: "#0f172a",
+                              padding: "10px 12px",
+                              borderRadius: "12px",
+                              fontWeight: 500,
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div
+                      style={{
+                        height: "16px",
+                        width: "1px",
+                        background: "rgba(255,255,255,0.25)",
+                        marginLeft: "6px",
+                        marginRight: "6px",
+                      }}
+                    />
+                  </>
+                )}
+
+                {index < nonServiceLinks.length - 1 && !insertServicesAfter && (
                   <div
                     style={{
                       height: "16px",
@@ -192,30 +315,95 @@ export default function SiteHeader() {
               gap: "12px",
             }}
           >
-            {navLinks.map((item) => {
-              const isActive = pathname === item.href;
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  style={{
-                    display: "block",
-                    padding: "14px 16px",
-                    borderRadius: "16px",
-                    background: isActive
+            {nonServiceLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  display: "block",
+                  padding: "14px 16px",
+                  borderRadius: "16px",
+                  background:
+                    pathname === item.href
                       ? "rgba(255,255,255,0.12)"
                       : "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    color: "white",
-                    fontWeight: 600,
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  color: "white",
+                  fontWeight: 600,
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <div
+              style={{
+                borderRadius: "16px",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                overflow: "hidden",
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setMobileServicesOpen((prev) => !prev)}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "14px 16px",
+                  background: "transparent",
+                  border: "none",
+                  color: "white",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                <span>Services</span>
+                <ChevronDown
+                  size={16}
+                  style={{
+                    transform: mobileServicesOpen
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
+                    transition: "transform 0.25s ease",
+                  }}
+                />
+              </button>
+
+              {mobileServicesOpen && (
+                <div
+                  style={{
+                    display: "grid",
+                    gap: "8px",
+                    padding: "0 12px 12px",
                   }}
                 >
-                  {item.label}
-                </Link>
-              );
-            })}
+                  {serviceLinks.map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setMobileServicesOpen(false);
+                      }}
+                      style={{
+                        display: "block",
+                        padding: "12px 14px",
+                        borderRadius: "12px",
+                        background: "rgba(255,255,255,0.06)",
+                        color: "white",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {service.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <a
               href={brand.phoneHref}
@@ -257,6 +445,15 @@ export default function SiteHeader() {
       )}
 
       <style jsx>{`
+        .services-dropdown:hover .services-dropdown-menu {
+          display: flex !important;
+        }
+
+        .services-dropdown-menu a:hover {
+          background: #f8fafc;
+          color: #1fa6a0;
+        }
+
         @media (max-width: 980px) {
           .desktop-nav,
           .desktop-actions {
