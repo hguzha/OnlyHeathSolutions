@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import NewClientInquiry from "@/components/new-client-inquiry";
 import { HeartHandshake, Users, Stethoscope, BedDouble, Brain, CalendarHeart, ChevronRight } from "lucide-react";
@@ -221,6 +221,7 @@ const services = [
 
 function ServicesContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [selectedService, setSelectedService] = useState(null);
 
   useEffect(() => {
@@ -232,13 +233,23 @@ function ServicesContent() {
   }, [searchParams]);
 
   if (selectedService) {
-    return <ServiceDetailPage service={selectedService} setSelectedService={setSelectedService} />;
+    return <ServiceDetailPage service={selectedService} setSelectedService={setSelectedService} router={router} />;
   }
 
   return <ServicesListPage setSelectedService={setSelectedService} />;
 }
 
 function ServicesListPage({ setSelectedService }) {
+  const router = useRouter();
+
+  const handleRequestConsultation = () => {
+    // Scroll to new client inquiry section
+    const inquirySection = document.getElementById("new-client-inquiry");
+    if (inquirySection) {
+      inquirySection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <main>
       <PageHero
@@ -337,17 +348,26 @@ function ServicesListPage({ setSelectedService }) {
                 </h3>
               </div>
               <div style={{ textAlign: "right" }}>
-                <button style={{
-                  borderRadius: "9999px",
-                  backgroundColor: "#ffffff",
-                  color: "#0f172a",
-                  padding: "12px 24px",
-                  border: "none",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                  transition: "transform 0.3s ease",
-                }}>
+                <button
+                  onClick={handleRequestConsultation}
+                  style={{
+                    borderRadius: "9999px",
+                    backgroundColor: "#ffffff",
+                    color: "#0f172a",
+                    padding: "12px 24px",
+                    border: "none",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.05)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                >
                   Request Consultation
                 </button>
               </div>
@@ -356,13 +376,31 @@ function ServicesListPage({ setSelectedService }) {
         </div>
       </section>
 
-      <NewClientInquiry />
+      {/* New Client Inquiry - Only on Services List Page */}
+      <div id="new-client-inquiry">
+        <NewClientInquiry />
+      </div>
     </main>
   );
 }
 
-function ServiceDetailPage({ service, setSelectedService }) {
+function ServiceDetailPage({ service, setSelectedService, router }) {
   const Icon = service.icon;
+
+  const handleRequestService = () => {
+    // Scroll to new client inquiry on services page
+    setSelectedService(null);
+    setTimeout(() => {
+      const inquirySection = document.getElementById("new-client-inquiry");
+      if (inquirySection) {
+        inquirySection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
+  const handleSpeakToTeam = () => {
+    router.push("/contact");
+  };
 
   return (
     <main>
@@ -417,18 +455,27 @@ function ServiceDetailPage({ service, setSelectedService }) {
               </p>
 
               <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-                <button style={{
-                  borderRadius: "9999px",
-                  background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-                  color: "white",
-                  padding: "12px 24px",
-                  border: "none",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  boxShadow: "0 10px 20px rgba(31, 166, 160, 0.2)",
-                }}>
+                <button
+                  onClick={handleRequestService}
+                  style={{
+                    borderRadius: "9999px",
+                    background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                    color: "white",
+                    padding: "12px 24px",
+                    border: "none",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                    boxShadow: "0 10px 20px rgba(31, 166, 160, 0.2)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.05)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                >
                   Request This Service
                 </button>
                 <button
@@ -552,27 +599,34 @@ function ServiceDetailPage({ service, setSelectedService }) {
                   Speak with our team about schedules, care needs, and the right support plan for your loved one.
                 </p>
               </div>
-              <button style={{
-                borderRadius: "9999px",
-                background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-                color: "white",
-                padding: "12px 24px",
-                border: "none",
-                fontWeight: "700",
-                fontSize: "14px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                boxShadow: "0 10px 20px rgba(31, 166, 160, 0.2)",
-                whiteSpace: "nowrap",
-              }}>
+              <button
+                onClick={handleSpeakToTeam}
+                style={{
+                  borderRadius: "9999px",
+                  background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                  color: "white",
+                  padding: "12px 24px",
+                  border: "none",
+                  fontWeight: "700",
+                  fontSize: "14px",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 10px 20px rgba(31, 166, 160, 0.2)",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.05)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
+              >
                 Speak With Our Team
               </button>
             </div>
           </div>
         </div>
       </section>
-
-      <NewClientInquiry />
     </main>
   );
 }
