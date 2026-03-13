@@ -77,7 +77,7 @@ export default function SiteHeader() {
           }}
         >
           {nonServiceLinks.map((item, index) => {
-            const insertServicesAfter = item.href === "/";
+            const insertServicesAfter = item.href === "/services";
 
             return (
               <div
@@ -110,65 +110,46 @@ export default function SiteHeader() {
                   />
                 </Link>
 
-                <div
-                  style={{
-                    height: "16px",
-                    width: "1px",
-                    background: "rgba(255,255,255,0.25)",
-                    marginLeft: "6px",
-                  }}
-                />
-
                 {insertServicesAfter && (
                   <>
+                    <div
+                      style={{
+                        height: "16px",
+                        width: "1px",
+                        background: "rgba(255,255,255,0.25)",
+                        marginLeft: "6px",
+                        marginRight: "6px",
+                      }}
+                    />
+
                     <div
                       className="services-dropdown"
                       style={{
                         position: "relative",
                         display: "flex",
                         alignItems: "center",
-                        marginLeft: "6px",
-                        marginRight: "6px",
                       }}
                     >
-<div
-  style={{
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "6px",
-    padding: "5px 6px",
-    position: "relative",
-    whiteSpace: "nowrap",
-  }}
->
-  <Link
-    href="/services"
-    style={{
-      color: serviceActive ? "#ffffff" : "rgba(255,255,255,0.9)",
-      fontWeight: 600,
-      fontSize: "14px",
-    }}
-  >
-    Services
-  </Link>
-  <ChevronDown
-    size={15}
-    style={{
-      color: serviceActive ? "#ffffff" : "rgba(255,255,255,0.9)",
-    }}
-  />
-  <span
-    style={{
-      position: "absolute",
-      left: 0,
-      bottom: "-6px",
-      width: serviceActive ? "100%" : "0%",
-      height: "2px",
-      background: "#d4af37",
-      transition: "width 0.3s ease",
-    }}
-  />
-</div>
+                      <button
+                        type="button"
+                        style={{
+                          padding: "5px 6px",
+                          position: "relative",
+                          background: "transparent",
+                          border: "none",
+                          color: serviceActive
+                            ? "#ffffff"
+                            : "rgba(255,255,255,0.9)",
+                          fontWeight: 600,
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        Services
+                        <ChevronDown size={16} />
                         <span
                           style={{
                             position: "absolute",
@@ -182,23 +163,24 @@ export default function SiteHeader() {
                         />
                       </button>
 
- <div
-  className="services-dropdown-menu"
-  style={{
-    position: "absolute",
-    top: "calc(100% + 2px)",
-    left: 0,
-    minWidth: "250px",
-    background: "#ffffff",
-    borderRadius: "16px",
-    padding: "12px",
-    boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
-    display: "none",
-    flexDirection: "column",
-    gap: "6px",
-    zIndex: 1001,
-  }}
->
+                      <div
+                        className="services-dropdown-menu"
+                        style={{
+                          position: "absolute",
+                          top: "100%",
+                          left: 0,
+                          minWidth: "250px",
+                          background: "#ffffff",
+                          borderRadius: "16px",
+                          padding: "12px",
+                          boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
+                          display: "none",
+                          flexDirection: "column",
+                          gap: "6px",
+                          zIndex: 1001,
+                          marginTop: "14px",
+                        }}
+                      >
                         {serviceLinks.map((service) => (
                           <Link
                             key={service.href}
@@ -305,186 +287,166 @@ export default function SiteHeader() {
             background: "rgba(255,255,255,0.06)",
             color: "white",
             cursor: "pointer",
-            marginLeft: "auto",
           }}
-          aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {mobileOpen && (
         <div
-          className="mobile-dropdown"
           style={{
-            borderTop: "1px solid rgba(255,255,255,0.12)",
-            background:
-              "linear-gradient(135deg, rgba(11,19,32,0.98) 0%, rgba(17,27,46,0.96) 100%)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+            padding: "16px 24px 24px",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          <div
-            className="container"
-            style={{
-              paddingTop: "16px",
-              paddingBottom: "20px",
-              display: "grid",
-              gap: "12px",
-            }}
-          >
-            {nonServiceLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                style={{
-                  display: "block",
-                  padding: "14px 16px",
-                  borderRadius: "16px",
-                  background:
-                    pathname === item.href
-                      ? "rgba(255,255,255,0.12)"
-                      : "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  color: "white",
-                  fontWeight: 600,
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            <div
-              style={{
-                borderRadius: "16px",
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                overflow: "hidden",
-              }}
-            >
-              <button
-                type="button"
-                onClick={() => setMobileServicesOpen((prev) => !prev)}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "14px 16px",
-                  background: "transparent",
-                  border: "none",
-                  color: "white",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
-              >
-                <span>Services</span>
-                <ChevronDown
-                  size={16}
-                  style={{
-                    transform: mobileServicesOpen
-                      ? "rotate(180deg)"
-                      : "rotate(0deg)",
-                    transition: "transform 0.25s ease",
-                  }}
-                />
-              </button>
-
-              {mobileServicesOpen && (
-                <div
-                  style={{
-                    display: "grid",
-                    gap: "8px",
-                    padding: "0 12px 12px",
-                  }}
-                >
-                  {serviceLinks.map((service) => (
-                    <Link
-                      key={service.href}
-                      href={service.href}
-                      onClick={() => {
-                        setMobileOpen(false);
-                        setMobileServicesOpen(false);
-                      }}
-                      style={{
-                        display: "block",
-                        padding: "12px 14px",
-                        borderRadius: "12px",
-                        background: "rgba(255,255,255,0.06)",
-                        color: "white",
-                        fontWeight: 500,
-                      }}
-                    >
-                      {service.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <a
-              href={brand.phoneHref}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                padding: "14px 16px",
-                borderRadius: "16px",
-                border: "1px solid rgba(255,255,255,0.15)",
-                background: "rgba(255,255,255,0.08)",
-                color: "white",
-                fontWeight: 600,
-              }}
-            >
-              <Phone size={16} />
-              {brand.phoneDisplay}
-            </a>
-
+          {nonServiceLinks.map((item) => (
             <Link
-              href="/services#new-client-inquiry"
+              key={item.href}
+              href={item.href}
               onClick={() => setMobileOpen(false)}
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "14px 16px",
-                borderRadius: "16px",
-                fontWeight: 700,
+                display: "block",
+                padding: "12px 14px",
+                borderRadius: "12px",
                 color: "white",
-                background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                fontWeight: 500,
               }}
             >
-              Request a Consult
+              {item.label}
             </Link>
+          ))}
+
+          <div
+            style={{
+              borderRadius: "16px",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              overflow: "hidden",
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setMobileServicesOpen((prev) => !prev)}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "14px 16px",
+                background: "transparent",
+                border: "none",
+                color: "white",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              <span>Services</span>
+              <ChevronDown
+                size={16}
+                style={{
+                  transform: mobileServicesOpen
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)",
+                  transition: "transform 0.25s ease",
+                }}
+              />
+            </button>
+
+            {mobileServicesOpen && (
+              <div
+                style={{
+                  display: "grid",
+                  gap: "8px",
+                  padding: "0 12px 12px",
+                }}
+              >
+                {serviceLinks.map((service) => (
+                  <Link
+                    key={service.href}
+                    href={service.href}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setMobileServicesOpen(false);
+                    }}
+                    style={{
+                      display: "block",
+                      padding: "12px 14px",
+                      borderRadius: "12px",
+                      background: "rgba(255,255,255,0.06)",
+                      color: "white",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {service.label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
+
+          <a
+            href={brand.phoneHref}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              padding: "14px 16px",
+              borderRadius: "16px",
+              border: "1px solid rgba(255,255,255,0.15)",
+              background: "rgba(255,255,255,0.08)",
+              color: "white",
+              fontWeight: 600,
+            }}
+          >
+            <Phone size={16} />
+            {brand.phoneDisplay}
+          </a>
+
+          <Link
+            href="/services#new-client-inquiry"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "14px 16px",
+              borderRadius: "16px",
+              fontWeight: 700,
+              color: "white",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+            }}
+          >
+            Request a Consult
+          </Link>
         </div>
       )}
 
-<style jsx>{`
-  .services-dropdown {
-    padding-bottom: 18px;
-  }
+      <style jsx>{`
+        .services-dropdown:hover .services-dropdown-menu {
+          display: flex !important;
+        }
 
-  .services-dropdown:hover .services-dropdown-menu {
-    display: flex !important;
-  }
+        .services-dropdown-menu a:hover {
+          background: #f8fafc;
+          color: #1fa6a0;
+        }
 
-  .services-dropdown-menu a:hover {
-    background: #f8fafc;
-    color: #1fa6a0;
-  }
+        @media (max-width: 980px) {
+          .desktop-nav,
+          .desktop-actions {
+            display: none !important;
+          }
 
-  @media (max-width: 980px) {
-    .desktop-nav,
-    .desktop-actions {
-      display: none !important;
-    }
-
-    .mobile-menu-btn {
-      display: inline-flex !important;
-    }
-  }
-`}</style>
+          .mobile-menu-btn {
+            display: inline-flex !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }
