@@ -52,7 +52,7 @@ export default function AboutPage() {
       gap: "80px"
     }}
   >
-    <div className="card">
+    <div className="card" style={{ background: "linear-gradient(135deg, rgba(31, 166, 160, 0.1), rgba(106, 63, 181, 0.1))", backdropFilter: "blur(10px)" }}>
       <h3
   style={{
     fontSize: "34px",
@@ -69,7 +69,7 @@ export default function AboutPage() {
       </p>
     </div>
 
-    <div className="card">
+    <div className="card" style={{ background: "linear-gradient(135deg, rgba(31, 166, 160, 0.1), rgba(106, 63, 181, 0.1))", backdropFilter: "blur(10px)" }}>
      <h3
   style={{
     fontSize: "34px",
