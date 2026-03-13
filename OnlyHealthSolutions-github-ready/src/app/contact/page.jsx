@@ -15,7 +15,7 @@ export default function ContactPage() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const subject = encodeURIComponent("Request for Care — Only Health Solutions");
+    const subject = encodeURIComponent("Message from Only Health Solutions Website");
     const body = encodeURIComponent(
       `Name: ${form.name}
 Phone: ${form.phone}
@@ -50,7 +50,7 @@ ${form.message}`
           </div>
 
           <div className="card">
-            <h3>Request Care</h3>
+            <h3>Send Only Health Solutions a Message</h3>
 
             <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12, marginTop: 18 }}>
               <input
@@ -88,7 +88,7 @@ ${form.message}`
               />
 
               <button className="btn btn-primary" type="submit">
-                Send request
+                Send Message
               </button>
             </form>
           </div>
