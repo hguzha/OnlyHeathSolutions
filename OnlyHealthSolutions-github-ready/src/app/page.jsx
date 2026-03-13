@@ -28,8 +28,8 @@ export default function HomePage() {
   return (
     <FixedBackgroundShell>
       {/* Smaller Hero Video - Medium size */}
-      <div style={{ maxWidth: "1180px", margin: "0 auto", padding: "30px 20px" }}>
-        <div style={{ height: "880px", overflow: "hidden", borderRadius: "12px" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "30px 20px" }}>
+        <div style={{ height: "420px", overflow: "hidden", borderRadius: "12px" }}>
           <PageHeroVideo />
         </div>
       </div>
@@ -88,8 +88,8 @@ export default function HomePage() {
 
       <SignatureServices />
 
-      {/* First Row - Vibrant Blue/Teal */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #10B981 100%)" }}>
+      {/* First Row - Signature Services Gradient */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)" }}>
@@ -100,7 +100,7 @@ export default function HomePage() {
               <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
                 Personalized Support You Can Trust
               </h2>
-              <p style={{ color: "#f0f9ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+              <p style={{ color: "#ffffff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
                 Our caregivers provide respectful, dignified assistance tailored to each client's unique needs. We believe in preserving independence while offering the support families need for peace of mind.
               </p>
             </div>
@@ -108,8 +108,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Second Row - Same Vibrant Blue/Teal */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #10B981 100%)" }}>
+      {/* Second Row - Signature Services Gradient */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div>
@@ -117,7 +117,7 @@ export default function HomePage() {
               <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
                 Skilled Support at Home
               </h2>
-              <p style={{ color: "#f0f9ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+              <p style={{ color: "#ffffff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
                 From nursing care to companion support, our trained professionals deliver clinical excellence with a personal touch. Your loved ones deserve care that's both skilled and compassionate.
               </p>
             </div>
@@ -130,8 +130,8 @@ export default function HomePage() {
 
       <WhyChooseUs />
 
-      {/* Third Row - Same Vibrant Blue/Teal */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #10B981 100%)" }}>
+      {/* Third Row - Signature Services Gradient */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)" }}>
@@ -142,7 +142,7 @@ export default function HomePage() {
               <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
                 Peace of Mind for Families
               </h2>
-              <p style={{ color: "#f0f9ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+              <p style={{ color: "#ffffff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
                 We understand that finding the right care is deeply personal. Our team works closely with families to create custom care plans that fit your loved one's lifestyle and health needs perfectly.
               </p>
             </div>
@@ -150,8 +150,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Fourth Row - Same Vibrant Blue/Teal */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #10B981 100%)" }}>
+      {/* Fourth Row - Signature Services Gradient */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div>
@@ -159,7 +159,7 @@ export default function HomePage() {
               <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
                 Excellence in Every Interaction
               </h2>
-              <p style={{ color: "#f0f9ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+              <p style={{ color: "#ffffff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
                 Only Health Solutions is committed to the highest standards of care. From thorough screening and training to ongoing support and communication, we ensure quality at every step.
               </p>
             </div>
