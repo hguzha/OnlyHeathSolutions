@@ -98,7 +98,7 @@ export default function SiteHeader() {
             return (
               <div
                 key={item.href}
-                style={{ display: "flex", alignItems: "center" }}
+                style={{ display: "flex", alignItems: "center", gap: "14px" }}
               >
                 <Link
                   href={item.href}
@@ -127,107 +127,121 @@ export default function SiteHeader() {
                 </Link>
 
                 {/* Divider after each item except the last one before Services */}
-                {index < navItemsWithoutServices.length - 1 || isAbout && (
+                {index < navItemsWithoutServices.length - 1 && !isAbout && (
                   <div
                     style={{
                       height: "16px",
                       width: "1px",
                       background: "rgba(255,255,255,0.25)",
-                      marginLeft: "6px",
-                      marginRight: "6px",
                     }}
                   />
                 )}
 
                 {/* Services Dropdown - appears after About */}
                 {isAbout && (
-                  <div
-                    ref={dropdownRef}
-                    className="services-dropdown"
-                    style={{
-                      position: "relative",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                  <>
+                    <div
                       style={{
-                        padding: "5px 6px",
+                        height: "16px",
+                        width: "1px",
+                        background: "rgba(255,255,255,0.25)",
+                      }}
+                    />
+                    <div
+                      ref={dropdownRef}
+                      className="services-dropdown"
+                      style={{
                         position: "relative",
-                        background: "transparent",
-                        border: "none",
-                        color: serviceActive || servicesDropdownOpen
-                          ? "#ffffff"
-                          : "rgba(255,255,255,0.9)",
-                        fontWeight: 600,
-                        cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
-                        gap: "6px",
-                        whiteSpace: "nowrap",
                       }}
                     >
-                      Services
-                      <ChevronDown 
-                        size={16}
+                      <button
+                        type="button"
+                        onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
                         style={{
-                          transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
-                          transition: "transform 0.3s ease",
-                        }}
-                      />
-                      <span
-                        style={{
-                          position: "absolute",
-                          left: 0,
-                          bottom: "-6px",
-                          width: serviceActive || servicesDropdownOpen ? "100%" : "0%",
-                          height: "2px",
-                          background: "#d4af37",
-                          transition: "width 0.3s ease",
-                        }}
-                      />
-                    </button>
-
-                    {servicesDropdownOpen && (
-                      <div
-                        className="services-dropdown-menu"
-                        style={{
-                          position: "absolute",
-                          top: "100%",
-                          left: 0,
-                          minWidth: "250px",
-                          background: "#ffffff",
-                          borderRadius: "16px",
-                          padding: "12px",
-                          boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
+                          padding: "5px 6px",
+                          position: "relative",
+                          background: "transparent",
+                          border: "none",
+                          color: serviceActive || servicesDropdownOpen
+                            ? "#ffffff"
+                            : "rgba(255,255,255,0.9)",
+                          fontWeight: 600,
+                          cursor: "pointer",
                           display: "flex",
-                          flexDirection: "column",
+                          alignItems: "center",
                           gap: "6px",
-                          zIndex: 1001,
-                          marginTop: "14px",
+                          whiteSpace: "nowrap",
                         }}
                       >
-                        {serviceLinks.map((service) => (
-                          <Link
-                            key={service.href}
-                            href={service.href}
-                            onClick={() => setServicesDropdownOpen(false)}
-                            style={{
-                              color: "#0f172a",
-                              padding: "10px 12px",
-                              borderRadius: "12px",
-                              fontWeight: 500,
-                              whiteSpace: "nowrap",
-                            }}
-                          >
-                            {service.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                        Services
+                        <ChevronDown 
+                          size={16}
+                          style={{
+                            transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                            transition: "transform 0.3s ease",
+                          }}
+                        />
+                        <span
+                          style={{
+                            position: "absolute",
+                            left: 0,
+                            bottom: "-6px",
+                            width: serviceActive || servicesDropdownOpen ? "100%" : "0%",
+                            height: "2px",
+                            background: "#d4af37",
+                            transition: "width 0.3s ease",
+                          }}
+                        />
+                      </button>
+
+                      {servicesDropdownOpen && (
+                        <div
+                          className="services-dropdown-menu"
+                          style={{
+                            position: "absolute",
+                            top: "100%",
+                            left: 0,
+                            minWidth: "250px",
+                            background: "#ffffff",
+                            borderRadius: "16px",
+                            padding: "12px",
+                            boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "6px",
+                            zIndex: 1001,
+                            marginTop: "14px",
+                          }}
+                        >
+                          {serviceLinks.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              onClick={() => setServicesDropdownOpen(false)}
+                              style={{
+                                color: "#0f172a",
+                                padding: "10px 12px",
+                                borderRadius: "12px",
+                                fontWeight: 500,
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div
+                      style={{
+                        height: "16px",
+                        width: "1px",
+                        background: "rgba(255,255,255,0.25)",
+                      }}
+                    />
+                  </>
                 )}
               </div>
             );
