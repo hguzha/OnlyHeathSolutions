@@ -27,23 +27,21 @@ export default function HomePage() {
 
   return (
     <FixedBackgroundShell>
-      {/* Smaller Hero Video - Medium size */}
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "30px 20px" }}>
-        <div style={{ height: "420px", overflow: "hidden", borderRadius: "12px" }}>
+      {/* Larger Hero Video */}
+      <div style={{ width: "100%", padding: "30px 20px" }}>
+        <div style={{ height: "550px", overflow: "hidden", borderRadius: "12px", maxWidth: "100%" }}>
           <PageHeroVideo />
         </div>
       </div>
       
-      <div style={{ position: "relative", marginTop: "-1.5rem", zIndex: 10 }}>
+      {/* Full Width Features Grid */}
+      <div style={{ width: "100%", backgroundColor: "#ffffff", marginTop: "-1.5rem", position: "relative", zIndex: 10 }}>
         <div className="container">
           <div
             style={{
               display: "grid",
               gap: "24px",
-              borderRadius: "2rem",
-              backgroundColor: "#ffffff",
-              padding: "32px",
-              boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)",
+              padding: "40px 20px",
               gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
             }}
           >
