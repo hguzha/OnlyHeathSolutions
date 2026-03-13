@@ -17,6 +17,7 @@ export default function PageHeroVideo() {
         muted
         loop
         playsInline
+        preload="auto"
         style={{
           position: "absolute",
           inset: 0,
@@ -25,7 +26,7 @@ export default function PageHeroVideo() {
           objectFit: "cover",
         }}
       >
-        <source src="/hero-caregiver-conversation.mp4" type="video/mp4" />
+        <source src="/istockphoto-1404375729-640_adpp_is.mp4" type="video/mp4" />
       </video>
 
       <div
