@@ -86,6 +86,17 @@ function ServicesContent() {
 
   const activeService = selectedService ? services.find(s => s.slug === selectedService) : null;
 
+  const handleRequestService = () => {
+    setSelectedService(null);
+    // Scroll to inquiry form
+    setTimeout(() => {
+      const element = document.getElementById("new-client-inquiry");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   return (
     <>
       <section className="section">
@@ -202,6 +213,7 @@ function ServicesContent() {
                   </p>
 
                   <button
+                    onClick={handleRequestService}
                     className="btn btn-primary"
                     style={{
                       background: "linear-gradient(135deg, #22D3EE, #A855F7)",
@@ -261,7 +273,9 @@ function ServicesContent() {
       {!activeService && (
         <section className="section">
           <div className="container">
-            <NewClientInquiry />
+            <div id="new-client-inquiry">
+              <NewClientInquiry />
+            </div>
           </div>
         </section>
       )}
