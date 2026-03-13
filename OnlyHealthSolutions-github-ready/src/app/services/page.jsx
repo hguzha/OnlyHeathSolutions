@@ -67,12 +67,12 @@ export default function ServicesPage() {
   return (
     <main>
       <div style={{ backgroundColor: "#f8fafc", paddingTop: "80px", paddingBottom: "80px" }}>
-        <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
           <div style={{ maxWidth: "56rem" }}>
             <p style={{ fontSize: "14px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.3em", color: "#64748b" }}>
               Our Services
             </p>
-            <h1 style={{ marginTop: "16px", fontSize: "36px", fontWeight: "600", letterSpacing: "-0.02em", color: "#0f172a" }}>
+            <h1 style={{ marginTop: "16px", fontSize: "36px", fontWeight: "600", letterSpacing: "-0.02em", color: "#0f172a", lineHeight: "1.2" }}>
               Comprehensive in-home support tailored to each client.
             </h1>
           </div>
@@ -97,7 +97,6 @@ export default function ServicesPage() {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-6px)";
                     e.currentTarget.style.borderColor = "transparent";
-                    e.currentTarget.style.backgroundColor = "#ffffff";
                     e.currentTarget.style.backgroundImage = "linear-gradient(to bottom, #ffffff, #f1f5f9)";
                     e.currentTarget.style.boxShadow = "0 25px 50px rgba(0, 0, 0, 0.15)";
                   }}
@@ -150,7 +149,7 @@ function ServiceDetailPage({ service, onBack }) {
   return (
     <main>
       <div style={{ backgroundColor: "#f8fafc", paddingTop: "80px", paddingBottom: "80px" }}>
-        <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
           <button
             onClick={onBack}
             style={{
@@ -178,7 +177,7 @@ function ServiceDetailPage({ service, onBack }) {
 
           <div style={{ display: "grid", gap: "40px", gridTemplateColumns: "1fr 1fr" }}>
             <div>
-              <h1 style={{ fontSize: "36px", fontWeight: "600", letterSpacing: "-0.02em", color: "#0f172a" }}>
+              <h1 style={{ fontSize: "36px", fontWeight: "600", letterSpacing: "-0.02em", color: "#0f172a", lineHeight: "1.2" }}>
                 {service.title}
               </h1>
               <p style={{ marginTop: "24px", fontSize: "18px", lineHeight: "1.75", color: "#475569" }}>
