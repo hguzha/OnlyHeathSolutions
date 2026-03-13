@@ -77,7 +77,7 @@ export default function SiteHeader() {
           }}
         >
           {nonServiceLinks.map((item, index) => {
-            const insertServicesAfter = item.href === "/services";
+            const isLastItem = index === nonServiceLinks.length - 1;
 
             return (
               <div
@@ -110,108 +110,7 @@ export default function SiteHeader() {
                   />
                 </Link>
 
-                {insertServicesAfter && (
-                  <>
-                    <div
-                      style={{
-                        height: "16px",
-                        width: "1px",
-                        background: "rgba(255,255,255,0.25)",
-                        marginLeft: "6px",
-                        marginRight: "6px",
-                      }}
-                    />
-
-                    <div
-                      className="services-dropdown"
-                      style={{
-                        position: "relative",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <button
-                        type="button"
-                        style={{
-                          padding: "5px 6px",
-                          position: "relative",
-                          background: "transparent",
-                          border: "none",
-                          color: serviceActive
-                            ? "#ffffff"
-                            : "rgba(255,255,255,0.9)",
-                          fontWeight: 600,
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        Services
-                        <ChevronDown size={16} />
-                        <span
-                          style={{
-                            position: "absolute",
-                            left: 0,
-                            bottom: "-6px",
-                            width: serviceActive ? "100%" : "0%",
-                            height: "2px",
-                            background: "#d4af37",
-                            transition: "width 0.3s ease",
-                          }}
-                        />
-                      </button>
-
-                      <div
-                        className="services-dropdown-menu"
-                        style={{
-                          position: "absolute",
-                          top: "100%",
-                          left: 0,
-                          minWidth: "250px",
-                          background: "#ffffff",
-                          borderRadius: "16px",
-                          padding: "12px",
-                          boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
-                          display: "none",
-                          flexDirection: "column",
-                          gap: "6px",
-                          zIndex: 1001,
-                          marginTop: "14px",
-                        }}
-                      >
-                        {serviceLinks.map((service) => (
-                          <Link
-                            key={service.href}
-                            href={service.href}
-                            style={{
-                              color: "#0f172a",
-                              padding: "10px 12px",
-                              borderRadius: "12px",
-                              fontWeight: 500,
-                              whiteSpace: "nowrap",
-                            }}
-                          >
-                            {service.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div
-                      style={{
-                        height: "16px",
-                        width: "1px",
-                        background: "rgba(255,255,255,0.25)",
-                        marginLeft: "6px",
-                        marginRight: "6px",
-                      }}
-                    />
-                  </>
-                )}
-
-                {index < nonServiceLinks.length - 1 && !insertServicesAfter && (
+                {!isLastItem && (
                   <div
                     style={{
                       height: "16px",
@@ -224,6 +123,94 @@ export default function SiteHeader() {
               </div>
             );
           })}
+
+          {/* Services Dropdown */}
+          <div
+            style={{
+              height: "16px",
+              width: "1px",
+              background: "rgba(255,255,255,0.25)",
+              marginLeft: "6px",
+              marginRight: "6px",
+            }}
+          />
+
+          <div
+            className="services-dropdown"
+            style={{
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <button
+              type="button"
+              style={{
+                padding: "5px 6px",
+                position: "relative",
+                background: "transparent",
+                border: "none",
+                color: serviceActive
+                  ? "#ffffff"
+                  : "rgba(255,255,255,0.9)",
+                fontWeight: 600,
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Services
+              <ChevronDown size={16} />
+              <span
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  bottom: "-6px",
+                  width: serviceActive ? "100%" : "0%",
+                  height: "2px",
+                  background: "#d4af37",
+                  transition: "width 0.3s ease",
+                }}
+              />
+            </button>
+
+            <div
+              className="services-dropdown-menu"
+              style={{
+                position: "absolute",
+                top: "100%",
+                left: 0,
+                minWidth: "250px",
+                background: "#ffffff",
+                borderRadius: "16px",
+                padding: "12px",
+                boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
+                display: "none",
+                flexDirection: "column",
+                gap: "6px",
+                zIndex: 1001,
+                marginTop: "14px",
+              }}
+            >
+              {serviceLinks.map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  style={{
+                    color: "#0f172a",
+                    padding: "10px 12px",
+                    borderRadius: "12px",
+                    fontWeight: 500,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {service.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </nav>
 
         <div
