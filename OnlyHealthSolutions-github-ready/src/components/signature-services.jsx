@@ -20,15 +20,16 @@ const items = [
 
 export default function SignatureServices() {
   return (
-    <section className="section">
-      <div className="container">
-        <div
-          style={{
-            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-            borderRadius: "28px",
-            padding: "40px",
-          }}
-        >
+    <section className="section" style={{ padding: "0" }}>
+      <div
+        style={{
+          background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+          borderRadius: "0",
+          padding: "60px 40px",
+          width: "100%",
+        }}
+      >
+        <div className="container">
           <p style={{ color: "#ffffff", marginBottom: 10, fontWeight: 600 }}>
             Signature Services
           </p>
