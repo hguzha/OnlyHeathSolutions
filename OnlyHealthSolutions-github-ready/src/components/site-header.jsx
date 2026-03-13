@@ -131,27 +131,44 @@ export default function SiteHeader() {
                         marginRight: "6px",
                       }}
                     >
-                      <button
-                        type="button"
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          padding: "5px 6px",
-                          background: "transparent",
-                          border: "none",
-                          color: serviceActive
-                            ? "#ffffff"
-                            : "rgba(255,255,255,0.9)",
-                          fontWeight: 600,
-                          fontSize: "14px",
-                          cursor: "pointer",
-                          position: "relative",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        Services
-                        <ChevronDown size={15} />
+<div
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "6px",
+    padding: "5px 6px",
+    position: "relative",
+    whiteSpace: "nowrap",
+  }}
+>
+  <Link
+    href="/services"
+    style={{
+      color: serviceActive ? "#ffffff" : "rgba(255,255,255,0.9)",
+      fontWeight: 600,
+      fontSize: "14px",
+    }}
+  >
+    Services
+  </Link>
+  <ChevronDown
+    size={15}
+    style={{
+      color: serviceActive ? "#ffffff" : "rgba(255,255,255,0.9)",
+    }}
+  />
+  <span
+    style={{
+      position: "absolute",
+      left: 0,
+      bottom: "-6px",
+      width: serviceActive ? "100%" : "0%",
+      height: "2px",
+      background: "#d4af37",
+      transition: "width 0.3s ease",
+    }}
+  />
+</div>
                         <span
                           style={{
                             position: "absolute",
@@ -165,24 +182,23 @@ export default function SiteHeader() {
                         />
                       </button>
 
-                      <div
-                        className="services-dropdown-menu"
-                        style={{
-                          position: "absolute",
-                          top: "100%",
-                          left: 0,
-                          minWidth: "250px",
-                          background: "#ffffff",
-                          borderRadius: "16px",
-                          padding: "12px",
-                          boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
-                          display: "none",
-                          flexDirection: "column",
-                          gap: "6px",
-                          zIndex: 1001,
-                          marginTop: "14px",
-                        }}
-                      >
+ <div
+  className="services-dropdown-menu"
+  style={{
+    position: "absolute",
+    top: "calc(100% + 2px)",
+    left: 0,
+    minWidth: "250px",
+    background: "#ffffff",
+    borderRadius: "16px",
+    padding: "12px",
+    boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
+    display: "none",
+    flexDirection: "column",
+    gap: "6px",
+    zIndex: 1001,
+  }}
+>
                         {serviceLinks.map((service) => (
                           <Link
                             key={service.href}
@@ -444,27 +460,31 @@ export default function SiteHeader() {
         </div>
       )}
 
-      <style jsx>{`
-        .services-dropdown:hover .services-dropdown-menu {
-          display: flex !important;
-        }
+<style jsx>{`
+  .services-dropdown {
+    padding-bottom: 18px;
+  }
 
-        .services-dropdown-menu a:hover {
-          background: #f8fafc;
-          color: #1fa6a0;
-        }
+  .services-dropdown:hover .services-dropdown-menu {
+    display: flex !important;
+  }
 
-        @media (max-width: 980px) {
-          .desktop-nav,
-          .desktop-actions {
-            display: none !important;
-          }
+  .services-dropdown-menu a:hover {
+    background: #f8fafc;
+    color: #1fa6a0;
+  }
 
-          .mobile-menu-btn {
-            display: inline-flex !important;
-          }
-        }
-      `}</style>
+  @media (max-width: 980px) {
+    .desktop-nav,
+    .desktop-actions {
+      display: none !important;
+    }
+
+    .mobile-menu-btn {
+      display: inline-flex !important;
+    }
+  }
+`}</style>
     </header>
   );
 }
