@@ -27,14 +27,14 @@ export default function HomePage() {
 
   return (
     <FixedBackgroundShell>
-      {/* Smaller Hero Video - Reduced vertical height */}
-      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "20px 20px" }}>
-        <div style={{ height: "300px", overflow: "hidden", borderRadius: "12px" }}>
+      {/* Smaller Hero Video - Medium size */}
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "30px 20px" }}>
+        <div style={{ height: "420px", overflow: "hidden", borderRadius: "12px" }}>
           <PageHeroVideo />
         </div>
       </div>
       
-      <div style={{ position: "relative", marginTop: "-1rem", zIndex: 10 }}>
+      <div style={{ position: "relative", marginTop: "-1.5rem", zIndex: 10 }}>
         <div className="container">
           <div
             style={{
