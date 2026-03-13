@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import { HeartHandshake, Users, Stethoscope, BedDouble, Brain, CalendarHeart } from "lucide-react";
 
@@ -64,14 +65,15 @@ const services = [
 ];
 
 export default function ServicesPage() {
+  const searchParams = useSearchParams();
   const [selectedService, setSelectedService] = useState(null);
 
-  // Handle hash-based navigation on mount and when hash changes
+  // Get service from query parameter on mount
   useEffect(() => {
-    const hash = window.location.hash.slice(1); // Remove the # symbol
-    if (hash) {
-      setSelectedService(hash);
-      // Scroll to the service detail section
+    const service = searchParams.get("service");
+    if (service) {
+      setSelectedService(service);
+      // Scroll to detail section
       setTimeout(() => {
         const element = document.getElementById("service-detail");
         if (element) {
@@ -79,16 +81,7 @@ export default function ServicesPage() {
         }
       }, 100);
     }
-  }, []);
-
-  // Update URL hash when service is selected
-  useEffect(() => {
-    if (selectedService) {
-      window.location.hash = selectedService;
-    } else {
-      window.history.replaceState(null, "", window.location.pathname);
-    }
-  }, [selectedService]);
+  }, [searchParams]);
 
   const activeService = selectedService ? services.find(s => s.slug === selectedService) : null;
 
