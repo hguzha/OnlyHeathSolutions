@@ -28,7 +28,14 @@ export default function SiteHeader() {
 
   const handleServiceClick = (href) => {
     setServicesDropdownOpen(false);
-    router.push(href);
+    setMobileServicesOpen(false);
+    
+    // If clicking "All Services", use replace to clear the service param
+    if (href === "/services") {
+      router.replace(href);
+    } else {
+      router.push(href);
+    }
   };
 
   return (
@@ -102,42 +109,26 @@ export default function SiteHeader() {
                   onMouseEnter={() => setServicesDropdownOpen(true)}
                   onMouseLeave={() => setServicesDropdownOpen(false)}
                 >
-                  <button
+                  <span
                     style={{
-                      padding: "5px 6px",
-                      position: "relative",
-                      color: isActive ? "#ffffff" : "rgba(255,255,255,0.9)",
-                      whiteSpace: "nowrap",
-                      background: "none",
-                      border: "none",
+                      color: isActive ? "#d4af37" : "#0f172a",
+                      transition: "color 0.3s ease",
                       cursor: "pointer",
-                      fontWeight: 600,
-                      fontSize: "14px",
+                      padding: "8px 12px",
                       display: "flex",
                       alignItems: "center",
-                      gap: "4px",
+                      gap: "6px",
                     }}
                   >
                     {item.label}
                     <ChevronDown
-                      size={14}
+                      size={16}
                       style={{
                         transition: "transform 0.3s ease",
                         transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
                       }}
                     />
-                    <span
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        bottom: "-6px",
-                        width: isActive || servicesDropdownOpen ? "100%" : "0%",
-                        height: "2px",
-                        background: "#d4af37",
-                        transition: "width 0.3s ease",
-                      }}
-                    />
-                  </button>
+                  </span>
 
                   {/* Invisible bridge to prevent dropdown from closing */}
                   {servicesDropdownOpen && (
@@ -255,225 +246,187 @@ export default function SiteHeader() {
                 <Link
                   href={item.href}
                   style={{
-                    padding: "5px 6px",
-                    position: "relative",
-                    color: isActive ? "#ffffff" : "rgba(255,255,255,0.9)",
-                    whiteSpace: "nowrap",
+                    color: isActive ? "#d4af37" : "#0f172a",
+                    transition: "color 0.3s ease",
+                    cursor: "pointer",
+                    padding: "8px 12px",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#d4af37";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
                   }}
                 >
                   {item.label}
-                  <span
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      bottom: "-6px",
-                      width: isActive ? "100%" : "0%",
-                      height: "2px",
-                      background: "#d4af37",
-                      transition: "width 0.3s ease",
-                    }}
-                  />
                 </Link>
-
-                {index < navLinks.length - 1 && (
-                  <div
-                    style={{
-                      height: "16px",
-                      width: "1px",
-                      background: "rgba(255,255,255,0.25)",
-                      marginLeft: "6px",
-                    }}
-                  />
-                )}
               </div>
             );
           })}
         </nav>
 
-        <div
-          className="desktop-actions"
-          style={{
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-            flexShrink: 0,
-            minWidth: "fit-content",
-          }}
-        >
-          <a
-            href={brand.phoneHref}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "10px 16px",
-              borderRadius: "999px",
-              border: "1px solid rgba(255,255,255,0.25)",
-              background: "rgba(255,255,255,0.06)",
-              color: "rgba(255,255,255,0.9)",
-              textDecoration: "none",
-              fontSize: "13px",
-              fontWeight: 600,
-              transition: "all 0.3s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(212, 175, 55, 0.15)";
-              e.currentTarget.style.borderColor = "rgba(212, 175, 55, 0.5)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
-            }}
-          >
-            <Phone size={14} />
-            {brand.phoneDisplay}
-          </a>
-        </div>
-
         {/* Mobile Menu Button */}
         <button
+          className="mobile-nav-toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
           style={{
             display: "none",
+            fontSize: "24px",
             background: "none",
             border: "none",
-            color: "#ffffff",
             cursor: "pointer",
-            padding: "8px",
+            color: "#0f172a",
           }}
-          className="mobile-menu-button"
+          aria-label="Toggle mobile menu"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X /> : <Menu />}
         </button>
+
+        {/* CTA Button */}
+        <Link
+          href={brand.phoneHref}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            padding: "10px 20px",
+            borderRadius: "9999px",
+            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+            color: "white",
+            fontWeight: "700",
+            fontSize: "13px",
+            textDecoration: "none",
+            transition: "all 0.3s ease",
+            whiteSpace: "nowrap",
+            flexShrink: 0,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          <Phone size={16} />
+          Call Now
+        </Link>
       </div>
 
       {/* Mobile Menu */}
       {mobileOpen && (
         <div
           style={{
-            display: "none",
-            borderTop: "1px solid rgba(212, 175, 55, 0.2)",
-            background: "rgba(11, 19, 32, 0.98)",
-            backdropFilter: "blur(10px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            padding: "20px",
+            borderTop: "1px solid #e2e8f0",
           }}
-          className="mobile-menu"
         >
-          <div
-            style={{
-              padding: "16px",
-            }}
-          >
-            {navLinks.map((item) => {
-              const isActive = pathname === item.href;
-
-              // Special handling for Services in mobile
-              if (item.label === "Services") {
-                return (
-                  <div key={item.href}>
-                    <button
-                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+          {navLinks.map((item) => {
+            if (item.label === "Services") {
+              return (
+                <div key={item.href}>
+                  <button
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      background: "none",
+                      border: "none",
+                      padding: "12px 0",
+                      fontWeight: "600",
+                      fontSize: "14px",
+                      color: "#0f172a",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={16}
                       style={{
-                        width: "100%",
-                        background: "none",
-                        border: "none",
-                        padding: "12px 0",
-                        color: isActive ? "#d4af37" : "rgba(255,255,255,0.8)",
-                        fontWeight: 600,
-                        textAlign: "left",
-                        cursor: "pointer",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        transition: "color 0.3s ease",
+                        transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.3s ease",
                       }}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        size={16}
-                        style={{
-                          transition: "transform 0.3s ease",
-                          transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
-                        }}
-                      />
-                    </button>
-
-                    {mobileServicesOpen && (
-                      <div style={{ paddingLeft: "12px", borderLeft: "2px solid rgba(212, 175, 55, 0.3)" }}>
-                        {serviceItems.map((service) => {
-                          const Icon = service.icon;
+                    />
+                  </button>
+                  {mobileServicesOpen && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingLeft: "12px", marginTop: "8px" }}>
+                      {serviceItems.map((service) => {
+                        if (service.isHeader) {
                           return (
                             <button
                               key={service.href}
-                              onClick={() => {
-                                setMobileOpen(false);
-                                setMobileServicesOpen(false);
-                                handleServiceClick(service.href);
-                              }}
+                              onClick={() => handleServiceClick(service.href)}
                               style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "8px",
-                                padding: "8px 0",
-                                color: "rgba(255,255,255,0.7)",
-                                textDecoration: "none",
-                                fontSize: service.isHeader ? "13px" : "12px",
-                                fontWeight: service.isHeader ? 600 : 500,
+                                textAlign: "left",
                                 background: "none",
                                 border: "none",
+                                padding: "8px 0",
+                                fontWeight: "700",
+                                fontSize: "13px",
+                                color: "#0f172a",
                                 cursor: "pointer",
-                                textAlign: "left",
+                                textDecoration: "none",
                               }}
                             >
-                              {Icon && !service.isHeader && <Icon size={14} />}
                               {service.label}
                             </button>
                           );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  style={{
-                    display: "block",
-                    padding: "12px 0",
-                    color: isActive ? "#d4af37" : "rgba(255,255,255,0.8)",
-                    textDecoration: "none",
-                    fontWeight: 600,
-                    borderBottom: "1px solid rgba(212, 175, 55, 0.1)",
-                    transition: "color 0.3s ease",
-                  }}
-                >
-                  {item.label}
-                </Link>
+                        }
+                        const Icon = service.icon;
+                        return (
+                          <button
+                            key={service.href}
+                            onClick={() => handleServiceClick(service.href)}
+                            style={{
+                              textAlign: "left",
+                              background: "none",
+                              border: "none",
+                              padding: "8px 0",
+                              fontSize: "13px",
+                              color: "#64748b",
+                              cursor: "pointer",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "8px",
+                              textDecoration: "none",
+                            }}
+                          >
+                            {Icon && <Icon size={12} />}
+                            {service.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
-            })}
-          </div>
+            }
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  padding: "12px 0",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  color: "#0f172a",
+                  textDecoration: "none",
+                }}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       )}
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .desktop-nav,
-          .desktop-actions {
-            display: none !important;
-          }
-
-          .mobile-menu-button {
-            display: block !important;
-          }
-
-          .mobile-menu {
-            display: block !important;
-          }
-        }
-      `}</style>
     </header>
   );
 }
