@@ -19,6 +19,7 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   const nonServiceLinks = navLinks.filter((item) => item.href !== "/services");
   const serviceActive =
@@ -142,6 +143,8 @@ export default function SiteHeader() {
               display: "flex",
               alignItems: "center",
             }}
+            onMouseEnter={() => setServicesDropdownOpen(true)}
+            onMouseLeave={() => setServicesDropdownOpen(false)}
           >
             <button
               type="button"
@@ -162,7 +165,13 @@ export default function SiteHeader() {
               }}
             >
               Services
-              <ChevronDown size={16} />
+              <ChevronDown 
+                size={16}
+                style={{
+                  transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s ease",
+                }}
+              />
               <span
                 style={{
                   position: "absolute",
@@ -187,7 +196,7 @@ export default function SiteHeader() {
                 borderRadius: "16px",
                 padding: "12px",
                 boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
-                display: "none",
+                display: servicesDropdownOpen ? "flex" : "none",
                 flexDirection: "column",
                 gap: "6px",
                 zIndex: 1001,
@@ -414,15 +423,6 @@ export default function SiteHeader() {
       )}
 
       <style jsx>{`
-        .services-dropdown:hover .services-dropdown-menu {
-          display: flex !important;
-        }
-
-        .services-dropdown-menu a:hover {
-          background: #f8fafc;
-          color: #1fa6a0;
-        }
-
         @media (max-width: 980px) {
           .desktop-nav,
           .desktop-actions {
