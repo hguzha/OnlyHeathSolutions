@@ -27,12 +27,14 @@ export default function HomePage() {
 
   return (
     <FixedBackgroundShell>
-      {/* Smaller Hero Video */}
-      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "40px 20px" }}>
-        <PageHeroVideo />
+      {/* Smaller Hero Video - Reduced vertical height */}
+      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "20px 20px" }}>
+        <div style={{ height: "300px", overflow: "hidden", borderRadius: "12px" }}>
+          <PageHeroVideo />
+        </div>
       </div>
       
-      <div style={{ position: "relative", marginTop: "-2rem", zIndex: 10 }}>
+      <div style={{ position: "relative", marginTop: "-1rem", zIndex: 10 }}>
         <div className="container">
           <div
             style={{
@@ -106,8 +108,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Second Row - Vibrant Purple/Pink */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #EC4899 0%, #D946EF 50%, #A855F7 100%)" }}>
+      {/* Second Row - Same Vibrant Blue/Teal */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #10B981 100%)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div>
@@ -115,7 +117,7 @@ export default function HomePage() {
               <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
                 Skilled Support at Home
               </h2>
-              <p style={{ color: "#f3e8ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+              <p style={{ color: "#f0f9ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
                 From nursing care to companion support, our trained professionals deliver clinical excellence with a personal touch. Your loved ones deserve care that's both skilled and compassionate.
               </p>
             </div>
@@ -128,8 +130,8 @@ export default function HomePage() {
 
       <WhyChooseUs />
 
-      {/* Third Row - Vibrant Orange/Red */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #F97316 0%, #EF4444 50%, #DC2626 100%)" }}>
+      {/* Third Row - Same Vibrant Blue/Teal */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #10B981 100%)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)" }}>
@@ -140,7 +142,7 @@ export default function HomePage() {
               <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
                 Peace of Mind for Families
               </h2>
-              <p style={{ color: "#fef2f2", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+              <p style={{ color: "#f0f9ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
                 We understand that finding the right care is deeply personal. Our team works closely with families to create custom care plans that fit your loved one's lifestyle and health needs perfectly.
               </p>
             </div>
@@ -148,8 +150,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Fourth Row - Vibrant Green/Emerald */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #14B8A6 0%, #10B981 50%, #059669 100%)" }}>
+      {/* Fourth Row - Same Vibrant Blue/Teal */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #10B981 100%)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div>
@@ -157,7 +159,7 @@ export default function HomePage() {
               <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
                 Excellence in Every Interaction
               </h2>
-              <p style={{ color: "#f0fdf4", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+              <p style={{ color: "#f0f9ff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
                 Only Health Solutions is committed to the highest standards of care. From thorough screening and training to ongoing support and communication, we ensure quality at every step.
               </p>
             </div>
