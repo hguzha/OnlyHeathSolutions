@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
@@ -20,10 +20,23 @@ export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const nonServiceLinks = navLinks.filter((item) => item.href !== "/services");
   const serviceActive =
     pathname === "/services" || pathname.startsWith("/services/");
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setServicesDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <header
@@ -137,23 +150,23 @@ export default function SiteHeader() {
           />
 
           <div
+            ref={dropdownRef}
             className="services-dropdown"
             style={{
               position: "relative",
               display: "flex",
               alignItems: "center",
             }}
-            onMouseEnter={() => setServicesDropdownOpen(true)}
-            onMouseLeave={() => setServicesDropdownOpen(false)}
           >
             <button
               type="button"
+              onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
               style={{
                 padding: "5px 6px",
                 position: "relative",
                 background: "transparent",
                 border: "none",
-                color: serviceActive
+                color: serviceActive || servicesDropdownOpen
                   ? "#ffffff"
                   : "rgba(255,255,255,0.9)",
                 fontWeight: 600,
@@ -177,7 +190,7 @@ export default function SiteHeader() {
                   position: "absolute",
                   left: 0,
                   bottom: "-6px",
-                  width: serviceActive ? "100%" : "0%",
+                  width: serviceActive || servicesDropdownOpen ? "100%" : "0%",
                   height: "2px",
                   background: "#d4af37",
                   transition: "width 0.3s ease",
@@ -185,40 +198,43 @@ export default function SiteHeader() {
               />
             </button>
 
-            <div
-              className="services-dropdown-menu"
-              style={{
-                position: "absolute",
-                top: "100%",
-                left: 0,
-                minWidth: "250px",
-                background: "#ffffff",
-                borderRadius: "16px",
-                padding: "12px",
-                boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
-                display: servicesDropdownOpen ? "flex" : "none",
-                flexDirection: "column",
-                gap: "6px",
-                zIndex: 1001,
-                marginTop: "14px",
-              }}
-            >
-              {serviceLinks.map((service) => (
-                <Link
-                  key={service.href}
-                  href={service.href}
-                  style={{
-                    color: "#0f172a",
-                    padding: "10px 12px",
-                    borderRadius: "12px",
-                    fontWeight: 500,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {service.label}
-                </Link>
-              ))}
-            </div>
+            {servicesDropdownOpen && (
+              <div
+                className="services-dropdown-menu"
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  minWidth: "250px",
+                  background: "#ffffff",
+                  borderRadius: "16px",
+                  padding: "12px",
+                  boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                  zIndex: 1001,
+                  marginTop: "14px",
+                }}
+              >
+                {serviceLinks.map((service) => (
+                  <Link
+                    key={service.href}
+                    href={service.href}
+                    onClick={() => setServicesDropdownOpen(false)}
+                    style={{
+                      color: "#0f172a",
+                      padding: "10px 12px",
+                      borderRadius: "12px",
+                      fontWeight: 500,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {service.label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </nav>
 
