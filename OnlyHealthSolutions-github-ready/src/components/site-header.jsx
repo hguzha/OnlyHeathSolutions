@@ -133,15 +133,28 @@ export default function SiteHeader() {
                     />
                   </button>
 
-                  {/* Desktop Dropdown */}
+                  {/* Invisible bridge to prevent dropdown from closing */}
                   {servicesDropdownOpen && (
                     <div
                       style={{
                         position: "absolute",
                         top: "100%",
+                        left: 0,
+                        right: 0,
+                        height: "12px",
+                        pointerEvents: "auto",
+                      }}
+                    />
+                  )}
+
+                  {/* Desktop Dropdown */}
+                  {servicesDropdownOpen && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "calc(100% + 12px)",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        marginTop: "12px",
                         background: "rgba(11, 19, 32, 0.95)",
                         border: "1px solid rgba(212, 175, 55, 0.3)",
                         borderRadius: "12px",
@@ -158,6 +171,7 @@ export default function SiteHeader() {
                             <Link
                               key={service.href}
                               href={service.href}
+                              onClick={() => setServicesDropdownOpen(false)}
                               style={{
                                 display: "block",
                                 padding: "10px 12px",
@@ -167,6 +181,14 @@ export default function SiteHeader() {
                                 textDecoration: "none",
                                 borderBottom: "1px solid rgba(212, 175, 55, 0.2)",
                                 marginBottom: "4px",
+                                borderRadius: "6px",
+                                transition: "background 0.2s ease",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.background = "none";
                               }}
                             >
                               {service.label}
@@ -179,6 +201,7 @@ export default function SiteHeader() {
                           <Link
                             key={service.href}
                             href={service.href}
+                            onClick={() => setServicesDropdownOpen(false)}
                             style={{
                               display: "flex",
                               alignItems: "center",
