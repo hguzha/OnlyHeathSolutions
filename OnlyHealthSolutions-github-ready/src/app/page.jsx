@@ -11,19 +11,19 @@ import { useEffect } from "react";
 export default function HomePage() {
   const caregivingImages = [
     {
-      src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=600&auto=format&fit=crop",
+      src: "1140-nurse-wheelchair-home-care-health.jpg",
       alt: "Caregiver assisting elderly client"
     },
     {
-      src: "https://images.unsplash.com/photo-1631217314830-4580eec82f25?q=80&w=600&auto=format&fit=crop",
+      src: "1140x655-home-health-aide.jpg",
       alt: "Healthcare professional with patient"
     },
     {
-      src: "https://images.unsplash.com/photo-1584308666744-24d5f400f6f4?q=80&w=600&auto=format&fit=crop",
+      src: "Consider-a-Career-as-a-Home-Care-Nursing-Assistant.png",
       alt: "In-home care support"
     },
     {
-      src: "https://images.unsplash.com/photo-1579154204601-01d82979d485?q=80&w=600&auto=format&fit=crop",
+      src: "senior-caretaker-combing-hair.jpg",
       alt: "Compassionate care moment"
     },
   ];
