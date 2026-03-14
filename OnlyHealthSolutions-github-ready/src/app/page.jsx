@@ -4,6 +4,7 @@ import SignatureServices from "@/components/signature-services";
 import WhyChooseUs from "@/components/why-choose-us";
 import TestimonialStrip from "@/components/testimonial-strip";
 import CargivingGallery from "@/components/caregiving-gallery";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const caregivingImages = [
@@ -25,7 +26,126 @@ export default function HomePage() {
     },
   ];
 
-  
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .scroll-container {
+        animation: scroll 40s linear infinite;
+      }
+      .scroll-container:hover {
+        animation-play-state: paused;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
+  const whiteSection1Items = [
+    "Tailored care plans for every individual need",
+    "Certified and compassionate care professionals",
+    "Reliable, consistent home care support",
+    "Transparent communication with families",
+  ];
+
+  const whiteSection2Items = [
+    "Preserves dignity and independence in daily living",
+    "Builds trusted relationships with dedicated caregivers",
+    "Provides peace of mind for families and loved ones",
+    "Supports emotional wellness and social engagement",
+  ];
+
+  const renderWhiteSection = (items) => (
+    <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+      <div
+        className="scroll-container"
+        style={{
+          display: "flex",
+          gap: "24px",
+          width: "max-content",
+          paddingLeft: "20px",
+          paddingRight: "20px",
+        }}
+      >
+        {/* First set */}
+        {items.map((item, index) => (
+          <div
+            key={`first-${index}`}
+            style={{
+              minWidth: "320px",
+              padding: "20px",
+              borderRadius: "1rem",
+              backgroundColor: "#f1f5f9",
+              flex: "0 0 auto",
+            }}
+          >
+            <div
+              style={{
+                marginBottom: "12px",
+                height: "10px",
+                width: "56px",
+                borderRadius: "9999px",
+                background: "linear-gradient(to right, #22D3EE, #67E8F9, #A855F7)",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+              }}
+            />
+            <p
+              style={{
+                fontSize: "14px",
+                lineHeight: "1.75",
+                color: "#475569",
+                margin: "0",
+              }}
+            >
+              {item}
+            </p>
+          </div>
+        ))}
+        {/* Duplicate set for seamless loop */}
+        {items.map((item, index) => (
+          <div
+            key={`second-${index}`}
+            style={{
+              minWidth: "320px",
+              padding: "20px",
+              borderRadius: "1rem",
+              backgroundColor: "#f1f5f9",
+              flex: "0 0 auto",
+            }}
+          >
+            <div
+              style={{
+                marginBottom: "12px",
+                height: "10px",
+                width: "56px",
+                borderRadius: "9999px",
+                background: "linear-gradient(to right, #22D3EE, #67E8F9, #A855F7)",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+              }}
+            />
+            <p
+              style={{
+                fontSize: "14px",
+                lineHeight: "1.75",
+                color: "#475569",
+                margin: "0",
+              }}
+            >
+              {item}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <FixedBackgroundShell>
       {/* Larger Hero Video */}
@@ -87,53 +207,9 @@ export default function HomePage() {
 
       <SignatureServices />
 
-      {/* White Separator Section - Between Signature and Compassionate */}
-      <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
-        <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gap: "24px",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            }}
-          >
-            {[
-              "Tailored care plans for every individual need",
-              "Certified and compassionate care professionals",
-              "Reliable, consistent home care support",
-              "Transparent communication with families",
-            ].map((item) => (
-              <div
-                key={item}
-                style={{
-                  borderRadius: "1rem",
-                  backgroundColor: "#f1f5f9",
-                  padding: "20px",
-                }}
-              >
-                <div
-                  style={{
-                    marginBottom: "12px",
-                    height: "10px",
-                    width: "56px",
-                    borderRadius: "9999px",
-                    background: "linear-gradient(to right, #22D3EE, #67E8F9, #A855F7)",
-                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                  }}
-                />
-                <p
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: "1.75",
-                    color: "#475569",
-                  }}
-                >
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* White Separator Section 1 - Scrolling */}
+      <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0", overflow: "hidden" }}>
+        {renderWhiteSection(whiteSection1Items)}
       </div>
 
       {/* First Row - Compassionate Care Gradient */}
@@ -156,53 +232,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* White Separator Section - Between Compassionate and Professional */}
-      <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
-        <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gap: "24px",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            }}
-          >
-            {[
-              "Preserves dignity and independence in daily living",
-              "Builds trusted relationships with dedicated caregivers",
-              "Provides peace of mind for families and loved ones",
-              "Supports emotional wellness and social engagement",
-            ].map((item) => (
-              <div
-                key={item}
-                style={{
-                  borderRadius: "1rem",
-                  backgroundColor: "#f1f5f9",
-                  padding: "20px",
-                }}
-              >
-                <div
-                  style={{
-                    marginBottom: "12px",
-                    height: "10px",
-                    width: "56px",
-                    borderRadius: "9999px",
-                    background: "linear-gradient(to right, #22D3EE, #67E8F9, #A855F7)",
-                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                  }}
-                />
-                <p
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: "1.75",
-                    color: "#475569",
-                  }}
-                >
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* White Separator Section 2 - Scrolling */}
+      <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0", overflow: "hidden" }}>
+        {renderWhiteSection(whiteSection2Items)}
       </div>
 
       {/* Second Row - Professional Care Gradient */}
@@ -247,7 +279,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonial Strip - What Families Are Saying (Between Family Support and Quality Excellence) */}
+      {/* Testimonial Strip - What Families Are Saying */}
       <TestimonialStrip />
 
       {/* Fourth Row - Quality Excellence Gradient */}
