@@ -87,7 +87,27 @@ export default function HomePage() {
 
       <SignatureServices />
 
-      {/* White Separator Section - Care Services */}
+      {/* First Row - Compassionate Care Gradient */}
+      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
+            <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)" }}>
+              <img src={caregivingImages[0].src} alt={caregivingImages[0].alt} style={{ width: "100%", height: "400px", objectFit: "cover" }} />
+            </div>
+            <div>
+              <p style={{ color: "#ffffff", fontWeight: "600", fontSize: "14px", margin: "0 0 10px", textTransform: "uppercase", letterSpacing: "1px" }}>COMPASSIONATE CARE</p>
+              <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
+                Personalized Support You Can Trust
+              </h2>
+              <p style={{ color: "#ffffff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
+                Our caregivers provide respectful, dignified assistance tailored to each client's unique needs. We believe in preserving independence while offering the support families need for peace of mind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* White Separator Section - Care Benefits */}
       <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
         <div className="container">
           <div
@@ -98,10 +118,10 @@ export default function HomePage() {
             }}
           >
             {[
-              "Personalized care plans designed for your loved one",
-              "Professional, background-checked caregivers",
-              "24/7 availability and emergency support",
-              "Transparent pricing with no hidden fees",
+              "Preserves dignity and independence in daily living",
+              "Builds trusted relationships with dedicated caregivers",
+              "Provides peace of mind for families and loved ones",
+              "Supports emotional wellness and social engagement",
             ].map((item) => (
               <div
                 key={item}
@@ -136,27 +156,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* First Row - Signature Services Gradient */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
-        <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
-            <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)" }}>
-              <img src={caregivingImages[0].src} alt={caregivingImages[0].alt} style={{ width: "100%", height: "400px", objectFit: "cover" }} />
-            </div>
-            <div>
-              <p style={{ color: "#ffffff", fontWeight: "600", fontSize: "14px", margin: "0 0 10px", textTransform: "uppercase", letterSpacing: "1px" }}>COMPASSIONATE CARE</p>
-              <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#ffffff", margin: "0 0 16px" }}>
-                Personalized Support You Can Trust
-              </h2>
-              <p style={{ color: "#ffffff", lineHeight: "1.8", margin: "0", fontSize: "16px" }}>
-                Our caregivers provide respectful, dignified assistance tailored to each client's unique needs. We believe in preserving independence while offering the support families need for peace of mind.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Second Row - Signature Services Gradient */}
+      {/* Second Row - Professional Care Gradient */}
       <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
@@ -178,7 +178,7 @@ export default function HomePage() {
 
       <WhyChooseUs />
 
-      {/* Third Row - Signature Services Gradient */}
+      {/* Third Row - Family Support Gradient */}
       <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
@@ -198,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Fourth Row - Signature Services Gradient */}
+      {/* Fourth Row - Quality Excellence Gradient */}
       <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
