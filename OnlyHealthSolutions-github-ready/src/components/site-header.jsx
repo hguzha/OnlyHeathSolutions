@@ -55,10 +55,16 @@ export default function SiteHeader() {
   };
 
   const handleRequestConsult = () => {
-    // Scroll to new-client-inquiry section
-    const element = document.getElementById('new-client-inquiry');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    // Navigate to services page and scroll to new-client-inquiry
+    if (pathname === "/services") {
+      // Already on services page, just scroll
+      const element = document.getElementById('new-client-inquiry');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to services page with anchor
+      router.push("/services#new-client-inquiry");
     }
   };
 
@@ -237,7 +243,7 @@ export default function SiteHeader() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          {/* Request Consult Button - No Phone Icon */}
+          {/* Request Consult Button - Navigates to Services and scrolls to inquiry */}
           <button
             onClick={handleRequestConsult}
             style={{
