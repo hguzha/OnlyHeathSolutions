@@ -7,7 +7,6 @@ import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { brand, navLinks } from "@/lib/site-data";
 import { HeartHandshake, Users, Stethoscope, BedDouble, Brain, CalendarHeart } from "lucide-react";
 
-// Services dropdown data
 const serviceItems = [
   { label: "All Services", href: "/services", isHeader: true },
   { label: "Personal Care Assistance", href: "/services?service=personal-care", icon: HeartHandshake },
@@ -33,46 +32,13 @@ export default function SiteHeader() {
   };
 
   return (
-    <header
-      className="topbar"
-      style={{
-        borderBottom: "2px solid #d4af37",
-        position: "sticky",
-        top: 0,
-        zIndex: 1000,
-      }}
-    >
-      <div
-        className="container topbar-inner"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "20px",
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexShrink: 0,
-            minWidth: "fit-content",
-          }}
-        >
-          <img
-            src={brand.logo}
-            alt={brand.name}
-            style={{
-              height: "120px",
-              width: "auto",
-              display: "block",
-            }}
-          />
+    <header className="topbar">
+      <div className="topbar-inner">
+        <Link href="/" style={{ display: "flex", alignItems: "center", flexShrink: 0, minWidth: "fit-content" }}>
+          <img src={brand.logo} alt={brand.name} style={{ height: "120px", width: "auto", display: "block" }} />
         </Link>
 
         <nav
-          className="desktop-nav"
           style={{
             display: "flex",
             alignItems: "center",
@@ -88,15 +54,11 @@ export default function SiteHeader() {
           {navLinks.map((item) => {
             const isActive = pathname === item.href || (item.href === "/services" && pathname.startsWith("/services"));
 
-            // Services dropdown
             if (item.label === "Services") {
               return (
                 <div
                   key={item.href}
-                  style={{
-                    position: "relative",
-                    display: "inline-block",
-                  }}
+                  style={{ position: "relative", display: "inline-block" }}
                   onMouseEnter={() => setServicesDropdownOpen(true)}
                   onMouseLeave={() => setServicesDropdownOpen(false)}
                 >
@@ -114,21 +76,11 @@ export default function SiteHeader() {
                       fontSize: "14px",
                       transition: "color 0.3s ease",
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#d4af37";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
-                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a")}
                   >
                     {item.label}
-                    <ChevronDown 
-                      size={16} 
-                      style={{ 
-                        transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", 
-                        transition: "transform 0.3s ease" 
-                      }} 
-                    />
+                    <ChevronDown size={16} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
                   </button>
 
                   {servicesDropdownOpen && (
@@ -221,7 +173,6 @@ export default function SiteHeader() {
               );
             }
 
-            // Regular nav items - ALWAYS VISIBLE
             return (
               <Link
                 key={item.href}
@@ -233,12 +184,8 @@ export default function SiteHeader() {
                   transition: "color 0.3s ease",
                   display: "inline-block",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#d4af37";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
-                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a")}
               >
                 {item.label}
               </Link>
@@ -249,14 +196,7 @@ export default function SiteHeader() {
         <button
           className="mobile-nav-toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
-          style={{
-            display: "none",
-            fontSize: "24px",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "#0f172a",
-          }}
+          style={{ display: "none", fontSize: "24px", background: "none", border: "none", cursor: "pointer", color: "#0f172a" }}
           aria-label="Toggle mobile menu"
         >
           {mobileOpen ? <X /> : <Menu />}
@@ -279,12 +219,8 @@ export default function SiteHeader() {
             whiteSpace: "nowrap",
             flexShrink: 0,
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.05)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         >
           <Phone size={16} />
           Call Now
@@ -292,15 +228,7 @@ export default function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px",
-            padding: "20px",
-            borderTop: "1px solid #e2e8f0",
-          }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px", padding: "20px", borderTop: "1px solid #e2e8f0" }}>
           {navLinks.map((item) => {
             if (item.label === "Services") {
               return (
@@ -327,50 +255,28 @@ export default function SiteHeader() {
                   </button>
                   {mobileServicesOpen && (
                     <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingLeft: "12px", marginTop: "8px" }}>
-                      {serviceItems.map((service) => {
-                        if (service.isHeader) {
-                          return (
-                            <button
-                              key={service.href}
-                              onClick={() => handleServiceClick(service.href)}
-                              style={{
-                                textAlign: "left",
-                                background: "none",
-                                border: "none",
-                                padding: "8px 0",
-                                fontWeight: "700",
-                                fontSize: "13px",
-                                color: "#0f172a",
-                                cursor: "pointer",
-                              }}
-                            >
-                              {service.label}
-                            </button>
-                          );
-                        }
-                        const Icon = service.icon;
-                        return (
-                          <button
-                            key={service.href}
-                            onClick={() => handleServiceClick(service.href)}
-                            style={{
-                              textAlign: "left",
-                              background: "none",
-                              border: "none",
-                              padding: "8px 0",
-                              fontSize: "13px",
-                              color: "#64748b",
-                              cursor: "pointer",
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "8px",
-                            }}
-                          >
-                            {Icon && <Icon size={12} />}
-                            {service.label}
-                          </button>
-                        );
-                      })}
+                      {serviceItems.map((service) => (
+                        <button
+                          key={service.href}
+                          onClick={() => handleServiceClick(service.href)}
+                          style={{
+                            textAlign: "left",
+                            background: "none",
+                            border: "none",
+                            padding: service.isHeader ? "8px 0" : "8px 0",
+                            fontWeight: service.isHeader ? "700" : "400",
+                            fontSize: "13px",
+                            color: service.isHeader ? "#0f172a" : "#64748b",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                          }}
+                        >
+                          {!service.isHeader && service.icon && <service.icon size={12} />}
+                          {service.label}
+                        </button>
+                      ))}
                     </div>
                   )}
                 </div>
