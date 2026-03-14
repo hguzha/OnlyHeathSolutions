@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import PageHero from "@/components/page-hero";
 import { brand } from "@/lib/site-data";
 
@@ -41,11 +42,60 @@ ${form.message}`
         <div className="container page-grid-2">
           <div className="card">
             <h3>Contact Info</h3>
-            <div style={{ display: "grid", gap: 12, marginTop: 16, color: "#64748b" }}>
-              <a href={brand.phoneHref}>{brand.phoneDisplay}</a>
-              <a href={brand.emailHref}>{brand.emailDisplay}</a>
-              <div>{brand.addressLine}</div>
-              <div>{brand.serviceArea}</div>
+            <p style={{ color: "#64748b", marginTop: 8, marginBottom: 24, fontSize: "14px" }}>
+              We're here to help you explore care options.
+            </p>
+            <div style={{ display: "grid", gap: 16, marginTop: 16 }}>
+              <a 
+                href={brand.phoneHref}
+                style={{ 
+                  display: "flex", 
+                  alignItems: "center", 
+                  gap: 12, 
+                  color: "#1fa6a0",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                  transition: "opacity 0.3s ease"
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = "0.8"}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
+              >
+                <Phone size={20} style={{ flexShrink: 0 }} />
+                <span>{brand.phoneDisplay}</span>
+              </a>
+              
+              <a 
+                href={brand.emailHref}
+                style={{ 
+                  display: "flex", 
+                  alignItems: "center", 
+                  gap: 12, 
+                  color: "#1fa6a0",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                  transition: "opacity 0.3s ease"
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = "0.8"}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
+              >
+                <Mail size={20} style={{ flexShrink: 0 }} />
+                <span>{brand.emailDisplay}</span>
+              </a>
+              
+              <div 
+                style={{ 
+                  display: "flex", 
+                  alignItems: "flex-start", 
+                  gap: 12, 
+                  color: "#64748b"
+                }}
+              >
+                <MapPin size={20} style={{ flexShrink: 0, marginTop: 2, color: "#1fa6a0" }} />
+                <div>
+                  <div>{brand.addressLine}</div>
+                  <div style={{ marginTop: 8 }}>{brand.serviceArea}</div>
+                </div>
+              </div>
             </div>
           </div>
 
