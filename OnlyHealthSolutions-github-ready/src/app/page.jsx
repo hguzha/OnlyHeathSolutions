@@ -87,9 +87,53 @@ export default function HomePage() {
 
       <SignatureServices />
 
-      {/* White Separator Section */}
+      {/* White Separator Section - Care Services */}
       <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
-        <div className="container" />
+        <div className="container">
+          <div
+            style={{
+              display: "grid",
+              gap: "24px",
+              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            }}
+          >
+            {[
+              "Personalized care plans designed for your loved one",
+              "Professional, background-checked caregivers",
+              "24/7 availability and emergency support",
+              "Transparent pricing with no hidden fees",
+            ].map((item) => (
+              <div
+                key={item}
+                style={{
+                  borderRadius: "1rem",
+                  backgroundColor: "#f1f5f9",
+                  padding: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    marginBottom: "12px",
+                    height: "10px",
+                    width: "56px",
+                    borderRadius: "9999px",
+                    background: "linear-gradient(to right, #22D3EE, #67E8F9, #A855F7)",
+                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                  }}
+                />
+                <p
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.75",
+                    color: "#475569",
+                  }}
+                >
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* First Row - Signature Services Gradient */}
