@@ -237,13 +237,10 @@ export default function SiteHeader() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          {/* Request Consult Button */}
+          {/* Request Consult Button - No Phone Icon */}
           <button
             onClick={handleRequestConsult}
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
               padding: "10px 20px",
               borderRadius: "9999px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
@@ -262,7 +259,6 @@ export default function SiteHeader() {
               e.currentTarget.style.transform = "scale(1)";
             }}
           >
-            <Phone size={16} />
             Request a Consult
           </button>
 
@@ -408,7 +404,6 @@ export default function SiteHeader() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "8px",
               padding: "12px",
               borderRadius: "6px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
@@ -420,7 +415,6 @@ export default function SiteHeader() {
               marginTop: "8px",
             }}
           >
-            <Phone size={16} />
             Request a Consult
           </button>
 
