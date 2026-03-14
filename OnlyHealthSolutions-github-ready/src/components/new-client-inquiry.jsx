@@ -34,6 +34,13 @@ const startOptions = [
   "Undecided",
 ];
 
+const inputStyle = {
+  padding: "10px 14px",
+  borderRadius: "8px",
+  border: "1px solid #cbd5e1",
+  fontSize: "14px",
+};
+
 export default function NewClientInquiry() {
   const [form, setForm] = useState({
     firstName: "",
@@ -113,78 +120,58 @@ ${form.comments || "N/A"}`
         Tell us about your care needs and we'll review your inquiry by email.
       </p>
 
-      <form onSubmit={handleSubmit} className="inquiry-form">
-        <div className="inquiry-two-col">
+      <form onSubmit={handleSubmit} className="inquiry-form" style={{ display: "grid", gap: 24 }}>
+        <div className="inquiry-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
           <div className="inquiry-field">
-            <label>First Name (required)</label>
+            <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "14px" }}>First Name (required)</label>
             <input
               type="text"
               required
               value={form.firstName}
               onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-              style={{
-                padding: "10px 14px",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "14px",
-              }}
+              style={inputStyle}
             />
           </div>
 
           <div className="inquiry-field">
-            <label>Last Name (required)</label>
+            <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "14px" }}>Last Name (required)</label>
             <input
               type="text"
               required
               value={form.lastName}
               onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-              style={{
-                padding: "10px 14px",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "14px",
-              }}
+              style={inputStyle}
             />
           </div>
         </div>
 
-        <div className="inquiry-two-col">
+        <div className="inquiry-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
           <div className="inquiry-field">
-            <label>Email (required)</label>
+            <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "14px" }}>Email (required)</label>
             <input
               type="email"
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              style={{
-                padding: "10px 14px",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "14px",
-              }}
+              style={inputStyle}
             />
           </div>
 
           <div className="inquiry-field">
-            <label>Phone (required)</label>
+            <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "14px" }}>Phone (required)</label>
             <input
               type="tel"
               required
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              style={{
-                padding: "10px 14px",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "14px",
-              }}
+              style={inputStyle}
             />
           </div>
         </div>
 
         <div className="inquiry-field">
-          <label>What services do you need? (Select all that apply)</label>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12, marginTop: 10 }}>
+          <label style={{ display: "block", marginBottom: 12, fontWeight: 600, fontSize: "14px" }}>What services do you need? (Select all that apply)</label>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12 }}>
             {serviceOptions.map((option) => (
               <label key={option} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
                 <input
@@ -199,24 +186,19 @@ ${form.comments || "N/A"}`
         </div>
 
         <div className="inquiry-field">
-          <label>Service Location</label>
+          <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "14px" }}>Service Location</label>
           <input
             type="text"
             value={form.location}
             onChange={(e) => setForm({ ...form, location: e.target.value })}
-            style={{
-              padding: "10px 14px",
-              borderRadius: "8px",
-              border: "1px solid #cbd5e1",
-              fontSize: "14px",
-            }}
+            style={inputStyle}
             placeholder="City or neighborhood"
           />
         </div>
 
         <div className="inquiry-field">
-          <label>Preferred Days (Select all that apply)</label>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 12, marginTop: 10 }}>
+          <label style={{ display: "block", marginBottom: 12, fontWeight: 600, fontSize: "14px" }}>Preferred Days (Select all that apply)</label>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 12 }}>
             {dayOptions.map((day) => (
               <label key={day} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
                 <input
@@ -231,8 +213,8 @@ ${form.comments || "N/A"}`
         </div>
 
         <div className="inquiry-field">
-          <label>Hours Per Day (Select all that apply)</label>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(80px, 1fr))", gap: 12, marginTop: 10 }}>
+          <label style={{ display: "block", marginBottom: 12, fontWeight: 600, fontSize: "14px" }}>Hours Per Day (Select all that apply)</label>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(80px, 1fr))", gap: 12 }}>
             {hourOptions.map((hours) => (
               <label key={hours} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
                 <input
@@ -247,16 +229,11 @@ ${form.comments || "N/A"}`
         </div>
 
         <div className="inquiry-field">
-          <label>When do you need care to start?</label>
+          <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "14px" }}>When do you need care to start?</label>
           <select
             value={form.startTimeframe}
             onChange={(e) => setForm({ ...form, startTimeframe: e.target.value })}
-            style={{
-              padding: "10px 14px",
-              borderRadius: "8px",
-              border: "1px solid #cbd5e1",
-              fontSize: "14px",
-            }}
+            style={inputStyle}
           >
             <option value="">Select a timeframe</option>
             {startOptions.map((option) => (
@@ -268,15 +245,12 @@ ${form.comments || "N/A"}`
         </div>
 
         <div className="inquiry-field">
-          <label>Additional Comments or Questions</label>
+          <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "14px" }}>Additional Comments or Questions</label>
           <textarea
             value={form.comments}
             onChange={(e) => setForm({ ...form, comments: e.target.value })}
             style={{
-              padding: "10px 14px",
-              borderRadius: "8px",
-              border: "1px solid #cbd5e1",
-              fontSize: "14px",
+              ...inputStyle,
               minHeight: "100px",
               resize: "vertical",
             }}
@@ -298,6 +272,7 @@ ${form.comments || "N/A"}`
             cursor: "pointer",
             transition: "transform 0.3s ease",
             marginTop: "20px",
+            width: "fit-content",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.05)";
