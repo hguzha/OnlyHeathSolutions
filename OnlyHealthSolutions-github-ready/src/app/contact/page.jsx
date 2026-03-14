@@ -42,7 +42,7 @@ ${form.message}`
         <div className="container page-grid-2">
           <div className="card">
             <h3>Contact Info</h3>
-            <p style={{ color: "#64748b", marginTop: 8, marginBottom: 24, fontSize: "14px" }}>
+            <p style={{ color: "#0f172a", marginTop: 8, marginBottom: 24, fontSize: "20px", fontWeight: 800, lineHeight: 1.4 }}>
               We're here to help you explore care options.
             </p>
             <div style={{ display: "grid", gap: 16, marginTop: 16 }}>
