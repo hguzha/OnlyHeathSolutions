@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
@@ -38,9 +38,24 @@ export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Use fallback if navLinks is empty
   const menuItems = (navLinks && navLinks.length > 0) ? navLinks : fallbackNavLinks;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Change color when scrolled down more than 100px
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleServiceClick = (href, isAllServices = false) => {
     setServicesDropdownOpen(false);
@@ -68,14 +83,20 @@ export default function SiteHeader() {
     }
   };
 
+  // Only change the top section (container area) background color based on scroll
+  const headerTopBgColor = scrolled ? "rgba(11, 19, 32, 0.98)" : "rgba(128, 128, 128, 0.8)";
+  const borderColor = scrolled ? "#d4af37" : "rgba(255, 255, 255, 0.5)";
+
   return (
     <header
       className="topbar"
       style={{
-        borderBottom: "2px solid #d4af37",
+        borderBottom: `2px solid ${borderColor}`,
         position: "sticky",
         top: 0,
         zIndex: 1000,
+        backgroundColor: headerTopBgColor,
+        transition: "all 0.4s ease",
       }}
     >
       <div
@@ -136,7 +157,7 @@ export default function SiteHeader() {
                     style={{
                       background: "none",
                       border: "none",
-                      color: isActive ? "#d4af37" : "#ffffff",
+                      color: "#ffffff",
                       cursor: "pointer",
                       padding: "8px 12px",
                       display: "flex",
@@ -150,7 +171,7 @@ export default function SiteHeader() {
                       e.currentTarget.style.color = "#d4af37";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = isActive ? "#d4af37" : "#ffffff";
+                      e.currentTarget.style.color = "#ffffff";
                     }}
                   >
                     {item.label}
@@ -222,7 +243,7 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 style={{
-                  color: isActive ? "#d4af37" : "#ffffff",
+                  color: "#ffffff",
                   padding: "8px 12px",
                   borderRadius: "6px",
                   transition: "all 0.3s ease",
@@ -233,7 +254,7 @@ export default function SiteHeader() {
                   e.currentTarget.style.color = "#d4af37";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isActive ? "#d4af37" : "#ffffff";
+                  e.currentTarget.style.color = "#ffffff";
                 }}
               >
                 {item.label}
@@ -243,7 +264,7 @@ export default function SiteHeader() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          {/* Request Consult Button - Navigates to Services and scrolls to inquiry */}
+          {/* Request Consult Button */}
           <button
             onClick={handleRequestConsult}
             style={{
@@ -268,7 +289,7 @@ export default function SiteHeader() {
             Request a Consult
           </button>
 
-          {/* Call Now Link - Original */}
+          {/* Call Now Link */}
           <Link
             href={brand.phoneHref}
             style={{
@@ -305,10 +326,11 @@ export default function SiteHeader() {
           style={{
             background: "none",
             border: "none",
-            color: "white",
+            color: "#ffffff",
             cursor: "pointer",
             display: "none",
             padding: "8px",
+            transition: "color 0.3s ease",
           }}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
