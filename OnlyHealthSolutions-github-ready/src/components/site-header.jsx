@@ -45,7 +45,7 @@ export default function SiteHeader() {
   const handleServiceClick = (href) => {
     setServicesDropdownOpen(false);
     setMobileServicesOpen(false);
-    router.push(href);
+    router.replace(href);
   };
 
   return (
