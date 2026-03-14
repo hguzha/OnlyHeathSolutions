@@ -42,10 +42,16 @@ export default function SiteHeader() {
   // Use fallback if navLinks is empty
   const menuItems = (navLinks && navLinks.length > 0) ? navLinks : fallbackNavLinks;
 
-  const handleServiceClick = (href) => {
+  const handleServiceClick = (href, isAllServices = false) => {
     setServicesDropdownOpen(false);
     setMobileServicesOpen(false);
-    router.replace(href);
+    
+    // If clicking "All Services", use window.location to ensure clean navigation
+    if (isAllServices) {
+      window.location.href = href;
+    } else {
+      router.push(href);
+    }
   };
 
   return (
@@ -161,7 +167,7 @@ export default function SiteHeader() {
                             return (
                               <button
                                 key={service.href}
-                                onClick={() => handleServiceClick(service.href)}
+                                onClick={() => handleServiceClick(service.href, true)}
                                 style={{
                                   display: "block",
                                   width: "100%",
@@ -336,7 +342,7 @@ export default function SiteHeader() {
                           return (
                             <button
                               key={service.href}
-                              onClick={() => handleServiceClick(service.href)}
+                              onClick={() => handleServiceClick(service.href, true)}
                               style={{
                                 textAlign: "left",
                                 background: "none",
