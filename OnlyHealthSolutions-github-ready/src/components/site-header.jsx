@@ -45,11 +45,15 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Change color when scrolled down more than 50px
-      setScrolled(window.scrollY > 50);
+      // Change color when scrolled down more than 100px
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -80,20 +84,21 @@ export default function SiteHeader() {
   };
 
   // Colors that change based on scroll
-  const headerBgColor = scrolled ? "rgba(11, 19, 32, 0.95)" : "rgba(128, 128, 128, 0.7)";
-  const textColor = scrolled ? "#ffffff" : "#f0f0f0";
+  const headerBgColor = scrolled ? "rgba(11, 19, 32, 0.98)" : "rgba(128, 128, 128, 0.8)";
+  const textColor = scrolled ? "#ffffff" : "#ffffff";
   const activeColor = scrolled ? "#d4af37" : "#ffffff";
+  const borderColor = scrolled ? "#d4af37" : "rgba(255, 255, 255, 0.5)";
 
   return (
     <header
       className="topbar"
       style={{
-        borderBottom: scrolled ? "2px solid #d4af37" : "2px solid rgba(255, 255, 255, 0.3)",
+        borderBottom: `2px solid ${borderColor}`,
         position: "sticky",
         top: 0,
         zIndex: 1000,
         backgroundColor: headerBgColor,
-        transition: "all 0.3s ease",
+        transition: "all 0.4s ease",
       }}
     >
       <div
@@ -261,7 +266,7 @@ export default function SiteHeader() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          {/* Request Consult Button - Navigates to Services and scrolls to inquiry */}
+          {/* Request Consult Button */}
           <button
             onClick={handleRequestConsult}
             style={{
@@ -286,7 +291,7 @@ export default function SiteHeader() {
             Request a Consult
           </button>
 
-          {/* Call Now Link - Original */}
+          {/* Call Now Link */}
           <Link
             href={brand.phoneHref}
             style={{
