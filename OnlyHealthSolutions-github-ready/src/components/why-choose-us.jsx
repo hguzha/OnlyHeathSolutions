@@ -7,41 +7,49 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="section">
+    <section style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
       <div className="container">
         <div
           style={{
-            background: "rgba(255,255,255,0.88)",
-            borderRadius: "28px",
-            padding: "44px",
+            display: "grid",
+            gap: "24px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
           }}
         >
-          <p style={{ color: "#64748b", marginBottom: 10, fontWeight: 600 }}>
-            Why Families Choose Us
-          </p>
-          <h2 style={{ fontSize: "42px", margin: "0 0 20px", fontWeight: 800 }}>
-            Care that feels personal, not transactional
-          </h2>
-
-          <div style={{ display: "grid", gap: 16, maxWidth: "760px" }}>
-            {points.map((point) => (
+          {points.map((item) => (
+            <div
+              key={item}
+              style={{
+                borderRadius: "1rem",
+                backgroundColor: "#f1f5f9",
+                padding: "20px",
+              }}
+            >
               <div
-                key={point}
                 style={{
-                  padding: "16px 18px",
-                  borderRadius: "18px",
-                  background: "#ffffff",
-                  border: "1px solid #e5e7eb",
-                  color: "#334155",
-                  fontWeight: 500,
+                  marginBottom: "12px",
+                  height: "10px",
+                  width: "56px",
+                  borderRadius: "9999px",
+                  background: "linear-gradient(to right, #22D3EE, #67E8F9, #A855F7)",
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                }}
+              />
+              <p
+                style={{
+                  fontSize: "14px",
+                  lineHeight: "1.75",
+                  color: "#475569",
+                  margin: "0",
                 }}
               >
-                {point}
-              </div>
-            ))}
-          </div>
+                {item}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
