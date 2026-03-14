@@ -169,6 +169,19 @@ img {
   object-fit: cover;
 }
 
+/* Page Grid Layouts */
+.page-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.page-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
 /* Form Styles */
 .inquiry-form {
   display: grid;
@@ -218,6 +231,25 @@ img {
   min-height: 100px;
 }
 
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.gallery-card {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .topbar-inner {
     padding: 16px 12px;
@@ -243,5 +275,19 @@ img {
   .inquiry-two-col {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .page-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .page-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }
