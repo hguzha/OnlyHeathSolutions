@@ -34,13 +34,6 @@ const startOptions = [
   "Undecided",
 ];
 
-const inputStyle = {
-  padding: "10px 14px",
-  borderRadius: "8px",
-  border: "1px solid #cbd5e1",
-  fontSize: "14px",
-};
-
 export default function NewClientInquiry() {
   const [form, setForm] = useState({
     firstName: "",
@@ -100,7 +93,7 @@ ${form.comments || "N/A"}`
         borderRadius: "24px",
         border: "1px solid #e2e8f0",
         marginTop: "40px",
-        scrollMarginTop: "80px",
+        scrollMarginTop: "120px",
       }}
     >
       <h2
@@ -129,7 +122,12 @@ ${form.comments || "N/A"}`
               required
               value={form.firstName}
               onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-              style={inputStyle}
+              style={{
+                padding: "10px 14px",
+                borderRadius: "8px",
+                border: "1px solid #cbd5e1",
+                fontSize: "14px",
+              }}
             />
           </div>
 
@@ -140,7 +138,12 @@ ${form.comments || "N/A"}`
               required
               value={form.lastName}
               onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-              style={inputStyle}
+              style={{
+                padding: "10px 14px",
+                borderRadius: "8px",
+                border: "1px solid #cbd5e1",
+                fontSize: "14px",
+              }}
             />
           </div>
         </div>
@@ -153,7 +156,12 @@ ${form.comments || "N/A"}`
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              style={inputStyle}
+              style={{
+                padding: "10px 14px",
+                borderRadius: "8px",
+                border: "1px solid #cbd5e1",
+                fontSize: "14px",
+              }}
             />
           </div>
 
@@ -164,7 +172,12 @@ ${form.comments || "N/A"}`
               required
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              style={inputStyle}
+              style={{
+                padding: "10px 14px",
+                borderRadius: "8px",
+                border: "1px solid #cbd5e1",
+                fontSize: "14px",
+              }}
             />
           </div>
         </div>
@@ -191,7 +204,12 @@ ${form.comments || "N/A"}`
             type="text"
             value={form.location}
             onChange={(e) => setForm({ ...form, location: e.target.value })}
-            style={inputStyle}
+            style={{
+              padding: "10px 14px",
+              borderRadius: "8px",
+              border: "1px solid #cbd5e1",
+              fontSize: "14px",
+            }}
             placeholder="City or neighborhood"
           />
         </div>
@@ -233,7 +251,12 @@ ${form.comments || "N/A"}`
           <select
             value={form.startTimeframe}
             onChange={(e) => setForm({ ...form, startTimeframe: e.target.value })}
-            style={inputStyle}
+            style={{
+              padding: "10px 14px",
+              borderRadius: "8px",
+              border: "1px solid #cbd5e1",
+              fontSize: "14px",
+            }}
           >
             <option value="">Select a timeframe</option>
             {startOptions.map((option) => (
@@ -250,7 +273,10 @@ ${form.comments || "N/A"}`
             value={form.comments}
             onChange={(e) => setForm({ ...form, comments: e.target.value })}
             style={{
-              ...inputStyle,
+              padding: "10px 14px",
+              borderRadius: "8px",
+              border: "1px solid #cbd5e1",
+              fontSize: "14px",
               minHeight: "100px",
               resize: "vertical",
             }}
