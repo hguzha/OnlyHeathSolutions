@@ -87,7 +87,7 @@ export default function HomePage() {
 
       <SignatureServices />
 
-      {/* White Separator Section - Between Signature Services and Compassionate Care */}
+      {/* White Separator Section - Between Signature and Compassionate */}
       <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
         <div className="container">
           <div
@@ -156,7 +156,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* White Separator Section - Between Compassionate and Professional Care */}
+      {/* White Separator Section - Between Compassionate and Professional */}
       <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
         <div className="container">
           <div
@@ -247,6 +247,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Testimonial Strip - What Families Are Saying (Between Family Support and Quality Excellence) */}
+      <TestimonialStrip />
+
       {/* Fourth Row - Quality Excellence Gradient */}
       <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
@@ -266,8 +269,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <TestimonialStrip />
     </FixedBackgroundShell>
   );
 }
