@@ -87,6 +87,11 @@ export default function HomePage() {
 
       <SignatureServices />
 
+      {/* White Separator Section */}
+      <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0" }}>
+        <div className="container" />
+      </div>
+
       {/* First Row - Signature Services Gradient */}
       <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
@@ -173,5 +178,3 @@ export default function HomePage() {
     </FixedBackgroundShell>
   );
 }
-
-
