@@ -34,6 +34,13 @@ const startOptions = [
   "Undecided",
 ];
 
+const inputStyle = {
+  padding: "10px 14px",
+  borderRadius: "8px",
+  border: "1px solid #cbd5e1",
+  fontSize: "14px",
+};
+
 export default function NewClientInquiry() {
   const [form, setForm] = useState({
     firstName: "",
@@ -93,7 +100,7 @@ ${form.comments || "N/A"}`
         borderRadius: "24px",
         border: "1px solid #e2e8f0",
         marginTop: "40px",
-        scrollMarginTop: "120px",
+        scrollMarginTop: "80px",
       }}
     >
       <h2
@@ -110,7 +117,7 @@ ${form.comments || "N/A"}`
       </h2>
 
       <p style={{ color: "#475569", marginTop: 12, marginBottom: 24 }}>
-        Tell us about your care needs and we’ll review your inquiry by email.
+        Tell us about your care needs and we'll review your inquiry by email.
       </p>
 
       <form onSubmit={handleSubmit} className="inquiry-form">
@@ -138,138 +145,139 @@ ${form.comments || "N/A"}`
           </div>
         </div>
 
+        <div className="inquiry-two-col">
+          <div className="inquiry-field">
+            <label>Email (required)</label>
+            <input
+              type="email"
+              required
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              style={inputStyle}
+            />
+          </div>
+
+          <div className="inquiry-field">
+            <label>Phone (required)</label>
+            <input
+              type="tel"
+              required
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              style={inputStyle}
+            />
+          </div>
+        </div>
+
         <div className="inquiry-field">
-          <label>Email (required)</label>
+          <label>What services do you need? (Select all that apply)</label>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12, marginTop: 10 }}>
+            {serviceOptions.map((option) => (
+              <label key={option} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
+                <input
+                  type="checkbox"
+                  checked={form.services.includes(option)}
+                  onChange={() => toggleArrayValue("services", option)}
+                />
+                <span>{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="inquiry-field">
+          <label>Service Location</label>
           <input
-            type="email"
-            required
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            type="text"
+            value={form.location}
+            onChange={(e) => setForm({ ...form, location: e.target.value })}
             style={inputStyle}
+            placeholder="City or neighborhood"
           />
         </div>
 
         <div className="inquiry-field">
-          <label>Phone (required)</label>
-          <input
-            type="tel"
-            required
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+          <label>Preferred Days (Select all that apply)</label>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 12, marginTop: 10 }}>
+            {dayOptions.map((day) => (
+              <label key={day} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
+                <input
+                  type="checkbox"
+                  checked={form.days.includes(day)}
+                  onChange={() => toggleArrayValue("days", day)}
+                />
+                <span>{day}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="inquiry-field">
+          <label>Hours Per Day (Select all that apply)</label>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(80px, 1fr))", gap: 12, marginTop: 10 }}>
+            {hourOptions.map((hours) => (
+              <label key={hours} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
+                <input
+                  type="checkbox"
+                  checked={form.hours.includes(hours)}
+                  onChange={() => toggleArrayValue("hours", hours)}
+                />
+                <span>{hours}h</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="inquiry-field">
+          <label>When do you need care to start?</label>
+          <select
+            value={form.startTimeframe}
+            onChange={(e) => setForm({ ...form, startTimeframe: e.target.value })}
             style={inputStyle}
-          />
-        </div>
-
-        <div className="inquiry-field">
-          <label>How can we be of service?</label>
-          <div className="inquiry-check-grid">
-            {serviceOptions.map((item) => (
-              <label key={item} className="inquiry-option" style={optionLabelStyle}>
-                <input
-                  type="checkbox"
-                  checked={form.services.includes(item)}
-                  onChange={() => toggleArrayValue("services", item)}
-                />
-                <span>{item}</span>
-              </label>
+          >
+            <option value="">Select a timeframe</option>
+            {startOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
             ))}
-          </div>
+          </select>
         </div>
 
         <div className="inquiry-field">
-          <label>Where will services be provided?</label>
-          <div className="inquiry-radio-grid">
-            {[
-              "At My Residence",
-              "Relative's Home",
-              "Assisted Living Community",
-              "Other",
-            ].map((item) => (
-              <label key={item} className="inquiry-option" style={optionLabelStyle}>
-                <input
-                  type="radio"
-                  name="location"
-                  checked={form.location === item}
-                  onChange={() => setForm({ ...form, location: item })}
-                />
-                <span>{item}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div className="inquiry-field">
-          <label>What days do you need service?</label>
-          <div className="inquiry-check-grid">
-            {dayOptions.map((item) => (
-              <label key={item} className="inquiry-option" style={optionLabelStyle}>
-                <input
-                  type="checkbox"
-                  checked={form.days.includes(item)}
-                  onChange={() => toggleArrayValue("days", item)}
-                />
-                <span>{item}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div className="inquiry-field">
-          <label>How many hours of service do you need per day?</label>
-          <div className="inquiry-check-grid">
-            {hourOptions.map((item) => (
-              <label key={item} className="inquiry-option" style={optionLabelStyle}>
-                <input
-                  type="checkbox"
-                  checked={form.hours.includes(item)}
-                  onChange={() => toggleArrayValue("hours", item)}
-                />
-                <span>{item}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div className="inquiry-field">
-          <label>How soon would you like to start?</label>
-          <div className="inquiry-radio-grid">
-            {startOptions.map((item) => (
-              <label key={item} className="inquiry-option" style={optionLabelStyle}>
-                <input
-                  type="radio"
-                  name="startTimeframe"
-                  checked={form.startTimeframe === item}
-                  onChange={() => setForm({ ...form, startTimeframe: item })}
-                />
-                <span>{item}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div className="inquiry-field">
-          <label>Additional Comments</label>
+          <label>Additional Comments or Questions</label>
           <textarea
-            rows={5}
             value={form.comments}
             onChange={(e) => setForm({ ...form, comments: e.target.value })}
-            style={inputStyle}
-            placeholder="Enter any additional details here..."
+            style={{
+              ...inputStyle,
+              minHeight: "100px",
+              resize: "vertical",
+            }}
+            placeholder="Tell us more about your specific care needs..."
           />
         </div>
 
         <button
           type="submit"
           style={{
-            background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+            display: "inline-block",
+            padding: "12px 32px",
+            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
             color: "white",
             border: "none",
-            padding: "14px",
-            borderRadius: "14px",
-            fontWeight: 600,
+            borderRadius: "9999px",
+            fontWeight: "700",
+            fontSize: "14px",
             cursor: "pointer",
-            marginTop: "10px",
-            width: "100%",
+            transition: "transform 0.3s ease",
+            marginTop: "20px",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
           }}
         >
           Submit Inquiry
@@ -278,19 +286,3 @@ ${form.comments || "N/A"}`
     </section>
   );
 }
-
-const inputStyle = {
-  width: "100%",
-  padding: "10px 12px",
-  marginTop: 8,
-  borderRadius: 12,
-  border: "1px solid #cbd5e1",
-  background: "white",
-};
-
-const optionLabelStyle = {
-  display: "flex",
-  alignItems: "center",
-  gap: 8,
-  color: "#334155",
-};
