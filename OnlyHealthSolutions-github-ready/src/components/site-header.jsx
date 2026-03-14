@@ -80,7 +80,7 @@ export default function SiteHeader() {
         <nav
           className="desktop-nav"
           style={{
-            display: "display",
+            display: "flex",
             alignItems: "center",
             gap: "14px",
             fontWeight: 600,
