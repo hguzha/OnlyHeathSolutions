@@ -40,7 +40,7 @@ ${form.message}`
 
       <section className="section">
         <div className="container page-grid-2">
-          <div className="card">
+          <div className="card" style={{ backgroundColor: "#f3e6ff" }}>
             <h3>Contact Info</h3>
             <p style={{ color: "#0f172a", marginTop: 12, marginBottom: 32, fontSize: "32px", fontWeight: 800, lineHeight: 1.3 }}>
               We're here to help you explore care options.
@@ -99,7 +99,7 @@ ${form.message}`
             </div>
           </div>
 
-          <div className="card">
+          <div className="card" style={{ backgroundColor: "#f3e6ff" }}>
             <h3>Send Only Health Solutions a Message</h3>
 
             <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12, marginTop: 18 }}>
