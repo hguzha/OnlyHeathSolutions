@@ -50,6 +50,13 @@ export default function HomePage() {
     return () => document.head.removeChild(style);
   }, []);
 
+  const topSectionItems = [
+    "Private in-home care tailored to each client",
+    "Dependable, compassionate caregivers",
+    "Flexible schedules and personalized care plans",
+    "Family-centered communication and support",
+  ];
+
   const whiteSection1Items = [
     "Tailored care plans for every individual need",
     "Certified and compassionate care professionals",
@@ -157,54 +164,9 @@ export default function HomePage() {
         </div>
       </div>
       
-      {/* Full Width Features Grid */}
-      <div style={{ width: "100%", backgroundColor: "#ffffff", marginTop: "-1.5rem", position: "relative", zIndex: 10 }}>
-        <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gap: "24px",
-              padding: "40px 20px",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            }}
-          >
-            {[
-              "Private in-home care tailored to each client",
-              "Dependable, compassionate caregivers",
-              "Flexible schedules and personalized care plans",
-              "Family-centered communication and support",
-            ].map((item) => (
-              <div
-                key={item}
-                style={{
-                  borderRadius: "1rem",
-                  backgroundColor: "#f1f5f9",
-                  padding: "20px",
-                }}
-              >
-                <div
-                  style={{
-                    marginBottom: "12px",
-                    height: "10px",
-                    width: "56px",
-                    borderRadius: "9999px",
-                    background: "linear-gradient(to right, #22D3EE, #67E8F9, #A855F7)",
-                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                  }}
-                />
-                <p
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: "1.75",
-                    color: "#475569",
-                  }}
-                >
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Full Width Features Grid - SCROLLING */}
+      <div style={{ width: "100%", backgroundColor: "#ffffff", marginTop: "-1.5rem", position: "relative", zIndex: 10, overflow: "hidden", padding: "40px 0" }}>
+        {renderWhiteSection(topSectionItems)}
       </div>
 
       <SignatureServices />
