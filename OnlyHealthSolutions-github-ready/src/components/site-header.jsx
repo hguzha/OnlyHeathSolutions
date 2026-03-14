@@ -116,7 +116,7 @@ export default function SiteHeader() {
                     style={{
                       background: "none",
                       border: "none",
-                      color: isActive ? "#d4af37" : "#0f172a",
+                      color: isActive ? "#d4af37" : "#ffffff",
                       cursor: "pointer",
                       padding: "8px 12px",
                       display: "flex",
@@ -130,7 +130,7 @@ export default function SiteHeader() {
                       e.currentTarget.style.color = "#d4af37";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
+                      e.currentTarget.style.color = isActive ? "#d4af37" : "#ffffff";
                     }}
                   >
                     {item.label}
@@ -232,7 +232,7 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 style={{
-                  color: isActive ? "#d4af37" : "#0f172a",
+                  color: isActive ? "#d4af37" : "#ffffff",
                   padding: "8px 12px",
                   textDecoration: "none",
                   transition: "color 0.3s ease",
@@ -241,7 +241,7 @@ export default function SiteHeader() {
                   e.currentTarget.style.color = "#d4af37";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
+                  e.currentTarget.style.color = isActive ? "#d4af37" : "#ffffff";
                 }}
               >
                 {item.label}
