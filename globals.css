@@ -1,0 +1,11 @@
+.topbar-inner {
+    /* existing styles */
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    justify-content: center;
+}
