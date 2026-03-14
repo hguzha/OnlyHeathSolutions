@@ -54,6 +54,14 @@ export default function SiteHeader() {
     }
   };
 
+  const handleRequestConsult = () => {
+    // Scroll to new-client-inquiry section
+    const element = document.getElementById('new-client-inquiry');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header
       className="topbar"
@@ -150,79 +158,49 @@ export default function SiteHeader() {
                         style={{
                           position: "absolute",
                           top: "calc(100% + 12px)",
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          background: "rgba(11, 19, 32, 0.95)",
-                          border: "1px solid rgba(212, 175, 55, 0.3)",
+                          left: 0,
+                          backgroundColor: "rgba(11, 19, 32, 0.95)",
                           borderRadius: "12px",
+                          padding: "12px",
                           minWidth: "280px",
-                          backdropFilter: "blur(10px)",
                           boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
                           zIndex: 1001,
-                          padding: "8px",
+                          border: "1px solid rgba(255, 255, 255, 0.1)",
                         }}
                       >
                         {serviceItems.map((service) => {
-                          if (service.isHeader) {
-                            return (
-                              <button
-                                key={service.href}
-                                onClick={() => handleServiceClick(service.href, true)}
-                                style={{
-                                  display: "block",
-                                  width: "100%",
-                                  padding: "10px 12px",
-                                  color: "#ffffff",
-                                  fontWeight: 700,
-                                  fontSize: "13px",
-                                  background: "none",
-                                  border: "none",
-                                  cursor: "pointer",
-                                  textAlign: "left",
-                                  borderRadius: "6px",
-                                  transition: "background 0.2s ease",
-                                  borderBottom: "1px solid rgba(212, 175, 55, 0.2)",
-                                  marginBottom: "4px",
-                                }}
-                                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)")}
-                                onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
-                              >
-                                {service.label}
-                              </button>
-                            );
-                          }
-
-                          const Icon = service.icon;
+                          const IconComponent = service.icon;
                           return (
                             <button
                               key={service.href}
-                              onClick={() => handleServiceClick(service.href)}
+                              onClick={() => handleServiceClick(service.href, service.isHeader)}
                               style={{
                                 display: "flex",
                                 alignItems: "center",
                                 gap: "10px",
                                 width: "100%",
                                 padding: "10px 12px",
-                                color: "rgba(255,255,255,0.8)",
-                                background: "none",
+                                backgroundColor: service.isHeader ? "rgba(31, 166, 160, 0.1)" : "transparent",
                                 border: "none",
+                                color: service.isHeader ? "#d4af37" : "rgba(255, 255, 255, 0.88)",
                                 cursor: "pointer",
-                                textAlign: "left",
                                 borderRadius: "6px",
-                                transition: "all 0.2s ease",
                                 fontSize: "13px",
+                                fontWeight: service.isHeader ? 700 : 500,
+                                textAlign: "left",
+                                transition: "all 0.2s ease",
                               }}
                               onMouseEnter={(e) => {
-                                e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)";
-                                e.currentTarget.style.color = "#ffffff";
+                                e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.15)";
+                                e.currentTarget.style.color = "#d4af37";
                               }}
                               onMouseLeave={(e) => {
-                                e.currentTarget.style.background = "none";
-                                e.currentTarget.style.color = "rgba(255,255,255,0.8)";
+                                e.currentTarget.style.backgroundColor = service.isHeader ? "rgba(31, 166, 160, 0.1)" : "transparent";
+                                e.currentTarget.style.color = service.isHeader ? "#d4af37" : "rgba(255, 255, 255, 0.88)";
                               }}
                             >
-                              {Icon && <Icon size={14} />}
-                              <span>{service.label}</span>
+                              {IconComponent && <IconComponent size={16} />}
+                              {service.label}
                             </button>
                           );
                         })}
@@ -240,8 +218,10 @@ export default function SiteHeader() {
                 style={{
                   color: isActive ? "#d4af37" : "#ffffff",
                   padding: "8px 12px",
-                  textDecoration: "none",
-                  transition: "color 0.3s ease",
+                  borderRadius: "6px",
+                  transition: "all 0.3s ease",
+                  fontWeight: 600,
+                  fontSize: "14px",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "#d4af37";
@@ -256,59 +236,93 @@ export default function SiteHeader() {
           })}
         </nav>
 
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          {/* Request Consult Button */}
+          <button
+            onClick={handleRequestConsult}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "10px 20px",
+              borderRadius: "9999px",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              color: "white",
+              border: "none",
+              fontWeight: "700",
+              fontSize: "13px",
+              cursor: "pointer",
+              transition: "transform 0.3s ease",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            <Phone size={16} />
+            Request a Consult
+          </button>
+
+          {/* Call Now Link - Original */}
+          <Link
+            href={brand.phoneHref}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "10px 20px",
+              borderRadius: "9999px",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              color: "white",
+              fontWeight: "700",
+              fontSize: "13px",
+              textDecoration: "none",
+              transition: "all 0.3s ease",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            <Phone size={16} />
+            Call Now
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
         <button
           className="mobile-nav-toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
           style={{
-            display: "none",
-            fontSize: "24px",
             background: "none",
             border: "none",
-            cursor: "pointer",
-            color: "#0f172a",
-          }}
-          aria-label="Toggle mobile menu"
-        >
-          {mobileOpen ? <X /> : <Menu />}
-        </button>
-
-        <Link
-          href={brand.phoneHref}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "10px 20px",
-            borderRadius: "9999px",
-            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
             color: "white",
-            fontWeight: "700",
-            fontSize: "13px",
-            textDecoration: "none",
-            transition: "all 0.3s ease",
-            whiteSpace: "nowrap",
-            flexShrink: 0,
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.05)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
+            cursor: "pointer",
+            display: "none",
+            padding: "8px",
           }}
         >
-          <Phone size={16} />
-          Call Now
-        </Link>
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
+      {/* Mobile Navigation */}
       {mobileOpen && (
         <div
           style={{
+            backgroundColor: "rgba(11, 19, 32, 0.95)",
+            padding: "16px",
+            borderTop: "1px solid rgba(255, 255, 255, 0.1)",
             display: "flex",
             flexDirection: "column",
-            gap: "12px",
-            padding: "20px",
-            borderTop: "1px solid #e2e8f0",
+            gap: "8px",
           }}
         >
           {menuItems.map((item) => {
@@ -319,68 +333,46 @@ export default function SiteHeader() {
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                     style={{
                       width: "100%",
-                      textAlign: "left",
+                      padding: "12px",
+                      borderRadius: "6px",
                       background: "none",
                       border: "none",
-                      padding: "12px 0",
-                      fontWeight: "600",
-                      fontSize: "14px",
-                      color: "#0f172a",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      color: "rgba(255, 255, 255, 0.88)",
+                      fontWeight: 600,
+                      textAlign: "left",
                       cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      transition: "all 0.3s ease",
                     }}
                   >
                     {item.label}
                     <ChevronDown size={16} style={{ transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
                   </button>
+
                   {mobileServicesOpen && (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingLeft: "12px", marginTop: "8px" }}>
-                      {serviceItems.map((service) => {
-                        if (service.isHeader) {
-                          return (
-                            <button
-                              key={service.href}
-                              onClick={() => handleServiceClick(service.href, true)}
-                              style={{
-                                textAlign: "left",
-                                background: "none",
-                                border: "none",
-                                padding: "8px 0",
-                                fontWeight: "700",
-                                fontSize: "13px",
-                                color: "#0f172a",
-                                cursor: "pointer",
-                              }}
-                            >
-                              {service.label}
-                            </button>
-                          );
-                        }
-                        const Icon = service.icon;
-                        return (
-                          <button
-                            key={service.href}
-                            onClick={() => handleServiceClick(service.href)}
-                            style={{
-                              textAlign: "left",
-                              background: "none",
-                              border: "none",
-                              padding: "8px 0",
-                              fontSize: "13px",
-                              color: "#64748b",
-                              cursor: "pointer",
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "8px",
-                            }}
-                          >
-                            {Icon && <Icon size={12} />}
-                            {service.label}
-                          </button>
-                        );
-                      })}
+                    <div style={{ paddingLeft: "12px", display: "flex", flexDirection: "column", gap: "4px" }}>
+                      {serviceItems.map((service) => (
+                        <button
+                          key={service.href}
+                          onClick={() => handleServiceClick(service.href, service.isHeader)}
+                          style={{
+                            padding: "8px 12px",
+                            borderRadius: "6px",
+                            background: "rgba(31, 166, 160, 0.1)",
+                            border: "none",
+                            color: "rgba(255, 255, 255, 0.88)",
+                            fontSize: "13px",
+                            fontWeight: 500,
+                            textAlign: "left",
+                            cursor: "pointer",
+                            transition: "all 0.2s ease",
+                          }}
+                        >
+                          {service.label}
+                        </button>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -391,19 +383,71 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setMobileOpen(false)}
                 style={{
-                  padding: "12px 0",
-                  fontWeight: "600",
-                  fontSize: "14px",
-                  color: "#0f172a",
+                  color: "rgba(255, 255, 255, 0.88)",
+                  padding: "12px",
+                  borderRadius: "6px",
                   textDecoration: "none",
+                  fontWeight: 600,
+                  transition: "all 0.3s ease",
                 }}
+                onClick={() => setMobileOpen(false)}
               >
                 {item.label}
               </Link>
             );
           })}
+
+          {/* Mobile Request Consult Button */}
+          <button
+            onClick={() => {
+              handleRequestConsult();
+              setMobileOpen(false);
+            }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              padding: "12px",
+              borderRadius: "6px",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              color: "white",
+              border: "none",
+              fontWeight: "700",
+              fontSize: "13px",
+              cursor: "pointer",
+              marginTop: "8px",
+            }}
+          >
+            <Phone size={16} />
+            Request a Consult
+          </button>
+
+          {/* Mobile Call Now Button */}
+          <Link
+            href={brand.phoneHref}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              padding: "12px",
+              borderRadius: "6px",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              color: "white",
+              border: "none",
+              fontWeight: "700",
+              fontSize: "13px",
+              cursor: "pointer",
+              textDecoration: "none",
+              marginTop: "8px",
+            }}
+            onClick={() => setMobileOpen(false)}
+          >
+            <Phone size={16} />
+            Call Now
+          </Link>
         </div>
       )}
     </header>
