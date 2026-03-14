@@ -28,12 +28,8 @@ export default function SiteHeader() {
 
   const handleServiceClick = (href) => {
     setServicesDropdownOpen(false);
-    // If clicking "All Services", navigate without query param
-    if (href === "/services") {
-      router.push("/services");
-    } else {
-      router.push(href);
-    }
+    setMobileServicesOpen(false);
+    router.push(href);
   };
 
   return (
@@ -89,182 +85,155 @@ export default function SiteHeader() {
             position: "relative",
           }}
         >
-          {navLinks.map((item, index) => {
-            const isActive =
-              pathname === item.href ||
-              (item.href === "/services" && pathname.startsWith("/services"));
+          {navLinks && navLinks.length > 0 && navLinks.map((item) => {
+            const isActive = pathname === item.href || (item.href === "/services" && pathname.startsWith("/services"));
 
-            // Special handling for Services with dropdown
             if (item.label === "Services") {
               return (
                 <div
                   key={item.href}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    position: "relative",
-                  }}
                   onMouseEnter={() => setServicesDropdownOpen(true)}
                   onMouseLeave={() => setServicesDropdownOpen(false)}
+                  style={{ position: "relative" }}
                 >
-                  <span
+                  <button
                     style={{
+                      background: "none",
+                      border: "none",
                       color: isActive ? "#d4af37" : "#0f172a",
-                      transition: "color 0.3s ease",
                       cursor: "pointer",
                       padding: "8px 12px",
                       display: "flex",
                       alignItems: "center",
                       gap: "6px",
+                      fontWeight: 600,
+                      fontSize: "14px",
+                      transition: "color 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#d4af37";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
                     }}
                   >
                     {item.label}
-                    <ChevronDown
-                      size={16}
-                      style={{
-                        transition: "transform 0.3s ease",
-                        transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      }}
-                    />
-                  </span>
+                    <ChevronDown size={16} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
+                  </button>
 
-                  {/* Invisible bridge to prevent dropdown from closing */}
                   {servicesDropdownOpen && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "100%",
-                        left: 0,
-                        right: 0,
-                        height: "12px",
-                        pointerEvents: "auto",
-                      }}
-                    />
-                  )}
+                    <>
+                      <div style={{ position: "absolute", top: "100%", left: 0, right: 0, height: "12px", pointerEvents: "auto" }} />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "calc(100% + 12px)",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          background: "rgba(11, 19, 32, 0.95)",
+                          border: "1px solid rgba(212, 175, 55, 0.3)",
+                          borderRadius: "12px",
+                          minWidth: "280px",
+                          backdropFilter: "blur(10px)",
+                          boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
+                          zIndex: 1001,
+                          padding: "8px",
+                        }}
+                      >
+                        {serviceItems.map((service) => {
+                          if (service.isHeader) {
+                            return (
+                              <button
+                                key={service.href}
+                                onClick={() => handleServiceClick(service.href)}
+                                style={{
+                                  display: "block",
+                                  width: "100%",
+                                  padding: "10px 12px",
+                                  color: "#ffffff",
+                                  fontWeight: 700,
+                                  fontSize: "13px",
+                                  background: "none",
+                                  border: "none",
+                                  cursor: "pointer",
+                                  textAlign: "left",
+                                  borderRadius: "6px",
+                                  transition: "background 0.2s ease",
+                                  borderBottom: "1px solid rgba(212, 175, 55, 0.2)",
+                                  marginBottom: "4px",
+                                }}
+                                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
+                              >
+                                {service.label}
+                              </button>
+                            );
+                          }
 
-                  {/* Desktop Dropdown */}
-                  {servicesDropdownOpen && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "calc(100% + 12px)",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        background: "rgba(11, 19, 32, 0.95)",
-                        border: "1px solid rgba(212, 175, 55, 0.3)",
-                        borderRadius: "12px",
-                        minWidth: "280px",
-                        backdropFilter: "blur(10px)",
-                        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
-                        zIndex: 1001,
-                        padding: "8px",
-                      }}
-                    >
-                      {serviceItems.map((service, idx) => {
-                        if (service.isHeader) {
+                          const Icon = service.icon;
                           return (
                             <button
                               key={service.href}
                               onClick={() => handleServiceClick(service.href)}
                               style={{
-                                display: "block",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "10px",
                                 width: "100%",
                                 padding: "10px 12px",
-                                color: "#ffffff",
-                                fontWeight: 700,
-                                fontSize: "13px",
-                                textDecoration: "none",
-                                borderBottom: "1px solid rgba(212, 175, 55, 0.2)",
-                                marginBottom: "4px",
-                                borderRadius: "6px",
-                                transition: "background 0.2s ease",
+                                color: "rgba(255,255,255,0.8)",
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
                                 textAlign: "left",
+                                borderRadius: "6px",
+                                transition: "all 0.2s ease",
+                                fontSize: "13px",
                               }}
                               onMouseEnter={(e) => {
                                 e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)";
+                                e.currentTarget.style.color = "#ffffff";
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.background = "none";
+                                e.currentTarget.style.color = "rgba(255,255,255,0.8)";
                               }}
                             >
-                              {service.label}
+                              {Icon && <Icon size={14} />}
+                              <span>{service.label}</span>
                             </button>
                           );
-                        }
-
-                        const Icon = service.icon;
-                        return (
-                          <button
-                            key={service.href}
-                            onClick={() => handleServiceClick(service.href)}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "10px",
-                              width: "100%",
-                              padding: "10px 12px",
-                              color: "rgba(255,255,255,0.8)",
-                              textDecoration: "none",
-                              borderRadius: "6px",
-                              transition: "all 0.2s ease",
-                              background: "none",
-                              border: "none",
-                              cursor: "pointer",
-                              textAlign: "left",
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.background = "rgba(212, 175, 55, 0.1)";
-                              e.currentTarget.style.color = "#ffffff";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.background = "none";
-                              e.currentTarget.style.color = "rgba(255,255,255,0.8)";
-                            }}
-                          >
-                            {Icon && <Icon size={14} />}
-                            <span style={{ fontSize: "13px" }}>{service.label}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
+                        })}
+                      </div>
+                    </>
                   )}
                 </div>
               );
             }
 
-            // Regular nav items
             return (
-              <div
+              <Link
                 key={item.href}
-                style={{ display: "flex", alignItems: "center" }}
+                href={item.href}
+                style={{
+                  color: isActive ? "#d4af37" : "#0f172a",
+                  padding: "8px 12px",
+                  textDecoration: "none",
+                  transition: "color 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#d4af37";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
+                }}
               >
-                <Link
-                  href={item.href}
-                  style={{
-                    color: isActive ? "#d4af37" : "#0f172a",
-                    transition: "color 0.3s ease",
-                    cursor: "pointer",
-                    padding: "8px 12px",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#d4af37";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = isActive ? "#d4af37" : "#0f172a";
-                  }}
-                >
-                  {item.label}
-                </Link>
-              </div>
+                {item.label}
+              </Link>
             );
           })}
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           className="mobile-nav-toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -281,7 +250,6 @@ export default function SiteHeader() {
           {mobileOpen ? <X /> : <Menu />}
         </button>
 
-        {/* CTA Button */}
         <Link
           href={brand.phoneHref}
           style={{
@@ -311,7 +279,6 @@ export default function SiteHeader() {
         </Link>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <div
           style={{
@@ -322,7 +289,7 @@ export default function SiteHeader() {
             borderTop: "1px solid #e2e8f0",
           }}
         >
-          {navLinks.map((item) => {
+          {navLinks && navLinks.length > 0 && navLinks.map((item) => {
             if (item.label === "Services") {
               return (
                 <div key={item.href}>
@@ -344,13 +311,7 @@ export default function SiteHeader() {
                     }}
                   >
                     {item.label}
-                    <ChevronDown
-                      size={16}
-                      style={{
-                        transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
-                        transition: "transform 0.3s ease",
-                      }}
-                    />
+                    <ChevronDown size={16} style={{ transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
                   </button>
                   {mobileServicesOpen && (
                     <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingLeft: "12px", marginTop: "8px" }}>
@@ -369,7 +330,6 @@ export default function SiteHeader() {
                                 fontSize: "13px",
                                 color: "#0f172a",
                                 cursor: "pointer",
-                                textDecoration: "none",
                               }}
                             >
                               {service.label}
@@ -392,7 +352,6 @@ export default function SiteHeader() {
                               display: "flex",
                               alignItems: "center",
                               gap: "8px",
-                              textDecoration: "none",
                             }}
                           >
                             {Icon && <Icon size={12} />}
