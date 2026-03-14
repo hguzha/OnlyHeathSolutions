@@ -1,3 +1,5 @@
+"use client";
+
 import FixedBackgroundShell from "@/components/fixed-background-shell";
 import PageHeroVideo from "@/components/page-hero-video";
 import SignatureServices from "@/components/signature-services";
