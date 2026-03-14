@@ -85,16 +85,20 @@ export default function SiteHeader() {
             position: "relative",
           }}
         >
-          {navLinks && navLinks.length > 0 && navLinks.map((item) => {
+          {navLinks.map((item) => {
             const isActive = pathname === item.href || (item.href === "/services" && pathname.startsWith("/services"));
 
+            // Services dropdown
             if (item.label === "Services") {
               return (
                 <div
                   key={item.href}
+                  style={{
+                    position: "relative",
+                    display: "inline-block",
+                  }}
                   onMouseEnter={() => setServicesDropdownOpen(true)}
                   onMouseLeave={() => setServicesDropdownOpen(false)}
-                  style={{ position: "relative" }}
                 >
                   <button
                     style={{
@@ -103,7 +107,7 @@ export default function SiteHeader() {
                       color: isActive ? "#d4af37" : "#0f172a",
                       cursor: "pointer",
                       padding: "8px 12px",
-                      display: "flex",
+                      display: "inline-flex",
                       alignItems: "center",
                       gap: "6px",
                       fontWeight: 600,
@@ -118,7 +122,13 @@ export default function SiteHeader() {
                     }}
                   >
                     {item.label}
-                    <ChevronDown size={16} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
+                    <ChevronDown 
+                      size={16} 
+                      style={{ 
+                        transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", 
+                        transition: "transform 0.3s ease" 
+                      }} 
+                    />
                   </button>
 
                   {servicesDropdownOpen && (
@@ -211,6 +221,7 @@ export default function SiteHeader() {
               );
             }
 
+            // Regular nav items - ALWAYS VISIBLE
             return (
               <Link
                 key={item.href}
@@ -220,6 +231,7 @@ export default function SiteHeader() {
                   padding: "8px 12px",
                   textDecoration: "none",
                   transition: "color 0.3s ease",
+                  display: "inline-block",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "#d4af37";
@@ -289,7 +301,7 @@ export default function SiteHeader() {
             borderTop: "1px solid #e2e8f0",
           }}
         >
-          {navLinks && navLinks.length > 0 && navLinks.map((item) => {
+          {navLinks.map((item) => {
             if (item.label === "Services") {
               return (
                 <div key={item.href}>
