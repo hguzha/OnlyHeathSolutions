@@ -100,7 +100,7 @@ ${form.comments || "N/A"}`
         borderRadius: "24px",
         border: "1px solid #e2e8f0",
         marginTop: "40px",
-        scrollMarginTop: "80px",
+        scrollMarginTop: "20px",
       }}
     >
       <h2
