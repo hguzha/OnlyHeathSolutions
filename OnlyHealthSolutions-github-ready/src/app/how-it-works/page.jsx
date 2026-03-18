@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import PageHero from "@/components/page-hero";
 import { Phone, FileText, Users, CheckCircle, Zap, Heart, ArrowRight } from "lucide-react";
+import { brand } from "@/lib/site-data";
 
 export default function HowItWorksPage() {
   const steps = [
@@ -248,8 +249,10 @@ export default function HowItWorksPage() {
           <p style={{ fontSize: "18px", lineHeight: 1.8, color: "rgba(255,255,255,0.95)", marginBottom: "40px", maxWidth: "600px", margin: "0 auto 40px" }}>
             Take the first step toward quality home care. Give us a call today and let's talk about how we can help your loved one.
           </p>
-          <button
+          <a
+            href={brand.phoneHref}
             style={{
+              display: "inline-block",
               padding: "16px 40px",
               borderRadius: "9999px",
               background: "rgba(255,255,255,0.95)",
@@ -260,6 +263,7 @@ export default function HowItWorksPage() {
               cursor: "pointer",
               transition: "all 0.3s ease",
               boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+              textDecoration: "none",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "scale(1.05)";
@@ -271,7 +275,7 @@ export default function HowItWorksPage() {
             }}
           >
             Call Now to Start
-          </button>
+          </a>
         </div>
       </section>
     </main>
