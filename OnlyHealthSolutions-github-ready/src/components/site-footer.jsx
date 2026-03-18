@@ -7,9 +7,9 @@ export default function SiteFooter() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <img src={brand.logo} alt={brand.name} style={{ height: 64, width: "auto" }} />
+            <img src={brand.logo} alt={brand.name} style={{ height: 120, width: "auto" }} />
             <p style={{ marginTop: 16, color: "rgba(255,255,255,0.8)" }}>
-              Private, compassionate home care tailored to your loved one’s comfort, dignity, and safety.
+              Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
             </p>
           </div>
 
