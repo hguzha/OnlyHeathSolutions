@@ -121,7 +121,7 @@ export default function SiteHeader() {
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: "160px",
+              height: "180px",
               width: "auto",
               display: "block",
             }}
