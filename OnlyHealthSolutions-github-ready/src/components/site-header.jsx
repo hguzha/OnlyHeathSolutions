@@ -108,26 +108,28 @@ export default function SiteHeader() {
           gap: "20px",
         }}
       >
+        {/* Logo - Positioned at far left */}
         <Link
           href="/"
           style={{
             display: "flex",
             alignItems: "center",
             flexShrink: 0,
-            minWidth: "fit-content",
+            minWidth: "160px",
           }}
         >
           <img
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: "180px",
+              height: "160px",
               width: "auto",
               display: "block",
             }}
           />
         </Link>
 
+        {/* Navigation - In the middle */}
         <nav
           className="desktop-nav"
           style={{
@@ -263,7 +265,8 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        {/* Buttons - Positioned at far right */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
           {/* Request Consult Button */}
           <button
             onClick={handleRequestConsult}
@@ -305,7 +308,6 @@ export default function SiteHeader() {
               textDecoration: "none",
               transition: "all 0.3s ease",
               whiteSpace: "nowrap",
-              flexShrink: 0,
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "scale(1.05)";
@@ -331,6 +333,7 @@ export default function SiteHeader() {
             display: "none",
             padding: "8px",
             transition: "color 0.3s ease",
+            flexShrink: 0,
           }}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
