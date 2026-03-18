@@ -2,201 +2,89 @@
 
 import { useState } from "react";
 import PageHero from "@/components/page-hero";
-import { Users, BriefcaseMedical, HeartHandshake, Stethoscope, Mail, Upload, X } from "lucide-react";
+import { Heart, Users, Award, Clock, Briefcase, CheckCircle, Zap, Lightbulb } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
-const roles = [
-  {
-    title: "Registered Nurse (RN)",
-    icon: Stethoscope,
-    text: "Provide advanced nursing care, clinical oversight, and coordination with physicians to ensure high-quality care for clients at home.",
-  },
-  {
-    title: "Licensed Practical Nurse (LPN)",
-    icon: BriefcaseMedical,
-    text: "Provide skilled nursing support, monitoring, medication assistance, and hands-on care for clients.",
-  },
-  {
-    title: "Certified Nursing Assistant (CNA)",
-    icon: Users,
-    text: "Support clients with personal care, mobility assistance, and daily routines in a respectful and compassionate manner.",
-  },
-  {
-    title: "Companion / Sitter",
-    icon: HeartHandshake,
-    text: "Offer companionship, supervision, safety monitoring, and meaningful support that helps clients remain comfortable at home.",
-  },
-];
-
 export default function CareersPage() {
-  const [showApplicationForm, setShowApplicationForm] = useState(false);
-  const [formData, setFormData] = useState({
-    // Personal Information
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    // Emergency Contact
-    emergencyName: "",
-    emergencyPhone: "",
-    emergencyRelationship: "",
-    // Education
-    highestDegree: "",
-    school: "",
-    graduationYear: "",
-    // Certification & Licensing
-    certifications: "",
-    licensingNumbers: "",
-    // Position & Availability
-    positionApplying: "",
-    availabilityStart: "",
-    daysPerWeek: "",
-    hoursPerDay: "",
-    // Work Authorization
-    citzenshipStatus: "",
-    // Legal & Background
-    backgroundCheck: false,
-    agreeToBackgroundCheck: false,
-    // Agreement
-    agreeToTerms: false,
-    signature: "",
-    // Files
-    resume: null,
-    certDocuments: null,
-    additionalDocuments: null,
-  });
+  const [openRole, setOpenRole] = useState(null);
 
-  const [uploadedFiles, setUploadedFiles] = useState({
-    resume: null,
-    certDocuments: null,
-    additionalDocuments: null,
-  });
+  const roles = [
+    {
+      title: "Registered Nurse (RN)",
+      type: "Full-time / Part-time",
+      description: "Provide skilled nursing care, medication management, and health monitoring",
+      icon: Award,
+      color: "#1fa6a0",
+      requirements: ["RN License", "2+ years experience", "CPR Certified"],
+      benefits: ["Competitive Pay", "Flexible Schedule", "Professional Growth"]
+    },
+    {
+      title: "Certified Nursing Assistant (CNA)",
+      type: "Full-time / Part-time",
+      description: "Assist with personal care, hygiene, and daily activities",
+      icon: Heart,
+      color: "#6a3fb5",
+      requirements: ["CNA Certification", "High School Diploma", "Background Check"],
+      benefits: ["Hourly Rate", "Paid Training", "Supportive Team"]
+    },
+    {
+      title: "Home Health Aide",
+      type: "Part-time / Full-time",
+      description: "Provide compassionate assistance with daily living activities",
+      icon: Users,
+      color: "#1fa6a0",
+      requirements: ["HHA Training", "Reliable Transportation", "References"],
+      benefits: ["Flexible Hours", "Community Impact", "Training Support"]
+    },
+    {
+      title: "Care Coordinator",
+      type: "Full-time",
+      description: "Manage client care plans and coordinate with caregivers",
+      icon: Briefcase,
+      color: "#6a3fb5",
+      requirements: ["Healthcare Background", "Strong Communication", "Organizational Skills"],
+      benefits: ["Salary + Benefits", "Professional Development", "Team Environment"]
+    },
+  ];
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value
-    }));
-  };
-
-  const handleFileChange = (e, fieldName) => {
-    const file = e.target.files[0];
-    if (file) {
-      setUploadedFiles(prev => ({
-        ...prev,
-        [fieldName]: file.name
-      }));
-      setFormData(prev => ({
-        ...prev,
-        [fieldName]: file
-      }));
-    }
-  };
-
-  const removeFile = (fieldName) => {
-    setUploadedFiles(prev => ({
-      ...prev,
-      [fieldName]: null
-    }));
-    setFormData(prev => ({
-      ...prev,
-      [fieldName]: null
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validate required fields
-    if (!formData.agreeToTerms) {
-      alert("You must agree to the terms and conditions");
-      return;
-    }
-
-    if (!formData.signature) {
-      alert("Please enter your signature");
-      return;
-    }
-
-    const subject = encodeURIComponent("Job Application — Only Health Solutions");
-    const filesList = [
-      uploadedFiles.resume && `Resume: ${uploadedFiles.resume}`,
-      uploadedFiles.certDocuments && `Certifications: ${uploadedFiles.certDocuments}`,
-      uploadedFiles.additionalDocuments && `Additional Documents: ${uploadedFiles.additionalDocuments}`
-    ].filter(Boolean).join("\n");
-
-    const body = encodeURIComponent(
-      `PERSONAL INFORMATION:
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Address: ${formData.address}, ${formData.city}, ${formData.state} ${formData.zipCode}
-
-EMERGENCY CONTACT:
-Name: ${formData.emergencyName}
-Phone: ${formData.emergencyPhone}
-Relationship: ${formData.emergencyRelationship}
-
-EDUCATION:
-Highest Degree: ${formData.highestDegree}
-School: ${formData.school}
-Graduation Year: ${formData.graduationYear}
-
-CERTIFICATION & LICENSING:
-Certifications: ${formData.certifications}
-Licensing Numbers: ${formData.licensingNumbers}
-
-POSITION & AVAILABILITY:
-Position Applying For: ${formData.positionApplying}
-Start Date: ${formData.availabilityStart}
-Days Per Week: ${formData.daysPerWeek}
-Hours Per Day: ${formData.hoursPerDay}
-
-WORK AUTHORIZATION:
-Citizenship Status: ${formData.citzenshipStatus}
-
-LEGAL & BACKGROUND:
-Background Check Required: ${formData.backgroundCheck ? "Yes" : "No"}
-Agree to Background Check: ${formData.agreeToBackgroundCheck ? "Yes" : "No"}
-
-DOCUMENTS UPLOADED:
-${filesList || "No documents uploaded"}
-
-SIGNATURE:
-${formData.signature}
-
-Applicant Agrees to Terms: Yes`
-    );
-
-    // Open email client with pre-filled form
-    window.location.href = `${brand.emailHref}?subject=${subject}&body=${body}`;
-  };
-
-  const inputStyle = {
-    padding: "12px",
-    borderRadius: "12px",
-    border: "1px solid #dbe2ea",
-    fontSize: "14px",
-    fontFamily: "inherit",
-  };
-
-  const labelStyle = {
-    display: "block",
-    marginBottom: "8px",
-    fontWeight: "600",
-    color: "#0f172a",
-    fontSize: "14px",
-  };
+  const benefits = [
+    {
+      icon: Heart,
+      title: "Competitive Compensation",
+      description: "Attractive pay rates with regular increases and bonuses"
+    },
+    {
+      icon: Clock,
+      title: "Flexible Scheduling",
+      description: "Work schedules that fit your lifestyle and availability"
+    },
+    {
+      icon: Award,
+      title: "Professional Growth",
+      description: "Continuous training and career development opportunities"
+    },
+    {
+      icon: Users,
+      title: "Supportive Team",
+      description: "Work with compassionate colleagues who care about quality care"
+    },
+    {
+      icon: Lightbulb,
+      title: "Meaningful Work",
+      description: "Make a real difference in clients' lives every single day"
+    },
+    {
+      icon: Zap,
+      title: "Team Support",
+      description: "24/7 backup support and administrative assistance available"
+    },
+  ];
 
   return (
     <main>
       <PageHero
-        subtitle="Join a team dedicated to compassionate care, professionalism, and meaningful service."
+        title="Join Our Team"
+        subtitle="Be part of a mission to bring compassionate, dignified care to those who need it most."
         height={460}
         images={[
           "1000251260.jpg",
@@ -205,673 +93,478 @@ Applicant Agrees to Terms: Yes`
         ]}
       />
 
-      <section className="section">
+      {/* About Working Here */}
+      <section
+        style={{
+          background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
+          paddingTop: "80px",
+          paddingBottom: "80px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Decorative elements */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "24px",
-            marginTop: "30px",
+            position: "absolute",
+            top: "-100px",
+            right: "-100px",
+            width: "400px",
+            height: "400px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(31,166,160,0.1) 0%, transparent 70%)",
+            pointerEvents: "none",
           }}
-          className="container"
-        >
-          {roles.map((role) => {
-            const Icon = role.icon;
+        />
 
-            return (
-              <div
-                key={role.title}
-                className="card"
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <div style={{ textAlign: "center", marginBottom: "80px" }}>
+            <h2
+              style={{
+                fontSize: "44px",
+                fontWeight: 800,
+                marginBottom: "16px",
+                background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                color: "transparent",
+              }}
+            >
+              Why Join Only Health Solutions?
+            </h2>
+            <p style={{ fontSize: "18px", color: "#666", maxWidth: "600px", margin: "0 auto" }}>
+              We're looking for dedicated professionals who share our commitment to compassionate care
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "32px",
+            }}
+          >
+            {benefits.map((benefit, index) => (
+              <BenefitCard key={index} benefit={benefit} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Open Positions */}
+      <section
+        style={{
+          background: "#ffffff",
+          paddingTop: "100px",
+          paddingBottom: "100px",
+          position: "relative",
+        }}
+      >
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "80px" }}>
+            <h2
+              style={{
+                fontSize: "44px",
+                fontWeight: 800,
+                marginBottom: "16px",
+                background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                color: "transparent",
+              }}
+            >
+              Open Positions
+            </h2>
+            <p style={{ fontSize: "18px", color: "#666", maxWidth: "600px", margin: "0 auto" }}>
+              Explore career opportunities that align with your skills and passion
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "32px",
+            }}
+          >
+            {roles.map((role, index) => (
+              <RoleCard
+                key={index}
+                role={role}
+                isOpen={openRole === index}
+                onToggle={() => setOpenRole(openRole === index ? null : index)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What We're Looking For */}
+      <section
+        style={{
+          background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
+          paddingTop: "100px",
+          paddingBottom: "100px",
+          color: "white",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "-200px",
+            right: "-200px",
+            width: "500px",
+            height: "500px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(31,166,160,0.15) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "60px",
+              alignItems: "center",
+            }}
+          >
+            {/* Left - Qualities */}
+            <div>
+              <h2
                 style={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
+                  fontSize: "40px",
+                  fontWeight: 800,
+                  marginBottom: "24px",
+                  color: "#ffffff",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div
-                    style={{
-                      background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
-                      width: 44,
-                      height: 44,
-                      borderRadius: 14,
-                      display: "grid",
-                      placeItems: "center",
-                      color: "white",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Icon size={20} />
-                  </div>
-                  <h3 style={{ margin: 0 }}>{role.title}</h3>
-                </div>
+                We're Looking For...
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                <QualityItem title="Compassion" description="A genuine desire to help others and make a positive impact" />
+                <QualityItem title="Professionalism" description="Commitment to high standards and quality care" />
+                <QualityItem title="Reliability" description="Dependable and punctual in all responsibilities" />
+                <QualityItem title="Communication" description="Strong interpersonal and listening skills" />
+              </div>
+            </div>
 
-                <p style={{ color: "#64748b", lineHeight: 1.7, marginTop: 18 }}>
-                  {role.text}
+            {/* Right - Stats */}
+            <div
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: "24px",
+                padding: "48px",
+                backdropFilter: "blur(10px)",
+                textAlign: "center",
+              }}
+            >
+              <div style={{ marginBottom: "40px" }}>
+                <div style={{ fontSize: "56px", fontWeight: 800, marginBottom: "8px", color: "#1fa6a0" }}>
+                  100+
+                </div>
+                <p style={{ color: "rgba(255,255,255,0.8)", margin: "0" }}>
+                  Happy Team Members
                 </p>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Application Form Toggle Button */}
-        <div className="container" style={{ marginTop: 40, textAlign: "center" }}>
-          <button
-            onClick={() => setShowApplicationForm(!showApplicationForm)}
-            style={{
-              background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
-              color: "white",
-              padding: "14px 32px",
-              borderRadius: "12px",
-              border: "none",
-              fontWeight: "600",
-              cursor: "pointer",
-              fontSize: "16px",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
-            onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
-          >
-            {showApplicationForm ? "Close Application Form" : "Apply Now"}
-          </button>
-        </div>
-
-        {/* Application Form */}
-        {showApplicationForm && (
-          <div className="container" style={{ marginTop: 40 }}>
-            <div className="card" style={{ padding: "40px" }}>
-              <h2 style={{ fontSize: "32px", fontWeight: 800, color: "#0f172a", marginBottom: 32 }}>
-                Job Application Form
-              </h2>
-
-              <form onSubmit={handleSubmit} style={{ display: "grid", gap: 32 }}>
-                {/* Personal Information */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Personal Information
-                  </h3>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                    <div>
-                      <label style={labelStyle}>First Name (required)</label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        placeholder="First Name"
-                        style={inputStyle}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Last Name (required)</label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        placeholder="Last Name"
-                        style={inputStyle}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Email (required)</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="Email"
-                        style={inputStyle}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Phone (required)</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="Phone"
-                        style={inputStyle}
-                        required
-                      />
-                    </div>
-                    <div style={{ gridColumn: "1 / -1" }}>
-                      <label style={labelStyle}>Address</label>
-                      <input
-                        type="text"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleInputChange}
-                        placeholder="Street Address"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>City</label>
-                      <input
-                        type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleInputChange}
-                        placeholder="City"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>State</label>
-                      <input
-                        type="text"
-                        name="state"
-                        value={formData.state}
-                        onChange={handleInputChange}
-                        placeholder="State"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Zip Code</label>
-                      <input
-                        type="text"
-                        name="zipCode"
-                        value={formData.zipCode}
-                        onChange={handleInputChange}
-                        placeholder="Zip Code"
-                        style={inputStyle}
-                      />
-                    </div>
-                  </div>
+              <div style={{ marginBottom: "40px" }}>
+                <div style={{ fontSize: "56px", fontWeight: 800, marginBottom: "8px", color: "#1fa6a0" }}>
+                  500+
                 </div>
-
-                {/* Emergency Contact */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Emergency Contact
-                  </h3>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                    <div>
-                      <label style={labelStyle}>Name</label>
-                      <input
-                        type="text"
-                        name="emergencyName"
-                        value={formData.emergencyName}
-                        onChange={handleInputChange}
-                        placeholder="Emergency Contact Name"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Phone</label>
-                      <input
-                        type="tel"
-                        name="emergencyPhone"
-                        value={formData.emergencyPhone}
-                        onChange={handleInputChange}
-                        placeholder="Emergency Contact Phone"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Relationship</label>
-                      <input
-                        type="text"
-                        name="emergencyRelationship"
-                        value={formData.emergencyRelationship}
-                        onChange={handleInputChange}
-                        placeholder="Relationship"
-                        style={inputStyle}
-                      />
-                    </div>
-                  </div>
+                <p style={{ color: "rgba(255,255,255,0.8)", margin: "0" }}>
+                  Clients Served
+                </p>
+              </div>
+              <div>
+                <div style={{ fontSize: "56px", fontWeight: 800, marginBottom: "8px", color: "#1fa6a0" }}>
+                  8+
                 </div>
-
-                {/* Education */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Education
-                  </h3>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                    <div>
-                      <label style={labelStyle}>Highest Degree</label>
-                      <input
-                        type="text"
-                        name="highestDegree"
-                        value={formData.highestDegree}
-                        onChange={handleInputChange}
-                        placeholder="e.g., Bachelor's, Associate's, High School"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>School/University</label>
-                      <input
-                        type="text"
-                        name="school"
-                        value={formData.school}
-                        onChange={handleInputChange}
-                        placeholder="School Name"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Graduation Year</label>
-                      <input
-                        type="number"
-                        name="graduationYear"
-                        value={formData.graduationYear}
-                        onChange={handleInputChange}
-                        placeholder="Year"
-                        style={inputStyle}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Certification & Licensing */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Certification & Licensing
-                  </h3>
-                  <div style={{ display: "grid", gap: 16 }}>
-                    <div>
-                      <label style={labelStyle}>Certifications (comma separated)</label>
-                      <textarea
-                        name="certifications"
-                        value={formData.certifications}
-                        onChange={handleInputChange}
-                        placeholder="e.g., CNA, RN, LPN, First Aid, CPR"
-                        rows={3}
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Licensing Numbers</label>
-                      <textarea
-                        name="licensingNumbers"
-                        value={formData.licensingNumbers}
-                        onChange={handleInputChange}
-                        placeholder="License numbers and expiration dates"
-                        rows={3}
-                        style={inputStyle}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Position & Availability */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Position & Availability
-                  </h3>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                    <div>
-                      <label style={labelStyle}>Position Applying For (required)</label>
-                      <select
-                        name="positionApplying"
-                        value={formData.positionApplying}
-                        onChange={handleInputChange}
-                        style={inputStyle}
-                        required
-                      >
-                        <option value="">Select Position</option>
-                        <option value="Registered Nurse (RN)">Registered Nurse (RN)</option>
-                        <option value="Licensed Practical Nurse (LPN)">Licensed Practical Nurse (LPN)</option>
-                        <option value="Certified Nursing Assistant (CNA)">Certified Nursing Assistant (CNA)</option>
-                        <option value="Companion / Sitter">Companion / Sitter</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Available Start Date</label>
-                      <input
-                        type="date"
-                        name="availabilityStart"
-                        value={formData.availabilityStart}
-                        onChange={handleInputChange}
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Days Per Week Available</label>
-                      <input
-                        type="number"
-                        name="daysPerWeek"
-                        value={formData.daysPerWeek}
-                        onChange={handleInputChange}
-                        placeholder="e.g., 3, 4, 5"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Hours Per Day</label>
-                      <input
-                        type="text"
-                        name="hoursPerDay"
-                        value={formData.hoursPerDay}
-                        onChange={handleInputChange}
-                        placeholder="e.g., Full-time, Part-time, 4-8 hours"
-                        style={inputStyle}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Work Authorization */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Work Authorization
-                  </h3>
-                  <div>
-                    <label style={labelStyle}>Citizenship/Work Authorization Status</label>
-                    <select
-                      name="citzenshipStatus"
-                      value={formData.citzenshipStatus}
-                      onChange={handleInputChange}
-                      style={inputStyle}
-                    >
-                      <option value="">Select Status</option>
-                      <option value="U.S. Citizen">U.S. Citizen</option>
-                      <option value="Permanent Resident">Permanent Resident (Green Card)</option>
-                      <option value="Work Visa">Work Visa (H-1B, etc.)</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Legal & Background */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Legal & Background
-                  </h3>
-                  <div style={{ display: "grid", gap: 16 }}>
-                    <label style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
-                      <input
-                        type="checkbox"
-                        name="agreeToBackgroundCheck"
-                        checked={formData.agreeToBackgroundCheck}
-                        onChange={handleInputChange}
-                        style={{ width: "18px", height: "18px", cursor: "pointer" }}
-                      />
-                      <span style={{ color: "#0f172a", fontWeight: "500" }}>
-                        I consent to a background check and fingerprinting
-                      </span>
-                    </label>
-                  </div>
-                </div>
-
-                {/* File Uploads */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Document Upload
-                  </h3>
-                  <div style={{ display: "grid", gap: 20 }}>
-                    {/* Resume */}
-                    <div>
-                      <label style={labelStyle}>Resume (PDF, DOC, DOCX)</label>
-                      <div
-                        style={{
-                          border: "2px dashed #dbe2ea",
-                          borderRadius: "12px",
-                          padding: "20px",
-                          textAlign: "center",
-                          cursor: "pointer",
-                          transition: "all 0.3s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = "#1fa6a0";
-                          e.currentTarget.style.background = "rgba(31, 166, 160, 0.05)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = "#dbe2ea";
-                          e.currentTarget.style.background = "white";
-                        }}
-                      >
-                        <input
-                          type="file"
-                          onChange={(e) => handleFileChange(e, "resume")}
-                          style={{ display: "none" }}
-                          id="resume-upload"
-                          accept=".pdf,.doc,.docx"
-                        />
-                        <label htmlFor="resume-upload" style={{ cursor: "pointer", display: "block" }}>
-                          <Upload size={32} style={{ margin: "0 auto 8px", color: "#64748b" }} />
-                          <p style={{ margin: 0, color: "#64748b", fontWeight: "500" }}>
-                            Click to upload or drag and drop
-                          </p>
-                          <p style={{ margin: "4px 0 0", color: "#94a3b8", fontSize: "12px" }}>
-                            PDF, DOC, or DOCX (Max 10MB)
-                          </p>
-                        </label>
-                      </div>
-                      {uploadedFiles.resume && (
-                        <div
-                          style={{
-                            marginTop: "12px",
-                            padding: "12px",
-                            background: "#f1f5f9",
-                            borderRadius: "8px",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <span style={{ color: "#0f172a", fontWeight: "500" }}>{uploadedFiles.resume}</span>
-                          <button
-                            type="button"
-                            onClick={() => removeFile("resume")}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              cursor: "pointer",
-                              color: "#64748b",
-                            }}
-                          >
-                            <X size={18} />
-                          </button>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Certifications */}
-                    <div>
-                      <label style={labelStyle}>Certifications & Licenses (PDF, DOC, DOCX)</label>
-                      <div
-                        style={{
-                          border: "2px dashed #dbe2ea",
-                          borderRadius: "12px",
-                          padding: "20px",
-                          textAlign: "center",
-                          cursor: "pointer",
-                          transition: "all 0.3s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = "#1fa6a0";
-                          e.currentTarget.style.background = "rgba(31, 166, 160, 0.05)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = "#dbe2ea";
-                          e.currentTarget.style.background = "white";
-                        }}
-                      >
-                        <input
-                          type="file"
-                          onChange={(e) => handleFileChange(e, "certDocuments")}
-                          style={{ display: "none" }}
-                          id="cert-upload"
-                          accept=".pdf,.doc,.docx"
-                        />
-                        <label htmlFor="cert-upload" style={{ cursor: "pointer", display: "block" }}>
-                          <Upload size={32} style={{ margin: "0 auto 8px", color: "#64748b" }} />
-                          <p style={{ margin: 0, color: "#64748b", fontWeight: "500" }}>
-                            Click to upload or drag and drop
-                          </p>
-                          <p style={{ margin: "4px 0 0", color: "#94a3b8", fontSize: "12px" }}>
-                            PDF, DOC, or DOCX (Max 10MB)
-                          </p>
-                        </label>
-                      </div>
-                      {uploadedFiles.certDocuments && (
-                        <div
-                          style={{
-                            marginTop: "12px",
-                            padding: "12px",
-                            background: "#f1f5f9",
-                            borderRadius: "8px",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <span style={{ color: "#0f172a", fontWeight: "500" }}>{uploadedFiles.certDocuments}</span>
-                          <button
-                            type="button"
-                            onClick={() => removeFile("certDocuments")}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              cursor: "pointer",
-                              color: "#64748b",
-                            }}
-                          >
-                            <X size={18} />
-                          </button>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Additional Documents */}
-                    <div>
-                      <label style={labelStyle}>Additional Documents (Optional)</label>
-                      <div
-                        style={{
-                          border: "2px dashed #dbe2ea",
-                          borderRadius: "12px",
-                          padding: "20px",
-                          textAlign: "center",
-                          cursor: "pointer",
-                          transition: "all 0.3s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = "#1fa6a0";
-                          e.currentTarget.style.background = "rgba(31, 166, 160, 0.05)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = "#dbe2ea";
-                          e.currentTarget.style.background = "white";
-                        }}
-                      >
-                        <input
-                          type="file"
-                          onChange={(e) => handleFileChange(e, "additionalDocuments")}
-                          style={{ display: "none" }}
-                          id="additional-upload"
-                          accept=".pdf,.doc,.docx,.jpg,.png"
-                        />
-                        <label htmlFor="additional-upload" style={{ cursor: "pointer", display: "block" }}>
-                          <Upload size={32} style={{ margin: "0 auto 8px", color: "#64748b" }} />
-                          <p style={{ margin: 0, color: "#64748b", fontWeight: "500" }}>
-                            Click to upload or drag and drop
-                          </p>
-                          <p style={{ margin: "4px 0 0", color: "#94a3b8", fontSize: "12px" }}>
-                            Any additional documents (Max 10MB)
-                          </p>
-                        </label>
-                      </div>
-                      {uploadedFiles.additionalDocuments && (
-                        <div
-                          style={{
-                            marginTop: "12px",
-                            padding: "12px",
-                            background: "#f1f5f9",
-                            borderRadius: "8px",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <span style={{ color: "#0f172a", fontWeight: "500" }}>{uploadedFiles.additionalDocuments}</span>
-                          <button
-                            type="button"
-                            onClick={() => removeFile("additionalDocuments")}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              cursor: "pointer",
-                              color: "#64748b",
-                            }}
-                          >
-                            <X size={18} />
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Agreement & Signature */}
-                <div>
-                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: 16 }}>
-                    Agreement & Signature
-                  </h3>
-                  <div style={{ display: "grid", gap: 16 }}>
-                    <label style={{ display: "flex", alignItems: "flex-start", gap: 12, cursor: "pointer" }}>
-                      <input
-                        type="checkbox"
-                        name="agreeToTerms"
-                        checked={formData.agreeToTerms}
-                        onChange={handleInputChange}
-                        style={{ width: "18px", height: "18px", cursor: "pointer", marginTop: "4px" }}
-                        required
-                      />
-                      <span style={{ color: "#0f172a", lineHeight: "1.6" }}>
-                        I certify that the information provided in this application is accurate and complete. I understand that any misrepresentation or omission may result in disqualification from employment or immediate termination if discovered after hire. I authorize Only Health Solutions to verify all information and conduct necessary background checks.
-                      </span>
-                    </label>
-
-                    <div>
-                      <label style={labelStyle}>Signature (required)</label>
-                      <input
-                        type="text"
-                        name="signature"
-                        value={formData.signature}
-                        onChange={handleInputChange}
-                        placeholder="Enter your full name as signature"
-                        style={inputStyle}
-                        required
-                      />
-                      <p style={{ margin: "8px 0 0", color: "#64748b", fontSize: "12px" }}>
-                        By entering your name, you are providing your electronic signature
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  style={{
-                    background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
-                    color: "white",
-                    padding: "16px",
-                    borderRadius: "12px",
-                    border: "none",
-                    fontWeight: "700",
-                    cursor: "pointer",
-                    fontSize: "16px",
-                    transition: "transform 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => (e.target.style.transform = "scale(1.02)")}
-                  onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
-                >
-                  Submit Application
-                </button>
-              </form>
+                <p style={{ color: "rgba(255,255,255,0.8)", margin: "0" }}>
+                  Years of Excellence
+                </p>
+              </div>
             </div>
           </div>
-        )}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section
+        style={{
+          background: "linear-gradient(135deg, rgba(31,166,160,0.95) 0%, rgba(106,63,181,0.95) 100%)",
+          paddingTop: "80px",
+          paddingBottom: "80px",
+          color: "white",
+          textAlign: "center",
+          position: "relative",
+        }}
+      >
+        <div className="container" style={{ maxWidth: "700px" }}>
+          <Heart size={48} color="#ffffff" style={{ margin: "0 auto 24px", display: "block" }} />
+          <h2
+            style={{
+              fontSize: "40px",
+              fontWeight: 800,
+              marginBottom: "24px",
+              color: "#ffffff",
+            }}
+          >
+            Ready to Make a Difference?
+          </h2>
+          <p style={{ fontSize: "18px", lineHeight: 1.8, color: "rgba(255,255,255,0.95)", marginBottom: "40px" }}>
+            Join our team and become part of something meaningful. Apply today to start your journey with Only Health Solutions.
+          </p>
+          <a
+            href="/contact"
+            style={{
+              display: "inline-block",
+              padding: "16px 40px",
+              borderRadius: "9999px",
+              background: "rgba(255,255,255,0.95)",
+              color: "#1fa6a0",
+              border: "none",
+              fontWeight: "700",
+              fontSize: "16px",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+              textDecoration: "none",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+              e.currentTarget.style.boxShadow = "0 15px 40px rgba(0,0,0,0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)";
+            }}
+          >
+            Apply Now
+          </a>
+        </div>
       </section>
     </main>
+  );
+}
+
+// Benefit Card Component
+function BenefitCard({ benefit }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const Icon = benefit.icon;
+
+  return (
+    <div
+      style={{
+        background: "white",
+        border: isHovered ? "2px solid #1fa6a0" : "2px solid rgba(31,166,160,0.15)",
+        borderRadius: "20px",
+        padding: "36px",
+        textAlign: "center",
+        transition: "all 0.3s ease",
+        cursor: "default",
+        transform: isHovered ? "translateY(-10px)" : "translateY(0)",
+        boxShadow: isHovered
+          ? "0 25px 60px rgba(31,166,160,0.2)"
+          : "0 10px 30px rgba(0,0,0,0.05)",
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        style={{
+          width: "70px",
+          height: "70px",
+          borderRadius: "16px",
+          background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "20px",
+          margin: "0 auto 20px",
+          transform: isHovered ? "scale(1.1) rotate(5deg)" : "scale(1) rotate(0deg)",
+          transition: "transform 0.3s ease",
+          boxShadow: "0 10px 30px rgba(31,166,160,0.2)",
+        }}
+      >
+        <Icon size={36} color="#ffffff" />
+      </div>
+
+      <h3
+        style={{
+          fontSize: "20px",
+          fontWeight: 700,
+          marginBottom: "12px",
+          color: "#0b1320",
+        }}
+      >
+        {benefit.title}
+      </h3>
+
+      <p style={{ color: "#666", lineHeight: 1.7, margin: "0", fontSize: "15px" }}>
+        {benefit.description}
+      </p>
+    </div>
+  );
+}
+
+// Role Card Component
+function RoleCard({ role, isOpen, onToggle }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const Icon = role.icon;
+
+  return (
+    <div
+      style={{
+        background: isOpen
+          ? "linear-gradient(135deg, rgba(31,166,160,0.08) 0%, rgba(106,63,181,0.08) 100%)"
+          : "#ffffff",
+        border: isOpen
+          ? "2px solid #1fa6a0"
+          : isHovered
+          ? "2px solid rgba(31,166,160,0.3)"
+          : "2px solid rgba(31,166,160,0.15)",
+        borderRadius: "20px",
+        overflow: "hidden",
+        transition: "all 0.3s ease",
+        cursor: "pointer",
+        transform: isHovered || isOpen ? "translateY(-8px)" : "translateY(0)",
+        boxShadow: isHovered || isOpen
+          ? "0 25px 60px rgba(31,166,160,0.2)"
+          : "0 10px 30px rgba(0,0,0,0.05)",
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onToggle}
+    >
+      {/* Header */}
+      <div style={{ padding: "32px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
+          <div
+            style={{
+              width: "56px",
+              height: "56px",
+              borderRadius: "14px",
+              background: `linear-gradient(135deg, ${role.color}, rgba(106,63,181,0.8))`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: `0 10px 30px ${role.color}20`,
+            }}
+          >
+            <Icon size={28} color="#ffffff" />
+          </div>
+          <div style={{ flex: 1 }}>
+            <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#0b1320", margin: "0" }}>
+              {role.title}
+            </h3>
+            <p style={{ color: "#666", fontSize: "14px", margin: "4px 0 0 0", fontWeight: 500 }}>
+              {role.type}
+            </p>
+          </div>
+          <div
+            style={{
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+              background: `linear-gradient(135deg, ${role.color}, rgba(106,63,181,0.8))`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+              transition: "transform 0.3s ease",
+            }}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+        <p style={{ color: "#666", margin: "0", fontSize: "15px", lineHeight: 1.6 }}>
+          {role.description}
+        </p>
+      </div>
+
+      {/* Expanded Content */}
+      {isOpen && (
+        <div
+          style={{
+            borderTop: "1px solid rgba(31,166,160,0.2)",
+            padding: "32px",
+            background: "rgba(255,255,255,0.5)",
+            animation: "slideDown 0.3s ease",
+          }}
+        >
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px" }}>
+            <div>
+              <h4 style={{ fontSize: "14px", fontWeight: 700, color: "#0b1320", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                Requirements
+              </h4>
+              <ul style={{ margin: "0", paddingLeft: "20px" }}>
+                {role.requirements.map((req, idx) => (
+                  <li key={idx} style={{ color: "#666", marginBottom: "8px", fontSize: "14px" }}>
+                    {req}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ fontSize: "14px", fontWeight: 700, color: "#0b1320", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                What You'll Get
+              </h4>
+              <ul style={{ margin: "0", paddingLeft: "20px" }}>
+                {role.benefits.map((benefit, idx) => (
+                  <li key={idx} style={{ color: "#666", marginBottom: "8px", fontSize: "14px" }}>
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            max-height: 1000px;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// Quality Item Component
+function QualityItem({ title, description }) {
+  return (
+    <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+      <CheckCircle size={24} color="#1fa6a0" style={{ flexShrink: 0, marginTop: "2px" }} />
+      <div>
+        <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#ffffff", marginBottom: "6px" }}>
+          {title}
+        </h4>
+        <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", lineHeight: 1.6 }}>
+          {description}
+        </p>
+      </div>
+    </div>
   );
 }
