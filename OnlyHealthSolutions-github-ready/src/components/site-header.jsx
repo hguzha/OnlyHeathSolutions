@@ -97,6 +97,7 @@ export default function SiteHeader() {
         zIndex: 1000,
         backgroundColor: headerTopBgColor,
         transition: "all 0.4s ease",
+        paddingRight: "20px",
       }}
     >
       <div
@@ -104,11 +105,11 @@ export default function SiteHeader() {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "flex-start",
-          gap: "30px",
+          justifyContent: "space-between",
+          gap: "20px",
         }}
       >
-        {/* Logo - Big and at far left */}
+        {/* Logo - Big and at left */}
         <Link
           href="/"
           style={{
@@ -134,12 +135,12 @@ export default function SiteHeader() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "12px",
+            gap: "8px",
             fontWeight: 600,
             fontSize: "13px",
             whiteSpace: "nowrap",
             position: "relative",
-            flexShrink: 0,
+            flex: "1 1 auto",
           }}
         >
           {menuItems.map((item) => {
@@ -159,7 +160,7 @@ export default function SiteHeader() {
                       border: "none",
                       color: "#ffffff",
                       cursor: "pointer",
-                      padding: "8px 12px",
+                      padding: "6px 10px",
                       display: "flex",
                       alignItems: "center",
                       gap: "6px",
@@ -175,7 +176,7 @@ export default function SiteHeader() {
                     }}
                   >
                     {item.label}
-                    <ChevronDown size={16} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
+                    <ChevronDown size={14} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
                   </button>
 
                   {servicesDropdownOpen && (
@@ -244,7 +245,7 @@ export default function SiteHeader() {
                 href={item.href}
                 style={{
                   color: "#ffffff",
-                  padding: "8px 12px",
+                  padding: "6px 10px",
                   borderRadius: "6px",
                   transition: "all 0.3s ease",
                   fontWeight: 600,
@@ -263,22 +264,19 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        {/* Spacer to push buttons to the right */}
-        <div style={{ flex: 1 }} />
-
         {/* Buttons - At far right */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0, minWidth: "fit-content" }}>
           {/* Request Consult Button */}
           <button
             onClick={handleRequestConsult}
             style={{
-              padding: "10px 18px",
+              padding: "8px 14px",
               borderRadius: "9999px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               border: "none",
               fontWeight: "700",
-              fontSize: "13px",
+              fontSize: "12px",
               cursor: "pointer",
               transition: "transform 0.3s ease",
               whiteSpace: "nowrap",
@@ -299,13 +297,13 @@ export default function SiteHeader() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "8px",
-              padding: "10px 18px",
+              gap: "6px",
+              padding: "8px 14px",
               borderRadius: "9999px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               fontWeight: "700",
-              fontSize: "13px",
+              fontSize: "12px",
               textDecoration: "none",
               transition: "all 0.3s ease",
               whiteSpace: "nowrap",
@@ -317,7 +315,7 @@ export default function SiteHeader() {
               e.currentTarget.style.transform = "scale(1)";
             }}
           >
-            <Phone size={16} />
+            <Phone size={14} />
             Call Now
           </Link>
         </div>
