@@ -2,11 +2,174 @@
 
 import { useState } from "react";
 import PageHero from "@/components/page-hero";
-import { Heart, Users, Award, Clock, Briefcase, CheckCircle, Zap, Lightbulb } from "lucide-react";
+import { Heart, Users, Award, Clock, Briefcase, CheckCircle, Zap, Lightbulb, X } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 export default function CareersPage() {
   const [openRole, setOpenRole] = useState(null);
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [formData, setFormData] = useState({
+    // Personal Information
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    // Emergency Contact
+    emergencyName: "",
+    emergencyPhone: "",
+    emergencyRelationship: "",
+    // Education
+    highestDegree: "",
+    school: "",
+    graduationYear: "",
+    // Certification & Licensing
+    certifications: "",
+    licensingNumbers: "",
+    // Position & Availability
+    positionApplying: "",
+    availabilityStart: "",
+    daysPerWeek: "",
+    hoursPerDay: "",
+    // Work Authorization
+    citzenshipStatus: "",
+    // Legal & Background
+    backgroundCheck: false,
+    agreeToBackgroundCheck: false,
+    // Agreement
+    agreeToTerms: false,
+    signature: "",
+    // Files
+    resume: null,
+    certDocuments: null,
+    additionalDocuments: null,
+  });
+
+  const [uploadedFiles, setUploadedFiles] = useState({
+    resume: null,
+    certDocuments: null,
+    additionalDocuments: null,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
+  };
+
+  const handleFileChange = (e, fieldName) => {
+    const file = e.target.files[0];
+    if (file) {
+      setUploadedFiles(prev => ({
+        ...prev,
+        [fieldName]: file.name
+      }));
+      setFormData(prev => ({
+        ...prev,
+        [fieldName]: file
+      }));
+    }
+  };
+
+  const removeFile = (fieldName) => {
+    setUploadedFiles(prev => ({
+      ...prev,
+      [fieldName]: null
+    }));
+    setFormData(prev => ({
+      ...prev,
+      [fieldName]: null
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validate required fields
+    if (!formData.agreeToTerms) {
+      alert("You must agree to the terms and conditions");
+      return;
+    }
+
+    if (!formData.signature) {
+      alert("Please enter your signature");
+      return;
+    }
+
+    const subject = encodeURIComponent("Job Application — Only Health Solutions");
+    const filesList = [
+      uploadedFiles.resume && `Resume: ${uploadedFiles.resume}`,
+      uploadedFiles.certDocuments && `Certifications: ${uploadedFiles.certDocuments}`,
+      uploadedFiles.additionalDocuments && `Additional Documents: ${uploadedFiles.additionalDocuments}`
+    ].filter(Boolean).join("\n");
+
+    const body = encodeURIComponent(
+      `PERSONAL INFORMATION:
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Address: ${formData.address}, ${formData.city}, ${formData.state} ${formData.zipCode}
+
+EMERGENCY CONTACT:
+Name: ${formData.emergencyName}
+Phone: ${formData.emergencyPhone}
+Relationship: ${formData.emergencyRelationship}
+
+EDUCATION:
+Highest Degree: ${formData.highestDegree}
+School: ${formData.school}
+Graduation Year: ${formData.graduationYear}
+
+CERTIFICATION & LICENSING:
+Certifications: ${formData.certifications}
+Licensing Numbers: ${formData.licensingNumbers}
+
+POSITION & AVAILABILITY:
+Position Applying For: ${formData.positionApplying}
+Start Date: ${formData.availabilityStart}
+Days Per Week: ${formData.daysPerWeek}
+Hours Per Day: ${formData.hoursPerDay}
+
+WORK AUTHORIZATION:
+Citizenship Status: ${formData.citzenshipStatus}
+
+LEGAL & BACKGROUND:
+Background Check Required: ${formData.backgroundCheck ? "Yes" : "No"}
+Agree to Background Check: ${formData.agreeToBackgroundCheck ? "Yes" : "No"}
+
+DOCUMENTS UPLOADED:
+${filesList || "No documents uploaded"}
+
+SIGNATURE:
+${formData.signature}
+
+Applicant Agrees to Terms: Yes`
+    );
+
+    // Open email client with pre-filled form
+    window.location.href = `${brand.emailHref}?subject=${subject}&body=${body}`;
+  };
+
+  const inputStyle = {
+    padding: "12px",
+    borderRadius: "12px",
+    border: "1px solid #dbe2ea",
+    fontSize: "14px",
+    fontFamily: "inherit",
+  };
+
+  const labelStyle = {
+    display: "block",
+    marginBottom: "8px",
+    fontWeight: "600",
+    color: "#0f172a",
+    fontSize: "14px",
+  };
 
   const roles = [
     {
@@ -318,8 +481,8 @@ export default function CareersPage() {
           <p style={{ fontSize: "18px", lineHeight: 1.8, color: "rgba(255,255,255,0.95)", marginBottom: "40px" }}>
             Join our team and become part of something meaningful. Apply today to start your journey with Only Health Solutions.
           </p>
-          <a
-            href="/contact"
+          <button
+            onClick={() => setShowApplicationForm(true)}
             style={{
               display: "inline-block",
               padding: "16px 40px",
@@ -332,7 +495,6 @@ export default function CareersPage() {
               cursor: "pointer",
               transition: "all 0.3s ease",
               boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
-              textDecoration: "none",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "scale(1.05)";
@@ -344,9 +506,24 @@ export default function CareersPage() {
             }}
           >
             Apply Now
-          </a>
+          </button>
         </div>
       </section>
+
+      {/* Application Form Modal */}
+      {showApplicationForm && (
+        <ApplicationFormModal
+          onClose={() => setShowApplicationForm(false)}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleFileChange={handleFileChange}
+          removeFile={removeFile}
+          uploadedFiles={uploadedFiles}
+          handleSubmit={handleSubmit}
+          inputStyle={inputStyle}
+          labelStyle={labelStyle}
+        />
+      )}
     </main>
   );
 }
@@ -565,6 +742,546 @@ function QualityItem({ title, description }) {
           {description}
         </p>
       </div>
+    </div>
+  );
+}
+
+// Application Form Modal Component
+function ApplicationFormModal({
+  onClose,
+  formData,
+  handleInputChange,
+  handleFileChange,
+  removeFile,
+  uploadedFiles,
+  handleSubmit,
+  inputStyle,
+  labelStyle,
+}) {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.6)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 9999,
+        backdropFilter: "blur(5px)",
+        padding: "20px",
+        overflowY: "auto",
+      }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          background: "white",
+          borderRadius: "24px",
+          padding: "48px",
+          maxWidth: "800px",
+          width: "100%",
+          boxShadow: "0 50px 100px rgba(0,0,0,0.3)",
+          animation: "slideUp 0.3s ease",
+          maxHeight: "90vh",
+          overflowY: "auto",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "24px",
+            right: "24px",
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            background: "#f0e6ff",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "all 0.3s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#1fa6a0";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "#f0e6ff";
+          }}
+        >
+          <X size={20} color="#1fa6a0" />
+        </button>
+
+        <h2
+          style={{
+            fontSize: "32px",
+            fontWeight: 800,
+            marginBottom: "8px",
+            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            color: "transparent",
+          }}
+        >
+          Job Application
+        </h2>
+        <p style={{ color: "#666", marginBottom: "32px" }}>
+          Fill out the form below to apply for a position with Only Health Solutions
+        </p>
+
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          {/* Personal Information Section */}
+          <FormSection title="Personal Information">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div>
+                <label style={labelStyle}>First Name *</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Last Name *</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div>
+                <label style={labelStyle}>Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Phone *</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+            <div>
+              <label style={labelStyle}>Address *</label>
+              <input
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                required
+                style={inputStyle}
+              />
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "16px" }}>
+              <div>
+                <label style={labelStyle}>City *</label>
+                <input
+                  type="text"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>State *</label>
+                <input
+                  type="text"
+                  name="state"
+                  value={formData.state}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>ZIP Code *</label>
+                <input
+                  type="text"
+                  name="zipCode"
+                  value={formData.zipCode}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+          </FormSection>
+
+          {/* Emergency Contact Section */}
+          <FormSection title="Emergency Contact">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div>
+                <label style={labelStyle}>Name *</label>
+                <input
+                  type="text"
+                  name="emergencyName"
+                  value={formData.emergencyName}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Phone *</label>
+                <input
+                  type="tel"
+                  name="emergencyPhone"
+                  value={formData.emergencyPhone}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+            <div>
+              <label style={labelStyle}>Relationship *</label>
+              <input
+                type="text"
+                name="emergencyRelationship"
+                value={formData.emergencyRelationship}
+                onChange={handleInputChange}
+                required
+                style={inputStyle}
+              />
+            </div>
+          </FormSection>
+
+          {/* Education Section */}
+          <FormSection title="Education">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div>
+                <label style={labelStyle}>Highest Degree *</label>
+                <input
+                  type="text"
+                  name="highestDegree"
+                  value={formData.highestDegree}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>School *</label>
+                <input
+                  type="text"
+                  name="school"
+                  value={formData.school}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+            <div>
+              <label style={labelStyle}>Graduation Year</label>
+              <input
+                type="text"
+                name="graduationYear"
+                value={formData.graduationYear}
+                onChange={handleInputChange}
+                style={inputStyle}
+              />
+            </div>
+          </FormSection>
+
+          {/* Certification & Licensing Section */}
+          <FormSection title="Certification & Licensing">
+            <div>
+              <label style={labelStyle}>Certifications *</label>
+              <input
+                type="text"
+                name="certifications"
+                value={formData.certifications}
+                onChange={handleInputChange}
+                required
+                placeholder="e.g., RN, CNA, HHA"
+                style={inputStyle}
+              />
+            </div>
+            <div>
+              <label style={labelStyle}>Licensing Numbers *</label>
+              <input
+                type="text"
+                name="licensingNumbers"
+                value={formData.licensingNumbers}
+                onChange={handleInputChange}
+                required
+                style={inputStyle}
+              />
+            </div>
+          </FormSection>
+
+          {/* Position & Availability Section */}
+          <FormSection title="Position & Availability">
+            <div>
+              <label style={labelStyle}>Position Applying For *</label>
+              <select
+                name="positionApplying"
+                value={formData.positionApplying}
+                onChange={handleInputChange}
+                required
+                style={inputStyle}
+              >
+                <option value="">Select a position</option>
+                <option value="Registered Nurse (RN)">Registered Nurse (RN)</option>
+                <option value="Certified Nursing Assistant (CNA)">Certified Nursing Assistant (CNA)</option>
+                <option value="Home Health Aide">Home Health Aide</option>
+                <option value="Care Coordinator">Care Coordinator</option>
+              </select>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px" }}>
+              <div>
+                <label style={labelStyle}>Start Date *</label>
+                <input
+                  type="date"
+                  name="availabilityStart"
+                  value={formData.availabilityStart}
+                  onChange={handleInputChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Days Per Week *</label>
+                <input
+                  type="text"
+                  name="daysPerWeek"
+                  value={formData.daysPerWeek}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="e.g., 3-5"
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Hours Per Day *</label>
+                <input
+                  type="text"
+                  name="hoursPerDay"
+                  value={formData.hoursPerDay}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="e.g., 8"
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+          </FormSection>
+
+          {/* Work Authorization Section */}
+          <FormSection title="Work Authorization">
+            <div>
+              <label style={labelStyle}>Citizenship Status *</label>
+              <select
+                name="citzenshipStatus"
+                value={formData.citzenshipStatus}
+                onChange={handleInputChange}
+                required
+                style={inputStyle}
+              >
+                <option value="">Select status</option>
+                <option value="US Citizen">US Citizen</option>
+                <option value="Permanent Resident">Permanent Resident</option>
+                <option value="Work Visa">Work Visa</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </FormSection>
+
+          {/* Documents Section */}
+          <FormSection title="Documents">
+            <FileUploadField
+              label="Resume"
+              fieldName="resume"
+              uploadedFiles={uploadedFiles}
+              handleFileChange={handleFileChange}
+              removeFile={removeFile}
+            />
+            <FileUploadField
+              label="Certification Documents"
+              fieldName="certDocuments"
+              uploadedFiles={uploadedFiles}
+              handleFileChange={handleFileChange}
+              removeFile={removeFile}
+            />
+            <FileUploadField
+              label="Additional Documents"
+              fieldName="additionalDocuments"
+              uploadedFiles={uploadedFiles}
+              handleFileChange={handleFileChange}
+              removeFile={removeFile}
+            />
+          </FormSection>
+
+          {/* Background Check & Agreement Section */}
+          <FormSection title="Background Check & Agreement">
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+              <input
+                type="checkbox"
+                name="agreeToBackgroundCheck"
+                checked={formData.agreeToBackgroundCheck}
+                onChange={handleInputChange}
+                style={{ width: "18px", height: "18px", cursor: "pointer" }}
+              />
+              <label style={{ margin: "0", cursor: "pointer", fontWeight: 500 }}>
+                I agree to a background check
+              </label>
+            </div>
+            <div>
+              <label style={labelStyle}>Signature *</label>
+              <input
+                type="text"
+                name="signature"
+                value={formData.signature}
+                onChange={handleInputChange}
+                required
+                placeholder="Type your full name as signature"
+                style={inputStyle}
+              />
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <input
+                type="checkbox"
+                name="agreeToTerms"
+                checked={formData.agreeToTerms}
+                onChange={handleInputChange}
+                required
+                style={{ width: "18px", height: "18px", cursor: "pointer" }}
+              />
+              <label style={{ margin: "0", cursor: "pointer", fontWeight: 500 }}>
+                I agree to the terms and conditions *
+              </label>
+            </div>
+          </FormSection>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            style={{
+              padding: "16px 32px",
+              borderRadius: "12px",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              color: "white",
+              border: "none",
+              fontWeight: "700",
+              fontSize: "16px",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              boxShadow: "0 10px 30px rgba(31,166,160,0.2)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-3px)";
+              e.currentTarget.style.boxShadow = "0 15px 40px rgba(31,166,160,0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 10px 30px rgba(31,166,160,0.2)";
+            }}
+          >
+            Submit Application
+          </button>
+        </form>
+      </div>
+
+      <style>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// Form Section Component
+function FormSection({ title, children }) {
+  return (
+    <div style={{ borderTop: "2px solid #e2e8f0", paddingTop: "24px" }}>
+      <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#0b1320", marginBottom: "16px" }}>
+        {title}
+      </h3>
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// File Upload Field Component
+function FileUploadField({ label, fieldName, uploadedFiles, handleFileChange, removeFile }) {
+  return (
+    <div>
+      <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#0f172a", fontSize: "14px" }}>
+        {label}
+      </label>
+      {uploadedFiles[fieldName] ? (
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "12px", background: "#f0e6ff", borderRadius: "12px" }}>
+          <span style={{ fontSize: "14px", color: "#0f172a", fontWeight: 500, flex: 1 }}>
+            ✓ {uploadedFiles[fieldName]}
+          </span>
+          <button
+            type="button"
+            onClick={() => removeFile(fieldName)}
+            style={{
+              background: "rgba(255,255,255,0.7)",
+              border: "none",
+              borderRadius: "6px",
+              padding: "6px 12px",
+              cursor: "pointer",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#1fa6a0",
+            }}
+          >
+            Remove
+          </button>
+        </div>
+      ) : (
+        <div style={{ position: "relative" }}>
+          <input
+            type="file"
+            onChange={(e) => handleFileChange(e, fieldName)}
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "12px",
+              border: "2px dashed #dbe2ea",
+              cursor: "pointer",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
