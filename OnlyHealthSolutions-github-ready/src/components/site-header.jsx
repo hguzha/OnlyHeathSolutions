@@ -106,7 +106,7 @@ export default function SiteHeader() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: "20px",
+          gap: "15px",
         }}
       >
         {/* Logo - Big and at left */}
@@ -135,9 +135,9 @@ export default function SiteHeader() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "8px",
+            gap: "5px",
             fontWeight: 600,
-            fontSize: "13px",
+            fontSize: "15px",
             whiteSpace: "nowrap",
             position: "relative",
             flex: "1 1 auto",
@@ -160,12 +160,12 @@ export default function SiteHeader() {
                       border: "none",
                       color: "#ffffff",
                       cursor: "pointer",
-                      padding: "6px 10px",
+                      padding: "4px 8px",
                       display: "flex",
                       alignItems: "center",
                       gap: "6px",
                       fontWeight: 600,
-                      fontSize: "13px",
+                      fontSize: "15px",
                       transition: "color 0.3s ease",
                     }}
                     onMouseEnter={(e) => {
@@ -245,11 +245,11 @@ export default function SiteHeader() {
                 href={item.href}
                 style={{
                   color: "#ffffff",
-                  padding: "6px 10px",
+                  padding: "4px 8px",
                   borderRadius: "6px",
                   transition: "all 0.3s ease",
                   fontWeight: 600,
-                  fontSize: "13px",
+                  fontSize: "15px",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "#d4af37";
@@ -276,7 +276,7 @@ export default function SiteHeader() {
               color: "white",
               border: "none",
               fontWeight: "700",
-              fontSize: "12px",
+              fontSize: "13px",
               cursor: "pointer",
               transition: "transform 0.3s ease",
               whiteSpace: "nowrap",
@@ -303,7 +303,7 @@ export default function SiteHeader() {
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               fontWeight: "700",
-              fontSize: "12px",
+              fontSize: "13px",
               textDecoration: "none",
               transition: "all 0.3s ease",
               whiteSpace: "nowrap",
