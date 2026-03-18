@@ -110,26 +110,28 @@ export default function HowItWorksPage() {
             </p>
           </div>
 
-          {/* Steps Grid */}
+          {/* Steps Grid with Connectors */}
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
               gap: "40px",
               alignItems: "stretch",
+              position: "relative",
             }}
           >
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
-                <StepCard step={step} isLast={index === steps.length - 1} />
+                <StepCard step={step} />
+                {/* Arrow connector between steps (but not after the last step) */}
                 {index < steps.length - 1 && (
                   <div
                     style={{
                       position: "absolute",
-                      right: "-62px",
-                      top: "40%",
-                      transform: "translateX(-50%)",
+                      right: `calc(-62px + ${(index + 1) * (100 / 3)}%)`,
+                      top: "30%",
                       zIndex: 10,
+                      transform: "translateX(-50%)",
                     }}
                   >
                     <div
@@ -142,7 +144,6 @@ export default function HowItWorksPage() {
                         alignItems: "center",
                         justifyContent: "center",
                         boxShadow: "0 10px 30px rgba(31,166,160,0.2)",
-                        position: "relative",
                       }}
                     >
                       <ArrowRight size={24} color="#ffffff" />
@@ -278,7 +279,7 @@ export default function HowItWorksPage() {
 }
 
 // Step Card Component
-function StepCard({ step, isLast }) {
+function StepCard({ step }) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const Icon = step.icon;
