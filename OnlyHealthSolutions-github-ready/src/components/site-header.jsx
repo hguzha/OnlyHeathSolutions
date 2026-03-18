@@ -105,24 +105,25 @@ export default function SiteHeader() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: "20px",
+          gap: "10px",
         }}
       >
-        {/* Logo - Positioned at far left */}
+        {/* Logo - Positioned at far left with smaller width */}
         <Link
           href="/"
           style={{
             display: "flex",
             alignItems: "center",
             flexShrink: 0,
-            minWidth: "160px",
+            minWidth: "140px",
+            maxWidth: "140px",
           }}
         >
           <img
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: "160px",
+              height: "140px",
               width: "auto",
               display: "block",
             }}
@@ -135,9 +136,9 @@ export default function SiteHeader() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "14px",
+            gap: "10px",
             fontWeight: 600,
-            fontSize: "14px",
+            fontSize: "13px",
             flex: 1,
             justifyContent: "center",
             whiteSpace: "nowrap",
@@ -161,12 +162,12 @@ export default function SiteHeader() {
                       border: "none",
                       color: "#ffffff",
                       cursor: "pointer",
-                      padding: "8px 12px",
+                      padding: "6px 10px",
                       display: "flex",
                       alignItems: "center",
                       gap: "6px",
                       fontWeight: 600,
-                      fontSize: "14px",
+                      fontSize: "13px",
                       transition: "color 0.3s ease",
                     }}
                     onMouseEnter={(e) => {
@@ -246,11 +247,11 @@ export default function SiteHeader() {
                 href={item.href}
                 style={{
                   color: "#ffffff",
-                  padding: "8px 12px",
+                  padding: "6px 10px",
                   borderRadius: "6px",
                   transition: "all 0.3s ease",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "13px",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "#d4af37";
@@ -266,18 +267,18 @@ export default function SiteHeader() {
         </nav>
 
         {/* Buttons - Positioned at far right */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
           {/* Request Consult Button */}
           <button
             onClick={handleRequestConsult}
             style={{
-              padding: "10px 20px",
+              padding: "8px 16px",
               borderRadius: "9999px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               border: "none",
               fontWeight: "700",
-              fontSize: "13px",
+              fontSize: "12px",
               cursor: "pointer",
               transition: "transform 0.3s ease",
               whiteSpace: "nowrap",
@@ -298,13 +299,13 @@ export default function SiteHeader() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "8px",
-              padding: "10px 20px",
+              gap: "6px",
+              padding: "8px 16px",
               borderRadius: "9999px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               fontWeight: "700",
-              fontSize: "13px",
+              fontSize: "12px",
               textDecoration: "none",
               transition: "all 0.3s ease",
               whiteSpace: "nowrap",
@@ -316,7 +317,7 @@ export default function SiteHeader() {
               e.currentTarget.style.transform = "scale(1)";
             }}
           >
-            <Phone size={16} />
+            <Phone size={14} />
             Call Now
           </Link>
         </div>
