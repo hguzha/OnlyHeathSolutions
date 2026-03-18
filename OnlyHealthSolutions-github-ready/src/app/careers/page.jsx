@@ -246,7 +246,7 @@ Applicant Agrees to Terms: Yes`
   return (
     <main>
       <PageHero
-        title="Join Our Team"
+        //title="Join Our Team"
         subtitle="Be part of a mission to bring compassionate, dignified care to those who need it most."
         height={460}
         images={[
