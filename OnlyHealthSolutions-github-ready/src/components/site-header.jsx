@@ -291,7 +291,7 @@ export default function SiteHeader() {
             Request a Consult
           </button>
 
-          {/* Call Now Link */}
+          {/* Call Now Link with Phone Number */}
           <Link
             href={brand.phoneHref}
             style={{
@@ -316,7 +316,7 @@ export default function SiteHeader() {
             }}
           >
             <Phone size={14} />
-            Call Now
+            {brand.phoneDisplay}
           </Link>
         </div>
 
@@ -448,7 +448,7 @@ export default function SiteHeader() {
             Request a Consult
           </button>
 
-          {/* Mobile Call Now Button */}
+          {/* Mobile Call Now Button with Phone Number */}
           <Link
             href={brand.phoneHref}
             style={{
@@ -470,7 +470,7 @@ export default function SiteHeader() {
             onClick={() => setMobileOpen(false)}
           >
             <Phone size={16} />
-            Call Now
+            {brand.phoneDisplay}
           </Link>
         </div>
       )}
