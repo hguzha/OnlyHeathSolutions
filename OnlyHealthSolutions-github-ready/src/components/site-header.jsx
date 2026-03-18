@@ -104,45 +104,42 @@ export default function SiteHeader() {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
-          gap: "10px",
+          justifyContent: "flex-start",
+          gap: "30px",
         }}
       >
-        {/* Logo - Positioned at far left with smaller width */}
+        {/* Logo - Big and at far left */}
         <Link
           href="/"
           style={{
             display: "flex",
             alignItems: "center",
             flexShrink: 0,
-            minWidth: "140px",
-            maxWidth: "140px",
           }}
         >
           <img
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: "140px",
+              height: "160px",
               width: "auto",
               display: "block",
             }}
           />
         </Link>
 
-        {/* Navigation - In the middle */}
+        {/* Navigation - After logo */}
         <nav
           className="desktop-nav"
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "10px",
+            gap: "12px",
             fontWeight: 600,
             fontSize: "13px",
-            flex: 1,
-            justifyContent: "center",
             whiteSpace: "nowrap",
             position: "relative",
+            flexShrink: 0,
           }}
         >
           {menuItems.map((item) => {
@@ -162,7 +159,7 @@ export default function SiteHeader() {
                       border: "none",
                       color: "#ffffff",
                       cursor: "pointer",
-                      padding: "6px 10px",
+                      padding: "8px 12px",
                       display: "flex",
                       alignItems: "center",
                       gap: "6px",
@@ -247,7 +244,7 @@ export default function SiteHeader() {
                 href={item.href}
                 style={{
                   color: "#ffffff",
-                  padding: "6px 10px",
+                  padding: "8px 12px",
                   borderRadius: "6px",
                   transition: "all 0.3s ease",
                   fontWeight: 600,
@@ -266,19 +263,22 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        {/* Buttons - Positioned at far right */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+        {/* Spacer to push buttons to the right */}
+        <div style={{ flex: 1 }} />
+
+        {/* Buttons - At far right */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
           {/* Request Consult Button */}
           <button
             onClick={handleRequestConsult}
             style={{
-              padding: "8px 16px",
+              padding: "10px 18px",
               borderRadius: "9999px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               border: "none",
               fontWeight: "700",
-              fontSize: "12px",
+              fontSize: "13px",
               cursor: "pointer",
               transition: "transform 0.3s ease",
               whiteSpace: "nowrap",
@@ -299,13 +299,13 @@ export default function SiteHeader() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "6px",
-              padding: "8px 16px",
+              gap: "8px",
+              padding: "10px 18px",
               borderRadius: "9999px",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               fontWeight: "700",
-              fontSize: "12px",
+              fontSize: "13px",
               textDecoration: "none",
               transition: "all 0.3s ease",
               whiteSpace: "nowrap",
@@ -317,7 +317,7 @@ export default function SiteHeader() {
               e.currentTarget.style.transform = "scale(1)";
             }}
           >
-            <Phone size={14} />
+            <Phone size={16} />
             Call Now
           </Link>
         </div>
