@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import { reviews } from "@/lib/site-data";
-import { Star, Quote, Heart, Users, MessageCircle, CheckCircle } from "lucide-react";
+import { Star, Quote, Heart, Users, MessageCircle, CheckCircle, X } from "lucide-react";
 
 export default function ReviewsPage() {
   const [selectedReview, setSelectedReview] = useState(null);
+  const router = useRouter();
 
   // Add ratings to reviews if they don't have them
   const reviewsWithRatings = reviews.map((review, index) => ({
@@ -22,6 +24,17 @@ export default function ReviewsPage() {
   ).toFixed(1);
 
   const totalReviews = reviewsWithRatings.length;
+
+  const handleGetStarted = () => {
+    // Navigate to services page and scroll to new-client-inquiry
+    router.push("/services?scroll=new-client-inquiry");
+    setTimeout(() => {
+      const element = document.getElementById("new-client-inquiry");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 500);
+  };
 
   return (
     <main>
@@ -341,8 +354,8 @@ export default function ReviewsPage() {
           <p style={{ fontSize: "18px", lineHeight: 1.8, color: "rgba(255,255,255,0.95)", marginBottom: "40px" }}>
             Experience the care and compassion that families trust. Start your journey with us today.
           </p>
-          <a
-            href="/contact"
+          <button
+            onClick={handleGetStarted}
             style={{
               display: "inline-block",
               padding: "16px 40px",
@@ -367,7 +380,7 @@ export default function ReviewsPage() {
             }}
           >
             Get Started Today
-          </a>
+          </button>
         </div>
       </section>
     </main>
@@ -516,6 +529,34 @@ function FeaturedReviewModal({ review, onClose }) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "24px",
+            right: "24px",
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            background: "#f0e6ff",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "all 0.3s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#1fa6a0";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "#f0e6ff";
+          }}
+        >
+          <X size={20} color="#1fa6a0" />
+        </button>
+
         {/* Stars */}
         <div style={{ display: "flex", justifyContent: "center", gap: "6px", marginBottom: "24px" }}>
           {[...Array(review.rating)].map((_, i) => (
