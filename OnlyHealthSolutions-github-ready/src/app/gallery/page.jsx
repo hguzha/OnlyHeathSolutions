@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import { X, Heart, Maximize2 } from "lucide-react";
 
@@ -46,12 +47,24 @@ const galleryImages = [
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState("All");
+  const router = useRouter();
 
   const categories = ["All", ...new Set(galleryImages.map(img => img.category))];
   
   const filteredImages = filter === "All" 
     ? galleryImages 
     : galleryImages.filter(img => img.category === filter);
+
+  const handleScheduleConsultation = () => {
+    // Navigate to services page and scroll to new-client-inquiry
+    router.push("/services?scroll=new-client-inquiry");
+    setTimeout(() => {
+      const element = document.getElementById("new-client-inquiry");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 500);
+  };
 
   return (
     <main>
@@ -229,8 +242,8 @@ export default function GalleryPage() {
           <p style={{ fontSize: "18px", lineHeight: 1.8, color: "rgba(255,255,255,0.95)", marginBottom: "40px" }}>
             See firsthand how we bring compassion, dignity, and quality of life to every moment of care.
           </p>
-          <a
-            href="/contact"
+          <button
+            onClick={handleScheduleConsultation}
             style={{
               display: "inline-block",
               padding: "16px 40px",
@@ -255,7 +268,7 @@ export default function GalleryPage() {
             }}
           >
             Schedule a Consultation
-          </a>
+          </button>
         </div>
       </section>
     </main>
@@ -428,7 +441,7 @@ function Lightbox({ image, onClose, onNext, onPrev }) {
             textAlign: "center",
           }}
         >
-          <p style={{ fontSize: "12px", fontWeight: 700, margin: "0 0 8px 0", opacity: 0.9 }}>
+          <p style={{ fontSize: "12px", fontWeight: "700", margin: "0 0 8px 0", opacity: 0.9 }}>
             {image.category.toUpperCase()}
           </p>
           <h2 style={{ fontSize: "24px", fontWeight: 800, margin: "0" }}>
