@@ -65,7 +65,7 @@ ${form.message}`
         title="Get in Touch"
         subtitle="We're here to answer questions and help you find the perfect care solution."
         image="ChatGPT Image Mar 19, 2026, 05_21_05 PM.png"
-        height={400}
+        height={500}
       />
 
       {/* Contact Info Cards */}
