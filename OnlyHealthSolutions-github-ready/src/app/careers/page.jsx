@@ -50,6 +50,22 @@ export default function CareersPage() {
       ],
     },
     {
+      title: "Licensed Practical Nurse (LPN)",
+      intro: "Provide direct patient care and support nursing operations in our healthcare setting.",
+      requirements: [
+        "Active LPN license",
+        "Valid CPR/BLS certification",
+        "High school diploma or equivalent",
+        "1+ years of healthcare experience preferred",
+      ],
+      benefits: [
+        "Competitive salary and hourly rate",
+        "Flexible scheduling",
+        "Health insurance options",
+        "Professional development opportunities",
+      ],
+    },
+    {
       title: "Registered Nurse (RN)",
       intro: "Lead our clinical care operations with expertise, compassion, and leadership.",
       requirements: [
@@ -647,7 +663,7 @@ function ApplicationFormModal({
                 value={formData.currentRole}
                 onChange={handleInputChange}
                 required
-                placeholder="e.g., RN, CNA, Home Health Aide"
+                placeholder="e.g., RN, LPN, CNA, Home Health Aide"
                 style={inputStyle}
               />
             </div>
