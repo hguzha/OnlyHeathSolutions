@@ -15,12 +15,10 @@ export default function SiteFooter() {
         <div className="footer-grid">
           {/* Logo & Statement */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", textAlign: "left" }}>
-            <div style={{ width: "100%", display: "block" }}>
-              <img src={brand.logo} alt={brand.name} style={{ height: 180, width: "100%", marginBottom: 16, display: "block", margin: 0, padding: 0, objectFit: "contain", textAlign: "left" }} />
-              <p style={{ color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.6, padding: 0, width: "100%" }}>
-                Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
-              </p>
-            </div>
+            <img src={brand.logo} alt={brand.name} style={{ height: 180, width: "auto", marginBottom: 16, display: "block", margin: 0, padding: 0, marginRight: "auto" }} />
+            <p style={{ color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.6, padding: 0, marginLeft: 0 }}>
+              Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
+            </p>
           </div>
 
           {/* Explore Section */}
