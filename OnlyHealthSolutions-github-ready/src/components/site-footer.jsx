@@ -127,7 +127,7 @@ export default function SiteFooter() {
                   display: "flex", 
                   alignItems: "flex-start", 
                   gap: "12px",
-                  color: "rgba(255,255,255,0.8)",
+                  color: hoveredContact === "location" ? "#1fa6a0" : "rgba(255,255,255,0.8)",
                   transition: "all 0.3s ease",
                   cursor: "pointer",
                 }}
