@@ -12,9 +12,9 @@ export default function SiteFooter() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-grid">
+        <div className="footer-grid" style={{ gridTemplateColumns: "auto 1fr 1fr" }}>
           {/* Logo & Statement */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", textAlign: "left" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", textAlign: "left", width: "fit-content" }}>
             <img src={brand.logo} alt={brand.name} style={{ height: 180, width: "auto", marginBottom: 16, display: "block", marginLeft: 0, padding: 0 }} />
             <p style={{ color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.6, padding: 0, marginLeft: 0, maxWidth: "180px" }}>
               Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
