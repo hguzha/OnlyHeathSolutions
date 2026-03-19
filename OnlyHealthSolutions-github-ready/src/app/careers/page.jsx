@@ -15,12 +15,10 @@ export default function CareersPage() {
     currentRole: "",
     startDate: "",
     availabilityStatus: "",
-    daysPerWeek: "",
-    hoursPerDay: "",
+    hasLicense: "",
     citzenshipStatus: "",
     agreeToBackgroundCheck: false,
     signature: "",
-    agreeToTerms: false,
   });
   
   const [uploadedFiles, setUploadedFiles] = useState({
@@ -189,8 +187,8 @@ export default function CareersPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.agreeToTerms) {
-      alert("Please agree to the terms and conditions");
+    if (!formData.agreeToBackgroundCheck) {
+      alert("Please agree to the background check");
       return;
     }
 
@@ -224,12 +222,10 @@ export default function CareersPage() {
         currentRole: "",
         startDate: "",
         availabilityStatus: "",
-        daysPerWeek: "",
-        hoursPerDay: "",
+        hasLicense: "",
         citzenshipStatus: "",
         agreeToBackgroundCheck: false,
         signature: "",
-        agreeToTerms: false,
       });
       setUploadedFiles({
         resume: null,
@@ -695,31 +691,24 @@ function ApplicationFormModal({
                 </select>
               </div>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-              <div>
-                <label style={labelStyle}>Days Per Week *</label>
-                <input
-                  type="text"
-                  name="daysPerWeek"
-                  value={formData.daysPerWeek}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="e.g., 3-5"
-                  style={inputStyle}
-                />
-              </div>
-              <div>
-                <label style={labelStyle}>Hours Per Day *</label>
-                <input
-                  type="text"
-                  name="hoursPerDay"
-                  value={formData.hoursPerDay}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="e.g., 8"
-                  style={inputStyle}
-                />
-              </div>
+          </FormSection>
+
+          {/* License Section */}
+          <FormSection title="Licensing">
+            <div>
+              <label style={labelStyle}>Do you have a current license? *</label>
+              <select
+                name="hasLicense"
+                value={formData.hasLicense}
+                onChange={handleInputChange}
+                required
+                style={inputStyle}
+              >
+                <option value="">Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="In Progress">In Progress</option>
+              </select>
             </div>
           </FormSection>
 
@@ -772,20 +761,21 @@ function ApplicationFormModal({
           </FormSection>
 
           {/* Background Check & Agreement Section */}
-          <FormSection title="Background Check & Agreement">
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+          <FormSection title="Background Check">
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <input
                 type="checkbox"
                 name="agreeToBackgroundCheck"
                 checked={formData.agreeToBackgroundCheck}
                 onChange={handleInputChange}
+                required
                 style={{ width: "18px", height: "18px", cursor: "pointer" }}
               />
               <label style={{ margin: "0", cursor: "pointer", fontWeight: 500 }}>
-                I agree to a background check
+                I agree to a background check *
               </label>
             </div>
-            <div>
+            <div style={{ marginTop: "16px" }}>
               <label style={labelStyle}>Signature *</label>
               <input
                 type="text"
@@ -796,19 +786,6 @@ function ApplicationFormModal({
                 placeholder="Type your full name as signature"
                 style={inputStyle}
               />
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <input
-                type="checkbox"
-                name="agreeToTerms"
-                checked={formData.agreeToTerms}
-                onChange={handleInputChange}
-                required
-                style={{ width: "18px", height: "18px", cursor: "pointer" }}
-              />
-              <label style={{ margin: "0", cursor: "pointer", fontWeight: 500 }}>
-                I agree to the terms and conditions *
-              </label>
             </div>
           </FormSection>
 
