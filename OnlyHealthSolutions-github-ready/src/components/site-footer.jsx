@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { brand, navLinks } from "@/lib/site-data";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
 
 export default function SiteFooter() {
+  const [hoveredLink, setHoveredLink] = useState(null);
+  const [hoveredContact, setHoveredContact] = useState(null);
+
   return (
     <footer className="footer">
       <div className="container">
@@ -26,18 +32,13 @@ export default function SiteFooter() {
                   key={item.href} 
                   href={item.href}
                   style={{
-                    color: "rgba(255,255,255,0.8)",
+                    color: hoveredLink === item.href ? "#1fa6a0" : "rgba(255,255,255,0.8)",
                     textDecoration: "none",
                     transition: "all 0.3s ease",
+                    paddingLeft: hoveredLink === item.href ? "8px" : "0",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#1fa6a0";
-                    e.currentTarget.style.paddingLeft = "8px";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "rgba(255,255,255,0.8)";
-                    e.currentTarget.style.paddingLeft = "0";
-                  }}
+                  onMouseEnter={() => setHoveredLink(item.href)}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   {item.label}
                 </Link>
@@ -59,15 +60,11 @@ export default function SiteFooter() {
                   alignItems: "center",
                   gap: "12px",
                   textDecoration: "none",
-                  color: "rgba(255,255,255,0.8)",
+                  color: hoveredContact === "phone" ? "#1fa6a0" : "rgba(255,255,255,0.8)",
                   transition: "all 0.3s ease",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#1fa6a0";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(255,255,255,0.8)";
-                }}
+                onMouseEnter={() => setHoveredContact("phone")}
+                onMouseLeave={() => setHoveredContact(null)}
               >
                 <Phone size={20} style={{ flexShrink: 0, color: "#1fa6a0" }} />
                 <span>{brand.phoneDisplay}</span>
@@ -81,15 +78,11 @@ export default function SiteFooter() {
                   alignItems: "center",
                   gap: "12px",
                   textDecoration: "none",
-                  color: "rgba(255,255,255,0.8)",
+                  color: hoveredContact === "email" ? "#1fa6a0" : "rgba(255,255,255,0.8)",
                   transition: "all 0.3s ease",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#1fa6a0";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(255,255,255,0.8)";
-                }}
+                onMouseEnter={() => setHoveredContact("email")}
+                onMouseLeave={() => setHoveredContact(null)}
               >
                 <Mail size={20} style={{ flexShrink: 0, color: "#1fa6a0" }} />
                 <span>{brand.emailDisplay}</span>
@@ -112,5 +105,7 @@ export default function SiteFooter() {
         </div>
       </div>
     </footer>
+  );
+}
   );
 }
