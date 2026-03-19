@@ -290,34 +290,6 @@ export default function SiteHeader() {
           >
             Request a Consult
           </button>
-
-          {/* Call Now Link with Phone Number */}
-          <Link
-            href={brand.phoneHref}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "8px 14px",
-              borderRadius: "9999px",
-              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-              color: "white",
-              fontWeight: "700",
-              fontSize: "13px",
-              textDecoration: "none",
-              transition: "all 0.3s ease",
-              whiteSpace: "nowrap",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-          >
-            <Phone size={14} />
-            {brand.phoneDisplay}
-          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -447,31 +419,6 @@ export default function SiteHeader() {
           >
             Request a Consult
           </button>
-
-          {/* Mobile Call Now Button with Phone Number */}
-          <Link
-            href={brand.phoneHref}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-              padding: "12px",
-              borderRadius: "6px",
-              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-              color: "white",
-              border: "none",
-              fontWeight: "700",
-              fontSize: "13px",
-              cursor: "pointer",
-              textDecoration: "none",
-              marginTop: "8px",
-            }}
-            onClick={() => setMobileOpen(false)}
-          >
-            <Phone size={16} />
-            {brand.phoneDisplay}
-          </Link>
         </div>
       )}
     </header>
