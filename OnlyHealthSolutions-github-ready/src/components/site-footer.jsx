@@ -49,7 +49,7 @@ export default function SiteFooter() {
           {/* Contact Section */}
           <div>
             <h3 style={{ paddingBottom: "16px", borderBottom: "2px solid rgba(31,166,160,0.5)" }}>
-              Contact
+              Contact Us
             </h3>
             <div style={{ display: "grid", gap: 16, marginTop: 16, color: "rgba(255,255,255,0.8)" }}>
               {/* Phone */}
