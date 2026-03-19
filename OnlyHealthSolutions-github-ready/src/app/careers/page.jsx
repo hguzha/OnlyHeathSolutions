@@ -248,9 +248,13 @@ export default function CareersPage() {
     <main>
       <PageHero
         title="Join Our Team"
-        subtitle="Build a rewarding career providing compassionate care to those who need it most."
-        image="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop"
-        height={400}
+        subtitle="Be part of a mission to bring compassionate, dignified care to those who need it most."
+        height={460}
+        images={[
+          "1000251260.jpg",
+          "1000251261.png",
+          "1000251264.jpg",
+        ]}
       />
 
       {/* Careers Section */}
