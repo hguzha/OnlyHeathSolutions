@@ -19,7 +19,7 @@ export default function HomePage() {
       alt: "Healthcare professional with patient"
     },
     {
-      src: "Consider-a-Career-as-a-Home-Care-Nursing-Assistant.png",
+      src: "senior-caretaker-combing-hair.jpg",
       alt: "In-home care support"
     },
     {
