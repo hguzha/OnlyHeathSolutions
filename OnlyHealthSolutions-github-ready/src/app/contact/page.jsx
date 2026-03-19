@@ -64,7 +64,7 @@ ${form.message}`
       <PageHero
         title="Get in Touch"
         subtitle="We're here to answer questions and help you find the perfect care solution."
-        image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2000&auto=format&fit=crop"
+        image="ChatGPT Image Mar 19, 2026, 05_21_05 PM.png"
         height={400}
       />
 
