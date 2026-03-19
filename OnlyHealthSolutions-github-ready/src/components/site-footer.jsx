@@ -16,7 +16,7 @@ export default function SiteFooter() {
           {/* Logo & Statement */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", textAlign: "left" }}>
             <img src={brand.logo} alt={brand.name} style={{ height: 180, width: "auto", marginBottom: 16, marginLeft: 0, display: "block" }} />
-            <p style={{ color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.6, maxWidth: "280px", width: "80%" }}>
+            <p style={{ color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.6, maxWidth: "180px", width: "180px" }}>
               Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
             </p>
           </div>
@@ -49,7 +49,7 @@ export default function SiteFooter() {
           {/* Contact Section */}
           <div>
             <h3 style={{ paddingBottom: "16px", borderBottom: "2px solid rgba(31,166,160,0.5)" }}>
-              Contact Us
+              Contact
             </h3>
             <div style={{ display: "grid", gap: 16, marginTop: 16, color: "rgba(255,255,255,0.8)" }}>
               {/* Phone */}
