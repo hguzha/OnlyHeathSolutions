@@ -7,37 +7,37 @@ import { X, Heart, Maximize2 } from "lucide-react";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    src: "Consider-a-Career-as-a-Home-Care-Nursing-Assistant.png",
     alt: "Caregiver assisting elderly client with warmth and compassion",
     category: "Personal Care",
     title: "Daily Assistance with Dignity"
   },
   {
-    src: "https://images.unsplash.com/photo-1631217314830-4580eec82f25?q=80&w=1200&auto=format&fit=crop",
+    src: "5.jpeg",
     alt: "Healthcare professional providing skilled nursing care",
     category: "Skilled Nursing",
     title: "Professional Health Support"
   },
   {
-    src: "https://images.unsplash.com/photo-1584308666744-24d5f400f6f4?q=80&w=1200&auto=format&fit=crop",
+    src: "vibrant-health-homecare.jpg",
     alt: "In-home care support showing compassionate assistance",
     category: "Home Support",
     title: "Comfort at Home"
   },
   {
-    src: "https://images.unsplash.com/photo-1579154204601-01d82979d485?q=80&w=1200&auto=format&fit=crop",
+    src: "1140x655-home-health-aide.jpg",
     alt: "Compassionate care moment between caregiver and client",
     category: "Companion Care",
     title: "Meaningful Connection"
   },
   {
-    src: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
+    src: "3.jpeg",
     alt: "Nurse providing patient care with professionalism",
     category: "Medical Care",
     title: "Expert Care"
   },
   {
-    src: "https://images.unsplash.com/photo-1576091160693-112d4666ec24?q=80&w=1200&auto=format&fit=crop",
+    src: "1140-nurse-wheelchair-home-care-health.jpg",
     alt: "Senior care with happiness and engagement",
     category: "Quality of Life",
     title: "Happy Moments"
@@ -71,7 +71,7 @@ export default function GalleryPage() {
       <PageHero
         title="Gallery"
         subtitle="Moments of compassionate care, dignity, and meaningful connections in home care."
-        image="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000&auto=format&fit=crop"
+        image="home-nurse-1-1024x665.jpeg"
         height={400}
       />
 
