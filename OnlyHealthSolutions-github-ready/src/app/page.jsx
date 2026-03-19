@@ -11,11 +11,11 @@ import { useEffect } from "react";
 export default function HomePage() {
   const caregivingImages = [
     {
-      src: "1140-nurse-wheelchair-home-care-health.jpg",
+      src: "home-care-worker-1024x597.webp",
       alt: "Caregiver assisting elderly client"
     },
     {
-      src: "1140x655-home-health-aide.jpg",
+      src: "GettyImages-1380716338.jpg",
       alt: "Healthcare professional with patient"
     },
     {
@@ -23,7 +23,7 @@ export default function HomePage() {
       alt: "In-home care support"
     },
     {
-      src: "senior-caretaker-combing-hair.jpg",
+      src: "1.webp",
       alt: "Compassionate care moment"
     },
   ];
