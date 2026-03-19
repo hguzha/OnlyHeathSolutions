@@ -15,7 +15,7 @@ export default function SiteFooter() {
         <div className="footer-grid">
           {/* Logo & Statement */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", textAlign: "left" }}>
-            <img src={brand.logo} alt={brand.name} style={{ height: 180, width: "auto", marginBottom: 16, display: "block", margin: 0, padding: 0, marginLeft: "-40px" }} />
+            <img src={brand.logo} alt={brand.name} style={{ height: 180, width: "auto", marginBottom: 16, display: "block", marginLeft: 0, padding: 0, marginRight: "auto" }} />
             <p style={{ color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.6, padding: 0, marginLeft: 0 }}>
               Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
             </p>
@@ -89,7 +89,18 @@ export default function SiteFooter() {
               </a>
 
               {/* Location */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+              <div 
+                style={{ 
+                  display: "flex", 
+                  alignItems: "flex-start", 
+                  gap: "12px",
+                  color: hoveredContact === "location" ? "#1fa6a0" : "rgba(255,255,255,0.8)",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={() => setHoveredContact("location")}
+                onMouseLeave={() => setHoveredContact(null)}
+              >
                 <MapPin size={20} style={{ flexShrink: 0, color: "#1fa6a0", marginTop: "2px" }} />
                 <div>
                   <div>{brand.addressLine}</div>
