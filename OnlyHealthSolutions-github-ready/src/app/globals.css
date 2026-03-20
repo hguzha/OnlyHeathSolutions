@@ -169,6 +169,11 @@ img {
   object-fit: cover;
 }
 
+/* Hero Images - Keep desktop look */
+.hero-img {
+  object-fit: cover !important;
+}
+
 /* Page Grid Layouts */
 .page-grid-2 {
   display: grid;
@@ -265,10 +270,10 @@ img {
   display: block;
 }
 
-/* Fix for images in grid layouts - show whole picture */
-.grid img,
-.page-grid-2 img,
-.page-grid-3 img {
+/* Fix for images in grid layouts - show whole picture (but not hero) */
+.grid img:not(.hero-img),
+.page-grid-2 img:not(.hero-img),
+.page-grid-3 img:not(.hero-img) {
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -285,10 +290,10 @@ picture img {
   height: auto;
 }
 
-/* Content images - show whole picture */
-main img,
-article img,
-.content img {
+/* Content images - show whole picture (but not hero) */
+main img:not(.hero-img),
+article img:not(.hero-img),
+.content img:not(.hero-img) {
   max-width: 100%;
   height: auto !important;
   object-fit: contain !important;
@@ -401,12 +406,17 @@ article img,
     height: 60px;
   }
 
-  /* Image fixes for mobile - SHOW WHOLE PICTURE */
-  img {
+  /* Image fixes for mobile - SHOW WHOLE PICTURE (but keep hero) */
+  img:not(.hero-img) {
     max-width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
+  }
+
+  /* Hero images stay as cover on mobile too */
+  .hero-img {
+    object-fit: cover !important;
   }
 
   /* Fix gallery on mobile to show full pictures */
@@ -429,23 +439,23 @@ article img,
     padding: 0;
   }
 
-  figure img {
+  figure img:not(.hero-img) {
     width: 100%;
     height: auto;
     object-fit: contain;
   }
 
   /* Page grid images show full */
-  .page-grid-2 img,
-  .page-grid-3 img {
+  .page-grid-2 img:not(.hero-img),
+  .page-grid-3 img:not(.hero-img) {
     width: 100%;
     height: auto;
     object-fit: contain;
   }
 
   /* Content area images */
-  main img,
-  article img {
+  main img:not(.hero-img),
+  article img:not(.hero-img) {
     max-width: 100%;
     height: auto;
     object-fit: contain;
@@ -537,12 +547,17 @@ article img,
     height: 50px;
   }
 
-  /* Image fixes for small mobile - SHOW WHOLE PICTURE */
-  img {
+  /* Image fixes for small mobile - SHOW WHOLE PICTURE (but not hero) */
+  img:not(.hero-img) {
     max-width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
+  }
+
+  /* Hero images stay as cover */
+  .hero-img {
+    object-fit: cover !important;
   }
 
   .gallery-card {
@@ -565,15 +580,15 @@ article img,
   }
 
   /* Fix for images breaking layout */
-  figure,
-  img {
+  figure:not(.hero),
+  img:not(.hero-img) {
     max-width: 100%;
     margin: 0;
     padding: 0;
     object-fit: contain;
   }
 
-  figure img {
+  figure img:not(.hero-img) {
     display: block;
     width: 100%;
     height: auto;
@@ -581,16 +596,16 @@ article img,
   }
 
   /* Page grid images show full */
-  .page-grid-2 img,
-  .page-grid-3 img {
+  .page-grid-2 img:not(.hero-img),
+  .page-grid-3 img:not(.hero-img) {
     width: 100%;
     height: auto;
     object-fit: contain;
   }
 
   /* Content area images */
-  main img,
-  article img {
+  main img:not(.hero-img),
+  article img:not(.hero-img) {
     max-width: 100%;
     height: auto;
     object-fit: contain;
