@@ -45,8 +45,7 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Change color when scrolled down more than 100px
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -61,7 +60,6 @@ export default function SiteHeader() {
     setServicesDropdownOpen(false);
     setMobileServicesOpen(false);
     
-    // If clicking "All Services", use window.location to ensure clean navigation
     if (isAllServices) {
       window.location.href = href;
     } else {
@@ -70,46 +68,44 @@ export default function SiteHeader() {
   };
 
   const handleRequestConsult = () => {
-    // Navigate to services page and scroll to new-client-inquiry
     if (pathname === "/services") {
-      // Already on services page, just scroll
       const element = document.getElementById('new-client-inquiry');
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // Navigate to services page with anchor
       router.push("/services#new-client-inquiry");
     }
   };
 
-  // Change background color based on scroll
-  const headerTopBgColor = scrolled ? "rgba(11, 19, 32, 0.98)" : "rgba(128, 128, 128, 0.9)";
+  // More obvious color change
+  const headerTopBgColor = scrolled ? "#0b1320" : "#888888";
   const borderColor = scrolled ? "#d4af37" : "rgba(255, 255, 255, 0.3)";
 
   return (
     <header
-      className="topbar"
       style={{
         borderBottom: `2px solid ${borderColor}`,
         position: "sticky",
         top: 0,
         zIndex: 1000,
         backgroundColor: headerTopBgColor,
-        transition: "all 0.4s ease",
+        transition: "background-color 0.4s ease, border-color 0.4s ease",
         paddingRight: "20px",
       }}
     >
       <div
-        className="container topbar-inner"
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: "15px",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "0 20px",
         }}
       >
-        {/* Logo - Big and at left */}
+        {/* Logo */}
         <Link
           href="/"
           style={{
@@ -129,9 +125,8 @@ export default function SiteHeader() {
           />
         </Link>
 
-        {/* Navigation - After logo */}
+        {/* Navigation */}
         <nav
-          className="desktop-nav"
           style={{
             display: "flex",
             alignItems: "center",
@@ -264,9 +259,8 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        {/* Buttons - At far right */}
+        {/* Buttons */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0, minWidth: "fit-content" }}>
-          {/* Request Consult Button */}
           <button
             onClick={handleRequestConsult}
             style={{
@@ -294,7 +288,6 @@ export default function SiteHeader() {
 
         {/* Mobile Menu Button */}
         <button
-          className="mobile-nav-toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
           style={{
             background: "none",
@@ -396,7 +389,6 @@ export default function SiteHeader() {
             );
           })}
 
-          {/* Mobile Request Consult Button */}
           <button
             onClick={() => {
               handleRequestConsult();
