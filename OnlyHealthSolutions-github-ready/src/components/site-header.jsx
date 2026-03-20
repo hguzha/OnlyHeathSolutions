@@ -83,9 +83,9 @@ export default function SiteHeader() {
     }
   };
 
-  // Only change the top section (container area) background color based on scroll
-  const headerTopBgColor = scrolled ? "rgba(11, 19, 32, 0.98)" : "rgba(128, 128, 128, 0.8)";
-  const borderColor = scrolled ? "#d4af37" : "rgba(255, 255, 255, 0.5)";
+  // Change background color based on scroll
+  const headerTopBgColor = scrolled ? "rgba(11, 19, 32, 0.98)" : "rgba(128, 128, 128, 0.9)";
+  const borderColor = scrolled ? "#d4af37" : "rgba(255, 255, 255, 0.3)";
 
   return (
     <header
