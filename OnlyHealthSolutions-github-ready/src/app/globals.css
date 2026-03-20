@@ -250,7 +250,40 @@ img {
   object-fit: cover;
 }
 
-/* MOBILE RESPONSIVE STYLES */
+/* IMAGE OPTIMIZATION FOR MOBILE */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive images in containers */
+.image-container img,
+.img-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Fix for images in grid layouts */
+.grid img,
+.page-grid-2 img,
+.page-grid-3 img {
+  width: 100%;
+  height: auto;
+}
+
+/* Picture element for responsive images */
+picture {
+  display: block;
+}
+
+picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @media (max-width: 1024px) {
   .container {
     padding: 0 20px;
@@ -357,6 +390,37 @@ img {
   .logo-img {
     height: 60px;
   }
+
+  /* Image fixes for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .gallery-card {
+    aspect-ratio: auto;
+    min-height: 250px;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Prevent image overflow */
+  figure {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  figure img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media (max-width: 480px) {
@@ -444,10 +508,44 @@ img {
     height: 50px;
   }
 
+  /* Image fixes for small mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    -webkit-touch-callout: none;
+  }
+
+  .gallery-card {
+    aspect-ratio: auto;
+    min-height: 200px;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   /* Prevent horizontal scroll */
   body,
   html {
     overflow-x: hidden;
     width: 100%;
+  }
+
+  /* Fix for images breaking layout */
+  figure,
+  img {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
