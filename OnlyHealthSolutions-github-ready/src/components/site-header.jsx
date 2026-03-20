@@ -135,7 +135,6 @@ export default function SiteHeader() {
             fontSize: "15px",
             whiteSpace: "nowrap",
             position: "relative",
-            flex: "1 1 auto",
           }}
         >
           {menuItems.map((item) => {
@@ -260,7 +259,7 @@ export default function SiteHeader() {
         </nav>
 
         {/* Buttons */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0, minWidth: "fit-content" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
           <button
             onClick={handleRequestConsult}
             style={{
