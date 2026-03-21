@@ -315,7 +315,6 @@ export default function SiteHeader() {
             right: 0,
             backgroundColor: "rgba(11, 19, 32, 0.95)",
             borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             display: "flex",
             flexDirection: "column",
             gap: "0",
@@ -420,28 +419,33 @@ export default function SiteHeader() {
               </Link>
             );
           })}
-
-          {/* Mobile Consult Button */}
-          <button
-            onClick={handleRequestConsult}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "16px",
-              borderRadius: "0",
-              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-              color: "white",
-              border: "none",
-              fontWeight: "700",
-              fontSize: "14px",
-              cursor: "pointer",
-              marginTop: "8px",
-            }}
-          >
-            Request a Consult
-          </button>
         </div>
+      )}
+
+      {/* Mobile Consult Button - OUTSIDE dropdown */}
+      {isMobile && mobileOpen && (
+        <button
+          onClick={handleRequestConsult}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "16px",
+            borderRadius: "0",
+            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+            color: "white",
+            border: "none",
+            fontWeight: "700",
+            fontSize: "14px",
+            cursor: "pointer",
+            width: "100%",
+            position: "sticky",
+            bottom: 0,
+            zIndex: 998,
+          }}
+        >
+          Request a Consult
+        </button>
       )}
     </header>
   );
