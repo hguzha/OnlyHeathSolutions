@@ -328,7 +328,7 @@ function GalleryCard({ image, onOpen }) {
         alt={image.alt}
         style={{
           width: "100%",
-          height: "100%",
+          height: "80%",
           objectFit: "contain",
           display: "block",
           transition: "transform 0.3s ease",
