@@ -236,13 +236,13 @@ img {
   min-height: 100px;
 }
 
-/* Gallery Grid - Allow inline styles to work */
+/* Gallery - Let inline styles from page.jsx control layout */
 .gallery-grid {
-  gap: 24px;
+  gap: 32px;
 }
 
 .gallery-card {
-  border-radius: 12px;
+  border-radius: 24px;
   overflow: hidden;
   background: white;
 }
@@ -383,24 +383,6 @@ article img:not(.hero-img):not(.gallery-card img),
     gap: 24px;
   }
 
-  /* Gallery Mobile - Show full pictures */
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .gallery-card {
-    aspect-ratio: auto;
-    min-height: auto;
-  }
-
-  .gallery-card img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
-
   /* Card Mobile */
   .card {
     padding: 20px;
@@ -512,24 +494,6 @@ article img:not(.hero-img):not(.gallery-card img),
   .page-grid-3 {
     grid-template-columns: 1fr;
     gap: 16px;
-  }
-
-  /* Gallery Small - Show full pictures */
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .gallery-card {
-    aspect-ratio: auto;
-    min-height: auto;
-  }
-
-  .gallery-card img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
   }
 
   /* Forms Small */
