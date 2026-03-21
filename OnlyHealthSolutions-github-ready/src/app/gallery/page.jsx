@@ -313,55 +313,56 @@ function GalleryCard({ image, onOpen }) {
         }}
       />
 
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: isHovered
-            ? "linear-gradient(135deg, rgba(31,166,160,0.7) 0%, rgba(106,63,181,0.7) 100%)"
-            : "linear-gradient(135deg, rgba(31,166,160,0.3) 0%, rgba(106,63,181,0.3) 100%)",
-          transition: "all 0.3s ease",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          gap: "8px",
-          pointerEvents: "none",
-          padding: isMobile ? "16px" : "24px",
-        }}
-      >
-        <div style={{ textAlign: "center", color: "#ffffff", width: "100%" }}>
-          <p style={{ fontSize: isMobile ? "10px" : "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-            {image.category.toUpperCase()}
-          </p>
-          <h3
-            style={{
-              fontSize: isMobile ? "16px" : "24px",
-              fontWeight: 800,
-              margin: "4px 0 0 0",
-              opacity: isHovered ? 1 : 0.9,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-            }}
-          >
-            {image.title}
-          </h3>
-        </div>
-
-        <Maximize2
-          size={isMobile ? 20 : 28}
-          color="#ffffff"
+      {!isMobile && (
+        <div
           style={{
-            opacity: isHovered ? 1 : 0,
-            transform: isHovered ? "scale(1)" : "scale(0.8)",
+            position: "absolute",
+            inset: 0,
+            background: isHovered
+              ? "linear-gradient(135deg, rgba(31,166,160,0.7) 0%, rgba(106,63,181,0.7) 100%)"
+              : "linear-gradient(135deg, rgba(31,166,160,0.3) 0%, rgba(106,63,181,0.3) 100%)",
             transition: "all 0.3s ease",
-            marginBottom: isMobile ? "8px" : "0",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            gap: "8px",
+            pointerEvents: "none",
+            padding: "24px",
           }}
-        />
-      </div>
+        >
+          <div style={{ textAlign: "center", color: "#ffffff", width: "100%" }}>
+            <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              {image.category.toUpperCase()}
+            </p>
+            <h3
+              style={{
+                fontSize: "24px",
+                fontWeight: 800,
+                margin: "4px 0 0 0",
+                opacity: isHovered ? 1 : 0.9,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+              }}
+            >
+              {image.title}
+            </h3>
+          </div>
+
+          <Maximize2
+            size={28}
+            color="#ffffff"
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? "scale(1)" : "scale(0.8)",
+              transition: "all 0.3s ease",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
