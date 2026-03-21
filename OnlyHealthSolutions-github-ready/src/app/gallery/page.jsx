@@ -56,6 +56,7 @@ export default function GalleryPage() {
     : galleryImages.filter(img => img.category === filter);
 
   const handleScheduleConsultation = () => {
+    // Navigate to services page and scroll to new-client-inquiry
     router.push("/services?scroll=new-client-inquiry");
     setTimeout(() => {
       const element = document.getElementById("new-client-inquiry");
@@ -74,6 +75,7 @@ export default function GalleryPage() {
         height={400}
       />
 
+      {/* Introduction Section */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
@@ -83,6 +85,7 @@ export default function GalleryPage() {
           overflow: "hidden",
         }}
       >
+        {/* Decorative elements */}
         <div
           style={{
             position: "absolute",
@@ -120,6 +123,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
+      {/* Filter Section */}
       <section
         style={{
           background: "#ffffff",
@@ -166,6 +170,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
+      {/* Gallery Grid */}
       <section
         style={{
           background: "#ffffff",
@@ -178,7 +183,7 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
               gap: "32px",
             }}
           >
@@ -193,6 +198,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
+      {/* Lightbox Modal */}
       {selectedImage && (
         <Lightbox
           image={selectedImage}
@@ -210,6 +216,7 @@ export default function GalleryPage() {
         />
       )}
 
+      {/* CTA Section */}
       <section
         style={{
           background: "linear-gradient(135deg, rgba(31,166,160,0.95) 0%, rgba(106,63,181,0.95) 100%)",
@@ -264,19 +271,11 @@ export default function GalleryPage() {
           </button>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 767px) {
-          .gallery-overlay {
-            display: none !important;
-            pointer-events: none !important;
-          }
-        }
-      `}</style>
     </main>
   );
 }
 
+// Gallery Card Component
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -287,6 +286,7 @@ function GalleryCard({ image, onOpen }) {
         borderRadius: "24px",
         overflow: "hidden",
         cursor: "pointer",
+        height: "350px",
         background: "#f5f1ff",
         transition: "all 0.3s ease",
         transform: isHovered ? "translateY(-10px)" : "translateY(0)",
@@ -298,20 +298,21 @@ function GalleryCard({ image, onOpen }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
+      {/* Image */}
       <img
         src={image.src}
         alt={image.alt}
         style={{
           width: "100%",
-          height: "auto",
-          display: "block",
+          height: "100%",
+          objectFit: "cover",
           transition: "transform 0.3s ease",
-          transform: isHovered ? "scale(1.05)" : "scale(1)",
+          transform: isHovered ? "scale(1.08)" : "scale(1)",
         }}
       />
 
+      {/* Overlay */}
       <div
-        className="gallery-overlay"
         style={{
           position: "absolute",
           inset: 0,
@@ -322,33 +323,28 @@ function GalleryCard({ image, onOpen }) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "flex-end",
-          gap: "8px",
-          pointerEvents: "none",
-          padding: "24px",
+          justifyContent: "center",
+          gap: "16px",
         }}
       >
-        <div style={{ textAlign: "center", color: "#ffffff", width: "100%" }}>
-          <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+        {/* Content */}
+        <div style={{ textAlign: "center", color: "#ffffff" }}>
+          <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px" }}>
             {image.category.toUpperCase()}
           </p>
           <h3
             style={{
               fontSize: "24px",
               fontWeight: 800,
-              margin: "4px 0 0 0",
+              margin: "8px 0 0 0",
               opacity: isHovered ? 1 : 0.9,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
             }}
           >
             {image.title}
           </h3>
         </div>
 
+        {/* Icon */}
         <Maximize2
           size={28}
           color="#ffffff"
@@ -363,6 +359,7 @@ function GalleryCard({ image, onOpen }) {
   );
 }
 
+// Lightbox Component
 function Lightbox({ image, onClose, onNext, onPrev }) {
   return (
     <div
@@ -390,17 +387,19 @@ function Lightbox({ image, onClose, onNext, onPrev }) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Image */}
         <img
           src={image.src}
           alt={image.alt}
           style={{
             width: "100%",
-            height: "auto",
+            height: "100%",
+            objectFit: "contain",
             maxHeight: "85vh",
-            display: "block",
           }}
         />
 
+        {/* Close Button */}
         <button
           onClick={onClose}
           style={{
@@ -429,6 +428,7 @@ function Lightbox({ image, onClose, onNext, onPrev }) {
           <X size={24} color="#1fa6a0" />
         </button>
 
+        {/* Image Info */}
         <div
           style={{
             position: "absolute",
@@ -449,6 +449,7 @@ function Lightbox({ image, onClose, onNext, onPrev }) {
           </h2>
         </div>
 
+        {/* Navigation Buttons */}
         <button
           onClick={onPrev}
           style={{
