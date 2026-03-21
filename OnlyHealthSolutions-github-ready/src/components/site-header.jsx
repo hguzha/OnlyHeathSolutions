@@ -322,6 +322,28 @@ export default function SiteHeader() {
             backdropFilter: "blur(10px)",
           }}
         >
+          {/* Mobile Consult Button - AT THE TOP */}
+          <button
+            onClick={handleRequestConsult}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "16px",
+              borderRadius: "0",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              color: "white",
+              border: "none",
+              fontWeight: "700",
+              fontSize: "14px",
+              cursor: "pointer",
+              width: "100%",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            Request a Consult
+          </button>
+
           {menuItems.map((item) => {
             if (item.label === "Services") {
               return (
@@ -417,29 +439,6 @@ export default function SiteHeader() {
               </Link>
             );
           })}
-
-          {/* Mobile Consult Button - INSIDE but at the BOTTOM of dropdown */}
-          <button
-            onClick={handleRequestConsult}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "16px",
-              borderRadius: "0",
-              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-              color: "white",
-              border: "none",
-              fontWeight: "700",
-              fontSize: "14px",
-              cursor: "pointer",
-              width: "100%",
-              marginTop: "8px",
-              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-            }}
-          >
-            Request a Consult
-          </button>
         </div>
       )}
     </header>
