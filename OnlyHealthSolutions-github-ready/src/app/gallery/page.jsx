@@ -56,7 +56,6 @@ export default function GalleryPage() {
     : galleryImages.filter(img => img.category === filter);
 
   const handleScheduleConsultation = () => {
-    // Navigate to services page and scroll to new-client-inquiry
     router.push("/services?scroll=new-client-inquiry");
     setTimeout(() => {
       const element = document.getElementById("new-client-inquiry");
@@ -286,7 +285,7 @@ function GalleryCard({ image, onOpen }) {
         borderRadius: "24px",
         overflow: "hidden",
         cursor: "pointer",
-        height: "350px",
+        aspectRatio: "4/3",
         background: "#f5f1ff",
         transition: "all 0.3s ease",
         transform: isHovered ? "translateY(-10px)" : "translateY(0)",
