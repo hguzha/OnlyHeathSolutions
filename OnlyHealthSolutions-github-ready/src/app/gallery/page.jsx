@@ -182,8 +182,9 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: "32px",
+              alignItems: "start",
             }}
           >
             {filteredImages.map((image, index) => (
@@ -296,7 +297,7 @@ function GalleryCard({ image, onOpen }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image - SHOW FULL PICTURE WITH CONTAIN */}
+      {/* Image - NO SIZE CONSTRAINTS - FULL PICTURE */}
       <img
         src={image.src}
         alt={image.alt}
@@ -304,11 +305,8 @@ function GalleryCard({ image, onOpen }) {
           width: "100%",
           height: "auto",
           display: "block",
-          objectFit: "contain",
           transition: "transform 0.3s ease",
           transform: isHovered ? "scale(1.05)" : "scale(1)",
-          padding: "16px",
-          background: "#f5f1ff",
         }}
       />
 
@@ -395,9 +393,9 @@ function Lightbox({ image, onClose, onNext, onPrev }) {
           alt={image.alt}
           style={{
             width: "100%",
-            height: "100%",
-            objectFit: "contain",
+            height: "auto",
             maxHeight: "85vh",
+            display: "block",
           }}
         />
 
