@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import { X, Heart, Maximize2 } from "lucide-react";
@@ -182,8 +182,9 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: "32px",
+              alignItems: "start",
             }}
           >
             {filteredImages.map((image, index) => (
@@ -277,20 +278,6 @@ export default function GalleryPage() {
 // Gallery Card Component
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Set initial value
-    setIsMobile(window.innerWidth < 768);
-
-    // Handle resize
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div
@@ -310,19 +297,16 @@ function GalleryCard({ image, onOpen }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image - Responsive with aspect ratio for desktop only */}
+      {/* Image - NO SIZE CONSTRAINTS - FULL PICTURE */}
       <img
         src={image.src}
         alt={image.alt}
         style={{
           width: "100%",
-          height: isMobile ? "auto" : "280px",
-          objectFit: isMobile ? "contain" : "cover",
+          height: "auto",
           display: "block",
           transition: "transform 0.3s ease",
           transform: isHovered ? "scale(1.05)" : "scale(1)",
-          padding: isMobile ? "12px" : "0",
-          background: "#f5f1ff",
         }}
       />
 
