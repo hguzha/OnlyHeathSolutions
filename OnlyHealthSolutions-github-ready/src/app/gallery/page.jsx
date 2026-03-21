@@ -296,6 +296,10 @@ function GalleryCard({ image, onOpen }) {
         boxShadow: isHovered
           ? "0 30px 60px rgba(31,166,160,0.25)"
           : "0 15px 40px rgba(0,0,0,0.08)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: isMobile ? "auto" : "320px",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -306,13 +310,13 @@ function GalleryCard({ image, onOpen }) {
         alt={image.alt}
         style={{
           width: "100%",
-          height: isMobile ? "auto" : "280px",
-          objectFit: isMobile ? "contain" : "cover",
+          height: "auto",
+          objectFit: "contain",
           display: "block",
           transition: "transform 0.3s ease",
           transform: isHovered ? "scale(1.05)" : "scale(1)",
-          padding: isMobile ? "12px" : "0",
-          background: "#f5f1ff",
+          padding: isMobile ? "12px" : "16px",
+          maxHeight: isMobile ? "none" : "300px",
         }}
       />
 
