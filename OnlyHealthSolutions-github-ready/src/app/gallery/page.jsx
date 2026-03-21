@@ -190,7 +190,7 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: isMobile ? "repeat(auto-fit, minmax(300px, 1fr))" : "repeat(3, 1fr)",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
               gap: "32px",
             }}
           >
@@ -285,20 +285,6 @@ export default function GalleryPage() {
 // Gallery Card Component
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Set initial value
-    setIsMobile(window.innerWidth < 768);
-
-    // Handle resize
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div
@@ -313,29 +299,31 @@ function GalleryCard({ image, onOpen }) {
         boxShadow: isHovered
           ? "0 30px 60px rgba(31,166,160,0.25)"
           : "0 15px 40px rgba(0,0,0,0.08)",
-        minHeight: isMobile ? "auto" : "300px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image - Full contain, no cropping */}
-      <img
-        src={image.src}
-        alt={image.alt}
-        style={{
-          width: "100%",
-          height: "150%",
-          objectFit: "contain",
-          display: "block",
-          transition: "transform 0.3s ease",
-          transform: isHovered ? "scale(1.05)" : "scale(1)",
-          padding: isMobile ? "12px" : "0",
-        }}
-      />
+      {/* Image wrapper with aspect ratio */}
+      <div style={{ width: "100%", paddingBottom: "100%", position: "relative", background: "#f5f1ff" }}>
+        <img
+          src={image.src}
+          alt={image.alt}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            display: "block",
+            transition: "transform 0.3s ease",
+            transform: isHovered ? "scale(1.05)" : "scale(1)",
+            padding: "12px",
+            boxSizing: "border-box",
+          }}
+        />
+      </div>
 
       {/* Overlay */}
       <div
