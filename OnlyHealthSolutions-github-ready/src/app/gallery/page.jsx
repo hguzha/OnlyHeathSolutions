@@ -182,7 +182,7 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
               gap: "32px",
             }}
           >
@@ -285,7 +285,6 @@ function GalleryCard({ image, onOpen }) {
         borderRadius: "24px",
         overflow: "hidden",
         cursor: "pointer",
-        aspectRatio: "4/3",
         background: "#f5f1ff",
         transition: "all 0.3s ease",
         transform: isHovered ? "translateY(-10px)" : "translateY(0)",
@@ -297,16 +296,19 @@ function GalleryCard({ image, onOpen }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image */}
+      {/* Image - SHOW FULL PICTURE WITH CONTAIN */}
       <img
         src={image.src}
         alt={image.alt}
         style={{
           width: "100%",
-          height: "100%",
-          objectFit: "cover",
+          height: "auto",
+          display: "block",
+          objectFit: "contain",
           transition: "transform 0.3s ease",
-          transform: isHovered ? "scale(1.08)" : "scale(1)",
+          transform: isHovered ? "scale(1.05)" : "scale(1)",
+          padding: "16px",
+          background: "#f5f1ff",
         }}
       />
 
@@ -324,6 +326,7 @@ function GalleryCard({ image, onOpen }) {
           alignItems: "center",
           justifyContent: "center",
           gap: "16px",
+          pointerEvents: "none",
         }}
       >
         {/* Content */}
