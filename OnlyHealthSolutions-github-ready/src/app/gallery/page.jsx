@@ -199,6 +199,7 @@ export default function GalleryPage() {
                 key={index}
                 image={image}
                 onOpen={() => setSelectedImage(image)}
+                isMobile={isMobile}
               />
             ))}
           </div>
@@ -283,7 +284,7 @@ export default function GalleryPage() {
 }
 
 // Gallery Card Component
-function GalleryCard({ image, onOpen }) {
+function GalleryCard({ image, onOpen, isMobile }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -293,19 +294,19 @@ function GalleryCard({ image, onOpen }) {
         borderRadius: "24px",
         overflow: "hidden",
         cursor: "pointer",
-        background: "#f5f1ff",
+        background: isMobile ? "transparent" : "#f5f1ff",
         transition: "all 0.3s ease",
         transform: isHovered ? "translateY(-10px)" : "translateY(0)",
         boxShadow: isHovered
           ? "0 30px 60px rgba(31,166,160,0.25)"
-          : "0 15px 40px rgba(0,0,0,0.08)",
+          : isMobile ? "none" : "0 15px 40px rgba(0,0,0,0.08)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
       {/* Image wrapper with 16:9 aspect ratio */}
-      <div style={{ width: "100%", paddingBottom: "66.67%", position: "relative", background: "#f5f1ff" }}>
+      <div style={{ width: "100%", paddingBottom: "66.67%", position: "relative", background: isMobile ? "transparent" : "#f5f1ff" }}>
         <img
           src={image.src}
           alt={image.alt}
@@ -325,51 +326,53 @@ function GalleryCard({ image, onOpen }) {
         />
       </div>
 
-      {/* Overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: isHovered
-            ? "linear-gradient(135deg, rgba(31,166,160,0.7) 0%, rgba(106,63,181,0.7) 100%)"
-            : "linear-gradient(135deg, rgba(31,166,160,0.3) 0%, rgba(106,63,181,0.3) 100%)",
-          transition: "all 0.3s ease",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "16px",
-          pointerEvents: "none",
-        }}
-      >
-        {/* Content */}
-        <div style={{ textAlign: "center", color: "#ffffff" }}>
-          <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px" }}>
-            {image.category.toUpperCase()}
-          </p>
-          <h3
-            style={{
-              fontSize: "24px",
-              fontWeight: 800,
-              margin: "8px 0 0 0",
-              opacity: isHovered ? 1 : 0.9,
-            }}
-          >
-            {image.title}
-          </h3>
-        </div>
-
-        {/* Icon */}
-        <Maximize2
-          size={28}
-          color="#ffffff"
+      {/* Overlay - Hidden on mobile */}
+      {!isMobile && (
+        <div
           style={{
-            opacity: isHovered ? 1 : 0,
-            transform: isHovered ? "scale(1)" : "scale(0.8)",
+            position: "absolute",
+            inset: 0,
+            background: isHovered
+              ? "linear-gradient(135deg, rgba(31,166,160,0.7) 0%, rgba(106,63,181,0.7) 100%)"
+              : "linear-gradient(135deg, rgba(31,166,160,0.3) 0%, rgba(106,63,181,0.3) 100%)",
             transition: "all 0.3s ease",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "16px",
+            pointerEvents: "none",
           }}
-        />
-      </div>
+        >
+          {/* Content */}
+          <div style={{ textAlign: "center", color: "#ffffff" }}>
+            <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px" }}>
+              {image.category.toUpperCase()}
+            </p>
+            <h3
+              style={{
+                fontSize: "24px",
+                fontWeight: 800,
+                margin: "8px 0 0 0",
+                opacity: isHovered ? 1 : 0.9,
+              }}
+            >
+              {image.title}
+            </h3>
+          </div>
+
+          {/* Icon */}
+          <Maximize2
+            size={28}
+            color="#ffffff"
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? "scale(1)" : "scale(0.8)",
+              transition: "all 0.3s ease",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
