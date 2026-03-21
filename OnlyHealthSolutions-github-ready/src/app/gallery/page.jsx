@@ -270,18 +270,13 @@ export default function GalleryPage() {
 
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    setIsMounted(true);
   }, []);
+
+  const isMobile = isMounted ? typeof window !== "undefined" && window.innerWidth < 768 : false;
 
   return (
     <div
@@ -313,7 +308,7 @@ function GalleryCard({ image, onOpen }) {
         }}
       />
 
-      {!isMobile && (
+      {isMounted && !isMobile && (
         <div
           style={{
             position: "absolute",
