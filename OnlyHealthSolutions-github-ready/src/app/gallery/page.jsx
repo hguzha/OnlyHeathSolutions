@@ -270,6 +270,18 @@ export default function GalleryPage() {
 
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div
@@ -312,21 +324,27 @@ function GalleryCard({ image, onOpen }) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          gap: "16px",
+          justifyContent: "flex-end",
+          gap: "8px",
           pointerEvents: "none",
+          padding: isMobile ? "16px" : "24px",
         }}
       >
-        <div style={{ textAlign: "center", color: "#ffffff" }}>
-          <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px" }}>
+        <div style={{ textAlign: "center", color: "#ffffff", width: "100%" }}>
+          <p style={{ fontSize: isMobile ? "10px" : "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
             {image.category.toUpperCase()}
           </p>
           <h3
             style={{
-              fontSize: "24px",
+              fontSize: isMobile ? "16px" : "24px",
               fontWeight: 800,
-              margin: "8px 0 0 0",
+              margin: "4px 0 0 0",
               opacity: isHovered ? 1 : 0.9,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
             }}
           >
             {image.title}
@@ -334,12 +352,13 @@ function GalleryCard({ image, onOpen }) {
         </div>
 
         <Maximize2
-          size={28}
+          size={isMobile ? 20 : 28}
           color="#ffffff"
           style={{
             opacity: isHovered ? 1 : 0,
             transform: isHovered ? "scale(1)" : "scale(0.8)",
             transition: "all 0.3s ease",
+            marginBottom: isMobile ? "8px" : "0",
           }}
         />
       </div>
