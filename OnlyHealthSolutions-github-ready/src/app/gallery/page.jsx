@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import { X, Heart, Maximize2 } from "lucide-react";
@@ -56,7 +56,6 @@ export default function GalleryPage() {
     : galleryImages.filter(img => img.category === filter);
 
   const handleScheduleConsultation = () => {
-    // Navigate to services page and scroll to new-client-inquiry
     router.push("/services?scroll=new-client-inquiry");
     setTimeout(() => {
       const element = document.getElementById("new-client-inquiry");
@@ -183,7 +182,7 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
               gap: "32px",
             }}
           >
@@ -278,6 +277,20 @@ export default function GalleryPage() {
 // Gallery Card Component
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Set initial value
+    setIsMobile(window.innerWidth < 768);
+
+    // Handle resize
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div
@@ -286,7 +299,6 @@ function GalleryCard({ image, onOpen }) {
         borderRadius: "24px",
         overflow: "hidden",
         cursor: "pointer",
-        height: "350px",
         background: "#f5f1ff",
         transition: "all 0.3s ease",
         transform: isHovered ? "translateY(-10px)" : "translateY(0)",
@@ -298,16 +310,19 @@ function GalleryCard({ image, onOpen }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image */}
+      {/* Image - Responsive with aspect ratio for desktop only */}
       <img
         src={image.src}
         alt={image.alt}
         style={{
           width: "100%",
-          height: "100%",
-          objectFit: "cover",
+          height: isMobile ? "auto" : "280px",
+          objectFit: isMobile ? "contain" : "cover",
+          display: "block",
           transition: "transform 0.3s ease",
-          transform: isHovered ? "scale(1.08)" : "scale(1)",
+          transform: isHovered ? "scale(1.05)" : "scale(1)",
+          padding: isMobile ? "12px" : "0",
+          background: "#f5f1ff",
         }}
       />
 
@@ -325,6 +340,7 @@ function GalleryCard({ image, onOpen }) {
           alignItems: "center",
           justifyContent: "center",
           gap: "16px",
+          pointerEvents: "none",
         }}
       >
         {/* Content */}
@@ -393,9 +409,9 @@ function Lightbox({ image, onClose, onNext, onPrev }) {
           alt={image.alt}
           style={{
             width: "100%",
-            height: "100%",
-            objectFit: "contain",
+            height: "auto",
             maxHeight: "85vh",
+            display: "block",
           }}
         />
 
