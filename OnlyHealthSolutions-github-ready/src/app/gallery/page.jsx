@@ -304,8 +304,8 @@ function GalleryCard({ image, onOpen }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image wrapper with aspect ratio */}
-      <div style={{ width: "100%", paddingBottom: "100%", position: "relative", background: "#f5f1ff" }}>
+      {/* Image wrapper with 16:9 aspect ratio */}
+      <div style={{ width: "100%", paddingBottom: "66.67%", position: "relative", background: "#f5f1ff" }}>
         <img
           src={image.src}
           alt={image.alt}
@@ -319,7 +319,7 @@ function GalleryCard({ image, onOpen }) {
             display: "block",
             transition: "transform 0.3s ease",
             transform: isHovered ? "scale(1.05)" : "scale(1)",
-            padding: "12px",
+            padding: "8px",
             boxSizing: "border-box",
           }}
         />
