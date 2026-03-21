@@ -7,7 +7,7 @@ import { X, Heart, Maximize2 } from "lucide-react";
 
 const galleryImages = [
   {
-    src: "1140-nurse-wheelchair-home-care-health.jpg",
+    src: "Consider-a-Career-as-a-Home-Care-Nursing-Assistant.png",
     alt: "Caregiver assisting elderly client with warmth and compassion",
     category: "Personal Care",
     title: "Daily Assistance with Dignity"
