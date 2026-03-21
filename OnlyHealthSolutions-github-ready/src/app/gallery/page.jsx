@@ -180,6 +180,7 @@ export default function GalleryPage() {
       >
         <div className="container">
           <div
+            className="gallery-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -270,6 +271,20 @@ export default function GalleryPage() {
           </button>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .gallery-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .gallery-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
