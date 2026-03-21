@@ -318,14 +318,14 @@ function GalleryCard({ image, onOpen }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image - Responsive with aspect ratio for desktop only */}
+      {/* Image - Full height on desktop, auto on mobile */}
       <img
         src={image.src}
         alt={image.alt}
         style={{
           width: "100%",
-          height: isMobile ? "auto" : "280px",
-          objectFit: isMobile ? "contain" : "cover",
+          height: "auto",
+          objectFit: "contain",
           display: "block",
           transition: "transform 0.3s ease",
           transform: isHovered ? "scale(1.05)" : "scale(1)",
