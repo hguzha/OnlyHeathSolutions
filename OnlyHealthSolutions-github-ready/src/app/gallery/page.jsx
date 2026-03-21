@@ -270,18 +270,6 @@ export default function GalleryPage() {
 
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div
@@ -296,10 +284,6 @@ function GalleryCard({ image, onOpen }) {
         boxShadow: isHovered
           ? "0 30px 60px rgba(31,166,160,0.25)"
           : "0 15px 40px rgba(0,0,0,0.08)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: isMobile ? "auto" : "320px",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -311,12 +295,9 @@ function GalleryCard({ image, onOpen }) {
         style={{
           width: "100%",
           height: "auto",
-          objectFit: "contain",
           display: "block",
           transition: "transform 0.3s ease",
           transform: isHovered ? "scale(1.05)" : "scale(1)",
-          padding: isMobile ? "12px" : "16px",
-          maxHeight: isMobile ? "none" : "300px",
         }}
       />
 
