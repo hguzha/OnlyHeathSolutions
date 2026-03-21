@@ -309,12 +309,10 @@ export default function SiteHeader() {
       {isMobile && mobileOpen && (
         <div
           style={{
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            right: 0,
+            position: "relative",
             backgroundColor: "rgba(11, 19, 32, 0.95)",
             borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             display: "flex",
             flexDirection: "column",
             gap: "0",
@@ -419,33 +417,30 @@ export default function SiteHeader() {
               </Link>
             );
           })}
-        </div>
-      )}
 
-      {/* Mobile Consult Button - OUTSIDE dropdown */}
-      {isMobile && mobileOpen && (
-        <button
-          onClick={handleRequestConsult}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "16px",
-            borderRadius: "0",
-            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-            color: "white",
-            border: "none",
-            fontWeight: "700",
-            fontSize: "14px",
-            cursor: "pointer",
-            width: "100%",
-            position: "sticky",
-            bottom: 0,
-            zIndex: 998,
-          }}
-        >
-          Request a Consult
-        </button>
+          {/* Mobile Consult Button - INSIDE but at the BOTTOM of dropdown */}
+          <button
+            onClick={handleRequestConsult}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "16px",
+              borderRadius: "0",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              color: "white",
+              border: "none",
+              fontWeight: "700",
+              fontSize: "14px",
+              cursor: "pointer",
+              width: "100%",
+              marginTop: "8px",
+              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            Request a Consult
+          </button>
+        </div>
       )}
     </header>
   );
