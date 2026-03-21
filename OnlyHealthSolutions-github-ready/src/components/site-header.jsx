@@ -100,6 +100,8 @@ export default function SiteHeader() {
         backgroundColor: headerTopBgColor,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
         paddingRight: isMobile ? "0" : "20px",
+        maxHeight: isMobile ? "100vh" : "auto",
+        overflow: isMobile ? "visible" : "initial",
       }}
     >
       <div
@@ -298,6 +300,9 @@ export default function SiteHeader() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              position: "sticky",
+              top: "50%",
+              transform: "translateY(-50%)",
             }}
           >
             {mobileOpen ? <X size={28} /> : <Menu size={28} />}
@@ -309,14 +314,17 @@ export default function SiteHeader() {
       {isMobile && mobileOpen && (
         <div
           style={{
-            position: "relative",
+            position: "fixed",
+            top: "100px",
+            left: 0,
+            right: 0,
             backgroundColor: "rgba(11, 19, 32, 0.95)",
             borderTop: "1px solid rgba(255, 255, 255, 0.1)",
             borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             display: "flex",
             flexDirection: "column",
             gap: "0",
-            maxHeight: "calc(100vh - 120px)",
+            maxHeight: "calc(100vh - 100px)",
             overflowY: "auto",
             zIndex: 999,
             backdropFilter: "blur(10px)",
