@@ -182,9 +182,8 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
               gap: "32px",
-              alignItems: "start",
             }}
           >
             {filteredImages.map((image, index) => (
@@ -292,23 +291,38 @@ function GalleryCard({ image, onOpen }) {
         boxShadow: isHovered
           ? "0 30px 60px rgba(31,166,160,0.25)"
           : "0 15px 40px rgba(0,0,0,0.08)",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image - NO SIZE CONSTRAINTS - FULL PICTURE */}
-      <img
-        src={image.src}
-        alt={image.alt}
+      {/* Image Container - Fixed height for desktop consistency */}
+      <div
         style={{
           width: "100%",
-          height: "auto",
-          display: "block",
-          transition: "transform 0.3s ease",
-          transform: isHovered ? "scale(1.05)" : "scale(1)",
+          height: "280px",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#f5f1ff",
         }}
-      />
+      >
+        <img
+          src={image.src}
+          alt={image.alt}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            transition: "transform 0.3s ease",
+            transform: isHovered ? "scale(1.05)" : "scale(1)",
+          }}
+        />
+      </div>
 
       {/* Overlay */}
       <div
