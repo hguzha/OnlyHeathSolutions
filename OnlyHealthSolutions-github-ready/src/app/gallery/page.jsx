@@ -277,6 +277,15 @@ export default function GalleryPage() {
 // Gallery Card Component
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 768);
+
+  useState(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div
@@ -291,38 +300,26 @@ function GalleryCard({ image, onOpen }) {
         boxShadow: isHovered
           ? "0 30px 60px rgba(31,166,160,0.25)"
           : "0 15px 40px rgba(0,0,0,0.08)",
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image Container - Fixed height for desktop consistency */}
-      <div
+      {/* Image - Responsive with aspect ratio for desktop only */}
+      <img
+        src={image.src}
+        alt={image.alt}
         style={{
           width: "100%",
-          height: "280px",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: isMobile ? "auto" : "280px",
+          objectFit: isMobile ? "contain" : "cover",
+          display: "block",
+          transition: "transform 0.3s ease",
+          transform: isHovered ? "scale(1.05)" : "scale(1)",
+          padding: isMobile ? "12px" : "0",
           background: "#f5f1ff",
         }}
-      >
-        <img
-          src={image.src}
-          alt={image.alt}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-            transition: "transform 0.3s ease",
-            transform: isHovered ? "scale(1.05)" : "scale(1)",
-          }}
-        />
-      </div>
+      />
 
       {/* Overlay */}
       <div
