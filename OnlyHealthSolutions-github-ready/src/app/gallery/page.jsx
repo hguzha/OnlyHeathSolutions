@@ -300,31 +300,30 @@ function GalleryCard({ image, onOpen, isMobile }) {
         boxShadow: isHovered
           ? "0 30px 60px rgba(31,166,160,0.25)"
           : isMobile ? "none" : "0 15px 40px rgba(0,0,0,0.08)",
+        minHeight: isMobile ? "auto" : "350px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onOpen}
     >
-      {/* Image wrapper with 16:9 aspect ratio */}
-      <div style={{ width: "100%", paddingBottom: "66.67%", position: "relative", background: isMobile ? "transparent" : "#f5f1ff" }}>
-        <img
-          src={image.src}
-          alt={image.alt}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-            display: "block",
-            transition: "transform 0.3s ease",
-            transform: isHovered ? "scale(1.05)" : "scale(1)",
-            padding: "8px",
-            boxSizing: "border-box",
-          }}
-        />
-      </div>
+      {/* Image - fills entire box on desktop */}
+      <img
+        src={image.src}
+        alt={image.alt}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          display: "block",
+          transition: "transform 0.3s ease",
+          transform: isHovered ? "scale(1.05)" : "scale(1)",
+          padding: isMobile ? "8px" : "12px",
+          boxSizing: "border-box",
+        }}
+      />
 
       {/* Overlay - Hidden on mobile */}
       {!isMobile && (
