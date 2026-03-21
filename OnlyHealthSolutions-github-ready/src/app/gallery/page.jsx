@@ -182,7 +182,7 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
               gap: "32px",
               alignItems: "start",
             }}
