@@ -81,24 +81,9 @@ function GalleryCard({ image }) {
         alt={image.alt}
         style={{
           width: "100%",
-          height: "300px",
-          objectFit: "cover",
+          height: "auto",
           display: "block",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(135deg, rgba(31, 166, 160, 0.3), rgba(106, 63, 181, 0.3))",
-          opacity: 0,
-          transition: "opacity 0.3s ease",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.opacity = "1";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.opacity = "0";
+          objectFit: "contain",
         }}
       />
     </div>
