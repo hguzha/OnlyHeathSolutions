@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import { X, Heart, Maximize2 } from "lucide-react";
@@ -264,17 +264,21 @@ export default function GalleryPage() {
           </button>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .gallery-overlay {
+            display: none !important;
+            pointer-events: none !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
 
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
 
   return (
     <div
@@ -306,56 +310,55 @@ function GalleryCard({ image, onOpen }) {
         }}
       />
 
-      {!isMobile && (
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: isHovered
-              ? "linear-gradient(135deg, rgba(31,166,160,0.7) 0%, rgba(106,63,181,0.7) 100%)"
-              : "linear-gradient(135deg, rgba(31,166,160,0.3) 0%, rgba(106,63,181,0.3) 100%)",
-            transition: "all 0.3s ease",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            gap: "8px",
-            pointerEvents: "none",
-            padding: "24px",
-          }}
-        >
-          <div style={{ textAlign: "center", color: "#ffffff", width: "100%" }}>
-            <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-              {image.category.toUpperCase()}
-            </p>
-            <h3
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                margin: "4px 0 0 0",
-                opacity: isHovered ? 1 : 0.9,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                display: "-webkit-box",
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: "vertical",
-              }}
-            >
-              {image.title}
-            </h3>
-          </div>
-
-          <Maximize2
-            size={28}
-            color="#ffffff"
+      <div
+        className="gallery-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: isHovered
+            ? "linear-gradient(135deg, rgba(31,166,160,0.7) 0%, rgba(106,63,181,0.7) 100%)"
+            : "linear-gradient(135deg, rgba(31,166,160,0.3) 0%, rgba(106,63,181,0.3) 100%)",
+          transition: "all 0.3s ease",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          gap: "8px",
+          pointerEvents: "none",
+          padding: "24px",
+        }}
+      >
+        <div style={{ textAlign: "center", color: "#ffffff", width: "100%" }}>
+          <p style={{ fontSize: "12px", fontWeight: 700, margin: "0", opacity: 0.9, letterSpacing: "0.5px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {image.category.toUpperCase()}
+          </p>
+          <h3
             style={{
-              opacity: isHovered ? 1 : 0,
-              transform: isHovered ? "scale(1)" : "scale(0.8)",
-              transition: "all 0.3s ease",
+              fontSize: "24px",
+              fontWeight: 800,
+              margin: "4px 0 0 0",
+              opacity: isHovered ? 1 : 0.9,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
             }}
-          />
+          >
+            {image.title}
+          </h3>
         </div>
-      )}
+
+        <Maximize2
+          size={28}
+          color="#ffffff"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            transform: isHovered ? "scale(1)" : "scale(0.8)",
+            transition: "all 0.3s ease",
+          }}
+        />
+      </div>
     </div>
   );
 }
