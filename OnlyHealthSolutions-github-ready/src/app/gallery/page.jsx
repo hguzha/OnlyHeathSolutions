@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
 import { X, Heart, Maximize2 } from "lucide-react";
@@ -277,14 +277,19 @@ export default function GalleryPage() {
 // Gallery Card Component
 function GalleryCard({ image, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(false);
 
-  useState(() => {
+  useEffect(() => {
+    // Set initial value
+    setIsMobile(window.innerWidth < 768);
+
+    // Handle resize
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
