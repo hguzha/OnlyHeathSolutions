@@ -47,7 +47,15 @@ const galleryImages = [
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState("All");
+  const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const categories = ["All", ...new Set(galleryImages.map(img => img.category))];
   
@@ -180,10 +188,9 @@ export default function GalleryPage() {
       >
         <div className="container">
           <div
-            className="gallery-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: isMobile ? "repeat(auto-fit, minmax(300px, 1fr))" : "repeat(3, 1fr)",
               gap: "32px",
             }}
           >
@@ -271,20 +278,6 @@ export default function GalleryPage() {
           </button>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 767px) {
-          .gallery-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
-          }
-        }
-
-        @media (min-width: 768px) {
-          .gallery-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
-          }
-        }
-      `}</style>
     </main>
   );
 }
