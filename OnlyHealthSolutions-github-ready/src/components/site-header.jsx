@@ -94,14 +94,15 @@ export default function SiteHeader() {
     <header
       style={{
         borderBottom: `2px solid ${borderColor}`,
-        position: "sticky",
+        position: isMobile ? "fixed" : "sticky",
         top: 0,
+        left: 0,
+        right: 0,
         zIndex: 1000,
         backgroundColor: headerTopBgColor,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
         paddingRight: isMobile ? "0" : "20px",
-        maxHeight: isMobile ? "100vh" : "auto",
-        overflow: isMobile ? "visible" : "initial",
+        width: "100%",
       }}
     >
       <div
@@ -300,9 +301,6 @@ export default function SiteHeader() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              position: "sticky",
-              top: "50%",
-              transform: "translateY(-50%)",
             }}
           >
             {mobileOpen ? <X size={28} /> : <Menu size={28} />}
