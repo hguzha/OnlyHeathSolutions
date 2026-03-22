@@ -86,7 +86,7 @@ export default function SiteFooter() {
             </h3>
             <div style={{ display: "grid", gap: 16, marginTop: 16 }}>
               <a
-                href={`tel:${brand.phone}`}
+                href={brand.phoneHref}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -99,10 +99,10 @@ export default function SiteFooter() {
                 onMouseLeave={() => setHoveredContact(null)}
               >
                 <Phone size={20} />
-                <span>{brand.phone}</span>
+                <span>{brand.phoneDisplay}</span>
               </a>
               <a
-                href={`mailto:${brand.email}`}
+                href={brand.emailHref}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -115,7 +115,7 @@ export default function SiteFooter() {
                 onMouseLeave={() => setHoveredContact(null)}
               >
                 <Mail size={20} />
-                <span>{brand.email}</span>
+                <span>{brand.emailDisplay}</span>
               </a>
               <div
                 style={{
@@ -126,7 +126,7 @@ export default function SiteFooter() {
                 }}
               >
                 <MapPin size={20} />
-                <span>{brand.address}</span>
+                <span>{brand.addressLine}</span>
               </div>
             </div>
           </div>
