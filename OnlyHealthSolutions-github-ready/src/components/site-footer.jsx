@@ -22,19 +22,20 @@ export default function SiteFooter() {
         }
 
         .footer-watermark::before {
-          content: 'Only Health Solutions';
+          content: '';
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%) rotate(-45deg);
-          font-size: 40px;
-          font-weight: bold;
-          color: rgba(31, 166, 160, 0.08);
-          white-space: nowrap;
+          transform: translate(-50%, -50%);
+          width: 400px;
+          height: 400px;
+          background-image: url('${brand.logo}');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          opacity: 0.08;
           z-index: 0;
           pointer-events: none;
-          font-family: Arial, sans-serif;
-          letter-spacing: 2px;
         }
 
         .footer-content {
