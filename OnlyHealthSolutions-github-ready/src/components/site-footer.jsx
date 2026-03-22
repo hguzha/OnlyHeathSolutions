@@ -20,6 +20,11 @@ export default function SiteFooter() {
               Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
             </p>
             
+            {/* Service Area */}
+            <p style={{ color: "rgba(255,255,255,0.7)", margin: "16px 0 0 0", lineHeight: 1.6, padding: 0, marginLeft: 0, fontSize: "13px" }}>
+              {brand.serviceArea}
+            </p>
+            
             {/* Social Icons */}
             <div style={{ display: "flex", gap: "16px", marginTop: "24px" }}>
               <a
