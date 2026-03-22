@@ -27,14 +27,14 @@ export default function SiteFooter() {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%) rotate(-45deg);
-          font-size: 60px;
+          font-size: 40px;
           font-weight: bold;
           color: rgba(31, 166, 160, 0.08);
           white-space: nowrap;
           z-index: 0;
           pointer-events: none;
           font-family: Arial, sans-serif;
-          letter-spacing: 4px;
+          letter-spacing: 2px;
         }
 
         .footer-content {
