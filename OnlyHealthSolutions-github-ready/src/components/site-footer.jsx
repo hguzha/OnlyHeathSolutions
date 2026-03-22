@@ -122,15 +122,19 @@ export default function SiteFooter() {
                   display: "flex",
                   alignItems: "flex-start",
                   gap: "12px",
-                  color: "rgba(255,255,255,0.8)",
+                  color: hoveredContact === "location" ? "#1fa6a0" : "rgba(255,255,255,0.8)",
                   flexDirection: "column",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
                 }}
+                onMouseEnter={() => setHoveredContact("location")}
+                onMouseLeave={() => setHoveredContact(null)}
               >
                 <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                  <MapPin size={20} style={{ flexShrink: 0, marginTop: "2px" }} />
+                  <MapPin size={20} style={{ flexShrink: 0, marginTop: "2px", transition: "color 0.3s ease" }} />
                   <div>
                     <div>{brand.addressLine}</div>
-                    <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.7)", marginTop: "4px" }}>
+                    <div style={{ fontSize: "14px", color: hoveredContact === "location" ? "#1fa6a0" : "rgba(255,255,255,0.7)", marginTop: "4px", transition: "color 0.3s ease" }}>
                       {brand.serviceArea}
                     </div>
                   </div>
