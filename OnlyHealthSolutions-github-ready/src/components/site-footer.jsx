@@ -20,11 +20,6 @@ export default function SiteFooter() {
               Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
             </p>
             
-            {/* Service Area */}
-            <p style={{ color: "rgba(255,255,255,0.7)", margin: "16px 0 0 0", lineHeight: 1.6, padding: 0, marginLeft: 0, fontSize: "13px" }}>
-              {brand.serviceArea}
-            </p>
-            
             {/* Social Icons */}
             <div style={{ display: "flex", gap: "16px", marginTop: "24px" }}>
               <a
@@ -125,13 +120,21 @@ export default function SiteFooter() {
               <div
                 style={{
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   gap: "12px",
                   color: "rgba(255,255,255,0.8)",
+                  flexDirection: "column",
                 }}
               >
-                <MapPin size={20} />
-                <span>{brand.addressLine}</span>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                  <MapPin size={20} style={{ flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <div>{brand.addressLine}</div>
+                    <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.7)", marginTop: "4px" }}>
+                      {brand.serviceArea}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
