@@ -19,39 +19,6 @@ export default function SiteFooter() {
             <p style={{ color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.6, padding: 0, marginLeft: 0 }}>
               Private, compassionate home care tailored to your loved one's comfort, dignity, and safety.
             </p>
-            
-            {/* Social Icons */}
-            <div style={{ display: "flex", gap: "16px", marginTop: "24px" }}>
-              <a
-                href="https://www.instagram.com/onlyhealthsolutions?igsh=MTd0bjVjdG5jeWU1bw=="
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  background: "rgba(31, 166, 160, 0.2)",
-                  color: "#1fa6a0",
-                  textDecoration: "none",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#1fa6a0";
-                  e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.transform = "scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(31, 166, 160, 0.2)";
-                  e.currentTarget.style.color = "#1fa6a0";
-                  e.currentTarget.style.transform = "scale(1)";
-                }}
-              >
-                <Instagram size={20} />
-              </a>
-            </div>
           </div>
 
           {/* Explore Section */}
@@ -139,6 +106,39 @@ export default function SiteFooter() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Social Icons - Moved to Contact Section */}
+              <div style={{ display: "flex", gap: "16px", marginTop: "16px", paddingTop: "16px", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                <a
+                  href="https://www.instagram.com/onlyhealthsolutions?igsh=MTd0bjVjdG5jeWU1bw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    background: "rgba(31, 166, 160, 0.2)",
+                    color: "#1fa6a0",
+                    textDecoration: "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#1fa6a0";
+                    e.currentTarget.style.color = "#ffffff";
+                    e.currentTarget.style.transform = "scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(31, 166, 160, 0.2)";
+                    e.currentTarget.style.color = "#1fa6a0";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                >
+                  <Instagram size={20} />
+                </a>
               </div>
             </div>
           </div>
