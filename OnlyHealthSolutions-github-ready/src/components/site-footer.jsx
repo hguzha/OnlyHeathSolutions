@@ -27,8 +27,8 @@ export default function SiteFooter() {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 400px;
-          height: 400px;
+          width: 600px;
+          height: 600px;
           background-image: url('${brand.logo}');
           background-size: contain;
           background-repeat: no-repeat;
