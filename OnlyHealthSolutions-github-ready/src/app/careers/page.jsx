@@ -17,6 +17,9 @@ export default function CareersPage() {
     availabilityStatus: "",
     hasLicense: "",
     citzenshipStatus: "",
+    resume: "",
+    certDocuments: "",
+    additionalDocuments: "",
     agreeToBackgroundCheck: false,
     signature: "",
   });
@@ -132,6 +135,9 @@ export default function CareersPage() {
       formDataToSend.append("availabilityStatus", formData.availabilityStatus);
       formDataToSend.append("hasLicense", formData.hasLicense);
       formDataToSend.append("citzenshipStatus", formData.citzenshipStatus);
+      formDataToSend.append("resume", formData.resume);
+      formDataToSend.append("certDocuments", formData.certDocuments);
+      formDataToSend.append("additionalDocuments", formData.additionalDocuments);
       formDataToSend.append("signature", formData.signature);
 
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -154,6 +160,9 @@ export default function CareersPage() {
           availabilityStatus: "",
           hasLicense: "",
           citzenshipStatus: "",
+          resume: "",
+          certDocuments: "",
+          additionalDocuments: "",
           agreeToBackgroundCheck: false,
           signature: "",
         });
@@ -642,6 +651,43 @@ function ApplicationFormModal({
                 <option value="Work Visa">Work Visa</option>
                 <option value="Other">Other</option>
               </select>
+            </div>
+          </FormSection>
+
+          {/* Documents Section */}
+          <FormSection title="Documents">
+            <div>
+              <label style={labelStyle}>Resume (PDF or Word) *</label>
+              <input
+                type="text"
+                name="resume"
+                value={formData.resume}
+                onChange={handleInputChange}
+                placeholder="Provide resume details or file name"
+                style={inputStyle}
+              />
+            </div>
+            <div>
+              <label style={labelStyle}>Certification Documents (PDF or Word)</label>
+              <input
+                type="text"
+                name="certDocuments"
+                value={formData.certDocuments}
+                onChange={handleInputChange}
+                placeholder="Provide certification details or file name"
+                style={inputStyle}
+              />
+            </div>
+            <div>
+              <label style={labelStyle}>Additional Documents (PDF or Word)</label>
+              <input
+                type="text"
+                name="additionalDocuments"
+                value={formData.additionalDocuments}
+                onChange={handleInputChange}
+                placeholder="Provide any additional document details"
+                style={inputStyle}
+              />
             </div>
           </FormSection>
 
