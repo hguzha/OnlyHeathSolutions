@@ -40,7 +40,7 @@ export default function ApplicationForm() {
         <input
           type="hidden"
           name="access_key"
-          value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY}
+          value="12d93745-b12d-4313-b872-274b79cb9a4b"
         />
 
         <div>
