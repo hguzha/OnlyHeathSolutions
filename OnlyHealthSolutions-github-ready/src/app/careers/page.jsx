@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PageHero from "@/components/page-hero";
-import { ChevronDown, X, Upload, Check } from "lucide-react";
+import { X, Check } from "lucide-react";
 
 export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState(null);
@@ -20,15 +20,6 @@ export default function CareersPage() {
     agreeToBackgroundCheck: false,
     signature: "",
   });
-  
-  const [uploadedFiles, setUploadedFiles] = useState({
-    resume: null,
-    certDocuments: null,
-    additionalDocuments: null,
-  });
-
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadError, setUploadError] = useState(null);
 
   const careersData = [
     {
@@ -121,69 +112,6 @@ export default function CareersPage() {
     }));
   };
 
-  const handleFileChange = async (e, fieldName) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    // Validate file type and size
-    const maxSize = 5 * 1024 * 1024; // 5MB
-    const allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
-    
-    if (!allowedTypes.includes(file.type)) {
-      setUploadError("Please upload a PDF or Word document");
-      return;
-    }
-
-    if (file.size > maxSize) {
-      setUploadError("File size must be less than 5MB");
-      return;
-    }
-
-    setIsUploading(true);
-    setUploadError(null);
-
-    try {
-      // Create FormData to send file
-      const formDataToSend = new FormData();
-      formDataToSend.append("file", file);
-      formDataToSend.append("fieldName", fieldName);
-
-      // Upload to API endpoint
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formDataToSend,
-      });
-
-      if (!response.ok) {
-        throw new Error("Upload failed");
-      }
-
-      const data = await response.json();
-      
-      // Store file info in state
-      setUploadedFiles((prev) => ({
-        ...prev,
-        [fieldName]: {
-          name: file.name,
-          url: data.url,
-          size: file.size,
-        },
-      }));
-    } catch (error) {
-      setUploadError("Failed to upload file. Please try again.");
-      console.error("Upload error:", error);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
-  const removeFile = (fieldName) => {
-    setUploadedFiles((prev) => ({
-      ...prev,
-      [fieldName]: null,
-    }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -193,45 +121,45 @@ export default function CareersPage() {
     }
 
     try {
-      const applicationData = {
-        ...formData,
-        resume: uploadedFiles.resume?.url,
-        certDocuments: uploadedFiles.certDocuments?.url,
-        additionalDocuments: uploadedFiles.additionalDocuments?.url,
-        role: selectedRole?.title,
-        submittedAt: new Date().toISOString(),
-      };
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", "12d93745-b12d-4313-b872-274b79cb9a4b");
+      formDataToSend.append("firstName", formData.firstName);
+      formDataToSend.append("lastName", formData.lastName);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("currentRole", formData.currentRole);
+      formDataToSend.append("startDate", formData.startDate);
+      formDataToSend.append("availabilityStatus", formData.availabilityStatus);
+      formDataToSend.append("hasLicense", formData.hasLicense);
+      formDataToSend.append("citzenshipStatus", formData.citzenshipStatus);
+      formDataToSend.append("signature", formData.signature);
 
-      const response = await fetch("/api/applications", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(applicationData),
+        body: formDataToSend,
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit application");
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Application submitted successfully!");
+        setShowApplicationModal(false);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          currentRole: "",
+          startDate: "",
+          availabilityStatus: "",
+          hasLicense: "",
+          citzenshipStatus: "",
+          agreeToBackgroundCheck: false,
+          signature: "",
+        });
+      } else {
+        alert("Error submitting form");
       }
-
-      alert("Application submitted successfully!");
-      setShowApplicationModal(false);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        currentRole: "",
-        startDate: "",
-        availabilityStatus: "",
-        hasLicense: "",
-        citzenshipStatus: "",
-        agreeToBackgroundCheck: false,
-        signature: "",
-      });
-      setUploadedFiles({
-        resume: null,
-        certDocuments: null,
-        additionalDocuments: null,
-      });
     } catch (error) {
       alert("Failed to submit application. Please try again.");
       console.error("Submission error:", error);
@@ -317,14 +245,9 @@ export default function CareersPage() {
           onClose={() => setShowApplicationModal(false)}
           formData={formData}
           handleInputChange={handleInputChange}
-          handleFileChange={handleFileChange}
-          removeFile={removeFile}
-          uploadedFiles={uploadedFiles}
           handleSubmit={handleSubmit}
           inputStyle={inputStyle}
           labelStyle={labelStyle}
-          isUploading={isUploading}
-          uploadError={uploadError}
         />
       )}
     </main>
@@ -506,14 +429,9 @@ function ApplicationFormModal({
   onClose,
   formData,
   handleInputChange,
-  handleFileChange,
-  removeFile,
-  uploadedFiles,
   handleSubmit,
   inputStyle,
   labelStyle,
-  isUploading,
-  uploadError,
 }) {
   return (
     <div
@@ -542,6 +460,7 @@ function ApplicationFormModal({
           animation: "slideUp 0.3s ease",
           maxHeight: "90vh",
           overflowY: "auto",
+          position: "relative",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -589,12 +508,6 @@ function ApplicationFormModal({
         <p style={{ color: "#666", marginBottom: "32px" }}>
           Fill out the form below to apply for a position with Only Health Solutions
         </p>
-
-        {uploadError && (
-          <div style={{ background: "#fee", border: "1px solid #fcc", borderRadius: "8px", padding: "12px", marginBottom: "16px", color: "#c33", fontSize: "14px" }}>
-            {uploadError}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {/* Personal Information Section */}
@@ -732,34 +645,6 @@ function ApplicationFormModal({
             </div>
           </FormSection>
 
-          {/* Documents Section */}
-          <FormSection title="Documents">
-            <FileUploadField
-              label="Resume (PDF or Word) *"
-              fieldName="resume"
-              uploadedFiles={uploadedFiles}
-              handleFileChange={handleFileChange}
-              removeFile={removeFile}
-              isUploading={isUploading}
-            />
-            <FileUploadField
-              label="Certification Documents (PDF or Word)"
-              fieldName="certDocuments"
-              uploadedFiles={uploadedFiles}
-              handleFileChange={handleFileChange}
-              removeFile={removeFile}
-              isUploading={isUploading}
-            />
-            <FileUploadField
-              label="Additional Documents (PDF or Word)"
-              fieldName="additionalDocuments"
-              uploadedFiles={uploadedFiles}
-              handleFileChange={handleFileChange}
-              removeFile={removeFile}
-              isUploading={isUploading}
-            />
-          </FormSection>
-
           {/* Background Check & Agreement Section */}
           <FormSection title="Background Check">
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -791,33 +676,28 @@ function ApplicationFormModal({
 
           <button
             type="submit"
-            disabled={isUploading}
             style={{
               padding: "16px 32px",
               borderRadius: "9999px",
-              background: isUploading ? "#ccc" : "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+              background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               border: "none",
               fontWeight: "700",
               fontSize: "16px",
-              cursor: isUploading ? "not-allowed" : "pointer",
+              cursor: "pointer",
               transition: "all 0.3s ease",
               boxShadow: "0 10px 30px rgba(31,166,160,0.2)",
             }}
             onMouseEnter={(e) => {
-              if (!isUploading) {
-                e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.boxShadow = "0 15px 40px rgba(31,166,160,0.3)";
-              }
+              e.currentTarget.style.transform = "translateY(-3px)";
+              e.currentTarget.style.boxShadow = "0 15px 40px rgba(31,166,160,0.3)";
             }}
             onMouseLeave={(e) => {
-              if (!isUploading) {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 10px 30px rgba(31,166,160,0.2)";
-              }
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 10px 30px rgba(31,166,160,0.2)";
             }}
           >
-            {isUploading ? "Uploading..." : "Submit Application"}
+            Submit Application
           </button>
         </form>
       </div>
@@ -848,60 +728,6 @@ function FormSection({ title, children }) {
       <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         {children}
       </div>
-    </div>
-  );
-}
-
-// File Upload Field Component
-function FileUploadField({ label, fieldName, uploadedFiles, handleFileChange, removeFile, isUploading }) {
-  return (
-    <div>
-      <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#0f172a", fontSize: "14px" }}>
-        {label}
-      </label>
-      {uploadedFiles[fieldName] ? (
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "12px", background: "#f0e6ff", borderRadius: "12px" }}>
-          <Check size={20} color="#1fa6a0" style={{ flexShrink: 0 }} />
-          <span style={{ fontSize: "14px", color: "#0f172a", fontWeight: 500, flex: 1 }}>
-            {uploadedFiles[fieldName].name}
-          </span>
-          <button
-            type="button"
-            onClick={() => removeFile(fieldName)}
-            disabled={isUploading}
-            style={{
-              background: "rgba(255,255,255,0.7)",
-              border: "none",
-              borderRadius: "6px",
-              padding: "6px 12px",
-              cursor: isUploading ? "not-allowed" : "pointer",
-              fontSize: "12px",
-              fontWeight: 600,
-              color: "#1fa6a0",
-            }}
-          >
-            Remove
-          </button>
-        </div>
-      ) : (
-        <div style={{ position: "relative" }}>
-          <input
-            type="file"
-            onChange={(e) => handleFileChange(e, fieldName)}
-            disabled={isUploading}
-            accept=".pdf,.doc,.docx"
-            style={{
-              width: "100%",
-              padding: "12px",
-              borderRadius: "12px",
-              border: "2px dashed #dbe2ea",
-              cursor: isUploading ? "not-allowed" : "pointer",
-              opacity: isUploading ? 0.5 : 1,
-            }}
-          />
-          <Upload size={18} style={{ position: "absolute", right: "12px", top: "12px", color: "#999", pointerEvents: "none" }} />
-        </div>
-      )}
     </div>
   );
 }
