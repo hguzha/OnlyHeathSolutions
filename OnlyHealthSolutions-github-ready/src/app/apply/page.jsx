@@ -72,15 +72,6 @@ export default function ApplicationForm() {
           />
         </div>
 
-        <div>
-          <label className="block font-semibold">File Upload</label>
-          <input
-            type="file"
-            name="resume"
-            className="w-full p-2 border rounded"
-          />
-        </div>
-
         <button
           type="submit"
           disabled={loading}
