@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PageHero from "@/components/page-hero";
-import { X, Check } from "lucide-react";
+import { X, Check, Upload } from "lucide-react";
 
 export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState(null);
@@ -17,11 +17,14 @@ export default function CareersPage() {
     availabilityStatus: "",
     hasLicense: "",
     citzenshipStatus: "",
-    resume: "",
-    certDocuments: "",
-    additionalDocuments: "",
     agreeToBackgroundCheck: false,
     signature: "",
+  });
+
+  const [files, setFiles] = useState({
+    resume: null,
+    certDocuments: null,
+    additionalDocuments: null,
   });
 
   const careersData = [
@@ -115,6 +118,23 @@ export default function CareersPage() {
     }));
   };
 
+  const handleFileChange = (e, fieldName) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFiles((prev) => ({
+        ...prev,
+        [fieldName]: file,
+      }));
+    }
+  };
+
+  const removeFile = (fieldName) => {
+    setFiles((prev) => ({
+      ...prev,
+      [fieldName]: null,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -135,10 +155,17 @@ export default function CareersPage() {
       formDataToSend.append("availabilityStatus", formData.availabilityStatus);
       formDataToSend.append("hasLicense", formData.hasLicense);
       formDataToSend.append("citzenshipStatus", formData.citzenshipStatus);
-      formDataToSend.append("resume", formData.resume);
-      formDataToSend.append("certDocuments", formData.certDocuments);
-      formDataToSend.append("additionalDocuments", formData.additionalDocuments);
       formDataToSend.append("signature", formData.signature);
+
+      if (files.resume) {
+        formDataToSend.append("resume", files.resume);
+      }
+      if (files.certDocuments) {
+        formDataToSend.append("certDocuments", files.certDocuments);
+      }
+      if (files.additionalDocuments) {
+        formDataToSend.append("additionalDocuments", files.additionalDocuments);
+      }
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -160,11 +187,13 @@ export default function CareersPage() {
           availabilityStatus: "",
           hasLicense: "",
           citzenshipStatus: "",
-          resume: "",
-          certDocuments: "",
-          additionalDocuments: "",
           agreeToBackgroundCheck: false,
           signature: "",
+        });
+        setFiles({
+          resume: null,
+          certDocuments: null,
+          additionalDocuments: null,
         });
       } else {
         alert("Error submitting form");
@@ -206,7 +235,6 @@ export default function CareersPage() {
         ]}
       />
 
-      {/* Careers Section */}
       <section style={{ background: "#ffffff", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "80px" }}>
@@ -248,12 +276,14 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Application Modal */}
       {showApplicationModal && (
         <ApplicationFormModal
           onClose={() => setShowApplicationModal(false)}
           formData={formData}
           handleInputChange={handleInputChange}
+          handleFileChange={handleFileChange}
+          removeFile={removeFile}
+          files={files}
           handleSubmit={handleSubmit}
           inputStyle={inputStyle}
           labelStyle={labelStyle}
@@ -263,7 +293,6 @@ export default function CareersPage() {
   );
 }
 
-// Role Card Component
 function RoleCard({ role, onSelect }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -329,7 +358,6 @@ function RoleCard({ role, onSelect }) {
   );
 }
 
-// Role Detail View Component
 function RoleDetailView({ role, onBack, onApply }) {
   return (
     <div>
@@ -433,11 +461,13 @@ function RoleDetailView({ role, onBack, onApply }) {
   );
 }
 
-// Application Form Modal Component
 function ApplicationFormModal({
   onClose,
   formData,
   handleInputChange,
+  handleFileChange,
+  removeFile,
+  files,
   handleSubmit,
   inputStyle,
   labelStyle,
@@ -473,7 +503,6 @@ function ApplicationFormModal({
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
           style={{
@@ -519,7 +548,6 @@ function ApplicationFormModal({
         </p>
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          {/* Personal Information Section */}
           <FormSection title="Personal Information">
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
               <div>
@@ -571,7 +599,6 @@ function ApplicationFormModal({
             </div>
           </FormSection>
 
-          {/* Experience Section */}
           <FormSection title="Experience">
             <div>
               <label style={labelStyle}>Current Role/Position *</label>
@@ -615,7 +642,6 @@ function ApplicationFormModal({
             </div>
           </FormSection>
 
-          {/* License Section */}
           <FormSection title="Licensing">
             <div>
               <label style={labelStyle}>Do you have a current license? *</label>
@@ -634,7 +660,6 @@ function ApplicationFormModal({
             </div>
           </FormSection>
 
-          {/* Work Authorization Section */}
           <FormSection title="Work Authorization">
             <div>
               <label style={labelStyle}>Citizenship Status *</label>
@@ -654,44 +679,30 @@ function ApplicationFormModal({
             </div>
           </FormSection>
 
-          {/* Documents Section */}
           <FormSection title="Documents">
-            <div>
-              <label style={labelStyle}>Resume (PDF or Word) *</label>
-              <input
-                type="text"
-                name="resume"
-                value={formData.resume}
-                onChange={handleInputChange}
-                placeholder="Provide resume details or file name"
-                style={inputStyle}
-              />
-            </div>
-            <div>
-              <label style={labelStyle}>Certification Documents (PDF or Word)</label>
-              <input
-                type="text"
-                name="certDocuments"
-                value={formData.certDocuments}
-                onChange={handleInputChange}
-                placeholder="Provide certification details or file name"
-                style={inputStyle}
-              />
-            </div>
-            <div>
-              <label style={labelStyle}>Additional Documents (PDF or Word)</label>
-              <input
-                type="text"
-                name="additionalDocuments"
-                value={formData.additionalDocuments}
-                onChange={handleInputChange}
-                placeholder="Provide any additional document details"
-                style={inputStyle}
-              />
-            </div>
+            <FileUploadField
+              label="Resume (PDF or Word) *"
+              fieldName="resume"
+              file={files.resume}
+              handleFileChange={handleFileChange}
+              removeFile={removeFile}
+            />
+            <FileUploadField
+              label="Certification Documents (PDF or Word)"
+              fieldName="certDocuments"
+              file={files.certDocuments}
+              handleFileChange={handleFileChange}
+              removeFile={removeFile}
+            />
+            <FileUploadField
+              label="Additional Documents (PDF or Word)"
+              fieldName="additionalDocuments"
+              file={files.additionalDocuments}
+              handleFileChange={handleFileChange}
+              removeFile={removeFile}
+            />
           </FormSection>
 
-          {/* Background Check & Agreement Section */}
           <FormSection title="Background Check">
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <input
@@ -764,7 +775,6 @@ function ApplicationFormModal({
   );
 }
 
-// Form Section Component
 function FormSection({ title, children }) {
   return (
     <div style={{ borderTop: "2px solid #e2e8f0", paddingTop: "24px" }}>
@@ -774,6 +784,56 @@ function FormSection({ title, children }) {
       <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         {children}
       </div>
+    </div>
+  );
+}
+
+function FileUploadField({ label, fieldName, file, handleFileChange, removeFile }) {
+  return (
+    <div>
+      <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#0f172a", fontSize: "14px" }}>
+        {label}
+      </label>
+      {file ? (
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "12px", background: "#f0e6ff", borderRadius: "12px" }}>
+          <Check size={20} color="#1fa6a0" style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: "14px", color: "#0f172a", fontWeight: 500, flex: 1 }}>
+            {file.name}
+          </span>
+          <button
+            type="button"
+            onClick={() => removeFile(fieldName)}
+            style={{
+              background: "rgba(255,255,255,0.7)",
+              border: "none",
+              borderRadius: "6px",
+              padding: "6px 12px",
+              cursor: "pointer",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#1fa6a0",
+            }}
+          >
+            Remove
+          </button>
+        </div>
+      ) : (
+        <div style={{ position: "relative" }}>
+          <input
+            type="file"
+            onChange={(e) => handleFileChange(e, fieldName)}
+            accept=".pdf,.doc,.docx"
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "12px",
+              border: "2px dashed #dbe2ea",
+              cursor: "pointer",
+            }}
+          />
+          <Upload size={18} style={{ position: "absolute", right: "12px", top: "12px", color: "#999", pointerEvents: "none" }} />
+        </div>
+      )}
     </div>
   );
 }
