@@ -54,7 +54,7 @@ export default function HowItWorksPage() {
         height={440}
       />
 
-      {/* Steps Section - Luxury & Creative */}
+      {/* Steps Section */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
@@ -124,7 +124,7 @@ export default function HowItWorksPage() {
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
                 <StepCard step={step} />
-                {/* Arrow connector between steps (but not after the last step) */}
+                {/* Arrow connector between steps */}
                 {index < steps.length - 1 && (
                   <div
                     style={{
@@ -249,36 +249,56 @@ export default function HowItWorksPage() {
           <p style={{ fontSize: "18px", lineHeight: 1.8, color: "rgba(255,255,255,0.95)", marginBottom: "40px", maxWidth: "600px", margin: "0 auto 40px" }}>
             Take the first step toward quality home care. Give us a call today and let's talk about how we can help your loved one.
           </p>
-          <a
-            href={brand.phoneHref}
-            style={{
-              display: "inline-block",
-              padding: "16px 40px",
-              borderRadius: "9999px",
-              background: "rgba(255,255,255,0.95)",
-              color: "#1fa6a0",
-              border: "none",
-              fontWeight: "700",
-              fontSize: "16px",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
-              textDecoration: "none",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.boxShadow = "0 15px 40px rgba(0,0,0,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)";
-            }}
-          >
-            Call Now to Start
-          </a>
+          <CallButton phoneNumber={brand.phoneDisplay} phoneHref={brand.phoneHref} />
         </div>
       </section>
     </main>
+  );
+}
+
+// Call Button Component - Shows phone only on hover
+function CallButton({ phoneNumber, phoneHref }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <a
+      href={phoneHref}
+      style={{
+        display: "inline-block",
+        padding: "16px 40px",
+        borderRadius: "9999px",
+        background: "rgba(255,255,255,0.95)",
+        color: "#1fa6a0",
+        border: "none",
+        fontWeight: "700",
+        fontSize: "16px",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+        textDecoration: "none",
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        display: "inline-block",
+        padding: "16px 40px",
+        borderRadius: "9999px",
+        background: "rgba(255,255,255,0.95)",
+        color: "#1fa6a0",
+        fontWeight: "700",
+        fontSize: "16px",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+        textDecoration: "none",
+        transform: isHovered ? "scale(1.05)" : "scale(1)",
+        boxShadow: isHovered ? "0 15px 40px rgba(0,0,0,0.3)" : "0 10px 30px rgba(0,0,0,0.2)",
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {isHovered ? phoneNumber : "Call Now to Start"}
+    </a>
   );
 }
 
