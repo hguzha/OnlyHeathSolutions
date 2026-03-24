@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 export default function ChatButtons() {
@@ -19,7 +19,6 @@ export default function ChatButtons() {
         zIndex: 9999
       }}
     >
-      {/* Text Button */}
       <a
         href={textLink}
         style={{
@@ -38,7 +37,6 @@ export default function ChatButtons() {
         Text Us
       </a>
 
-      {/* WhatsApp */}
       <a
         href={whatsappLink}
         target="_blank"
@@ -55,7 +53,6 @@ export default function ChatButtons() {
           boxShadow: "0 8px 20px rgba(0,0,0,0.15)"
         }}
       >
-        <Phone size={18} />
         WhatsApp
       </a>
     </div>
