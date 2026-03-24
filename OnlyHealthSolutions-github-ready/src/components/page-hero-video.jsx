@@ -65,7 +65,7 @@ export default function PageHeroVideo() {
 
           <h1
             style={{
-              fontSize: "clamp(40px, 6vw, 72px)",
+              fontSize: "clamp(32px, 5vw, 56px)",
               lineHeight: 1.02,
               margin: "0 0 18px",
               fontWeight: 800,
