@@ -114,7 +114,7 @@ export default function PageHeroVideo() {
             </a>
 
             <Link
-              href="/contact?section=contact-form"
+              href="/contact#send-message-form"
               className="btn"
               style={{
                 background: "rgba(255,255,255,0.12)",
