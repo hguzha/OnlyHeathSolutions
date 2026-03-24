@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 export default function ChatButtons() {
@@ -54,7 +54,6 @@ export default function ChatButtons() {
           boxShadow: "0 8px 20px rgba(0,0,0,0.15)"
         }}
       >
-        <Phone size={18} />
         WhatsApp
       </a>
     </div>
