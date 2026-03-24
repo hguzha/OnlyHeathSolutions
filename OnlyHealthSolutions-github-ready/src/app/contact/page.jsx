@@ -140,6 +140,7 @@ ${form.message}`
 
       {/* Contact Form Section */}
       <section
+        id="contact-form-section"
         style={{
           background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
           paddingTop: "100px",
@@ -209,6 +210,7 @@ ${form.message}`
                     fontSize: "16px",
                     transition: "all 0.3s ease",
                     boxSizing: "border-box",
+                    fontFamily: "inherit",
                   }}
                   onFocus={(e) => {
                     e.target.style.background = "rgba(255,255,255,0.12)";
@@ -223,73 +225,75 @@ ${form.message}`
                 />
               </div>
 
-              {/* Phone & Email Row */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                <div>
-                  <label style={{ display: "block", color: "#ffffff", marginBottom: "8px", fontWeight: 600, fontSize: "14px" }}>
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="(555) 123-4567"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      borderRadius: "12px",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      background: "rgba(255,255,255,0.08)",
-                      color: "#ffffff",
-                      fontSize: "16px",
-                      transition: "all 0.3s ease",
-                      boxSizing: "border-box",
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.background = "rgba(255,255,255,0.12)";
-                      e.target.style.borderColor = "rgba(31,166,160,0.5)";
-                      e.target.style.boxShadow = "0 0 20px rgba(31,166,160,0.2)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.background = "rgba(255,255,255,0.08)";
-                      e.target.style.borderColor = "rgba(255,255,255,0.2)";
-                      e.target.style.boxShadow = "none";
-                    }}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: "block", color: "#ffffff", marginBottom: "8px", fontWeight: 600, fontSize: "14px" }}>
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    required
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      borderRadius: "12px",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      background: "rgba(255,255,255,0.08)",
-                      color: "#ffffff",
-                      fontSize: "16px",
-                      transition: "all 0.3s ease",
-                      boxSizing: "border-box",
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.background = "rgba(255,255,255,0.12)";
-                      e.target.style.borderColor = "rgba(31,166,160,0.5)";
-                      e.target.style.boxShadow = "0 0 20px rgba(31,166,160,0.2)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.background = "rgba(255,255,255,0.08)";
-                      e.target.style.borderColor = "rgba(255,255,255,0.2)";
-                      e.target.style.boxShadow = "none";
-                    }}
-                  />
-                </div>
+              {/* Email Input */}
+              <div>
+                <label style={{ display: "block", color: "#ffffff", marginBottom: "8px", fontWeight: 600, fontSize: "14px" }}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="john@example.com"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "14px 16px",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    background: "rgba(255,255,255,0.08)",
+                    color: "#ffffff",
+                    fontSize: "16px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    fontFamily: "inherit",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.background = "rgba(255,255,255,0.12)";
+                    e.target.style.borderColor = "rgba(31,166,160,0.5)";
+                    e.target.style.boxShadow = "0 0 20px rgba(31,166,160,0.2)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.background = "rgba(255,255,255,0.08)";
+                    e.target.style.borderColor = "rgba(255,255,255,0.2)";
+                    e.target.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              {/* Phone Input */}
+              <div>
+                <label style={{ display: "block", color: "#ffffff", marginBottom: "8px", fontWeight: 600, fontSize: "14px" }}>
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  style={{
+                    width: "100%",
+                    padding: "14px 16px",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    background: "rgba(255,255,255,0.08)",
+                    color: "#ffffff",
+                    fontSize: "16px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    fontFamily: "inherit",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.background = "rgba(255,255,255,0.12)";
+                    e.target.style.borderColor = "rgba(31,166,160,0.5)";
+                    e.target.style.boxShadow = "0 0 20px rgba(31,166,160,0.2)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.background = "rgba(255,255,255,0.08)";
+                    e.target.style.borderColor = "rgba(255,255,255,0.2)";
+                    e.target.style.boxShadow = "none";
+                  }}
+                />
               </div>
 
               {/* Message Textarea */}
@@ -298,7 +302,7 @@ ${form.message}`
                   Message
                 </label>
                 <textarea
-                  placeholder="Tell us about your care needs, schedule preferences, and any questions you have..."
+                  placeholder="Tell us about your care needs..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   required
@@ -371,7 +375,7 @@ ${form.message}`
                     border: "1px solid rgba(31,166,160,0.4)",
                     color: "rgba(255,255,255,0.9)",
                     textAlign: "center",
-                    fontWeight: 600,
+                    fontWeight: "600",
                     animation: "fadeIn 0.3s ease",
                   }}
                 >
@@ -453,6 +457,17 @@ ${form.message}`
           </div>
         </div>
       </section>
+
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      `}</style>
     </main>
   );
 }
@@ -462,27 +477,21 @@ function ContactCard({ item }) {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = item.icon;
 
-  const handleClick = () => {
-    if (item.link) {
-      window.location.href = item.link;
-    }
-  };
-
   return (
     <div
       style={{
-        background: "linear-gradient(135deg, #ffffff 0%, #f5f1ff 100%)",
-        border: isHovered ? `2px solid ${item.color}` : "2px solid rgba(31,166,160,0.15)",
-        borderRadius: "20px",
+        background: "white",
         padding: "40px",
+        borderRadius: "20px",
         textAlign: "center",
+        border: isHovered ? `2px solid ${item.color}` : "2px solid rgba(31,166,160,0.1)",
+        boxShadow: isHovered ? `0 20px 60px ${item.color}20` : "0 10px 40px rgba(0,0,0,0.05)",
         transition: "all 0.3s ease",
-        cursor: item.link ? "pointer" : "default",
+        cursor: "pointer",
         transform: isHovered ? "translateY(-10px)" : "translateY(0)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
     >
       <div
         style={{
@@ -495,36 +504,23 @@ function ContactCard({ item }) {
           justifyContent: "center",
           marginBottom: "20px",
           margin: "0 auto 20px",
-          transform: isHovered ? "scale(1.1)" : "scale(1)",
-          transition: "transform 0.3s ease",
-          boxShadow: `0 10px 30px ${item.color}20`,
         }}
       >
-        <Icon size={36} color="#ffffff" />
+        <Icon size={32} color="#ffffff" />
       </div>
-
-      <h3
-        style={{
-          fontSize: "22px",
-          fontWeight: 700,
-          marginBottom: "12px",
-          color: "#0b1320",
-        }}
-      >
+      <h3 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "12px", color: "#0b1320" }}>
         {item.title}
       </h3>
-
-      <p
-        style={{
-          fontSize: "16px",
-          color: isHovered ? item.color : "#666",
-          fontWeight: 600,
-          margin: "0",
-          transition: "color 0.3s ease",
-        }}
-      >
-        {item.content}
-      </p>
+      {item.link ? (
+        <a
+          href={item.link}
+          style={{ color: item.color, fontWeight: 600, textDecoration: "none", fontSize: "16px" }}
+        >
+          {item.content}
+        </a>
+      ) : (
+        <p style={{ color: "#666", margin: "0", fontSize: "16px" }}>{item.content}</p>
+      )}
     </div>
   );
 }
@@ -558,6 +554,3 @@ function InfoItem({ icon: Icon, title, description }) {
     </div>
   );
 }
-
-
-
