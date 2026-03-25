@@ -19,195 +19,161 @@ const services = [
       "Medication reminder support and routine observation",
     ],
     overview:
-      "Our personal care service is designed for clients who want hands-on support with everyday routines while remaining in the comfort of home. We help preserve dignity, independence, and confidence by delivering assistance with patience, privacy, and respect.",
-    idealFor: [
-      "Older adults needing help with daily living activities",
-      "Clients recovering from illness, injury, or surgery",
-      "Individuals with mobility limitations or physical weakness",
-      "Families who want dependable, compassionate in-home support",
-    ],
+      "Personal care assistance helps your loved one maintain dignity and independence while receiving compassionate support with daily living activities. Our caregivers are trained to provide respectful, patient assistance tailored to individual preferences and needs.",
     includes: [
-      "Bathing and shower assistance",
-      "Grooming, hair care, and oral hygiene",
-      "Dressing and personal appearance support",
-      "Toileting and incontinence support",
-      "Safe transfers from bed, chair, or wheelchair",
-      "Meal support and hydration reminders",
+      "Bathing and hygiene assistance",
+      "Dressing and grooming support",
+      "Toileting and incontinence care",
+      "Mobility assistance and transfers",
+      "Meal preparation and feeding support",
+    ],
+    idealFor: [
+      "Seniors needing help with daily activities",
+      "Individuals recovering from surgery or illness",
+      "People with mobility limitations or disabilities",
+      "Those who value independence with compassionate support",
     ],
     whyItMatters:
-      "Personal care support helps reduce risk, improve comfort, and make daily life feel more manageable for both clients and families.",
+      "Personal care assistance preserves dignity while enabling your loved one to remain safely at home. It reduces caregiver stress and allows families to maintain their relationship rather than becoming primary caregivers.",
   },
   {
     slug: "companion-care",
-    title: "Companion Care",
+    title: "Companion & Sitter Care",
     icon: Users,
-    intro: "Warm companionship that supports emotional wellness, conversation, routine, and meaningful engagement at home.",
+    intro: "Meaningful social engagement and practical support that enriches daily life and provides peace of mind for families.",
     details: [
-      "Conversation and social engagement",
-      "Accompaniment to appointments and errands",
-      "Light housekeeping and routine help",
-      "Support with hobbies, reading, and daily structure",
+      "Social engagement and meaningful conversation",
+      "Light household tasks and errands",
+      "Appointment transportation and accompaniment",
+      "Activity facilitation and leisure support",
     ],
     overview:
-      "Companion care focuses on the human side of support. We help clients feel connected, seen, and encouraged through conversation, routine assistance, and meaningful day-to-day presence.",
-    idealFor: [
-      "Seniors living alone",
-      "Clients at risk of loneliness or isolation",
-      "Families wanting regular check-ins and support",
-      "Individuals who benefit from conversation and structured routines",
-    ],
+      "Companion care provides social engagement and light assistance that helps prevent isolation while supporting daily routines. Our compassionate companions offer meaningful interaction and practical support tailored to your loved one's interests and preferences.",
     includes: [
-      "Friendly conversation and companionship",
-      "Shared meals, reading, games, and hobbies",
-      "Appointment accompaniment",
-      "Errand support and general outings",
-      "Light tidying and help around the home",
-      "Routine encouragement and daily engagement",
+      "Social engagement and conversation",
+      "Light housekeeping and tidying",
+      "Meal preparation assistance",
+      "Transportation to appointments and errands",
+      "Activity participation and leisure support",
+    ],
+    idealFor: [
+      "Seniors who live alone or feel isolated",
+      "Individuals needing social engagement",
+      "Those requiring light household support",
+      "People wanting companionship and conversation",
     ],
     whyItMatters:
-      "Companion care supports emotional well-being, reduces isolation, and helps create more enjoyable, reassuring days at home.",
-  },
-  {
-    slug: "post-hospital-care",
-    title: "Post-Hospital Support",
-    icon: Stethoscope,
-    intro: "Smooth transitions home after surgery, illness, or hospitalization with thoughtful assistance and close family communication.",
-    details: [
-      "Recovery support and wellness observation",
-      "Transportation coordination and appointment reminders",
-      "Meal and hydration support",
-      "Mobility encouragement and home routine stabilization",
-    ],
-    overview:
-      "Returning home after a hospital stay can feel overwhelming. Our post-hospital support helps clients settle in safely, follow routines, and regain confidence during recovery while families receive added peace of mind.",
-    idealFor: [
-      "Clients returning home after surgery",
-      "Individuals recovering from illness or injury",
-      "Families needing short-term transition support",
-      "Clients who need help re-establishing daily routines",
-    ],
-    includes: [
-      "Discharge transition support",
-      "Medication and appointment reminders",
-      "Help with meals, hydration, and comfort",
-      "Mobility assistance and routine observation",
-      "Safe movement around the home",
-      "Family communication and recovery updates",
-    ],
-    whyItMatters:
-      "Early recovery support can reduce stress, encourage safer routines, and make the transition home feel more stable and supported.",
-  },
-  {
-    slug: "respite-care",
-    title: "Respite Care",
-    icon: CalendarHeart,
-    intro: "Flexible short-term relief for family caregivers who need trusted support for a few hours, a day, overnight, or longer.",
-    details: [
-      "Planned respite visits",
-      "Emergency or short-notice coverage",
-      "Weekend and holiday support options",
-      "Peace of mind for families balancing many responsibilities",
-    ],
-    overview:
-      "Family caregivers do extraordinary work, and they also need time to rest, recharge, and handle personal responsibilities. Our respite care provides trusted coverage so loved ones continue to receive attentive support while family caregivers step away.",
-    idealFor: [
-      "Family caregivers needing time off",
-      "Households balancing work, caregiving, and other responsibilities",
-      "Caregivers needing coverage for appointments or travel",
-      "Families wanting occasional or recurring relief support",
-    ],
-    includes: [
-      "Hourly or scheduled relief care",
-      "Daytime, evening, weekend, or overnight options",
-      "Routine assistance and companionship",
-      "Meal and personal care support during coverage",
-      "Short-notice help when available",
-      "Reliable continuity for the client while family rests",
-    ],
-    whyItMatters:
-      "Respite care protects caregiver well-being while ensuring clients continue receiving compassionate and dependable care.",
+      "Social isolation can negatively impact health and well-being. Companion care provides meaningful interaction, practical support, and reduces loneliness while helping families know their loved one is never alone.",
   },
   {
     slug: "nursing-care",
     title: "Skilled Nursing Care",
     icon: Stethoscope,
-    intro: "Professional nursing support delivered in the comfort of home for clients who require clinical oversight, monitoring, or medical assistance.",
+    intro: "Professional nursing support for medical needs, medication management, and health monitoring in the comfort of home.",
     details: [
-      "Medication administration and management",
-      "Vital signs monitoring and health observation",
+      "Medication management and administration",
       "Wound care and dressing changes",
-      "Coordination with physicians and healthcare providers",
+      "Health monitoring and vital signs",
+      "Care coordination with healthcare providers",
     ],
     overview:
-      "Our skilled nursing care service brings licensed nursing professionals into the home to support clients with medical needs that require a higher level of clinical attention. This service helps families manage health conditions safely while allowing clients to remain in a familiar and comfortable environment.",
-    idealFor: [
-      "Clients recovering from surgery or hospitalization",
-      "Individuals managing chronic medical conditions",
-      "Patients needing medication administration or clinical monitoring",
-      "Families seeking professional medical oversight at home",
-    ],
+      "Skilled nursing care brings clinical expertise to home-based care. Our licensed nurses provide medical support, medication management, and health monitoring—allowing your loved one to receive necessary care while remaining home.",
     includes: [
       "Medication administration and management",
-      "Health assessments and vital sign monitoring",
-      "Wound care and post-surgical care",
-      "Chronic disease management support",
-      "Coordination with physicians and care teams",
-      "Education and guidance for families",
+      "Wound care and dressing changes",
+      "Vital signs monitoring",
+      "Health assessment and observation",
+      "Care plan coordination",
+    ],
+    idealFor: [
+      "Individuals with chronic conditions",
+      "Post-surgical recovery requiring medical care",
+      "Those needing medication management",
+      "People with complex health needs",
     ],
     whyItMatters:
-      "Skilled nursing support helps ensure medical needs are addressed safely while allowing clients to recover, manage conditions, and maintain comfort at home.",
+      "Skilled nursing at home allows medical conditions to be managed safely and comfortably. It reduces hospital readmissions, improves recovery outcomes, and lets families feel confident their loved one receives professional clinical care.",
   },
   {
-    slug: "dementia-care",
-    title: "Alzheimer's & Dementia Care",
+    slug: "respite-care",
+    title: "Respite & Relief Care",
     icon: Brain,
-    intro: "Compassionate memory care focused on familiarity, patience, safety, routine, and respectful communication.",
+    intro: "Temporary care support that gives primary caregivers a break while ensuring your loved one receives compassionate attention.",
     details: [
-      "Structured daily routines",
-      "Safety-focused supervision",
-      "Meaningful engagement and redirection support",
-      "Family-centered communication and reassurance",
+      "Hourly or overnight respite coverage",
+      "Full care support during caregiver absence",
+      "Flexible scheduling for caregiver relief",
+      "Consistent, trained caregivers familiar with client needs",
     ],
     overview:
-      "Memory care requires patience, consistency, and an understanding approach. Our Alzheimer's and dementia care is designed to promote calm, structure, and safety while helping families feel more supported in day-to-day care.",
-    idealFor: [
-      "Clients living with memory loss or confusion",
-      "Families needing support with behavior changes and routines",
-      "Households wanting added safety and supervision",
-      "Loved ones who benefit from familiar, reassuring care",
-    ],
+      "Respite care provides temporary relief for primary caregivers, whether for a few hours or overnight. This allows family caregivers to rest, handle personal needs, or manage other responsibilities while knowing their loved one is in capable, compassionate hands.",
     includes: [
-      "Structured routines and calm daily support",
-      "Cueing, redirection, and reassurance",
-      "Safety observation within the home",
-      "Meaningful activities and familiar engagement",
-      "Personal care support with patience and dignity",
-      "Family communication and emotional support",
+      "Temporary in-home care coverage",
+      "Full assistance with activities of daily living",
+      "Meal preparation and feeding support",
+      "Medication reminders and monitoring",
+      "Companionship and engagement",
+    ],
+    idealFor: [
+      "Family caregivers needing a break",
+      "Individuals with primary caregivers needing relief",
+      "Those requiring occasional additional support",
+      "Families managing caregiver burnout",
     ],
     whyItMatters:
-      "Thoughtful memory care can reduce stress, encourage comfort, and help daily life feel more stable for clients and families alike.",
+      "Caregiver burnout is real. Respite care provides essential relief, helping family caregivers maintain their own health and well-being while ensuring their loved one receives quality care.",
   },
   {
-    slug: "live-in-care",
-    title: "Live-In & Extended Care",
+    slug: "post-recovery",
+    title: "Post-Surgical & Recovery Support",
     icon: BedDouble,
-    intro: "Higher-touch support for clients who need more consistent presence, extended shifts, or day-to-night continuity.",
+    intro: "Specialized care during recovery periods, supporting healing and rehabilitation in the familiar comfort of home.",
     details: [
-      "Longer scheduled care shifts",
-      "Overnight monitoring and assistance",
-      "Enhanced continuity for complex home routines",
-      "Dependable support that reduces family stress",
+      "Post-surgical wound care and monitoring",
+      "Rehabilitation exercise support and encouragement",
+      "Medication and pain management support",
+      "Activity progression and mobility assistance",
     ],
     overview:
-      "Some clients need a stronger day-to-day care presence. Live-in and extended care services are built for households that benefit from longer coverage, consistent oversight, and a dependable rhythm of support throughout the day or night.",
-    idealFor: [
-      "Clients needing more continuous support",
-      "Families concerned about nighttime safety",
-      "Individuals with complex home routines",
-      "Households seeking a more consistent caregiving presence",
-    ],
+      "Recovery support helps your loved one heal successfully after surgery or major illness. Our trained caregivers assist with wound care, monitor progress, support rehabilitation, and provide the encouragement needed for a smooth recovery at home.",
     includes: [
-      "Extended daytime care shifts",
+      "Wound care and dressing changes",
+      "Post-operative monitoring and observation",
+      "Rehabilitation exercise support",
+      "Mobility assistance and fall prevention",
+      "Pain management support and monitoring",
+    ],
+    idealFor: [
+      "Individuals recovering from surgery",
+      "Those requiring rehabilitation support",
+      "People needing temporary intensive care",
+      "Families wanting safe home-based recovery",
+    ],
+    whyItMatters:
+      "Home recovery after surgery supports faster healing, reduces infection risk, and provides comfort during a vulnerable time. Professional support ensures proper care while family remains close.",
+  },
+  {
+    slug: "extended-care",
+    title: "Extended & Live-In Care",
+    icon: CalendarHeart,
+    intro: "Comprehensive around-the-clock support for individuals requiring ongoing assistance with daily living and care needs.",
+    details: [
+      "Overnight assistance and monitoring",
+      "Support with mobility, meals, and routines",
+      "Personal care throughout longer care periods",
+      "Comfort-focused care and supervision",
+      "Greater continuity for families needing dependable presence",
+    ],
+    overview:
+      "Extended care can reduce family stress, improve consistency, and provide reassuring support when shorter visits are not enough.",
+    includes: [
+      "Overnight assistance and monitoring",
+      "Support with mobility, meals, and routines",
+      "Personal care throughout longer care periods",
+      "Comfort-focused care and supervision",
+      "Greater continuity for families needing dependable presence",
+    ],
+    idealFor: [
       "Overnight assistance and monitoring",
       "Support with mobility, meals, and routines",
       "Personal care throughout longer care periods",
@@ -243,7 +209,6 @@ function ServicesListPage({ setSelectedService }) {
   const router = useRouter();
 
   const handleRequestConsultation = () => {
-    // Scroll to new client inquiry section
     const inquirySection = document.getElementById("new-client-inquiry");
     if (inquirySection) {
       inquirySection.scrollIntoView({ behavior: "smooth" });
@@ -272,7 +237,7 @@ function ServicesListPage({ setSelectedService }) {
           </div>
 
           {/* Services Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "24px", marginBottom: "60px" }}>
+          <div data-grid-services style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "24px", marginBottom: "60px" }}>
             {services.map((service) => {
               const Icon = service.icon;
               return (
@@ -340,7 +305,7 @@ function ServicesListPage({ setSelectedService }) {
             padding: "40px",
             color: "white",
           }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
+            <div data-grid-services style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
               <div>
                 <p style={{ fontSize: "12px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.3em", color: "#ffffff", margin: "0 0 12px" }}>Need a custom care plan?</p>
                 <h3 style={{ fontSize: "32px", fontWeight: "800", color: "#ffffff", margin: "0" }}>
@@ -380,6 +345,16 @@ function ServicesListPage({ setSelectedService }) {
       <div id="new-client-inquiry">
         <NewClientInquiry />
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          [data-grid-services] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
@@ -388,7 +363,6 @@ function ServiceDetailPage({ service, setSelectedService, router }) {
   const Icon = service.icon;
 
   const handleRequestService = () => {
-    // Scroll to new client inquiry on services page
     setSelectedService(null);
     setTimeout(() => {
       const inquirySection = document.getElementById("new-client-inquiry");
@@ -431,7 +405,7 @@ function ServiceDetailPage({ service, setSelectedService, router }) {
             <ChevronRight size={16} style={{ transform: "rotate(180deg)" }} /> Back to Services
           </button>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", marginBottom: "60px" }}>
+          <div data-grid-services style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", marginBottom: "60px" }}>
             <div>
               <div style={{
                 display: "inline-flex",
@@ -532,7 +506,7 @@ function ServiceDetailPage({ service, setSelectedService, router }) {
           </div>
 
           {/* Ideal For & Why It Matters */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", marginBottom: "60px" }}>
+          <div data-grid-services style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", marginBottom: "60px" }}>
             <div style={{
               borderRadius: "24px",
               border: "1px solid #e2e8f0",
@@ -589,7 +563,7 @@ function ServiceDetailPage({ service, setSelectedService, router }) {
             padding: "40px",
             boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
           }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "40px", alignItems: "center" }}>
+            <div data-grid-services style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "40px", alignItems: "center" }}>
               <div>
                 <p style={{ fontSize: "12px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.3em", color: "#64748b", margin: "0 0 12px" }}>Need help deciding?</p>
                 <h3 style={{ fontSize: "32px", fontWeight: "800", color: "#0f172a", margin: "0 0 16px" }}>
@@ -627,6 +601,16 @@ function ServiceDetailPage({ service, setSelectedService, router }) {
           </div>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 768px) {
+          [data-grid-services] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
