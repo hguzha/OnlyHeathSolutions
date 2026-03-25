@@ -7,7 +7,7 @@ import { X, Heart, Maximize2 } from "lucide-react";
 
 const galleryImages = [
   {
-    src: "Consider-a-Career-as-a-Home-Care-Nursing-Assistant.png",
+    src: "Nano_Banana_2_A_white_caregiver_in_green_scrubs_helping_a_black_patient_to_comb_their_hair_in_their__1 (1).png",
     alt: "Caregiver assisting elderly client with warmth and compassion",
     category: "Personal Care",
     title: "Daily Assistance with Dignity"
