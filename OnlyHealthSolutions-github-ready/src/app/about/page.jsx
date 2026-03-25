@@ -108,10 +108,6 @@ export default function AboutPage() {
             gridTemplateColumns: "1fr 1fr",
             gap: "50px",
             alignItems: "stretch",
-            "@media (max-width: 768px)": {
-              gridTemplateColumns: "1fr",
-              gap: "30px",
-            }
           }}
         >
           {/* Our Mission Card - Creative */}
@@ -123,10 +119,10 @@ export default function AboutPage() {
 
         <style>{`
           @media (max-width: 768px) {
-            .mission-grid {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: 30px;
+            .container {
+              display: grid !important;
+              grid-template-columns: 1fr !important;
+              gap: 30px !important;
             }
           }
         `}</style>
@@ -233,16 +229,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .mission-grid {
-            display: grid !important;
-            grid-template-columns: 1fr !important;
-            gap: 30px !important;
-          }
-        }
-      `}</style>
     </main>
   );
 }
