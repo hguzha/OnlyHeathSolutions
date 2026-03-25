@@ -70,7 +70,7 @@ export default function ReviewsPage() {
         />
 
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div
+          <div data-grid-reviews
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -213,7 +213,7 @@ export default function ReviewsPage() {
             </p>
           </div>
 
-          <div
+          <div data-grid-reviews
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
@@ -249,7 +249,7 @@ export default function ReviewsPage() {
         }}
       >
         <div className="container">
-          <div
+          <div data-grid-reviews
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
@@ -383,6 +383,16 @@ export default function ReviewsPage() {
           </button>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 768px) {
+          [data-grid-reviews] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
