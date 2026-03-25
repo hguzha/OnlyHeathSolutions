@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { brand } from "@/lib/site-data";
 
 export default function PageHero({
@@ -9,6 +9,7 @@ export default function PageHero({
   image,
   images = [],
   height = 420,
+  background,
 }) {
   const slides = images.length > 0 ? images : image ? [image] : [];
   const [current, setCurrent] = useState(0);
@@ -52,6 +53,7 @@ export default function PageHero({
             position: "absolute",
             inset: 0,
             background:
+              background ||
               "linear-gradient(120deg, rgba(31,166,160,0.28) 0%, rgba(106,63,181,0.22) 55%, rgba(0,0,0,0.30) 100%)",
           }}
         />
@@ -76,6 +78,7 @@ export default function PageHero({
             justifyContent: "center",
             textAlign: "center",
             alignItems: "flex-end",
+            padding: "0 20px",
           }}
         >
           <div className="container">
@@ -88,6 +91,7 @@ export default function PageHero({
                 background: "rgba(255,255,255,0.08)",
                 marginBottom: 18,
                 color: "white",
+                fontSize: "clamp(12px, 2vw, 14px)",
               }}
             >
               {brand.name}
@@ -95,10 +99,11 @@ export default function PageHero({
 
             <h1
               style={{
-                fontSize: "52px",
+                fontSize: "clamp(32px, 6vw, 52px)",
                 fontWeight: 800,
                 marginBottom: "12px",
                 color: "white",
+                lineHeight: 1.2,
               }}
             >
               {title}
@@ -106,10 +111,11 @@ export default function PageHero({
 
             <p
               style={{
-                fontSize: "20px",
+                fontSize: "clamp(16px, 3vw, 20px)",
                 maxWidth: "760px",
                 margin: "0 auto",
                 color: "white",
+                lineHeight: 1.6,
               }}
             >
               {subtitle}
@@ -123,23 +129,33 @@ export default function PageHero({
                   marginTop: 22,
                   alignItems: "center",
                   justifyContent: "center",
+                  flexWrap: "wrap",
                 }}
               >
                 {slides.map((_, index) => (
                   <button
                     key={index}
-                    type="button"
-                    aria-label={`Go to slide ${index + 1}`}
                     onClick={() => setCurrent(index)}
                     style={{
-                      width: index === current ? 28 : 10,
-                      height: 10,
-                      borderRadius: 999,
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "50%",
+                      background:
+                        index === current
+                          ? "rgba(255,255,255,0.9)"
+                          : "rgba(255,255,255,0.4)",
                       border: "none",
                       cursor: "pointer",
-                      background:
-                        index === current ? "#d4af37" : "rgba(255,255,255,0.55)",
                       transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "rgba(255,255,255,0.7)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background =
+                        index === current
+                          ? "rgba(255,255,255,0.9)"
+                          : "rgba(255,255,255,0.4)";
                     }}
                   />
                 ))}
@@ -148,6 +164,23 @@ export default function PageHero({
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero {
+            height: auto;
+          }
+          
+          .hero-content {
+            bottom: 30px !important;
+            padding: 0 16px !important;
+          }
+          
+          .hero-img {
+            height: 300px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
