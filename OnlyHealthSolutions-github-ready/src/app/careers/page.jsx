@@ -263,7 +263,7 @@ export default function CareersPage() {
               onApply={() => setShowApplicationModal(true)}
             />
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "32px" }}>
+            <div data-grid-careers style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "32px" }}>
               {careersData.map((role, index) => (
                 <RoleCard
                   key={index}
@@ -289,6 +289,16 @@ export default function CareersPage() {
           labelStyle={labelStyle}
         />
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          [data-grid-careers] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
@@ -379,7 +389,7 @@ function RoleDetailView({ role, onBack, onApply }) {
         ← Back to Positions
       </button>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", marginBottom: "60px" }}>
+      <div data-grid-careers style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", marginBottom: "60px" }}>
         <div>
           <h2 style={{ fontSize: "40px", fontWeight: 800, color: "#0b1320", marginBottom: "24px" }}>
             {role.title}
@@ -837,5 +847,3 @@ function FileUploadField({ label, fieldName, file, handleFileChange, removeFile 
     </div>
   );
 }
-
-
