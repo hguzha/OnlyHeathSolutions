@@ -1,0 +1,6 @@
+// CSS Update for PageHero
+@media (max-width: 768px) {
+    .PageHero {
+        height: 250px;
+    }
+}
