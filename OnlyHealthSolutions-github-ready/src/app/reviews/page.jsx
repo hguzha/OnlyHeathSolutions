@@ -41,19 +41,19 @@ export default function ReviewsPage() {
         title="What Families Say"
         subtitle="Real stories from families who trust Only Health Solutions for compassionate, responsive home care."
         video="use1.mp4"
-        height={700}
+        height={800}
       />
 
       {/* Stats Section - Minimized with negative margin */}
       <section
         style={{
           background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
-          paddingTop: "30px",
-          paddingBottom: "30px",
+          paddingTop: "15px",
+          paddingBottom: "15px",
           color: "white",
           position: "relative",
           overflow: "hidden",
-          marginTop: "-60px",
+          marginTop: "-100px",
         }}
       >
         <div
@@ -74,7 +74,7 @@ export default function ReviewsPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "30px",
+              gap: "20px",
               textAlign: "center",
             }}
           >
@@ -82,9 +82,9 @@ export default function ReviewsPage() {
             <div>
               <div
                 style={{
-                  fontSize: "40px",
+                  fontSize: "36px",
                   fontWeight: 800,
-                  marginBottom: "8px",
+                  marginBottom: "4px",
                   background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -93,17 +93,17 @@ export default function ReviewsPage() {
               >
                 {averageRating}
               </div>
-              <div style={{ display: "flex", justifyContent: "center", gap: "3px", marginBottom: "6px" }}>
+              <div style={{ display: "flex", justifyContent: "center", gap: "2px", marginBottom: "4px" }}>
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    size={16}
+                    size={14}
                     fill="#FFD700"
                     color="#FFD700"
                   />
                 ))}
               </div>
-              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "13px" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "12px" }}>
                 Average Rating
               </p>
             </div>
@@ -112,9 +112,9 @@ export default function ReviewsPage() {
             <div>
               <div
                 style={{
-                  fontSize: "40px",
+                  fontSize: "36px",
                   fontWeight: 800,
-                  marginBottom: "8px",
+                  marginBottom: "4px",
                   background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -123,10 +123,10 @@ export default function ReviewsPage() {
               >
                 {totalReviews}
               </div>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: "6px" }}>
-                <MessageCircle size={18} color="#1fa6a0" />
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "4px" }}>
+                <MessageCircle size={16} color="#1fa6a0" />
               </div>
-              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "13px" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "12px" }}>
                 Family Reviews
               </p>
             </div>
@@ -135,9 +135,9 @@ export default function ReviewsPage() {
             <div>
               <div
                 style={{
-                  fontSize: "40px",
+                  fontSize: "36px",
                   fontWeight: 800,
-                  marginBottom: "8px",
+                  marginBottom: "4px",
                   background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -146,10 +146,10 @@ export default function ReviewsPage() {
               >
                 100%
               </div>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: "6px" }}>
-                <CheckCircle size={18} color="#1fa6a0" />
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "4px" }}>
+                <CheckCircle size={16} color="#1fa6a0" />
               </div>
-              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "13px" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "12px" }}>
                 Satisfied Families
               </p>
             </div>
@@ -161,7 +161,7 @@ export default function ReviewsPage() {
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
-          paddingTop: "60px",
+          paddingTop: "40px",
           paddingBottom: "100px",
           position: "relative",
           overflow: "hidden",
