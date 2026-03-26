@@ -138,15 +138,30 @@ export default function PageHeroVideo() {
 
       <style>{`
         @media (max-width: 768px) {
+          [data-hero-video] {
+            min-height: auto !important;
+            overflow: visible !important;
+          }
+
           [data-hero-video] video {
-            object-position: center !important;
+            position: relative !important;
+            inset: auto !important;
+            width: 100% !important;
+            height: 300px !important;
             object-fit: contain !important;
+            object-position: center !important;
+          }
+
+          [data-hero-video] div[style*="position: absolute"][style*="inset: 0"] {
+            display: none !important;
           }
 
           [data-hero-video] .container {
-            padding-left: 12px !important;
-            padding-right: 12px !important;
-            padding-bottom: 80px !important;
+            position: relative !important;
+            min-height: auto !important;
+            align-items: center !important;
+            padding: 40px 12px !important;
+            background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
           }
 
           [data-hero-video] div[style*="maxWidth"] {
@@ -154,25 +169,25 @@ export default function PageHeroVideo() {
           }
 
           [data-hero-video] h1 {
-            font-size: clamp(28px, 5vw, 56px) !important;
+            font-size: clamp(24px, 5vw, 40px) !important;
             margin-bottom: 12px !important;
           }
 
           [data-hero-video] p {
-            font-size: clamp(16px, 2vw, 22px) !important;
+            font-size: clamp(14px, 2vw, 18px) !important;
             max-width: 100% !important;
           }
 
           [data-hero-video] div[style*="gap: 14"] {
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 10px !important;
           }
 
           [data-hero-video] .btn {
-            flex: 1 1 calc(50% - 5px);
-            min-width: 100px;
-            padding: 12px 16px !important;
+            width: 100% !important;
+            padding: 14px 20px !important;
             font-size: 14px !important;
+            text-align: center;
           }
         }
       `}</style>
