@@ -165,10 +165,10 @@ export default function PageHeroVideo() {
             position: relative !important;
             min-height: auto !important;
             align-items: center !important;
-            padding: 16px 12px !important;
+            padding: 12px 12px !important;
             background: transparent !important;
             order: 2 !important;
-            margin-top: -8px !important;
+            margin-top: -16px !important;
           }
 
           [data-hero-video] div[style*="maxWidth"] {
