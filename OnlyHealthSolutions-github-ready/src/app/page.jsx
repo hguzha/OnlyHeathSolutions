@@ -177,7 +177,7 @@ export default function HomePage() {
       </div>
 
       {/* First Row - Compassionate Care Gradient */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
+      <section data-section-1 style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)" }}>
@@ -202,7 +202,7 @@ export default function HomePage() {
       </div>
 
       {/* Second Row - Professional Care Gradient */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
+      <section data-section-2 style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div>
@@ -224,7 +224,7 @@ export default function HomePage() {
       <WhyChooseUs />
 
       {/* Third Row - Family Support Gradient */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
+      <section data-section-3 style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div style={{ borderRadius: "16px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)" }}>
@@ -247,7 +247,7 @@ export default function HomePage() {
       <TestimonialStrip />
 
       {/* Fourth Row - Quality Excellence Gradient */}
-      <section style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
+      <section data-section-4 style={{ padding: "60px 0", background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
             <div>
@@ -265,6 +265,24 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 768px) {
+          [data-section-1] .container > div,
+          [data-section-2] .container > div,
+          [data-section-3] .container > div,
+          [data-section-4] .container > div {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 24px !important;
+          }
+
+          [data-section-2] .container > div,
+          [data-section-4] .container > div {
+            flex-direction: column;
+          }
+        }
+      `}</style>
     </FixedBackgroundShell>
   );
 }
