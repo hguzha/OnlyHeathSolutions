@@ -224,18 +224,16 @@ export default function CareersPage() {
 
   return (
     <main>
-      <div data-careers-hero style={{ maxWidth: "100%", overflow: "hidden" }}>
-        <PageHero
-          //title="Join Our Team"
-          subtitle="Be part of a mission to bring compassionate, dignified care to those who need it most."
-          height={460}
-          images={[
-            "1000251260.jpg",
-            "1000251261.png",
-            "1000251264.jpg",
-          ]}
-        />
-      </div>
+      <PageHero
+        //title="Join Our Team"
+        subtitle="Be part of a mission to bring compassionate, dignified care to those who need it most."
+        height={460}
+        images={[
+          "1000251260.jpg",
+          "1000251261.png",
+          "1000251264.jpg",
+        ]}
+      />
 
       <section style={{ background: "#ffffff", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
@@ -298,13 +296,6 @@ export default function CareersPage() {
             display: grid !important;
             grid-template-columns: 1fr !important;
             gap: 32px !important;
-          }
-
-          [data-careers-hero] {
-            max-width: 85% !important;
-            margin: 0 auto !important;
-            border-radius: 16px !important;
-            overflow: hidden !important;
           }
         }
       `}</style>
