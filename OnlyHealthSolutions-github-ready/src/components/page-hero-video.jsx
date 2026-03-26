@@ -26,7 +26,7 @@ export default function PageHeroVideo() {
           objectFit: "cover",
         }}
       >
-        <source src="herovideo.mp4" type="video/mp4" />
+        <source src="hero2video.mp4" type="video/mp4" />
       </video>
 
       <div
