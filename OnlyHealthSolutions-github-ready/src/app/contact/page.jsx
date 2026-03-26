@@ -61,12 +61,14 @@ ${form.message}`
 
   return (
     <main>
-      <PageHero
-        title="Get in Touch"
-        subtitle="We're here to answer questions and help you find the perfect care solution."
-        image="ChatGPT Image Mar 19, 2026, 05_21_05 PM (1) (1).png"
-        height={800}
-      />
+      <div data-contact-hero style={{ height: "400px" }}>
+        <PageHero
+          title="Get in Touch"
+          subtitle="We're here to answer questions and help you find the perfect care solution."
+          image="ChatGPT Image Mar 19, 2026, 05_21_05 PM (1) (1).png"
+          height={400}
+        />
+      </div>
 
       {/* Contact Info Cards */}
       <section
@@ -473,6 +475,22 @@ ${form.message}`
             display: grid !important;
             grid-template-columns: 1fr !important;
             gap: 32px !important;
+          }
+
+          [data-contact-hero] {
+            height: 600px !important;
+          }
+
+          [data-contact-hero] .hero {
+            height: 600px !important;
+          }
+
+          [data-contact-hero] div[style*="height"] {
+            height: 600px !important;
+          }
+
+          [data-contact-hero] .hero-img {
+            height: 600px !important;
           }
         }
       `}</style>
