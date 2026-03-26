@@ -137,27 +137,36 @@ export default function PageHeroVideo() {
 
       <style>{`
         @media (max-width: 768px) {
-          [data-hero-video] {
-            min-height: 60vh !important;
+          [data-hero-video] .container {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            padding-bottom: 80px !important;
           }
 
-          [data-hero-video] .container {
-            min-height: 60vh !important;
-            padding-bottom: 40px !important;
+          [data-hero-video] div[style*="maxWidth"] {
+            max-width: 100% !important;
           }
 
           [data-hero-video] h1 {
-            font-size: clamp(24px, 4vw, 40px) !important;
+            font-size: clamp(28px, 5vw, 56px) !important;
             margin-bottom: 12px !important;
           }
 
           [data-hero-video] p {
-            font-size: clamp(14px, 2vw, 18px) !important;
+            font-size: clamp(16px, 2vw, 22px) !important;
+            max-width: 100% !important;
+          }
+
+          [data-hero-video] div[style*="gap: 14"] {
+            flex-wrap: wrap;
+            gap: 10px !important;
           }
 
           [data-hero-video] .btn {
-            flex: 1 1 auto;
-            min-width: 120px;
+            flex: 1 1 calc(50% - 5px);
+            min-width: 100px;
+            padding: 12px 16px !important;
+            font-size: 14px !important;
           }
         }
       `}</style>
