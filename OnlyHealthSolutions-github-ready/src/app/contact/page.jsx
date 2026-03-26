@@ -124,7 +124,7 @@ ${form.message}`
             </p>
           </div>
 
-          <div
+          <div data-grid-contact
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -397,7 +397,7 @@ ${form.message}`
         }}
       >
         <div className="container">
-          <div
+          <div data-grid-contact
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
@@ -465,6 +465,14 @@ ${form.message}`
           }
           to {
             opacity: 1;
+          }
+        }
+
+        @media (max-width: 768px) {
+          [data-grid-contact] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
           }
         }
       `}</style>
