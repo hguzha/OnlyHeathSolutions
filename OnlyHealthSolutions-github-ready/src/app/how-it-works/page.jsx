@@ -260,6 +260,11 @@ export default function HowItWorksPage() {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
+          
+          /* Hide arrows on mobile */
+          [data-grid-howit] > div:nth-child(even) {
+            display: none !important;
+          }
         }
       `}</style>
     </main>
