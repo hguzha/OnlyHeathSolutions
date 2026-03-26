@@ -168,7 +168,7 @@ export default function PageHeroVideo() {
             padding: 0 12px !important;
             background: transparent !important;
             order: 2 !important;
-            margin-top: -72px !important;
+            margin-top: -80px !important;
           }
 
           [data-hero-video] div[style*="maxWidth"] {
