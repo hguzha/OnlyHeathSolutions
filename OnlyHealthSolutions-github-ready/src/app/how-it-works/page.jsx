@@ -112,7 +112,7 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Steps Grid with Connectors */}
-          <div
+          <div data-grid-howit
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -198,7 +198,7 @@ export default function HowItWorksPage() {
             </p>
           </div>
 
-          <div
+          <div data-grid-howit
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -252,6 +252,16 @@ export default function HowItWorksPage() {
           <CallButton phoneNumber={brand.phoneDisplay} phoneHref={brand.phoneHref} />
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 768px) {
+          [data-grid-howit] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
@@ -263,22 +273,6 @@ function CallButton({ phoneNumber, phoneHref }) {
   return (
     <a
       href={phoneHref}
-      style={{
-        display: "inline-block",
-        padding: "16px 40px",
-        borderRadius: "9999px",
-        background: "rgba(255,255,255,0.95)",
-        color: "#1fa6a0",
-        border: "none",
-        fontWeight: "700",
-        fontSize: "16px",
-        cursor: "pointer",
-        transition: "all 0.3s ease",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
-        textDecoration: "none",
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       style={{
         display: "inline-block",
         padding: "16px 40px",
@@ -519,4 +513,4 @@ function FeatureCard({ icon: Icon, title, description }) {
       </p>
     </div>
   );
-}
+}}
