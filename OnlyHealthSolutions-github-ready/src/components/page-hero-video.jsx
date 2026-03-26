@@ -147,7 +147,7 @@ export default function PageHeroVideo() {
             position: relative !important;
             inset: auto !important;
             width: 100% !important;
-            height: 300px !important;
+            height: 450px !important;
             object-fit: contain !important;
             object-position: center !important;
           }
