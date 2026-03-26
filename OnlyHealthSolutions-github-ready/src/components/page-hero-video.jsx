@@ -26,6 +26,7 @@ export default function PageHeroVideo() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            objectPosition: "center",
           }}
         >
           <source src="hero2video.mp4" type="video/mp4" />
@@ -137,6 +138,11 @@ export default function PageHeroVideo() {
 
       <style>{`
         @media (max-width: 768px) {
+          [data-hero-video] video {
+            object-position: center !important;
+            object-fit: contain !important;
+          }
+
           [data-hero-video] .container {
             padding-left: 12px !important;
             padding-right: 12px !important;
