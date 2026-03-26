@@ -35,12 +35,14 @@ export default function PageHero({
             muted
             loop
             playsInline
+            controls={false}
             style={{
               position: "absolute",
               inset: 0,
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              display: "block",
             }}
           >
             <source src={video} type="video/mp4" />
@@ -79,6 +81,7 @@ export default function PageHero({
               textAlign: "center",
               alignItems: "flex-end",
               padding: "0 20px",
+              zIndex: 10,
             }}
           >
             <div className="container">
@@ -131,12 +134,28 @@ export default function PageHero({
             }
             
             .hero-content {
-              bottom: 30px !important;
-              padding: 0 16px !important;
+              bottom: 20px !important;
+              padding: 0 12px !important;
             }
             
             video {
-              height: 300px !important;
+              width: 100% !important;
+              height: auto !important;
+              min-height: 300px !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            video {
+              min-height: 250px !important;
+            }
+
+            .hero-content h1 {
+              font-size: 28px !important;
+            }
+
+            .hero-content p {
+              font-size: 14px !important;
             }
           }
         `}</style>
