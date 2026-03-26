@@ -141,15 +141,18 @@ export default function PageHeroVideo() {
           [data-hero-video] {
             min-height: auto !important;
             overflow: visible !important;
+            display: flex !important;
+            flex-direction: column !important;
           }
 
           [data-hero-video] video {
             position: relative !important;
             inset: auto !important;
             width: 100% !important;
-            height: 450px !important;
+            height: 500px !important;
             object-fit: contain !important;
             object-position: center !important;
+            order: 1 !important;
           }
 
           [data-hero-video] div[style*="position: absolute"][style*="inset: 0"] {
@@ -160,8 +163,10 @@ export default function PageHeroVideo() {
             position: relative !important;
             min-height: auto !important;
             align-items: center !important;
-            padding: 40px 12px !important;
+            padding: 24px 12px !important;
             background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
+            order: 2 !important;
+            margin-top: -20px !important;
           }
 
           [data-hero-video] div[style*="maxWidth"] {
