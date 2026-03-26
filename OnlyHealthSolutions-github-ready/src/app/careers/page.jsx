@@ -224,9 +224,9 @@ export default function CareersPage() {
 
   return (
     <main>
-      <div data-careers-hero>
+      <div data-careers-hero style={{ maxWidth: "100%", overflow: "hidden" }}>
         <PageHero
-          //title="Join Our Team"
+          title="Join Our Team"
           subtitle="Be part of a mission to bring compassionate, dignified care to those who need it most."
           height={460}
           images={[
@@ -301,11 +301,10 @@ export default function CareersPage() {
           }
 
           [data-careers-hero] {
-            height: 200px !important;
-          }
-
-          [data-careers-hero] div[style*="height"] {
-            height: 200px !important;
+            max-width: 85% !important;
+            margin: 0 auto !important;
+            border-radius: 16px !important;
+            overflow: hidden !important;
           }
         }
       `}</style>
