@@ -46,7 +46,7 @@ export default function SiteShell({ children }) {
 
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-5 md:px-6">
           <a href="/" className="group shrink-0">
-            <img src={brand.logo1x} alt={brand.name} className="h-48 sm:h-36 md:h-48 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <img src={brand.logo1x} alt={brand.name} className="h-64 sm:h-36 md:h-48 w-auto transition-transform duration-300 group-hover:scale-105" />
           </a>
 
           <nav aria-label="Primary" className="relative hidden flex-1 items-center justify-start md:flex ml-2 mr-auto">
