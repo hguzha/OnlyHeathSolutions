@@ -154,6 +154,7 @@ export default function PageHeroVideo() {
             object-fit: contain !important;
             object-position: center !important;
             order: 1 !important;
+            display: block !important;
           }
 
           [data-hero-video] div[style*="position: absolute"] {
@@ -164,10 +165,10 @@ export default function PageHeroVideo() {
             position: relative !important;
             min-height: auto !important;
             align-items: center !important;
-            padding: 24px 12px !important;
+            padding: 16px 12px !important;
             background: transparent !important;
             order: 2 !important;
-            margin-top: 0 !important;
+            margin-top: -8px !important;
           }
 
           [data-hero-video] div[style*="maxWidth"] {
