@@ -8,6 +8,7 @@ export default function PageHero({
   subtitle,
   image,
   images = [],
+  video,
   height = 420,
   background,
 }) {
@@ -23,6 +24,125 @@ export default function PageHero({
 
     return () => clearInterval(interval);
   }, [slides.length]);
+
+  // If video prop is provided, render video instead
+  if (video) {
+    return (
+      <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "relative", width: "100%", height }}>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          >
+            <source src={video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          <div
+            className="hero-overlay"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                background ||
+                "linear-gradient(120deg, rgba(31,166,160,0.28) 0%, rgba(106,63,181,0.22) 55%, rgba(0,0,0,0.30) 100%)",
+            }}
+          />
+
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "radial-gradient(circle at 20% 25%, rgba(31,166,160,0.10), transparent 55%), radial-gradient(circle at 80% 75%, rgba(106,63,181,0.08), transparent 55%)",
+            }}
+          />
+
+          <div
+            className="hero-content"
+            style={{
+              position: "absolute",
+              bottom: "50px",
+              left: 0,
+              right: 0,
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+              alignItems: "flex-end",
+              padding: "0 20px",
+            }}
+          >
+            <div className="container">
+              <div
+                style={{
+                  display: "inline-block",
+                  padding: "6px 12px",
+                  borderRadius: 999,
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  background: "rgba(255,255,255,0.08)",
+                  marginBottom: 18,
+                  color: "white",
+                  fontSize: "clamp(12px, 2vw, 14px)",
+                }}
+              >
+                {brand.name}
+              </div>
+
+              <h1
+                style={{
+                  fontSize: "clamp(32px, 6vw, 52px)",
+                  fontWeight: 800,
+                  marginBottom: "12px",
+                  color: "white",
+                  lineHeight: 1.2,
+                }}
+              >
+                {title}
+              </h1>
+
+              <p
+                style={{
+                  fontSize: "clamp(16px, 3vw, 20px)",
+                  maxWidth: "760px",
+                  margin: "0 auto",
+                  color: "white",
+                  lineHeight: 1.6,
+                }}
+              >
+                {subtitle}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 768px) {
+            .hero {
+              height: auto;
+            }
+            
+            .hero-content {
+              bottom: 30px !important;
+              padding: 0 16px !important;
+            }
+            
+            video {
+              height: 300px !important;
+            }
+          }
+        `}</style>
+      </section>
+    );
+  }
 
   if (!slides.length) return null;
 
