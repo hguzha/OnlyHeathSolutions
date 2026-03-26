@@ -40,19 +40,20 @@ export default function ReviewsPage() {
       <PageHero
         title="What Families Say"
         subtitle="Real stories from families who trust Only Health Solutions for compassionate, responsive home care."
-        video="use1.mp4"
-        height={600}
+        video="your-video-file.mp4"
+        height={700}
       />
 
-      {/* Stats Section - Minimized */}
+      {/* Stats Section - Minimized with negative margin */}
       <section
         style={{
           background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
-          paddingTop: "40px",
-          paddingBottom: "40px",
+          paddingTop: "30px",
+          paddingBottom: "30px",
           color: "white",
           position: "relative",
           overflow: "hidden",
+          marginTop: "-60px",
         }}
       >
         <div
@@ -160,7 +161,7 @@ export default function ReviewsPage() {
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
-          paddingTop: "100px",
+          paddingTop: "60px",
           paddingBottom: "100px",
           position: "relative",
           overflow: "hidden",
