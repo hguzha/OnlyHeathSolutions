@@ -124,15 +124,15 @@ export default function HowItWorksPage() {
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
                 <StepCard step={step} />
-                {/* Arrow connector between steps - appears to the right of each card except the last */}
+                {/* Arrow connector between steps */}
                 {index < steps.length - 1 && (
                   <div
                     style={{
                       position: "absolute",
-                      left: `calc(${((index + 1) / 3) * 100}% + 20px)`,
-                      top: "50%",
-                      transform: "translateY(-50%)",
+                      right: `calc(-62px + ${(index + 1) * (100 / 3)}%)`,
+                      top: "30%",
                       zIndex: 10,
+                      transform: "translateX(-50%)",
                     }}
                   >
                     <div
