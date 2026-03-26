@@ -124,15 +124,15 @@ export default function HowItWorksPage() {
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
                 <StepCard step={step} />
-                {/* Arrow connector between steps */}
+                {/* Arrow connector between steps - appears to the right of each card except the last */}
                 {index < steps.length - 1 && (
                   <div
                     style={{
                       position: "absolute",
-                      right: `calc(-62px + ${(index + 1) * (100 / 3)}%)`,
-                      top: "30%",
+                      left: `calc(${((index + 1) / 3) * 100}% + 20px)`,
+                      top: "50%",
+                      transform: "translateY(-50%)",
                       zIndex: 10,
-                      transform: "translateX(-50%)",
                     }}
                   >
                     <div
@@ -286,7 +286,6 @@ function CallButton({ phoneNumber, phoneHref }) {
         boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
         textDecoration: "none",
         transform: isHovered ? "scale(1.05)" : "scale(1)",
-        boxShadow: isHovered ? "0 15px 40px rgba(0,0,0,0.3)" : "0 10px 30px rgba(0,0,0,0.2)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
