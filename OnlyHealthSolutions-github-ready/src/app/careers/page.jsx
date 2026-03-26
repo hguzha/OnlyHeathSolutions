@@ -301,11 +301,11 @@ export default function CareersPage() {
           }
 
           [data-careers-hero] {
-            height: 300px !important;
+            height: 200px !important;
           }
 
           [data-careers-hero] div[style*="height"] {
-            height: 300px !important;
+            height: 200px !important;
           }
         }
       `}</style>
