@@ -124,8 +124,8 @@ export default function GalleryPage() {
             Moments of Compassionate Care
           </h2>
           <p style={{ color: "#666", lineHeight: 1.7, fontSize: "16px", margin: "0" }}>
-            These images represent the warmth, professionalism, and dignity that guide our care every day. 
-            We showcase real moments of connection, support, and quality of life.
+              Welcome to our Gallery. Each image you see here reflects our commitment as well as the compassion, respect, and joy that guide everything we do. 
+              While these are stock photos, they were chosen with intention — to mirror the moments of comfort, connection, and quality of life we strive to bring to every client, every day.  
           </p>
         </div>
       </section>
