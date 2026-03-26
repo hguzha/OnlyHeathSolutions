@@ -143,19 +143,20 @@ export default function PageHeroVideo() {
             overflow: visible !important;
             display: flex !important;
             flex-direction: column !important;
+            background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
           }
 
           [data-hero-video] video {
             position: relative !important;
             inset: auto !important;
             width: 100% !important;
-            height: 70vh !important;
+            height: 55vh !important;
             object-fit: contain !important;
             object-position: center !important;
             order: 1 !important;
           }
 
-          [data-hero-video] div[style*="position: absolute"][style*="inset: 0"] {
+          [data-hero-video] div[style*="position: absolute"] {
             display: none !important;
           }
 
@@ -164,9 +165,9 @@ export default function PageHeroVideo() {
             min-height: auto !important;
             align-items: center !important;
             padding: 24px 12px !important;
-            background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
+            background: transparent !important;
             order: 2 !important;
-            margin-top: -20px !important;
+            margin-top: 0 !important;
           }
 
           [data-hero-video] div[style*="maxWidth"] {
