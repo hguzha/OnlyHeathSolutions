@@ -22,6 +22,7 @@ export default function CargivingGallery() {
 
   return (
     <section
+      data-caregiving-gallery
       style={{
         background: "linear-gradient(135deg, rgba(31, 166, 160, 0.05), rgba(106, 63, 181, 0.05))",
         padding: "80px 0",
@@ -52,6 +53,30 @@ export default function CargivingGallery() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          [data-caregiving-gallery] {
+            display: flex;
+            flex-direction: column;
+          }
+
+          [data-caregiving-gallery] .container {
+            order: 1;
+            display: flex;
+            flex-direction: column;
+          }
+
+          [data-caregiving-gallery] [style*="textAlign: center"] {
+            order: 2;
+          }
+
+          [data-caregiving-gallery] div[style*="gridTemplateColumns"] {
+            order: 1;
+            padding-top: 0 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
