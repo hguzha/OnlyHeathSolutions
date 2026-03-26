@@ -158,6 +158,7 @@ export default function FAQPage() {
         <div className="container">
           {filteredFaqs.length > 0 ? (
             <div
+              data-grid-faq
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(2, 1fr)",
@@ -277,6 +278,14 @@ export default function FAQPage() {
 
         .faq-content-closing {
           animation: slideUp 0.3s ease forwards;
+        }
+
+        @media (max-width: 768px) {
+          [data-grid-faq] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
         }
       `}</style>
     </main>
