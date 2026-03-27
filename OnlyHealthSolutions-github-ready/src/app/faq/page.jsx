@@ -54,7 +54,7 @@ export default function FAQPage() {
         height={700}
       />
 
-      {/* Search Section - ULTRA REDUCED ON MOBILE */}
+      {/* Search Section - MOVED DOWN MASSIVELY ON MOBILE */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
@@ -281,9 +281,9 @@ export default function FAQPage() {
         }
 
         @media (max-width: 768px) {
-          /* Mobile hero - FIX CUTOFF AND TEXT POSITIONING */
+          /* Mobile hero - BIGGER PICTURE */
           .hero {
-            height: 320px !important;
+            height: 500px !important;
           }
 
           .hero::after {
@@ -292,7 +292,7 @@ export default function FAQPage() {
             bottom: 0 !important;
             left: 0 !important;
             right: 0 !important;
-            height: 120px !important;
+            height: 140px !important;
             background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.75)) !important;
             z-index: 5 !important;
             pointer-events: none !important;
@@ -316,14 +316,14 @@ export default function FAQPage() {
             flex-direction: column !important;
             justify-content: flex-end !important;
             align-items: flex-start !important;
-            padding: 10px 14px !important;
+            padding: 12px 14px !important;
             margin: 0 !important;
             gap: 4px !important;
             width: 100% !important;
           }
 
           .hero-content h1 {
-            font-size: 18px !important;
+            font-size: 20px !important;
             margin: 0 !important;
             line-height: 1.2 !important;
             color: white !important;
@@ -335,7 +335,7 @@ export default function FAQPage() {
           }
 
           .hero-content p {
-            font-size: 11px !important;
+            font-size: 12px !important;
             margin: 0 !important;
             line-height: 1.3 !important;
             color: white !important;
@@ -345,64 +345,15 @@ export default function FAQPage() {
             opacity: 1 !important;
           }
 
-          /* MOVE FIND YOUR ANSWERS SECTION DOWN ON MOBILE */
+          /* SEARCH SECTION MOVED DOWN - MINIMAL */
           section:nth-of-type(2) {
-            padding-top: 2px !important;
-            padding-bottom: 2px !important;
-            margin-top: 0 !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+            margin-top: -1px !important;
           }
 
           section:nth-of-type(2) > div {
             max-width: 100% !important;
-          }
-
-          section:nth-of-type(2) h2 {
-            font-size: 16px !important;
-            margin-bottom: 2px !important;
-          }
-
-          section:nth-of-type(2) p {
-            font-size: 10px !important;
-            margin-bottom: 6px !important;
-          }
-
-          section:nth-of-type(2) div:first-child {
-            margin-bottom: 6px !important;
-          }
-
-          [data-grid-faq] {
-            display: grid !important;
-            grid-template-columns: 1fr !important;
-            gap: 32px !important;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .hero {
-            height: 260px !important;
-          }
-
-          .hero::after {
-            height: 100px !important;
-          }
-
-          .hero-content {
-            padding: 8px 12px !important;
-            gap: 3px !important;
-          }
-
-          .hero-content h1 {
-            font-size: 14px !important;
-          }
-
-          .hero-content p {
-            font-size: 9px !important;
-          }
-
-          /* ULTRA REDUCED ON SMALL PHONES */
-          section:nth-of-type(2) {
-            padding-top: 1px !important;
-            padding-bottom: 1px !important;
           }
 
           section:nth-of-type(2) h2 {
@@ -416,7 +367,56 @@ export default function FAQPage() {
           }
 
           section:nth-of-type(2) div:first-child {
-            margin-bottom: 4px !important;
+            margin-bottom: 2px !important;
+          }
+
+          [data-grid-faq] {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero {
+            height: 380px !important;
+          }
+
+          .hero::after {
+            height: 120px !important;
+          }
+
+          .hero-content {
+            padding: 10px 12px !important;
+            gap: 3px !important;
+          }
+
+          .hero-content h1 {
+            font-size: 16px !important;
+          }
+
+          .hero-content p {
+            font-size: 10px !important;
+          }
+
+          /* ULTRA MINIMAL SEARCH ON SMALL PHONES */
+          section:nth-of-type(2) {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+          }
+
+          section:nth-of-type(2) h2 {
+            font-size: 12px !important;
+            margin-bottom: 0px !important;
+          }
+
+          section:nth-of-type(2) p {
+            font-size: 8px !important;
+            margin-bottom: 2px !important;
+          }
+
+          section:nth-of-type(2) div:first-child {
+            margin-bottom: 1px !important;
           }
         }
       `}</style>
