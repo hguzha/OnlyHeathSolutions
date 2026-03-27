@@ -391,22 +391,40 @@ export default function ReviewsPage() {
             gap: 20px !important;
           }
 
-          /* Mobile video fixes */
+          /* Mobile hero - FIX VIDEO CUTOFF */
           .hero {
             height: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
           }
 
           .hero-img,
           video {
-            height: 280px !important;
-            max-height: 50vh !important;
+            width: 100% !important;
+            height: auto !important;
+            min-height: 240px !important;
+            max-height: none !important;
+            display: block !important;
           }
 
-          /* MOVE TEXT TO TOP ON MOBILE */
+          /* MOVE TEXT TO BOTTOM ON MOBILE */
           .hero-content {
-            bottom: auto !important;
-            top: 20px !important;
-            align-items: flex-start !important;
+            bottom: 10px !important;
+            top: auto !important;
+            align-items: flex-end !important;
+            padding: 0 12px !important;
+          }
+
+          .hero-content h1 {
+            font-size: 24px !important;
+            margin-bottom: 6px !important;
+            line-height: 1.2 !important;
+          }
+
+          .hero-content p {
+            font-size: 12px !important;
+            margin: 0 !important;
+            line-height: 1.3 !important;
           }
 
           /* Stats section mobile - EXTREME */
@@ -494,15 +512,23 @@ export default function ReviewsPage() {
         }
 
         @media (max-width: 480px) {
-          video,
-          .hero-img {
-            height: 220px !important;
+          .hero-img,
+          video {
+            min-height: 200px !important;
           }
 
-          /* MOVE TEXT TO TOP ON SMALL MOBILE */
           .hero-content {
-            bottom: auto !important;
-            top: 15px !important;
+            bottom: 8px !important;
+            padding: 0 10px !important;
+          }
+
+          .hero-content h1 {
+            font-size: 18px !important;
+            margin-bottom: 4px !important;
+          }
+
+          .hero-content p {
+            font-size: 10px !important;
           }
 
           section:nth-of-type(2) {
