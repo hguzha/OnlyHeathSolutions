@@ -175,15 +175,15 @@ export default function HomePage() {
 
   return (
     <FixedBackgroundShell>
-      {/* Larger Hero Video */}
-      <div style={{ width: "100%", padding: "30px 20px" }}>
-        <div style={{ height: "800px", overflow: "hidden", borderRadius: "12px", maxWidth: "100%" }}>
+      {/* BIGGER Hero Video - CLOSED GAP */}
+      <div style={{ width: "100%", padding: isMobile ? "16px 12px 0 12px" : "20px 20px 0 20px", marginTop: "-2px" }}>
+        <div style={{ height: isMobile ? "500px" : "1000px", overflow: "hidden", borderRadius: "12px", maxWidth: "100%" }}>
           <PageHeroVideo />
         </div>
       </div>
       
       {/* Full Width Features Grid - SCROLLING */}
-      <div style={{ width: "100%", backgroundColor: "#ffffff", marginTop: "-1.5rem", position: "relative", zIndex: 10, overflow: "hidden", padding: "40px 0" }}>
+      <div style={{ width: "100%", backgroundColor: "#ffffff", marginTop: "-1px", position: "relative", zIndex: 10, overflow: "hidden", padding: "40px 0" }}>
         {renderWhiteSection(topSectionItems)}
       </div>
 
