@@ -37,122 +37,130 @@ export default function ReviewsPage() {
 
   return (
     <main>
-      <div style={{ position: "relative" }}>
-        <PageHero
-          title="What Families Say"
-          subtitle="Real stories from families who trust Only Health Solutions for compassionate, responsive home care."
-          video="your-video-file.mp4"
-          height={700}
-        />
+      <PageHero
+        title="What Families Say"
+        subtitle="Real stories from families who trust Only Health Solutions for compassionate, responsive home care."
+        video="your-video-file.mp4"
+        height={800}
+      />
 
-        {/* Stats Overlay - On Top of Video at Bottom */}
+      {/* Stats Section - Below Video */}
+      <section
+        style={{
+          background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
+          paddingTop: "40px",
+          paddingBottom: "40px",
+          color: "white",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
         <div
           style={{
             position: "absolute",
-            bottom: "20px",
-            left: "0",
-            right: "0",
-            background: "linear-gradient(135deg, rgba(11,19,32,0.95) 0%, rgba(26,40,71,0.95) 100%)",
-            paddingTop: "20px",
-            paddingBottom: "20px",
-            color: "white",
-            backdropFilter: "blur(10px)",
+            top: "-200px",
+            right: "-200px",
+            width: "500px",
+            height: "500px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(31,166,160,0.15) 0%, transparent 70%)",
+            pointerEvents: "none",
           }}
-        >
-          <div className="container" style={{ position: "relative", zIndex: 1 }}>
-            <div data-grid-reviews
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "30px",
-                textAlign: "center",
-              }}
-            >
-              {/* Average Rating */}
-              <div>
-                <div
-                  style={{
-                    fontSize: "40px",
-                    fontWeight: 800,
-                    marginBottom: "6px",
-                    background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    color: "transparent",
-                  }}
-                >
-                  {averageRating}
-                </div>
-                <div style={{ display: "flex", justifyContent: "center", gap: "3px", marginBottom: "4px" }}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={16}
-                      fill="#FFD700"
-                      color="#FFD700"
-                    />
-                  ))}
-                </div>
-                <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "13px" }}>
-                  Average Rating
-                </p>
-              </div>
+        />
 
-              {/* Total Reviews */}
-              <div>
-                <div
-                  style={{
-                    fontSize: "40px",
-                    fontWeight: 800,
-                    marginBottom: "6px",
-                    background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    color: "transparent",
-                  }}
-                >
-                  {totalReviews}
-                </div>
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: "4px" }}>
-                  <MessageCircle size={18} color="#1fa6a0" />
-                </div>
-                <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "13px" }}>
-                  Family Reviews
-                </p>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <div data-grid-reviews
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "40px",
+              textAlign: "center",
+            }}
+          >
+            {/* Average Rating */}
+            <div>
+              <div
+                style={{
+                  fontSize: "48px",
+                  fontWeight: 800,
+                  marginBottom: "12px",
+                  background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
+                {averageRating}
               </div>
+              <div style={{ display: "flex", justifyContent: "center", gap: "4px", marginBottom: "8px" }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={20}
+                    fill="#FFD700"
+                    color="#FFD700"
+                  />
+                ))}
+              </div>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600 }}>
+                Average Rating
+              </p>
+            </div>
 
-              {/* Satisfaction */}
-              <div>
-                <div
-                  style={{
-                    fontSize: "40px",
-                    fontWeight: 800,
-                    marginBottom: "6px",
-                    background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    color: "transparent",
-                  }}
-                >
-                  100%
-                </div>
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: "4px" }}>
-                  <CheckCircle size={18} color="#1fa6a0" />
-                </div>
-                <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "13px" }}>
-                  Satisfied Families
-                </p>
+            {/* Total Reviews */}
+            <div>
+              <div
+                style={{
+                  fontSize: "48px",
+                  fontWeight: 800,
+                  marginBottom: "12px",
+                  background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
+                {totalReviews}
               </div>
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "8px" }}>
+                <MessageCircle size={24} color="#1fa6a0" />
+              </div>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600 }}>
+                Family Reviews
+              </p>
+            </div>
+
+            {/* Satisfaction */}
+            <div>
+              <div
+                style={{
+                  fontSize: "48px",
+                  fontWeight: 800,
+                  marginBottom: "12px",
+                  background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
+                100%
+              </div>
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "8px" }}>
+                <CheckCircle size={24} color="#1fa6a0" />
+              </div>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600 }}>
+                Satisfied Families
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Reviews Section */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
-          paddingTop: "60px",
+          paddingTop: "100px",
           paddingBottom: "100px",
           position: "relative",
           overflow: "hidden",
