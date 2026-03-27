@@ -44,16 +44,15 @@ export default function ReviewsPage() {
         height={420}
       />
 
-      {/* Stats Section - Minimized with negative margin */}
+      {/* Stats Section */}
       <section
         style={{
           background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
-          paddingTop: "40px",
-          paddingBottom: "40px",
+          paddingTop: "80px",
+          paddingBottom: "80px",
           color: "white",
           position: "relative",
           overflow: "hidden",
-          marginTop: "0px",
         }}
       >
         <div
@@ -392,7 +391,7 @@ export default function ReviewsPage() {
             gap: 32px !important;
           }
 
-          /* Mobile-only changes */
+          /* Mobile-only changes for stats section */
           section:nth-of-type(2) {
             padding-top: 15px !important;
             padding-bottom: 15px !important;
@@ -403,18 +402,12 @@ export default function ReviewsPage() {
             gap: 20px !important;
           }
 
-          section:nth-of-type(2) [data-grid-reviews] div:first-child div:first-child {
-            font-size: 36px !important;
-          }
-
-          section:nth-of-type(2) [data-grid-reviews] div:nth-child(2) div:first-child,
-          section:nth-of-type(2) [data-grid-reviews] div:nth-child(3) div:first-child {
+          section:nth-of-type(2) [data-grid-reviews] div {
             font-size: 36px !important;
           }
 
           section:nth-of-type(2) p {
             font-size: 12px !important;
-            margin-bottom: 0 !important;
           }
         }
       `}</style>
