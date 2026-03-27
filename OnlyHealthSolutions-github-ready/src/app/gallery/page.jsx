@@ -372,7 +372,18 @@ function GalleryCard({ image, onOpen, isMobile }) {
           textAlign: "center",
         }}
       >
-        <p style={{ fontSize: "12px", fontWeight: 700, margin: "0 0 6px 0", color: "#1fa6a0", letterSpacing: "0.5px" }}>
+        <p
+          style={{
+            fontSize: "12px",
+            fontWeight: 700,
+            margin: "0 0 6px 0",
+            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            color: "transparent",
+            letterSpacing: "0.5px",
+          }}
+        >
           {image.category.toUpperCase()}
         </p>
         <h3
@@ -380,7 +391,10 @@ function GalleryCard({ image, onOpen, isMobile }) {
             fontSize: "18px",
             fontWeight: 800,
             margin: "0",
-            color: "#0f172a",
+            background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            color: "transparent",
             lineHeight: "1.3",
           }}
         >
