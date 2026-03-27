@@ -114,29 +114,32 @@ export default function SiteHeader() {
           maxWidth: "1400px",
           margin: "0 auto",
           padding: isMobile ? "0 8px" : "0 12px",
+          minHeight: isMobile ? "75px" : "100px",
         }}
       >
-        {/* Logo */}
+        {/* Logo - BIGGER SIZE, CONTROLLED HEIGHT */}
         <Link
           href="/"
           style={{
             display: "flex",
             alignItems: "center",
             flexShrink: 0,
+            overflow: "hidden",
           }}
         >
           <img
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: isMobile ? "75px" : "130px",
+              height: isMobile ? "90px" : "160px",
               width: "auto",
               display: "block",
+              maxHeight: "100%",
             }}
           />
         </Link>
 
-        {/* Desktop Navigation - INCREASED FONT SIZES */}
+        {/* Desktop Navigation */}
         {!isMobile && (
           <nav
             style={{
@@ -313,7 +316,7 @@ export default function SiteHeader() {
         <div
           style={{
             position: "fixed",
-            top: "75px",
+            top: "90px",
             left: 0,
             right: 0,
             backgroundColor: "rgba(11, 19, 32, 0.95)",
@@ -322,7 +325,7 @@ export default function SiteHeader() {
             display: "flex",
             flexDirection: "column",
             gap: "0",
-            maxHeight: "calc(100vh - 75px)",
+            maxHeight: "calc(100vh - 90px)",
             overflowY: "auto",
             zIndex: 999,
             backdropFilter: "blur(10px)",
