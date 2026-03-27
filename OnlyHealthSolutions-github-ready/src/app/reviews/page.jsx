@@ -393,12 +393,13 @@ export default function ReviewsPage() {
 
           /* Mobile hero - REDUCE SIZE AND FIX VIDEO CUTOFF */
           .hero {
-            height: 280px !important;
+            height: 300px !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: stretch !important;
             justify-content: flex-end !important;
             overflow: hidden !important;
+            position: relative !important;
           }
 
           .hero-img,
@@ -409,10 +410,10 @@ export default function ReviewsPage() {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
-            z-index: 0 !important;
+            z-index: 1 !important;
           }
 
-          /* TEXT AT BOTTOM WITH PROPER SPACING */
+          /* TEXT AT BOTTOM WITH PROPER SPACING - VISIBLE */
           .hero-content {
             position: relative !important;
             z-index: 10 !important;
@@ -422,26 +423,33 @@ export default function ReviewsPage() {
             flex-direction: column !important;
             justify-content: flex-end !important;
             align-items: flex-start !important;
-            padding: 8px 12px !important;
+            padding: 12px 16px !important;
             margin: 0 !important;
-            gap: 4px !important;
+            gap: 6px !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)) !important;
           }
 
           .hero-content h1 {
-            font-size: 18px !important;
+            font-size: 20px !important;
             margin: 0 !important;
             line-height: 1.2 !important;
             color: white !important;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7) !important;
             font-weight: bold !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
           }
 
           .hero-content p {
-            font-size: 10px !important;
+            font-size: 12px !important;
             margin: 0 !important;
-            line-height: 1.3 !important;
+            line-height: 1.4 !important;
             color: white !important;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.7) !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
           }
 
           /* Stats section mobile - EXTREME */
@@ -530,20 +538,20 @@ export default function ReviewsPage() {
 
         @media (max-width: 480px) {
           .hero {
-            height: 220px !important;
+            height: 240px !important;
           }
 
           .hero-content {
-            padding: 6px 10px !important;
-            gap: 2px !important;
+            padding: 10px 12px !important;
+            gap: 4px !important;
           }
 
           .hero-content h1 {
-            font-size: 14px !important;
+            font-size: 16px !important;
           }
 
           .hero-content p {
-            font-size: 8px !important;
+            font-size: 10px !important;
           }
 
           section:nth-of-type(2) {
