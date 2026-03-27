@@ -51,15 +51,15 @@ export default function FAQPage() {
         title="Frequently Asked Questions"
         subtitle="Find quick answers to common questions about our services and how we can help."
         image="faq1.png"
-        height={400}
+        height={600}
       />
 
-      {/* Search Section */}
+      {/* Search Section - REDUCED */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
-          paddingTop: "80px",
-          paddingBottom: "60px",
+          paddingTop: "40px",
+          paddingBottom: "40px",
           position: "relative",
           overflow: "hidden",
         }}
@@ -79,12 +79,12 @@ export default function FAQPage() {
         />
 
         <div className="container" style={{ position: "relative", zIndex: 1, maxWidth: "800px" }}>
-          <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <div style={{ textAlign: "center", marginBottom: "28px" }}>
             <h2
               style={{
-                fontSize: "40px",
+                fontSize: "32px",
                 fontWeight: 800,
-                marginBottom: "16px",
+                marginBottom: "8px",
                 background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -93,7 +93,7 @@ export default function FAQPage() {
             >
               Find Your Answers
             </h2>
-            <p style={{ fontSize: "16px", color: "#666" }}>
+            <p style={{ fontSize: "14px", color: "#666" }}>
               Search or browse our FAQs to learn more about our services
             </p>
           </div>
@@ -118,8 +118,8 @@ export default function FAQPage() {
               e.currentTarget.style.borderColor = "rgba(31,166,160,0.2)";
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", padding: "16px 20px", gap: "12px" }}>
-              <Search size={20} color="#1fa6a0" />
+            <div style={{ display: "flex", alignItems: "center", padding: "14px 18px", gap: "12px" }}>
+              <Search size={18} color="#1fa6a0" />
               <input
                 type="text"
                 placeholder="Search FAQs..."
@@ -129,7 +129,7 @@ export default function FAQPage() {
                   flex: 1,
                   border: "none",
                   background: "transparent",
-                  fontSize: "16px",
+                  fontSize: "15px",
                   color: "#0b1320",
                   outline: "none",
                 }}
@@ -139,7 +139,7 @@ export default function FAQPage() {
 
           {/* Search Results Count */}
           {searchTerm && (
-            <p style={{ textAlign: "center", marginTop: "16px", color: "#666", fontSize: "14px" }}>
+            <p style={{ textAlign: "center", marginTop: "12px", color: "#666", fontSize: "13px" }}>
               Found {filteredFaqs.length} result{filteredFaqs.length !== 1 ? "s" : ""}
             </p>
           )}
