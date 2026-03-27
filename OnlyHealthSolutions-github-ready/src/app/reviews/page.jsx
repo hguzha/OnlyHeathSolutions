@@ -49,7 +49,7 @@ export default function ReviewsPage() {
         <div
           style={{
             position: "absolute",
-            bottom: "20px",
+            bottom: "-60px",
             left: "0",
             right: "0",
             background: "linear-gradient(135deg, rgba(11,19,32,0.95) 0%, rgba(26,40,71,0.95) 100%)",
@@ -152,7 +152,7 @@ export default function ReviewsPage() {
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
-          paddingTop: "60px",
+          paddingTop: "100px",
           paddingBottom: "100px",
           position: "relative",
           overflow: "hidden",
