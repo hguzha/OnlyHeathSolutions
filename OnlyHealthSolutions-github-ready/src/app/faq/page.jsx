@@ -281,9 +281,15 @@ export default function FAQPage() {
         }
 
         @media (max-width: 768px) {
-          /* Mobile hero - BIGGER PICTURE */
+          /* MOBILE HERO PAGE - FULLY OPTIMIZED */
           .hero {
             height: 500px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            justify-content: flex-end !important;
+            overflow: hidden !important;
+            position: relative !important;
           }
 
           .hero::after {
@@ -292,20 +298,25 @@ export default function FAQPage() {
             bottom: 0 !important;
             left: 0 !important;
             right: 0 !important;
-            height: 140px !important;
+            height: 150px !important;
             background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.75)) !important;
             z-index: 5 !important;
             pointer-events: none !important;
           }
 
           .hero-img,
-          .hero img {
+          .hero img,
+          video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
+            z-index: 1 !important;
           }
 
-          /* TEXT AT BOTTOM - NO SPACE */
+          /* TEXT AT BOTTOM - FULLY MOBILE RESPONSIVE */
           .hero-content {
             position: absolute !important;
             bottom: 0 !important;
@@ -316,14 +327,14 @@ export default function FAQPage() {
             flex-direction: column !important;
             justify-content: flex-end !important;
             align-items: flex-start !important;
-            padding: 12px 14px !important;
+            padding: 16px 16px !important;
             margin: 0 !important;
-            gap: 4px !important;
+            gap: 6px !important;
             width: 100% !important;
           }
 
           .hero-content h1 {
-            font-size: 20px !important;
+            font-size: 24px !important;
             margin: 0 !important;
             line-height: 1.2 !important;
             color: white !important;
@@ -332,20 +343,24 @@ export default function FAQPage() {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
+            max-width: 100% !important;
+            word-wrap: break-word !important;
           }
 
           .hero-content p {
-            font-size: 12px !important;
+            font-size: 13px !important;
             margin: 0 !important;
-            line-height: 1.3 !important;
+            line-height: 1.4 !important;
             color: white !important;
             text-shadow: 0 1px 3px rgba(0,0,0,0.7) !important;
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
+            max-width: 100% !important;
+            word-wrap: break-word !important;
           }
 
-          /* SEARCH SECTION MOVED DOWN MORE */
+          /* SEARCH SECTION MOBILE */
           section:nth-of-type(2) {
             padding-top: 16px !important;
             padding-bottom: 4px !important;
@@ -371,6 +386,25 @@ export default function FAQPage() {
             margin-bottom: 3px !important;
           }
 
+          section:nth-of-type(2) div:nth-child(2) {
+            border-radius: 12px !important;
+          }
+
+          section:nth-of-type(2) div:nth-child(2) div {
+            padding: 10px 12px !important;
+            gap: 8px !important;
+          }
+
+          section:nth-of-type(2) div:nth-child(2) svg {
+            width: 14px !important;
+            height: 14px !important;
+            min-width: 14px !important;
+          }
+
+          section:nth-of-type(2) input {
+            font-size: 13px !important;
+          }
+
           /* FAQ SECTION MOBILE */
           section:nth-of-type(3) {
             padding-top: 40px !important;
@@ -383,22 +417,25 @@ export default function FAQPage() {
             gap: 16px !important;
           }
 
-          /* FAQ ACCORDION MOBILE */
           [data-grid-faq] > div {
             border-radius: 16px !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
           }
 
           [data-grid-faq] > div div:first-child {
             padding: 16px 16px !important;
+            gap: 12px !important;
           }
 
           [data-grid-faq] > div h3 {
             font-size: 14px !important;
+            line-height: 1.3 !important;
           }
 
           [data-grid-faq] > div div:nth-child(2) div {
             width: 32px !important;
             height: 32px !important;
+            flex-shrink: 0 !important;
           }
 
           [data-grid-faq] > div div:nth-child(2) svg {
@@ -406,12 +443,13 @@ export default function FAQPage() {
             height: 16px !important;
           }
 
-          [data-grid-faq] > div:nth-child(n) > div:last-child {
+          [data-grid-faq] > div > div:nth-last-child(1) {
             padding: 0 16px 16px 16px !important;
           }
 
-          [data-grid-faq] > div:nth-child(n) > div:last-child p {
+          [data-grid-faq] > div > div:nth-last-child(1) p {
             font-size: 13px !important;
+            line-height: 1.6 !important;
           }
 
           /* CTA SECTION MOBILE */
@@ -423,11 +461,13 @@ export default function FAQPage() {
           section:nth-of-type(4) h2 {
             font-size: 28px !important;
             margin-bottom: 16px !important;
+            line-height: 1.2 !important;
           }
 
           section:nth-of-type(4) p {
             font-size: 14px !important;
             margin-bottom: 24px !important;
+            line-height: 1.6 !important;
           }
 
           section:nth-of-type(4) a {
@@ -437,6 +477,7 @@ export default function FAQPage() {
         }
 
         @media (max-width: 480px) {
+          /* ULTRA MOBILE HERO */
           .hero {
             height: 380px !important;
           }
@@ -446,16 +487,18 @@ export default function FAQPage() {
           }
 
           .hero-content {
-            padding: 10px 12px !important;
-            gap: 3px !important;
+            padding: 12px 12px !important;
+            gap: 4px !important;
           }
 
           .hero-content h1 {
-            font-size: 16px !important;
+            font-size: 18px !important;
+            margin: 0 !important;
           }
 
           .hero-content p {
             font-size: 10px !important;
+            margin: 0 !important;
           }
 
           /* SEARCH SECTION ULTRA MOBILE */
@@ -484,16 +527,17 @@ export default function FAQPage() {
           }
 
           section:nth-of-type(2) div:nth-child(2) div {
-            padding: 10px 14px !important;
+            padding: 9px 10px !important;
+            gap: 6px !important;
           }
 
           section:nth-of-type(2) div:nth-child(2) svg {
-            width: 14px !important;
-            height: 14px !important;
+            width: 12px !important;
+            height: 12px !important;
           }
 
-          section:nth-of-type(2) div:nth-child(2) input {
-            font-size: 13px !important;
+          section:nth-of-type(2) input {
+            font-size: 12px !important;
           }
 
           /* FAQ SECTION ULTRA MOBILE */
@@ -508,6 +552,7 @@ export default function FAQPage() {
 
           [data-grid-faq] > div div:first-child {
             padding: 14px 14px !important;
+            gap: 10px !important;
           }
 
           [data-grid-faq] > div h3 {
@@ -524,11 +569,11 @@ export default function FAQPage() {
             height: 14px !important;
           }
 
-          [data-grid-faq] > div:nth-child(n) > div:last-child {
+          [data-grid-faq] > div > div:nth-last-child(1) {
             padding: 0 14px 14px 14px !important;
           }
 
-          [data-grid-faq] > div:nth-child(n) > div:last-child p {
+          [data-grid-faq] > div > div:nth-last-child(1) p {
             font-size: 12px !important;
           }
 
@@ -551,6 +596,10 @@ export default function FAQPage() {
           section:nth-of-type(4) a {
             padding: 10px 28px !important;
             font-size: 13px !important;
+          }
+
+          .container {
+            padding: 0 12px !important;
           }
         }
       `}</style>
