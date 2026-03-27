@@ -40,7 +40,7 @@ export default function ReviewsPage() {
       <PageHero
         title="What Families Say"
         subtitle="Real stories from families who trust Only Health Solutions for compassionate, responsive home care."
-        video="use1.mp4"
+        video="your-video-file.mp4"
         height={800}
       />
 
@@ -402,6 +402,13 @@ export default function ReviewsPage() {
             max-height: 50vh !important;
           }
 
+          /* MOVE TEXT TO TOP ON MOBILE */
+          .hero-content {
+            bottom: auto !important;
+            top: 20px !important;
+            align-items: flex-start !important;
+          }
+
           /* Stats section mobile - EXTREME */
           section:nth-of-type(2) {
             padding: 2px 0 !important;
@@ -490,6 +497,12 @@ export default function ReviewsPage() {
           video,
           .hero-img {
             height: 220px !important;
+          }
+
+          /* MOVE TEXT TO TOP ON SMALL MOBILE */
+          .hero-content {
+            bottom: auto !important;
+            top: 15px !important;
           }
 
           section:nth-of-type(2) {
