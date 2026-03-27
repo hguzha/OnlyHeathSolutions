@@ -51,15 +51,15 @@ export default function FAQPage() {
         title="Frequently Asked Questions"
         subtitle="Find quick answers to common questions about our services and how we can help."
         image="faq1.png"
-        height={600}
+        height={700}
       />
 
-      {/* Search Section - REDUCED */}
+      {/* Search Section - FURTHER REDUCED */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
-          paddingTop: "40px",
-          paddingBottom: "40px",
+          paddingTop: "28px",
+          paddingBottom: "28px",
           position: "relative",
           overflow: "hidden",
         }}
@@ -79,12 +79,12 @@ export default function FAQPage() {
         />
 
         <div className="container" style={{ position: "relative", zIndex: 1, maxWidth: "800px" }}>
-          <div style={{ textAlign: "center", marginBottom: "28px" }}>
+          <div style={{ textAlign: "center", marginBottom: "20px" }}>
             <h2
               style={{
-                fontSize: "32px",
+                fontSize: "28px",
                 fontWeight: 800,
-                marginBottom: "8px",
+                marginBottom: "6px",
                 background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -93,8 +93,8 @@ export default function FAQPage() {
             >
               Find Your Answers
             </h2>
-            <p style={{ fontSize: "14px", color: "#666" }}>
-              Search or browse our FAQs to learn more about our services
+            <p style={{ fontSize: "13px", color: "#666", margin: "0" }}>
+              Search or browse our FAQs to learn more
             </p>
           </div>
 
@@ -103,23 +103,23 @@ export default function FAQPage() {
             style={{
               position: "relative",
               background: "white",
-              borderRadius: "16px",
+              borderRadius: "14px",
               border: "2px solid rgba(31,166,160,0.2)",
               overflow: "hidden",
-              boxShadow: "0 10px 40px rgba(0,0,0,0.05)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.04)",
               transition: "all 0.3s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = "0 15px 50px rgba(31,166,160,0.15)";
-              e.currentTarget.style.borderColor = "rgba(31,166,160,0.4)";
+              e.currentTarget.style.boxShadow = "0 12px 40px rgba(31,166,160,0.12)";
+              e.currentTarget.style.borderColor = "rgba(31,166,160,0.35)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = "0 10px 40px rgba(0,0,0,0.05)";
+              e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.04)";
               e.currentTarget.style.borderColor = "rgba(31,166,160,0.2)";
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", padding: "14px 18px", gap: "12px" }}>
-              <Search size={18} color="#1fa6a0" />
+            <div style={{ display: "flex", alignItems: "center", padding: "12px 16px", gap: "10px" }}>
+              <Search size={16} color="#1fa6a0" />
               <input
                 type="text"
                 placeholder="Search FAQs..."
@@ -129,7 +129,7 @@ export default function FAQPage() {
                   flex: 1,
                   border: "none",
                   background: "transparent",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   color: "#0b1320",
                   outline: "none",
                 }}
@@ -139,7 +139,7 @@ export default function FAQPage() {
 
           {/* Search Results Count */}
           {searchTerm && (
-            <p style={{ textAlign: "center", marginTop: "12px", color: "#666", fontSize: "13px" }}>
+            <p style={{ textAlign: "center", marginTop: "10px", color: "#666", fontSize: "12px" }}>
               Found {filteredFaqs.length} result{filteredFaqs.length !== 1 ? "s" : ""}
             </p>
           )}
