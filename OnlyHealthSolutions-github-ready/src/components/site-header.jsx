@@ -110,13 +110,13 @@ export default function SiteHeader() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: isMobile ? "6px" : "8px",
+          gap: isMobile ? "6px" : "10px",
           maxWidth: "1400px",
           margin: "0 auto",
           padding: isMobile ? "0 8px" : "0 12px",
         }}
       >
-        {/* Logo - FURTHER REDUCED */}
+        {/* Logo - SLIGHTLY BIGGER */}
         <Link
           href="/"
           style={{
@@ -129,7 +129,7 @@ export default function SiteHeader() {
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: isMobile ? "60px" : "100px",
+              height: isMobile ? "75px" : "130px",
               width: "auto",
               display: "block",
             }}
@@ -261,7 +261,7 @@ export default function SiteHeader() {
           </nav>
         )}
 
-        {/* Desktop Button - FURTHER REDUCED */}
+        {/* Desktop Button */}
         {!isMobile && (
           <div style={{ display: "flex", alignItems: "center", gap: "4px", flexShrink: 0 }}>
             <button
@@ -286,7 +286,7 @@ export default function SiteHeader() {
           </div>
         )}
 
-        {/* Mobile Menu Button - FURTHER REDUCED */}
+        {/* Mobile Menu Button */}
         {isMobile && (
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -313,7 +313,7 @@ export default function SiteHeader() {
         <div
           style={{
             position: "fixed",
-            top: "60px",
+            top: "75px",
             left: 0,
             right: 0,
             backgroundColor: "rgba(11, 19, 32, 0.95)",
@@ -322,7 +322,7 @@ export default function SiteHeader() {
             display: "flex",
             flexDirection: "column",
             gap: "0",
-            maxHeight: "calc(100vh - 60px)",
+            maxHeight: "calc(100vh - 75px)",
             overflowY: "auto",
             zIndex: 999,
             backdropFilter: "blur(10px)",
