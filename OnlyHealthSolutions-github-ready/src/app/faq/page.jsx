@@ -700,3 +700,4 @@ function FAQAccordion({ item, index, isOpen, onToggle }) {
     </div>
   );
 }
+
