@@ -101,7 +101,7 @@ export default function SiteHeader() {
         zIndex: 1000,
         backgroundColor: headerTopBgColor,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
-        paddingRight: isMobile ? "0" : "20px",
+        paddingRight: isMobile ? "0" : "12px",
         width: "100%",
       }}
     >
@@ -110,13 +110,13 @@ export default function SiteHeader() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: isMobile ? "8px" : "12px",
+          gap: isMobile ? "6px" : "8px",
           maxWidth: "1400px",
           margin: "0 auto",
-          padding: isMobile ? "0 10px" : "0 15px",
+          padding: isMobile ? "0 8px" : "0 12px",
         }}
       >
-        {/* Logo - REDUCED SIZE */}
+        {/* Logo - FURTHER REDUCED */}
         <Link
           href="/"
           style={{
@@ -129,7 +129,7 @@ export default function SiteHeader() {
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: isMobile ? "70px" : "120px",
+              height: isMobile ? "60px" : "100px",
               width: "auto",
               display: "block",
             }}
@@ -142,9 +142,9 @@ export default function SiteHeader() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "3px",
+              gap: "2px",
               fontWeight: 600,
-              fontSize: "13px",
+              fontSize: "12px",
               whiteSpace: "nowrap",
               position: "relative",
             }}
@@ -164,33 +164,33 @@ export default function SiteHeader() {
                         border: "none",
                         color: "#ffffff",
                         cursor: "pointer",
-                        padding: "6px 8px",
+                        padding: "4px 6px",
                         display: "flex",
                         alignItems: "center",
-                        gap: "4px",
+                        gap: "3px",
                         fontWeight: 600,
-                        fontSize: "13px",
+                        fontSize: "12px",
                         transition: "color 0.3s ease",
                       }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
                       onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
                     >
                       {item.label}
-                      <ChevronDown size={12} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
+                      <ChevronDown size={10} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
                     </button>
 
                     {servicesDropdownOpen && (
                       <>
-                        <div style={{ position: "absolute", top: "100%", left: 0, right: 0, height: "8px", pointerEvents: "auto" }} />
+                        <div style={{ position: "absolute", top: "100%", left: 0, right: 0, height: "6px", pointerEvents: "auto" }} />
                         <div
                           style={{
                             position: "absolute",
-                            top: "calc(100% + 8px)",
+                            top: "calc(100% + 6px)",
                             left: 0,
                             backgroundColor: "rgba(11, 19, 32, 0.95)",
-                            borderRadius: "10px",
-                            padding: "8px",
-                            minWidth: "260px",
+                            borderRadius: "8px",
+                            padding: "6px",
+                            minWidth: "240px",
                             boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
                             zIndex: 1001,
                             border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -205,15 +205,15 @@ export default function SiteHeader() {
                                 style={{
                                   display: "flex",
                                   alignItems: "center",
-                                  gap: "8px",
+                                  gap: "6px",
                                   width: "100%",
-                                  padding: "8px 10px",
+                                  padding: "6px 8px",
                                   backgroundColor: service.isHeader ? "rgba(31, 166, 160, 0.1)" : "transparent",
                                   border: "none",
                                   color: service.isHeader ? "#d4af37" : "rgba(255, 255, 255, 0.88)",
                                   cursor: "pointer",
-                                  borderRadius: "6px",
-                                  fontSize: "12px",
+                                  borderRadius: "5px",
+                                  fontSize: "11px",
                                   fontWeight: service.isHeader ? 700 : 500,
                                   textAlign: "left",
                                   transition: "all 0.2s ease",
@@ -227,7 +227,7 @@ export default function SiteHeader() {
                                   e.currentTarget.style.color = service.isHeader ? "#d4af37" : "rgba(255, 255, 255, 0.88)";
                                 }}
                               >
-                                {IconComponent && <IconComponent size={14} />}
+                                {IconComponent && <IconComponent size={12} />}
                                 {service.label}
                               </button>
                             );
@@ -245,11 +245,11 @@ export default function SiteHeader() {
                   href={item.href}
                   style={{
                     color: "#ffffff",
-                    padding: "6px 8px",
-                    borderRadius: "6px",
+                    padding: "4px 6px",
+                    borderRadius: "5px",
                     transition: "all 0.3s ease",
                     fontWeight: 600,
-                    fontSize: "13px",
+                    fontSize: "12px",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
@@ -261,19 +261,19 @@ export default function SiteHeader() {
           </nav>
         )}
 
-        {/* Desktop Button - REDUCED SIZE */}
+        {/* Desktop Button - FURTHER REDUCED */}
         {!isMobile && (
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "4px", flexShrink: 0 }}>
             <button
               onClick={handleRequestConsult}
               style={{
-                padding: "6px 12px",
+                padding: "5px 10px",
                 borderRadius: "9999px",
                 background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                 color: "white",
                 border: "none",
                 fontWeight: "700",
-                fontSize: "12px",
+                fontSize: "11px",
                 cursor: "pointer",
                 transition: "transform 0.3s ease",
                 whiteSpace: "nowrap",
@@ -286,7 +286,7 @@ export default function SiteHeader() {
           </div>
         )}
 
-        {/* Mobile Menu Button - REDUCED SIZE */}
+        {/* Mobile Menu Button - FURTHER REDUCED */}
         {isMobile && (
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -295,7 +295,7 @@ export default function SiteHeader() {
               border: "none",
               color: "#ffffff",
               cursor: "pointer",
-              padding: "6px",
+              padding: "4px",
               transition: "color 0.3s ease",
               flexShrink: 0,
               display: "flex",
@@ -303,7 +303,7 @@ export default function SiteHeader() {
               justifyContent: "center",
             }}
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         )}
       </div>
@@ -313,7 +313,7 @@ export default function SiteHeader() {
         <div
           style={{
             position: "fixed",
-            top: "70px",
+            top: "60px",
             left: 0,
             right: 0,
             backgroundColor: "rgba(11, 19, 32, 0.95)",
@@ -322,7 +322,7 @@ export default function SiteHeader() {
             display: "flex",
             flexDirection: "column",
             gap: "0",
-            maxHeight: "calc(100vh - 70px)",
+            maxHeight: "calc(100vh - 60px)",
             overflowY: "auto",
             zIndex: 999,
             backdropFilter: "blur(10px)",
@@ -335,13 +335,13 @@ export default function SiteHeader() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "12px 16px",
+              padding: "10px 14px",
               borderRadius: "0",
               background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
               color: "white",
               border: "none",
               fontWeight: "700",
-              fontSize: "12px",
+              fontSize: "11px",
               cursor: "pointer",
               width: "100%",
               borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
@@ -358,7 +358,7 @@ export default function SiteHeader() {
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                     style={{
                       width: "100%",
-                      padding: "12px 16px",
+                      padding: "10px 14px",
                       borderRadius: "0",
                       background: "none",
                       border: "none",
@@ -371,14 +371,14 @@ export default function SiteHeader() {
                       alignItems: "center",
                       justifyContent: "space-between",
                       transition: "all 0.3s ease",
-                      fontSize: "13px",
+                      fontSize: "12px",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.1)")}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
                   >
                     {item.label}
                     <ChevronDown 
-                      size={16} 
+                      size={14} 
                       style={{ 
                         transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)", 
                         transition: "transform 0.3s ease" 
@@ -395,15 +395,15 @@ export default function SiteHeader() {
                           style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: "10px",
+                            gap: "8px",
                             width: "100%",
-                            padding: "10px 16px 10px 30px",
+                            padding: "8px 14px 8px 28px",
                             borderRadius: "0",
                             background: "none",
                             border: "none",
                             borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
                             color: "rgba(255, 255, 255, 0.88)",
-                            fontSize: "12px",
+                            fontSize: "11px",
                             fontWeight: 500,
                             textAlign: "left",
                             cursor: "pointer",
@@ -412,7 +412,7 @@ export default function SiteHeader() {
                           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.15)")}
                           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
                         >
-                          {service.isHeader ? null : (service.icon && <service.icon size={14} />)}
+                          {service.isHeader ? null : (service.icon && <service.icon size={12} />)}
                           {service.label}
                         </button>
                       ))}
@@ -428,14 +428,14 @@ export default function SiteHeader() {
                 href={item.href}
                 style={{
                   color: "rgba(255, 255, 255, 0.88)",
-                  padding: "12px 16px",
+                  padding: "10px 14px",
                   borderRadius: "0",
                   textDecoration: "none",
                   fontWeight: 600,
                   transition: "all 0.3s ease",
                   display: "block",
                   borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-                  fontSize: "13px",
+                  fontSize: "12px",
                 }}
                 onClick={() => setMobileOpen(false)}
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.1)")}
