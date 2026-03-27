@@ -54,7 +54,7 @@ export default function FAQPage() {
         height={700}
       />
 
-      {/* Search Section - MOVED DOWN MASSIVELY ON MOBILE */}
+      {/* Search Section - MOVED DOWN A BIT MORE ON MOBILE */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
@@ -345,11 +345,11 @@ export default function FAQPage() {
             opacity: 1 !important;
           }
 
-          /* SEARCH SECTION MOVED DOWN - MINIMAL */
+          /* SEARCH SECTION MOVED DOWN - WITH PADDING */
           section:nth-of-type(2) {
-            padding-top: 0px !important;
-            padding-bottom: 0px !important;
-            margin-top: -1px !important;
+            padding-top: 8px !important;
+            padding-bottom: 4px !important;
+            margin-top: -2px !important;
           }
 
           section:nth-of-type(2) > div {
@@ -367,7 +367,7 @@ export default function FAQPage() {
           }
 
           section:nth-of-type(2) div:first-child {
-            margin-bottom: 2px !important;
+            margin-bottom: 3px !important;
           }
 
           [data-grid-faq] {
@@ -399,24 +399,25 @@ export default function FAQPage() {
             font-size: 10px !important;
           }
 
-          /* ULTRA MINIMAL SEARCH ON SMALL PHONES */
+          /* SEARCH SECTION MOVED DOWN ON SMALL PHONES */
           section:nth-of-type(2) {
-            padding-top: 0px !important;
-            padding-bottom: 0px !important;
+            padding-top: 6px !important;
+            padding-bottom: 3px !important;
+            margin-top: -1px !important;
           }
 
           section:nth-of-type(2) h2 {
             font-size: 12px !important;
-            margin-bottom: 0px !important;
+            margin-bottom: 1px !important;
           }
 
           section:nth-of-type(2) p {
             font-size: 8px !important;
-            margin-bottom: 2px !important;
+            margin-bottom: 3px !important;
           }
 
           section:nth-of-type(2) div:first-child {
-            margin-bottom: 1px !important;
+            margin-bottom: 2px !important;
           }
         }
       `}</style>
