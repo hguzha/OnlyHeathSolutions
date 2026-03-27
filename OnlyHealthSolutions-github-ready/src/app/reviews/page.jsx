@@ -676,4 +676,4 @@ function TrustPoint({ icon: Icon, title, description }) {
       </div>
     </div>
   );
-}}
+}
