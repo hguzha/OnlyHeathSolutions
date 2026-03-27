@@ -40,7 +40,7 @@ export default function ReviewsPage() {
       <PageHero
         title="What Families Say"
         subtitle="Real stories from families who trust Only Health Solutions for compassionate, responsive home care."
-        video="your-video-file.mp4"
+        video="use1.mp4"
         height={800}
       />
 
@@ -398,109 +398,22 @@ export default function ReviewsPage() {
 
           .hero-img,
           video {
-            height: 300px !important;
+            height: 280px !important;
             max-height: 50vh !important;
           }
 
-          /* Stats section mobile - ULTRA MINIMAL */
+          /* Stats section mobile - EXTREME */
           section:nth-of-type(2) {
-            padding-top: 5px !important;
-            padding-bottom: 5px !important;
+            padding: 2px 0 !important;
           }
 
           section:nth-of-type(2) [data-grid-reviews] {
-            gap: 5px !important;
+            gap: 2px !important;
           }
 
           section:nth-of-type(2) [data-grid-reviews] div {
             min-width: 0;
-            padding: 0 5px;
-          }
-
-          section:nth-of-type(2) [data-grid-reviews] div:first-child div:first-child,
-          section:nth-of-type(2) [data-grid-reviews] div:nth-child(2) div:first-child,
-          section:nth-of-type(2) [data-grid-reviews] div:nth-child(3) div:first-child {
-            font-size: 22px !important;
-            margin-bottom: 2px !important;
-          }
-
-          section:nth-of-type(2) [data-grid-reviews] svg {
-            width: 12px !important;
-            height: 12px !important;
-          }
-
-          section:nth-of-type(2) [data-grid-reviews] div div:nth-child(2) {
-            margin-bottom: 2px !important;
-            gap: 2px !important;
-          }
-
-          section:nth-of-type(2) p {
-            font-size: 10px !important;
-            margin-bottom: 0 !important;
-            line-height: 1.2 !important;
-          }
-
-          /* Reviews section mobile */
-          section:nth-of-type(3) {
-            padding-top: 15px !important;
-            padding-bottom: 40px !important;
-          }
-
-          section:nth-of-type(3) div:first-child {
-            margin-bottom: 30px !important;
-          }
-
-          section:nth-of-type(3) h2 {
-            font-size: 28px !important;
-            margin-bottom: 8px !important;
-          }
-
-          section:nth-of-type(3) > div > div:first-child p {
-            font-size: 13px !important;
-          }
-
-          /* Trust section mobile */
-          section:nth-of-type(5) [data-grid-reviews] {
-            grid-template-columns: 1fr !important;
-            gap: 30px !important;
-          }
-
-          section:nth-of-type(5) h2 {
-            font-size: 32px !important;
-          }
-
-          /* CTA section mobile */
-          section:nth-of-type(6) {
-            padding-top: 40px !important;
-            padding-bottom: 40px !important;
-          }
-
-          section:nth-of-type(6) h2 {
-            font-size: 28px !important;
-          }
-
-          section:nth-of-type(6) p {
-            font-size: 14px !important;
-          }
-        }
-
-        @media (max-width: 480px) {
-          video,
-          .hero-img {
-            height: 250px !important;
-          }
-
-          section:nth-of-type(2) {
-            padding-top: 3px !important;
-            padding-bottom: 3px !important;
-          }
-
-          section:nth-of-type(2) [data-grid-reviews] {
-            gap: 3px !important;
-          }
-
-          section:nth-of-type(2) [data-grid-reviews] div {
-            padding: 0 2px;
+            padding: 0;
           }
 
           section:nth-of-type(2) [data-grid-reviews] div:first-child div:first-child,
@@ -515,16 +428,105 @@ export default function ReviewsPage() {
             height: 10px !important;
           }
 
-          section:nth-of-type(2) p {
-            font-size: 9px !important;
+          section:nth-of-type(2) [data-grid-reviews] div div:nth-child(2) {
+            margin-bottom: 1px !important;
+            gap: 1px !important;
           }
 
+          section:nth-of-type(2) p {
+            font-size: 8px !important;
+            margin: 0 !important;
+            line-height: 1.1 !important;
+          }
+
+          /* Reviews section mobile */
           section:nth-of-type(3) {
             padding-top: 10px !important;
+            padding-bottom: 30px !important;
+          }
+
+          section:nth-of-type(3) div:first-child {
+            margin-bottom: 20px !important;
           }
 
           section:nth-of-type(3) h2 {
             font-size: 24px !important;
+            margin-bottom: 6px !important;
+          }
+
+          section:nth-of-type(3) > div > div:first-child p {
+            font-size: 12px !important;
+          }
+
+          /* Trust section mobile */
+          section:nth-of-type(5) [data-grid-reviews] {
+            grid-template-columns: 1fr !important;
+            gap: 25px !important;
+          }
+
+          section:nth-of-type(5) h2 {
+            font-size: 28px !important;
+            margin-bottom: 15px !important;
+          }
+
+          /* CTA section mobile */
+          section:nth-of-type(6) {
+            padding-top: 30px !important;
+            padding-bottom: 30px !important;
+          }
+
+          section:nth-of-type(6) h2 {
+            font-size: 24px !important;
+            margin-bottom: 12px !important;
+          }
+
+          section:nth-of-type(6) p {
+            font-size: 13px !important;
+            margin-bottom: 20px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          video,
+          .hero-img {
+            height: 220px !important;
+          }
+
+          section:nth-of-type(2) {
+            padding: 1px 0 !important;
+          }
+
+          section:nth-of-type(2) [data-grid-reviews] {
+            gap: 1px !important;
+          }
+
+          section:nth-of-type(2) [data-grid-reviews] div:first-child div:first-child,
+          section:nth-of-type(2) [data-grid-reviews] div:nth-child(2) div:first-child,
+          section:nth-of-type(2) [data-grid-reviews] div:nth-child(3) div:first-child {
+            font-size: 14px !important;
+            margin-bottom: 0 !important;
+          }
+
+          section:nth-of-type(2) [data-grid-reviews] svg {
+            width: 8px !important;
+            height: 8px !important;
+          }
+
+          section:nth-of-type(2) p {
+            font-size: 7px !important;
+          }
+
+          section:nth-of-type(3) {
+            padding-top: 5px !important;
+          }
+
+          section:nth-of-type(3) h2 {
+            font-size: 20px !important;
+          }
+
+          section:nth-of-type(6) {
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
           }
         }
       `}</style>
