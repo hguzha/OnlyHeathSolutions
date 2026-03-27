@@ -50,7 +50,7 @@ export default function FAQPage() {
       <PageHero
         title="Frequently Asked Questions"
         subtitle="Find quick answers to common questions about our services and how we can help."
-        image="https://images.unsplash.com/photo-1576765607924-3f5c5f94c8c7?q=80&w=2000&auto=format&fit=crop"
+        image="faq1.png"
         height={400}
       />
 
