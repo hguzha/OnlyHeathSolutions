@@ -354,6 +354,7 @@ export default function FAQPage() {
 
           section:nth-of-type(2) > div {
             max-width: 100% !important;
+            padding: 0 12px !important;
           }
 
           section:nth-of-type(2) h2 {
@@ -370,10 +371,68 @@ export default function FAQPage() {
             margin-bottom: 3px !important;
           }
 
+          /* FAQ SECTION MOBILE */
+          section:nth-of-type(3) {
+            padding-top: 40px !important;
+            padding-bottom: 50px !important;
+          }
+
           [data-grid-faq] {
             display: grid !important;
             grid-template-columns: 1fr !important;
-            gap: 32px !important;
+            gap: 16px !important;
+          }
+
+          /* FAQ ACCORDION MOBILE */
+          [data-grid-faq] > div {
+            border-radius: 16px !important;
+          }
+
+          [data-grid-faq] > div div:first-child {
+            padding: 16px 16px !important;
+          }
+
+          [data-grid-faq] > div h3 {
+            font-size: 14px !important;
+          }
+
+          [data-grid-faq] > div div:nth-child(2) div {
+            width: 32px !important;
+            height: 32px !important;
+          }
+
+          [data-grid-faq] > div div:nth-child(2) svg {
+            width: 16px !important;
+            height: 16px !important;
+          }
+
+          [data-grid-faq] > div:nth-child(n) > div:last-child {
+            padding: 0 16px 16px 16px !important;
+          }
+
+          [data-grid-faq] > div:nth-child(n) > div:last-child p {
+            font-size: 13px !important;
+          }
+
+          /* CTA SECTION MOBILE */
+          section:nth-of-type(4) {
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+          }
+
+          section:nth-of-type(4) h2 {
+            font-size: 28px !important;
+            margin-bottom: 16px !important;
+          }
+
+          section:nth-of-type(4) p {
+            font-size: 14px !important;
+            margin-bottom: 24px !important;
+          }
+
+          section:nth-of-type(4) a {
+            padding: 12px 32px !important;
+            font-size: 14px !important;
           }
         }
 
@@ -399,11 +458,15 @@ export default function FAQPage() {
             font-size: 10px !important;
           }
 
-          /* SEARCH SECTION MOVED DOWN MORE ON SMALL PHONES */
+          /* SEARCH SECTION ULTRA MOBILE */
           section:nth-of-type(2) {
             padding-top: 12px !important;
             padding-bottom: 3px !important;
             margin-top: -3px !important;
+          }
+
+          section:nth-of-type(2) > div {
+            padding: 0 10px !important;
           }
 
           section:nth-of-type(2) h2 {
@@ -418,6 +481,76 @@ export default function FAQPage() {
 
           section:nth-of-type(2) div:first-child {
             margin-bottom: 2px !important;
+          }
+
+          section:nth-of-type(2) div:nth-child(2) div {
+            padding: 10px 14px !important;
+          }
+
+          section:nth-of-type(2) div:nth-child(2) svg {
+            width: 14px !important;
+            height: 14px !important;
+          }
+
+          section:nth-of-type(2) div:nth-child(2) input {
+            font-size: 13px !important;
+          }
+
+          /* FAQ SECTION ULTRA MOBILE */
+          section:nth-of-type(3) {
+            padding-top: 30px !important;
+            padding-bottom: 40px !important;
+          }
+
+          [data-grid-faq] {
+            gap: 12px !important;
+          }
+
+          [data-grid-faq] > div div:first-child {
+            padding: 14px 14px !important;
+          }
+
+          [data-grid-faq] > div h3 {
+            font-size: 12px !important;
+          }
+
+          [data-grid-faq] > div div:nth-child(2) div {
+            width: 28px !important;
+            height: 28px !important;
+          }
+
+          [data-grid-faq] > div div:nth-child(2) svg {
+            width: 14px !important;
+            height: 14px !important;
+          }
+
+          [data-grid-faq] > div:nth-child(n) > div:last-child {
+            padding: 0 14px 14px 14px !important;
+          }
+
+          [data-grid-faq] > div:nth-child(n) > div:last-child p {
+            font-size: 12px !important;
+          }
+
+          /* CTA SECTION ULTRA MOBILE */
+          section:nth-of-type(4) {
+            padding-top: 30px !important;
+            padding-bottom: 30px !important;
+          }
+
+          section:nth-of-type(4) h2 {
+            font-size: 22px !important;
+            margin-bottom: 12px !important;
+          }
+
+          section:nth-of-type(4) p {
+            font-size: 12px !important;
+            margin-bottom: 20px !important;
+          }
+
+          section:nth-of-type(4) a {
+            padding: 10px 28px !important;
+            font-size: 13px !important;
           }
         }
       `}</style>
