@@ -116,7 +116,7 @@ export default function SiteHeader() {
           padding: isMobile ? "0 8px" : "0 12px",
         }}
       >
-        {/* Logo - SLIGHTLY BIGGER */}
+        {/* Logo */}
         <Link
           href="/"
           style={{
@@ -136,7 +136,7 @@ export default function SiteHeader() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - INCREASED FONT SIZES */}
         {!isMobile && (
           <nav
             style={{
@@ -144,7 +144,7 @@ export default function SiteHeader() {
               alignItems: "center",
               gap: "2px",
               fontWeight: 600,
-              fontSize: "12px",
+              fontSize: "14px",
               whiteSpace: "nowrap",
               position: "relative",
             }}
@@ -164,19 +164,19 @@ export default function SiteHeader() {
                         border: "none",
                         color: "#ffffff",
                         cursor: "pointer",
-                        padding: "4px 6px",
+                        padding: "5px 8px",
                         display: "flex",
                         alignItems: "center",
                         gap: "3px",
                         fontWeight: 600,
-                        fontSize: "12px",
+                        fontSize: "14px",
                         transition: "color 0.3s ease",
                       }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
                       onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
                     >
                       {item.label}
-                      <ChevronDown size={10} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
+                      <ChevronDown size={11} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
                     </button>
 
                     {servicesDropdownOpen && (
@@ -189,8 +189,8 @@ export default function SiteHeader() {
                             left: 0,
                             backgroundColor: "rgba(11, 19, 32, 0.95)",
                             borderRadius: "8px",
-                            padding: "6px",
-                            minWidth: "240px",
+                            padding: "7px",
+                            minWidth: "260px",
                             boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
                             zIndex: 1001,
                             border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -207,13 +207,13 @@ export default function SiteHeader() {
                                   alignItems: "center",
                                   gap: "6px",
                                   width: "100%",
-                                  padding: "6px 8px",
+                                  padding: "7px 10px",
                                   backgroundColor: service.isHeader ? "rgba(31, 166, 160, 0.1)" : "transparent",
                                   border: "none",
                                   color: service.isHeader ? "#d4af37" : "rgba(255, 255, 255, 0.88)",
                                   cursor: "pointer",
                                   borderRadius: "5px",
-                                  fontSize: "11px",
+                                  fontSize: "12px",
                                   fontWeight: service.isHeader ? 700 : 500,
                                   textAlign: "left",
                                   transition: "all 0.2s ease",
@@ -227,7 +227,7 @@ export default function SiteHeader() {
                                   e.currentTarget.style.color = service.isHeader ? "#d4af37" : "rgba(255, 255, 255, 0.88)";
                                 }}
                               >
-                                {IconComponent && <IconComponent size={12} />}
+                                {IconComponent && <IconComponent size={13} />}
                                 {service.label}
                               </button>
                             );
@@ -245,11 +245,11 @@ export default function SiteHeader() {
                   href={item.href}
                   style={{
                     color: "#ffffff",
-                    padding: "4px 6px",
+                    padding: "5px 8px",
                     borderRadius: "5px",
                     transition: "all 0.3s ease",
                     fontWeight: 600,
-                    fontSize: "12px",
+                    fontSize: "14px",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
