@@ -48,7 +48,7 @@ export default function FAQPage() {
   return (
     <main>
       <PageHero
-        //title="Frequently Asked Questions"
+        title="Frequently Asked Questions"
         subtitle="Find quick answers to common questions about our services and how we can help."
         image="faq1.png"
         height={600}
