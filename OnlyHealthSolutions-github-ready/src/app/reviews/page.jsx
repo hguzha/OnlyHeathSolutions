@@ -391,13 +391,13 @@ export default function ReviewsPage() {
             gap: 20px !important;
           }
 
-          /* Mobile hero - REDUCE SIZE AND FIX VIDEO CUTOFF */
+          /* Mobile hero - TEXT AT BOTTOM OF VIDEO */
           .hero {
             height: 300px !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: stretch !important;
-            justify-content: flex-end !important;
+            justify-content: flex-start !important;
             overflow: hidden !important;
             position: relative !important;
           }
@@ -413,12 +413,13 @@ export default function ReviewsPage() {
             z-index: 1 !important;
           }
 
-          /* TEXT AT BOTTOM WITH PROPER SPACING - VISIBLE */
+          /* TEXT AT BOTTOM - OVERLAID ON VIDEO */
           .hero-content {
-            position: relative !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
             z-index: 10 !important;
-            bottom: auto !important;
-            top: auto !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: flex-end !important;
@@ -426,7 +427,8 @@ export default function ReviewsPage() {
             padding: 12px 16px !important;
             margin: 0 !important;
             gap: 6px !important;
-            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)) !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7)) !important;
+            width: 100% !important;
           }
 
           .hero-content h1 {
