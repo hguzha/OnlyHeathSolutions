@@ -54,7 +54,7 @@ export default function FAQPage() {
         height={700}
       />
 
-      {/* Search Section - FURTHER REDUCED */}
+      {/* Search Section - FURTHER REDUCED ON MOBILE */}
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
@@ -345,6 +345,26 @@ export default function FAQPage() {
             opacity: 1 !important;
           }
 
+          /* ULTRA REDUCED "FIND YOUR ANSWERS" SECTION ON MOBILE */
+          section:nth-of-type(2) {
+            padding-top: 12px !important;
+            padding-bottom: 12px !important;
+          }
+
+          section:nth-of-type(2) h2 {
+            font-size: 18px !important;
+            margin-bottom: 2px !important;
+          }
+
+          section:nth-of-type(2) p {
+            font-size: 11px !important;
+            margin-bottom: 8px !important;
+          }
+
+          section:nth-of-type(2) [class*="container"] {
+            max-width: 100% !important;
+          }
+
           [data-grid-faq] {
             display: grid !important;
             grid-template-columns: 1fr !important;
@@ -372,6 +392,22 @@ export default function FAQPage() {
 
           .hero-content p {
             font-size: 9px !important;
+          }
+
+          /* ULTRA REDUCED ON SMALL PHONES */
+          section:nth-of-type(2) {
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+          }
+
+          section:nth-of-type(2) h2 {
+            font-size: 16px !important;
+            margin-bottom: 1px !important;
+          }
+
+          section:nth-of-type(2) p {
+            font-size: 10px !important;
+            margin-bottom: 6px !important;
           }
         }
       `}</style>
