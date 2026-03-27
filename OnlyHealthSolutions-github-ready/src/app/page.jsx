@@ -182,8 +182,8 @@ export default function HomePage() {
         </div>
       </div>
       
-      {/* Full Width Features Grid - SCROLLING */}
-      <div style={{ width: "100%", backgroundColor: "#ffffff", marginTop: "-6px", position: "relative", zIndex: 10, overflow: "hidden", padding: "40px 0" }}>
+      {/* Full Width Features Grid - SCROLLING - ZERO GAP */}
+      <div style={{ width: "100%", backgroundColor: "#ffffff", marginTop: "-12px", position: "relative", zIndex: 10, overflow: "hidden", padding: "40px 0" }}>
         {renderWhiteSection(topSectionItems)}
       </div>
 
