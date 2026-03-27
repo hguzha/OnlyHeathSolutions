@@ -41,19 +41,19 @@ export default function ReviewsPage() {
         title="What Families Say"
         subtitle="Real stories from families who trust Only Health Solutions for compassionate, responsive home care."
         video="your-video-file.mp4"
-        height={600}
+        height={420}
       />
 
       {/* Stats Section - Minimized with negative margin */}
       <section
         style={{
           background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
-          paddingTop: "15px",
-          paddingBottom: "15px",
+          paddingTop: "40px",
+          paddingBottom: "40px",
           color: "white",
           position: "relative",
           overflow: "hidden",
-          marginTop: "-80px",
+          marginTop: "0px",
         }}
       >
         <div
@@ -74,7 +74,7 @@ export default function ReviewsPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "20px",
+              gap: "40px",
               textAlign: "center",
             }}
           >
@@ -82,9 +82,9 @@ export default function ReviewsPage() {
             <div>
               <div
                 style={{
-                  fontSize: "36px",
+                  fontSize: "56px",
                   fontWeight: 800,
-                  marginBottom: "4px",
+                  marginBottom: "12px",
                   background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -93,17 +93,17 @@ export default function ReviewsPage() {
               >
                 {averageRating}
               </div>
-              <div style={{ display: "flex", justifyContent: "center", gap: "2px", marginBottom: "4px" }}>
+              <div style={{ display: "flex", justifyContent: "center", gap: "4px", marginBottom: "8px" }}>
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    size={14}
+                    size={20}
                     fill="#FFD700"
                     color="#FFD700"
                   />
                 ))}
               </div>
-              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "12px" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600 }}>
                 Average Rating
               </p>
             </div>
@@ -112,9 +112,9 @@ export default function ReviewsPage() {
             <div>
               <div
                 style={{
-                  fontSize: "36px",
+                  fontSize: "56px",
                   fontWeight: 800,
-                  marginBottom: "4px",
+                  marginBottom: "12px",
                   background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -123,10 +123,10 @@ export default function ReviewsPage() {
               >
                 {totalReviews}
               </div>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: "4px" }}>
-                <MessageCircle size={16} color="#1fa6a0" />
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "8px" }}>
+                <MessageCircle size={24} color="#1fa6a0" />
               </div>
-              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "12px" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600 }}>
                 Family Reviews
               </p>
             </div>
@@ -135,9 +135,9 @@ export default function ReviewsPage() {
             <div>
               <div
                 style={{
-                  fontSize: "36px",
+                  fontSize: "56px",
                   fontWeight: 800,
-                  marginBottom: "4px",
+                  marginBottom: "12px",
                   background: "linear-gradient(135deg, #1fa6a0, #6a3fb5)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -146,10 +146,10 @@ export default function ReviewsPage() {
               >
                 100%
               </div>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: "4px" }}>
-                <CheckCircle size={16} color="#1fa6a0" />
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "8px" }}>
+                <CheckCircle size={24} color="#1fa6a0" />
               </div>
-              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600, fontSize: "12px" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", margin: "0", fontWeight: 600 }}>
                 Satisfied Families
               </p>
             </div>
@@ -161,7 +161,7 @@ export default function ReviewsPage() {
       <section
         style={{
           background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ff 100%)",
-          paddingTop: "40px",
+          paddingTop: "100px",
           paddingBottom: "100px",
           position: "relative",
           overflow: "hidden",
@@ -390,6 +390,31 @@ export default function ReviewsPage() {
             display: grid !important;
             grid-template-columns: 1fr !important;
             gap: 32px !important;
+          }
+
+          /* Mobile-only changes */
+          section:nth-of-type(2) {
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+            margin-top: -80px !important;
+          }
+
+          section:nth-of-type(2) [data-grid-reviews] {
+            gap: 20px !important;
+          }
+
+          section:nth-of-type(2) [data-grid-reviews] div:first-child div:first-child {
+            font-size: 36px !important;
+          }
+
+          section:nth-of-type(2) [data-grid-reviews] div:nth-child(2) div:first-child,
+          section:nth-of-type(2) [data-grid-reviews] div:nth-child(3) div:first-child {
+            font-size: 36px !important;
+          }
+
+          section:nth-of-type(2) p {
+            font-size: 12px !important;
+            margin-bottom: 0 !important;
           }
         }
       `}</style>
