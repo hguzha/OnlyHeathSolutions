@@ -284,24 +284,25 @@ export default function FAQPage() {
           /* Mobile hero - FIX CUTOFF AND TEXT POSITIONING */
           .hero {
             height: 320px !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: stretch !important;
-            justify-content: flex-start !important;
-            overflow: hidden !important;
-            position: relative !important;
+          }
+
+          .hero::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 120px !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.75)) !important;
+            z-index: 5 !important;
+            pointer-events: none !important;
           }
 
           .hero-img,
-          img,
-          video {
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
+          .hero img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
-            z-index: 1 !important;
           }
 
           /* TEXT AT BOTTOM - NO SPACE */
@@ -318,7 +319,6 @@ export default function FAQPage() {
             padding: 10px 14px !important;
             margin: 0 !important;
             gap: 4px !important;
-            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.75)) !important;
             width: 100% !important;
           }
 
@@ -355,6 +355,10 @@ export default function FAQPage() {
         @media (max-width: 480px) {
           .hero {
             height: 260px !important;
+          }
+
+          .hero::after {
+            height: 100px !important;
           }
 
           .hero-content {
