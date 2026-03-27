@@ -175,9 +175,9 @@ export default function HomePage() {
 
   return (
     <FixedBackgroundShell>
-      {/* MUCH BIGGER Hero Video - GAPS FULLY CLOSED */}
+      {/* MUCH BIGGER Hero Video - INCREASED SIZE */}
       <div style={{ width: "100%", padding: isMobile ? "0 12px" : "0 20px", margin: "0", marginTop: isMobile ? "-2px" : "-8px" }}>
-        <div style={{ height: isMobile ? "600px" : "1200px", overflow: "hidden", borderRadius: "12px", maxWidth: "100%", display: "block" }}>
+        <div style={{ height: isMobile ? "700px" : "1400px", overflow: "hidden", borderRadius: "12px", maxWidth: "100%", display: "block" }}>
           <PageHeroVideo />
         </div>
       </div>
