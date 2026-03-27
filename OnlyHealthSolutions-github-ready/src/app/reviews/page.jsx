@@ -45,17 +45,18 @@ export default function ReviewsPage() {
           height={700}
         />
 
-        {/* Stats Overlay - On Top of Video */}
+        {/* Stats Overlay - On Top of Video at Bottom */}
         <div
           style={{
             position: "absolute",
-            bottom: "0",
+            bottom: "20px",
             left: "0",
             right: "0",
-            background: "linear-gradient(135deg, #0b1320 0%, #1a2847 100%)",
+            background: "linear-gradient(135deg, rgba(11,19,32,0.95) 0%, rgba(26,40,71,0.95) 100%)",
             paddingTop: "20px",
-            paddingBottom: "30px",
+            paddingBottom: "20px",
             color: "white",
+            backdropFilter: "blur(10px)",
           }}
         >
           <div className="container" style={{ position: "relative", zIndex: 1 }}>
