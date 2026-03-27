@@ -281,10 +281,93 @@ export default function FAQPage() {
         }
 
         @media (max-width: 768px) {
+          /* Mobile hero - FIX CUTOFF AND TEXT POSITIONING */
+          .hero {
+            height: 320px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            justify-content: flex-start !important;
+            overflow: hidden !important;
+            position: relative !important;
+          }
+
+          .hero-img,
+          img,
+          video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            z-index: 1 !important;
+          }
+
+          /* TEXT AT BOTTOM - NO SPACE */
+          .hero-content {
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 10 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-end !important;
+            align-items: flex-start !important;
+            padding: 10px 14px !important;
+            margin: 0 !important;
+            gap: 4px !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.75)) !important;
+            width: 100% !important;
+          }
+
+          .hero-content h1 {
+            font-size: 18px !important;
+            margin: 0 !important;
+            line-height: 1.2 !important;
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7) !important;
+            font-weight: bold !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+
+          .hero-content p {
+            font-size: 11px !important;
+            margin: 0 !important;
+            line-height: 1.3 !important;
+            color: white !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.7) !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+
           [data-grid-faq] {
             display: grid !important;
             grid-template-columns: 1fr !important;
             gap: 32px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero {
+            height: 260px !important;
+          }
+
+          .hero-content {
+            padding: 8px 12px !important;
+            gap: 3px !important;
+          }
+
+          .hero-content h1 {
+            font-size: 14px !important;
+          }
+
+          .hero-content p {
+            font-size: 9px !important;
           }
         }
       `}</style>
