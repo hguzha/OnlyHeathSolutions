@@ -139,62 +139,84 @@ export default function PageHeroVideo() {
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
+            position: relative !important;
             min-height: auto !important;
             overflow: visible !important;
             display: flex !important;
             flex-direction: column !important;
             background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
+            padding-bottom: 40px !important;
           }
 
           [data-hero-video] video {
             position: relative !important;
-            inset: auto !important;
             width: 100% !important;
             height: 55vh !important;
             object-fit: contain !important;
             object-position: center !important;
             order: 1 !important;
             display: block !important;
+            margin: 0 !important;
           }
 
-          [data-hero-video] div[style*="position: absolute"] {
+          [data-hero-video] div[style*="position: absolute"][style*="inset"] {
             display: none !important;
           }
 
           [data-hero-video] .container {
             position: relative !important;
+            z-index: 10 !important;
             min-height: auto !important;
             align-items: center !important;
-            padding: 0 12px !important;
+            justify-content: center !important;
+            padding: 30px 16px 0 16px !important;
             background: transparent !important;
             order: 2 !important;
-            margin-top: -80px !important;
+            margin-top: 0 !important;
           }
 
-          [data-hero-video] div[style*="maxWidth"] {
+          [data-hero-video] div[style*="maxWidth: 760px"] {
             max-width: 100% !important;
+            width: 100% !important;
           }
 
           [data-hero-video] h1 {
             font-size: clamp(24px, 5vw, 40px) !important;
             margin-bottom: 12px !important;
+            color: #ffffff !important;
           }
 
           [data-hero-video] p {
             font-size: clamp(14px, 2vw, 18px) !important;
             max-width: 100% !important;
+            color: rgba(255,255,255,0.9) !important;
+            margin-bottom: 20px !important;
           }
 
           [data-hero-video] div[style*="gap: 14"] {
-            flex-direction: column;
+            display: flex !important;
+            flex-direction: column !important;
             gap: 10px !important;
+            width: 100% !important;
+            margin-top: 16px !important;
           }
 
           [data-hero-video] .btn {
             width: 100% !important;
             padding: 14px 20px !important;
             font-size: 14px !important;
-            text-align: center;
+            text-align: center !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 8px !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+          }
+
+          [data-hero-video] .btn:active {
+            transform: scale(0.98);
           }
         }
       `}</style>
