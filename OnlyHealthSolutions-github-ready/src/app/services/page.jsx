@@ -125,7 +125,7 @@ const services = [
   },
   {
     slug: "post-recovery",
-    title: "Post-Surgical & Recovery Support",
+    title: "Post-Hospital Support",
     icon: BedDouble,
     intro: "Specialized care during recovery periods, supporting healing and rehabilitation in the familiar comfort of home.",
     details: [
