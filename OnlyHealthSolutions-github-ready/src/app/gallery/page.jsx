@@ -80,7 +80,7 @@ const galleryImages = [
     title: "Happy Moments"
   },
   {
-    src: "Nano_Banana_2_A_black_caregiver_in_purple_scrubs_having_an_intimate_conversation_smiling_with_a_whit_2.png",
+    src: "Nano_Banana_2_A_black__caregiver_in_purple_scrubs_with_a_patient_sitting_on_a_coach_and_both_having__2.png",
     alt: "Joyful moments in caregiving",
     category: "Quality of Life",
     title: "Life Enhancement"
