@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import PageHero from "@/components/page-hero";
+import NewClientInquiry from "@/components/new-client-inquiry";
 import { X, Heart, Maximize2 } from "lucide-react";
 
 const galleryImages = [
@@ -15,31 +16,31 @@ const galleryImages = [
   {
     src: "5.jpeg",
     alt: "Healthcare professional providing skilled nursing care",
-    category: "Skilled Nursing",
-    title: "Professional Health Support"
+    category: "Personal Care",
+    title: "Professional Support"
   },
   {
     src: "vibrant-health-homecare.jpg",
     alt: "In-home care support showing compassionate assistance",
-    category: "Home Support",
+    category: "Skilled Nursing",
     title: "Comfort at Home"
   },
   {
     src: "1140x655-home-health-aide.jpg",
     alt: "Compassionate care moment between caregiver and client",
-    category: "Companion Care",
+    category: "Skilled Nursing",
     title: "Meaningful Connection"
   },
   {
     src: "3.jpeg",
     alt: "Nurse providing patient care with professionalism",
-    category: "Medical Care",
+    category: "Home Support",
     title: "Expert Care"
   },
   {
     src: "1140-nurse-wheelchair-home-care-health.jpg",
     alt: "Senior care with happiness and engagement",
-    category: "Quality of Life",
+    category: "Home Support",
     title: "Happy Moments"
   },
 ];
@@ -190,7 +191,7 @@ export default function GalleryPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
               gap: "32px",
             }}
           >
@@ -318,7 +319,7 @@ function GalleryCard({ image, onOpen, isMobile }) {
           overflow: "hidden",
           position: "relative",
           background: "#f5f1ff",
-          minHeight: "250px",
+          minHeight: "300px",
         }}
       >
         <img
