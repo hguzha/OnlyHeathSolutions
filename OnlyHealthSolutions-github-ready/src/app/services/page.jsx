@@ -154,7 +154,7 @@ const services = [
   },
   {
     slug: "live-in-care",
-    title: "Extended & Live-In Care",
+    title: "Live-In & Extended Care",
     icon: CalendarHeart,
     intro: "Comprehensive around-the-clock support for individuals requiring ongoing assistance with daily living and care needs.",
     details: [
