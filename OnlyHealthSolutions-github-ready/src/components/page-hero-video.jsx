@@ -173,6 +173,7 @@ export default function PageHeroVideo() {
             background: transparent !important;
             order: 2 !important;
             margin-top: 0 !important;
+            display: flex !important;
           }
 
           [data-hero-video] div[style*="maxWidth: 760px"] {
@@ -180,10 +181,17 @@ export default function PageHeroVideo() {
             width: 100% !important;
           }
 
+          [data-hero-video] div[style*="display: inline-block"][style*="padding: 6px"] {
+            display: inline-block !important;
+            margin-bottom: 12px !important;
+            visibility: visible !important;
+          }
+
           [data-hero-video] h1 {
             font-size: clamp(24px, 5vw, 40px) !important;
             margin-bottom: 12px !important;
             color: #ffffff !important;
+            visibility: visible !important;
           }
 
           [data-hero-video] p {
@@ -191,6 +199,7 @@ export default function PageHeroVideo() {
             max-width: 100% !important;
             color: rgba(255,255,255,0.9) !important;
             margin-bottom: 20px !important;
+            visibility: visible !important;
           }
 
           [data-hero-video] div[style*="gap: 14"] {
@@ -199,6 +208,7 @@ export default function PageHeroVideo() {
             gap: 10px !important;
             width: 100% !important;
             margin-top: 16px !important;
+            visibility: visible !important;
           }
 
           [data-hero-video] .btn {
@@ -213,6 +223,7 @@ export default function PageHeroVideo() {
             text-decoration: none !important;
             cursor: pointer !important;
             transition: all 0.3s ease !important;
+            visibility: visible !important;
           }
 
           [data-hero-video] .btn:active {
