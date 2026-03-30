@@ -7,6 +7,7 @@ import NewClientInquiry from "@/components/new-client-inquiry";
 import { X, Heart, Maximize2 } from "lucide-react";
 
 const galleryImages = [
+  // Personal Care
   {
     src: "Nano_Banana_2_A_white_caregiver_in_green_scrubs_helping_a_black_patient_to_comb_their_hair_in_their__1 (1).png",
     alt: "Caregiver assisting elderly client with warmth and compassion",
@@ -14,11 +15,25 @@ const galleryImages = [
     title: "Daily Assistance with Dignity"
   },
   {
+    src: "home-care-worker-1024x597.webp",
+    alt: "Caregiver providing personal care assistance",
+    category: "Personal Care",
+    title: "Compassionate Support"
+  },
+  // Skilled Nursing
+  {
     src: "5.jpeg",
     alt: "Healthcare professional providing skilled nursing care",
     category: "Skilled Nursing",
     title: "Professional Health Support"
   },
+  {
+    src: "GettyImages-1380716338.jpg",
+    alt: "Nurse monitoring patient health",
+    category: "Skilled Nursing",
+    title: "Expert Medical Care"
+  },
+  // Home Support
   {
     src: "vibrant-health-homecare.jpg",
     alt: "In-home care support showing compassionate assistance",
@@ -26,11 +41,25 @@ const galleryImages = [
     title: "Comfort at Home"
   },
   {
+    src: "senior-caretaker-combing-hair.jpg",
+    alt: "Caregiver providing home support",
+    category: "Home Support",
+    title: "In-Home Assistance"
+  },
+  // Companion Care
+  {
     src: "1140x655-home-health-aide.jpg",
     alt: "Compassionate care moment between caregiver and client",
     category: "Companion Care",
     title: "Meaningful Connection"
   },
+  {
+    src: "1.webp",
+    alt: "Caregiver spending quality time with client",
+    category: "Companion Care",
+    title: "Social Engagement"
+  },
+  // Medical Care
   {
     src: "3.jpeg",
     alt: "Nurse providing patient care with professionalism",
@@ -39,9 +68,22 @@ const galleryImages = [
   },
   {
     src: "1140-nurse-wheelchair-home-care-health.jpg",
+    alt: "Healthcare professional with patient support",
+    category: "Medical Care",
+    title: "Professional Support"
+  },
+  // Quality of Life
+  {
+    src: "GettyImages-1380716338.jpg",
     alt: "Senior care with happiness and engagement",
     category: "Quality of Life",
     title: "Happy Moments"
+  },
+  {
+    src: "senior-caretaker-combing-hair.jpg",
+    alt: "Joyful moments in caregiving",
+    category: "Quality of Life",
+    title: "Life Enhancement"
   },
 ];
 
