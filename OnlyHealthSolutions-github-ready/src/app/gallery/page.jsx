@@ -15,7 +15,7 @@ const galleryImages = [
     title: "Daily Assistance with Dignity"
   },
   {
-    src: "home-care-worker-1024x597.webp",
+    src: "Nano_Banana_2_A_black_caregiver_in_green_scrubs_having_an_intimate_conversation_smiling__assisting_w_2.png",
     alt: "Caregiver providing personal care assistance",
     category: "Personal Care",
     title: "Compassionate Support"
@@ -28,7 +28,7 @@ const galleryImages = [
     title: "Professional Health Support"
   },
   {
-    src: "GettyImages-1380716338.jpg",
+    src: "Nano_Banana_2_A_white_caregiver_in__purple_scrubs_taking_blood_pressure_on_a_young_white_patient__in_2.png",
     alt: "Nurse monitoring patient health",
     category: "Skilled Nursing",
     title: "Expert Medical Care"
@@ -41,7 +41,7 @@ const galleryImages = [
     title: "Comfort at Home"
   },
   {
-    src: "senior-caretaker-combing-hair.jpg",
+    src: "Nano_Banana_2_A_white_caregiver_in_green_scrubs_having_a_walk_with_a_patient_outside_the_house_2.png",
     alt: "Caregiver providing home support",
     category: "Home Support",
     title: "In-Home Assistance"
@@ -54,7 +54,7 @@ const galleryImages = [
     title: "Meaningful Connection"
   },
   {
-    src: "1.webp",
+    src: "Nano_Banana_2_A_black_caregiver_in_purple_scrubs_having_an_intimate_conversation_smiling_with_a_whit_2.png",
     alt: "Caregiver spending quality time with client",
     category: "Companion Care",
     title: "Social Engagement"
@@ -67,7 +67,7 @@ const galleryImages = [
     title: "Expert Care"
   },
   {
-    src: "1140-nurse-wheelchair-home-care-health.jpg",
+    src: "Nano_Banana_2_A_white_caregiver_in_purple_scrubs_helping_a_black_patient_in_a_wheelchair_in_their_ho_4.png",
     alt: "Healthcare professional with patient support",
     category: "Medical Care",
     title: "Professional Support"
@@ -80,7 +80,7 @@ const galleryImages = [
     title: "Happy Moments"
   },
   {
-    src: "senior-caretaker-combing-hair.jpg",
+    src: "Nano_Banana_2_A_black_caregiver_in_purple_scrubs_having_an_intimate_conversation_smiling_with_a_whit_2.png",
     alt: "Joyful moments in caregiving",
     category: "Quality of Life",
     title: "Life Enhancement"
