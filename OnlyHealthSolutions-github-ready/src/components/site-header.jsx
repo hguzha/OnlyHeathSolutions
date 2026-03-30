@@ -10,11 +10,10 @@ import { HeartHandshake, Users, Stethoscope, BedDouble, Brain, CalendarHeart } f
 const serviceItems = [
   { label: "All Services", href: "/services", isHeader: true },
   { label: "Personal Care Assistance", href: "/services?service=personal-care", icon: HeartHandshake },
-  { label: "Companion Care", href: "/services?service=companion-care", icon: Users },
+  { label: "Companion & Sitter Care", href: "/services?service=companion-care", icon: Users },
   { label: "Post-Hospital Support", href: "/services?service=post-hospital-care", icon: Stethoscope },
-  { label: "Respite Care", href: "/services?service=respite-care", icon: CalendarHeart },
+  { label: "Respite & Relief Care", href: "/services?service=respite-care", icon: CalendarHeart },
   { label: "Skilled Nursing Care", href: "/services?service=nursing-care", icon: Stethoscope },
-  { label: "Alzheimer's & Dementia Care", href: "/services?service=dementia-care", icon: Brain },
   { label: "Live-In & Extended Care", href: "/services?service=live-in-care", icon: BedDouble },
 ];
 
