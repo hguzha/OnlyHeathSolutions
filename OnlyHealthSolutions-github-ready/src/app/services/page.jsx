@@ -124,12 +124,12 @@ const services = [
       "Caregiver burnout is real. Respite care provides essential relief, helping family caregivers maintain their own health and well-being while ensuring their loved one receives quality care.",
   },
   {
-    slug: "post-recovery",
+    slug: "post-hospital-care",
     title: "Post-Hospital Support",
     icon: BedDouble,
     intro: "Specialized care during recovery periods, supporting healing and rehabilitation in the familiar comfort of home.",
     details: [
-      "Post-surgical wound care and monitoring",
+      "Post-hospital care and monitoring",
       "Rehabilitation exercise support and encouragement",
       "Medication and pain management support",
       "Activity progression and mobility assistance",
@@ -150,10 +150,10 @@ const services = [
       "Families wanting safe home-based recovery",
     ],
     whyItMatters:
-      "Home recovery after surgery supports faster healing, reduces infection risk, and provides comfort during a vulnerable time. Professional support ensures proper care while family remains close.",
+      "Home recovery after hospital supports faster healing, reduces infection risk, and provides comfort during a vulnerable time. Professional support ensures proper care while family remains close.",
   },
   {
-    slug: "extended-care",
+    slug: "live-in-care",
     title: "Extended & Live-In Care",
     icon: CalendarHeart,
     intro: "Comprehensive around-the-clock support for individuals requiring ongoing assistance with daily living and care needs.",
