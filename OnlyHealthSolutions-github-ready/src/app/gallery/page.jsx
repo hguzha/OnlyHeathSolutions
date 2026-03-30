@@ -15,7 +15,7 @@ const galleryImages = [
     title: "Daily Assistance with Dignity"
   },
   {
-    src: "Nano_Banana_2_A_black_caregiver_in_green_scrubs_having_an_intimate_conversation_smiling__assisting_w_2.png",
+    src: "Nano_Banana_2_A_white_caregiver_in_purple_scrubs_helping_a_black_patient_in_a_wheelchair_in_their_ho_4.png",
     alt: "Caregiver providing personal care assistance",
     category: "Personal Care",
     title: "Compassionate Support"
