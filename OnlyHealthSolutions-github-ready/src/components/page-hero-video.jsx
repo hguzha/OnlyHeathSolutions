@@ -148,7 +148,7 @@ export default function PageHeroVideo() {
         </div>
       </section>
 
-      {/* Video height very small for mobile */}
+      {/* Only mobile video styling updated here */}
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
@@ -163,13 +163,16 @@ export default function PageHeroVideo() {
 
           [data-hero-video] video {
             position: relative !important;
-            width: 100% !important;
-            height: 20vh !important; /* Decreased for mobile */
-            object-fit: contain !important;
+            width: 100vw !important;   /* Full screen width */
+            height: 25vh !important;   /* 25vh height */
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            object-fit: cover !important;
             object-position: center !important;
             order: 1 !important;
             display: block !important;
             margin: 0 !important;
+            max-width: 100vw !important;
           }
 
           [data-hero-video] div[style*="position: absolute"][style*="inset"] {
