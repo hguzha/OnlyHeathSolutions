@@ -33,21 +33,20 @@ export default function AboutPage() {
       <div className="about-hero">
         <PageHero
           title={
-            <>
-              <span
-                style={{
-                  display: "block",
-                  textTransform: "uppercase",
-                  fontWeight: 400,
-                  fontSize: "clamp(13px, 2vw, 16px)",
-                  color: "white",
-                  lineHeight: 1.6,
-                  maxWidth: "760px",
-                  margin: "0 auto 10px auto",
-                  letterSpacing: "0.03em"
-                }}
-              >
-      YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
+            <span
+              style={{
+                display: "block",
+                textTransform: "uppercase",
+                fontWeight: 400,
+                fontSize: "clamp(13px, 2vw, 16px)",
+                color: "white",
+                lineHeight: 1.6,
+                maxWidth: "760px",
+                margin: "0 auto 10px auto",
+                letterSpacing: "0.03em"
+              }}
+            >
+              YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
             </span>
           }
           subtitle={
