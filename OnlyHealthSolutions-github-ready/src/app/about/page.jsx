@@ -9,23 +9,25 @@ export default function AboutPage() {
     {
       icon: HeartHandshake,
       title: "Compassionate Care",
-      description: "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship."
+      description:
+        "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship.",
     },
     {
       icon: Shield,
       title: "Safety & Dignity",
-      description: "Your loved one's independence and personal dignity are paramount in every aspect of our service."
+      description:
+        "Your loved one's independence and personal dignity are paramount in every aspect of our service.",
     },
     {
       icon: Users,
       title: "Family Partnership",
-      description: "We work closely with families to understand unique needs and build a care plan that truly fits."
+      description: "We work closely with families to understand unique needs and build a care plan that truly fits.",
     },
     {
       icon: Star,
       title: "Quality Assurance",
-      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care."
-    }
+      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care.",
+    },
   ];
 
   return (
@@ -33,46 +35,32 @@ export default function AboutPage() {
       <div className="about-hero">
         <PageHero
           title={
-            <span
-              style={{
-                display: "block",
-                textTransform: "uppercase",
-                fontWeight: 400,
-                fontSize: "clamp(13px, 2vw, 16px)",
-                color: "white",
-                lineHeight: 1.6,
-                maxWidth: "760px",
-                margin: "0 auto 10px auto",
-                letterSpacing: "0.03em"
-              }}
-            >
-              YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
-            </span>
-          }
-          subtitle={
             <>
-              <span className="about-title-mobile">
-                About Only Health Solutions
+              <span
+                style={{
+                  display: "block",
+                  textTransform: "uppercase",
+                  fontWeight: 400,
+                  fontSize: "clamp(13px, 2vw, 16px)",
+                  color: "white",
+                  lineHeight: 1.6,
+                  maxWidth: "760px",
+                  margin: "0 auto 10px auto",
+                  letterSpacing: "0.03em",
+                }}
+              >
+                YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
               </span>
-              Compassion, dignity, and dependable support are at the center of everything we do.
+              About Only Health Solutions
             </>
           }
+          subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
           image="1.jpeg"
           height={600}
           background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
         />
         <style>{`
-          .about-title-mobile {
-            display: none;
-          }
           @media (max-width: 768px) {
-            .about-title-mobile {
-              display: block !important;
-              font-weight: 700;
-              font-size: 20px;
-              color: white;
-              margin: 0 0 10px 0;
-            }
             .about-hero .hero-img {
               height: 340px !important;
               min-height: 320px !important;
@@ -85,7 +73,7 @@ export default function AboutPage() {
           }
         `}</style>
       </div>
-      
+
       {/* Mission & Why Choose Us - Creative Layout */}
       <section
         className="section"
@@ -96,6 +84,7 @@ export default function AboutPage() {
           paddingBottom: "80px",
         }}
       >
+        {/* Watermark and backgrounds */}
         <div
           style={{
             position: "absolute",
@@ -143,6 +132,7 @@ export default function AboutPage() {
             pointerEvents: "none",
           }}
         />
+
         <div
           className="container"
           style={{
@@ -167,6 +157,7 @@ export default function AboutPage() {
           }
         `}</style>
       </section>
+
       {/* Core Values Section */}
       <section
         style={{
@@ -180,14 +171,15 @@ export default function AboutPage() {
         <div
           style={{
             position: "absolute",
-            top: "0",
-            left: "0",
-            right: "0",
+            top: 0,
+            left: 0,
+            right: 0,
             height: "2px",
             background: "linear-gradient(90deg, transparent, #1fa6a0, #6a3fb5, transparent)",
             opacity: 0.5,
           }}
         />
+
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "60px" }}>
             <h2
@@ -207,6 +199,7 @@ export default function AboutPage() {
               These principles guide every decision we make and every interaction we have with our clients and families.
             </p>
           </div>
+
           <div
             style={{
               display: "grid",
@@ -220,6 +213,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       {/* Trust & Commitment Section */}
       <section
         style={{
@@ -243,6 +237,7 @@ export default function AboutPage() {
             pointerEvents: "none",
           }}
         />
+
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
             <h2
@@ -271,6 +266,7 @@ export default function AboutPage() {
 function MissionCard() {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
@@ -278,6 +274,7 @@ function MissionCard() {
       y: e.clientY - rect.top,
     });
   };
+
   return (
     <div
       style={{
@@ -299,6 +296,7 @@ function MissionCard() {
           transition: "all 0.3s ease",
         }}
       />
+
       {isHovered && (
         <div
           style={{
@@ -314,6 +312,7 @@ function MissionCard() {
           }}
         />
       )}
+
       <div
         style={{
           position: "absolute",
