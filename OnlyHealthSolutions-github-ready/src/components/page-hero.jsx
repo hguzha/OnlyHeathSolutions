@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { brand } from "@/lib/site-data";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // ← Import pathname
 import { Phone, MessageSquare } from "lucide-react";
 
 export default function PageHero({
@@ -16,6 +17,8 @@ export default function PageHero({
 }) {
   const slides = images.length > 0 ? images : image ? [image] : [];
   const [current, setCurrent] = useState(0);
+  const pathname = usePathname(); // ← Get current path
+  const [isMobile, setIsMobile] = useState(false); // ← Track mobile
 
   useEffect(() => {
     if (slides.length <= 1) return;
@@ -26,6 +29,15 @@ export default function PageHero({
 
     return () => clearInterval(interval);
   }, [slides.length]);
+
+  // Track screen size for mobile
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 768);
+    handler();
+    window.addEventListener("resize", handler);
+
+    return () => window.removeEventListener("resize", handler);
+  }, []);
 
   // If video prop is provided, render video instead
   if (video) {
@@ -126,50 +138,53 @@ export default function PageHero({
                 {subtitle}
               </p>
 
-              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
-                <Link
-                  href="/services#new-client-inquiry"
-                  className="btn"
-                  style={{
-                    background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
-                    color: "white",
-                  }}
-                >
-                  Request a Consult
-                </Link>
+              {/* THE BUTTON GROUP: show on desktop everywhere, on mobile only on home page */}
+              {(!isMobile || pathname === "/") && (
+                <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
+                  <Link
+                    href="/services#new-client-inquiry"
+                    className="btn"
+                    style={{
+                      background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+                      color: "white",
+                    }}
+                  >
+                    Request a Consult
+                  </Link>
 
-                <a
-                  href={brand.phoneHref}
-                  className="btn"
-                  style={{
-                    background: "rgba(255,255,255,0.12)",
-                    border: "1px solid rgba(255,255,255,0.22)",
-                    color: "white",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                  }}
-                >
-                  <Phone size={16} />
-                  {brand.phoneDisplay}
-                </a>
+                  <a
+                    href={brand.phoneHref}
+                    className="btn"
+                    style={{
+                      background: "rgba(255,255,255,0.12)",
+                      border: "1px solid rgba(255,255,255,0.22)",
+                      color: "white",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                    }}
+                  >
+                    <Phone size={16} />
+                    {brand.phoneDisplay}
+                  </a>
 
-                <Link
-                  href="/contact#contact-form-section"
-                  className="btn"
-                  style={{
-                    background: "rgba(255,255,255,0.12)",
-                    border: "1px solid rgba(255,255,255,0.22)",
-                    color: "white",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                  }}
-                >
-                  <MessageSquare size={16} />
-                  Send Us a Message
-                </Link>
-              </div>
+                  <Link
+                    href="/contact#contact-form-section"
+                    className="btn"
+                    style={{
+                      background: "rgba(255,255,255,0.12)",
+                      border: "1px solid rgba(255,255,255,0.22)",
+                      color: "white",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                    }}
+                  >
+                    <MessageSquare size={16} />
+                    Send Us a Message
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -327,50 +342,53 @@ export default function PageHero({
               {subtitle}
             </p>
 
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
-              <Link
-                href="/services#new-client-inquiry"
-                className="btn"
-                style={{
-                  background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
-                  color: "white",
-                }}
-              >
-                Request a Consult
-              </Link>
+            {/* THE BUTTON GROUP: show on desktop everywhere, on mobile only on home page */}
+            {(!isMobile || pathname === "/") && (
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
+                <Link
+                  href="/services#new-client-inquiry"
+                  className="btn"
+                  style={{
+                    background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+                    color: "white",
+                  }}
+                >
+                  Request a Consult
+                </Link>
 
-              <a
-                href={brand.phoneHref}
-                className="btn"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.22)",
-                  color: "white",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <Phone size={16} />
-                {brand.phoneDisplay}
-              </a>
+                <a
+                  href={brand.phoneHref}
+                  className="btn"
+                  style={{
+                    background: "rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(255,255,255,0.22)",
+                    color: "white",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <Phone size={16} />
+                  {brand.phoneDisplay}
+                </a>
 
-              <Link
-                href="/contact#contact-form-section"
-                className="btn"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.22)",
-                  color: "white",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <MessageSquare size={16} />
-                Send Us a Message
-              </Link>
-            </div>
+                <Link
+                  href="/contact#contact-form-section"
+                  className="btn"
+                  style={{
+                    background: "rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(255,255,255,0.22)",
+                    color: "white",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <MessageSquare size={16} />
+                  Send Us a Message
+                </Link>
+              </div>
+            )}
 
             {slides.length > 1 && (
               <div
