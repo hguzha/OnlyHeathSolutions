@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import PageHero from "@/components/page-hero";
-import { HeartHandshake, Shield, Users, Star, Award, Sparkles, Heart, Zap } from "lucide-react";
+import { HeartHandshake, Shield, Users, Star, Award, Heart } from "lucide-react";
 
 export default function AboutPage() {
   const values = [
@@ -32,7 +32,22 @@ export default function AboutPage() {
     <main>
       <PageHero
         title="About Only Health Solutions"
-        subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
+        subtitle={
+          <>
+            <span
+              style={{
+                display: "block",
+                fontWeight: 800,
+                letterSpacing: "0.03em",
+                fontSize: "1em",
+                marginBottom: "10px"
+              }}
+            >
+              YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
+            </span>
+            Compassion, dignity, and dependable support are at the center of everything we do.
+          </>
+        }
         image="1.jpeg"
         height={600}
         background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
@@ -233,7 +248,6 @@ export default function AboutPage() {
   );
 }
 
-// Creative Mission Card with animated elements
 function MissionCard() {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -381,7 +395,6 @@ function MissionCard() {
   );
 }
 
-// Creative Why Choose Us Card with numbered features
 function WhyChooseUsCard() {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
