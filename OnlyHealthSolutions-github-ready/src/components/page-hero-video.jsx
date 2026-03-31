@@ -148,7 +148,7 @@ export default function PageHeroVideo() {
         </div>
       </section>
 
-      {/* Updated mobile video height */}
+      {/* Mobile-only: section width/stretch and background full screen */}
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
@@ -159,12 +159,17 @@ export default function PageHeroVideo() {
             flex-direction: column !important;
             background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
             padding-bottom: 40px !important;
+            width: 100vw !important;
+            margin-left: 50% !important;
+            transform: translateX(-50%) !important;
+            left: 0 !important;
+            right: 0 !important;
           }
 
           [data-hero-video] video {
             position: relative !important;
             width: 100vw !important;
-            height: 28vh !important;  /* <--- Changed here ONLY */
+            height: 28vh !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
             object-fit: cover !important;
