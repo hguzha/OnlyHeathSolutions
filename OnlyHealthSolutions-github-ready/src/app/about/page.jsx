@@ -76,8 +76,6 @@ export default function AboutPage() {
         `}</style>
       </div>
 
-// ...MissionCard, WhyChooseUsCard, ValueCard functions remain unchanged...
-
       {/* Mission & Why Choose Us - Creative Layout */}
       <section
         className="section"
