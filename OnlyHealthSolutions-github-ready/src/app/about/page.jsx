@@ -34,7 +34,6 @@ export default function AboutPage() {
         <PageHero
           title={
             <>
-              {/* ALL CAPS always first */}
               <span
                 className="about-hero-allcaps"
                 style={{
@@ -46,88 +45,43 @@ export default function AboutPage() {
                   lineHeight: 1.6,
                   maxWidth: "760px",
                   margin: "0 auto 10px auto",
-                  letterSpacing: "0.03em",
+                  letterSpacing: "0.03em"
                 }}
               >
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
               </span>
-
-              {/* Desktop only: Big title and subtitle */}
-              <span className="about-mobile-hide"
-                style={{
-                  display: "block",
-                  fontWeight: 800,
-                  fontSize: "clamp(34px,5vw,54px)",   // BIG headline on desktop
-                  color: "white",
-                  margin: 0,
-                  lineHeight: "1.13"
-                }}>
-                About Only Health Solutions
-              </span>
-              <span className="about-mobile-hide" style={{
-                display: "block",
-                fontWeight: 400,
-                fontSize: "clamp(15px,3vw,18px)",
-                color: "white",
-                margin: 0
-              }}>
-                Compassion, dignity, and dependable support are at the center of everything we do.
-              </span>
-
-              {/* Mobile only: Spacer then Big title and subtitle */}
-              <span className="about-mobile-show about-mobile-spacer" aria-hidden="true"></span>
-              <span className="about-mobile-show"
-                style={{
-                  display: "block",
-                  fontWeight: 800,
-                  fontSize: "clamp(32px,8vw,38px)",   // BIG headline on mobile
-                  color: "white",
-                  margin: 0,
-                  lineHeight: "1.16"
-                }}>
-                About Only Health Solutions
-              </span>
-              <span className="about-mobile-show" style={{
-                display: "block",
-                fontWeight: 400,
-                fontSize: "clamp(14px,3vw,17px)",
-                color: "white",
-                lineHeight: "1.3",
-                margin: 0
-              }}>
-                Compassion, dignity, and dependable support are at the center of everything we do.
-              </span>
+              About Only Health Solutions
             </>
           }
-          subtitle=""
+          subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
           image="1.jpeg"
           height={600}
           background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
         />
         <style>{`
-          .about-mobile-show, .about-mobile-spacer { display: none !important; }
-          .about-mobile-hide { display: block !important; }
           @media (max-width: 768px) {
-            .about-hero-allcaps { margin-top: 38px !important; } /* move all-caps phrase down */
-            .about-mobile-show { display: block !important; }
-            .about-mobile-hide { display: none !important; }
-            .about-mobile-spacer { 
-              display: block !important;
-              width: 100%;
-              min-height: 3em;
+            .about-hero-allcaps {
+              margin-bottom: 3em !important;
             }
             .about-hero .hero-img {
-              height: 400px !important;
-              min-height: 380px !important;
+              height: 260px !important;
+              min-height: 220px !important;
               max-height: unset !important;
             }
             .about-hero .hero {
-              min-height: 400px !important;
+              min-height: 260px !important;
               height: auto !important;
             }
           }
         `}</style>
       </div>
+
+      {/* ...rest of your AboutPage: sections, MissionCard, etc. (unchanged) ... */}
+    </main>
+  );
+}
+
+// ...MissionCard, WhyChooseUsCard, ValueCard functions remain unchanged...
 
       {/* Mission & Why Choose Us - Creative Layout */}
       <section
