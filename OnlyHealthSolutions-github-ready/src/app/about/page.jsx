@@ -9,25 +9,23 @@ export default function AboutPage() {
     {
       icon: HeartHandshake,
       title: "Compassionate Care",
-      description:
-        "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship.",
+      description: "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship."
     },
     {
       icon: Shield,
       title: "Safety & Dignity",
-      description:
-        "Your loved one's independence and personal dignity are paramount in every aspect of our service.",
+      description: "Your loved one's independence and personal dignity are paramount in every aspect of our service."
     },
     {
       icon: Users,
       title: "Family Partnership",
-      description: "We work closely with families to understand unique needs and build a care plan that truly fits.",
+      description: "We work closely with families to understand unique needs and build a care plan that truly fits."
     },
     {
       icon: Star,
       title: "Quality Assurance",
-      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care.",
-    },
+      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care."
+    }
   ];
 
   return (
@@ -41,12 +39,12 @@ export default function AboutPage() {
                   display: "block",
                   textTransform: "uppercase",
                   fontWeight: 400,
-                  fontSize: "clamp(13px, 2vw, 16px)", // smaller, subtitle-style
+                  fontSize: "clamp(13px, 2vw, 16px)",
                   color: "white",
                   lineHeight: 1.6,
                   maxWidth: "760px",
                   margin: "0 auto 10px auto",
-                  letterSpacing: "0.03em",
+                  letterSpacing: "0.03em"
                 }}
               >
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
@@ -54,13 +52,30 @@ export default function AboutPage() {
               About Only Health Solutions
             </>
           }
-          subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
+          subtitle={
+            <>
+              <span className="about-title-mobile">
+                About Only Health Solutions
+              </span>
+              Compassion, dignity, and dependable support are at the center of everything we do.
+            </>
+          }
           image="1.jpeg"
           height={600}
           background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
         />
         <style>{`
+          .about-title-mobile {
+            display: none;
+          }
           @media (max-width: 768px) {
+            .about-title-mobile {
+              display: block !important;
+              font-weight: 700;
+              font-size: 20px;
+              color: white;
+              margin: 0 0 10px 0;
+            }
             .about-hero .hero-img {
               height: 340px !important;
               min-height: 320px !important;
@@ -73,7 +88,7 @@ export default function AboutPage() {
           }
         `}</style>
       </div>
-
+      
       {/* Mission & Why Choose Us - Creative Layout */}
       <section
         className="section"
@@ -84,7 +99,6 @@ export default function AboutPage() {
           paddingBottom: "80px",
         }}
       >
-        {/* Watermark and backgrounds */}
         <div
           style={{
             position: "absolute",
@@ -132,7 +146,6 @@ export default function AboutPage() {
             pointerEvents: "none",
           }}
         />
-
         <div
           className="container"
           style={{
@@ -157,7 +170,6 @@ export default function AboutPage() {
           }
         `}</style>
       </section>
-
       {/* Core Values Section */}
       <section
         style={{
@@ -171,15 +183,14 @@ export default function AboutPage() {
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
+            top: "0",
+            left: "0",
+            right: "0",
             height: "2px",
             background: "linear-gradient(90deg, transparent, #1fa6a0, #6a3fb5, transparent)",
             opacity: 0.5,
           }}
         />
-
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "60px" }}>
             <h2
@@ -199,7 +210,6 @@ export default function AboutPage() {
               These principles guide every decision we make and every interaction we have with our clients and families.
             </p>
           </div>
-
           <div
             style={{
               display: "grid",
@@ -213,7 +223,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
       {/* Trust & Commitment Section */}
       <section
         style={{
@@ -237,7 +246,6 @@ export default function AboutPage() {
             pointerEvents: "none",
           }}
         />
-
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
             <h2
@@ -266,7 +274,6 @@ export default function AboutPage() {
 function MissionCard() {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
@@ -274,7 +281,6 @@ function MissionCard() {
       y: e.clientY - rect.top,
     });
   };
-
   return (
     <div
       style={{
@@ -288,7 +294,6 @@ function MissionCard() {
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
     >
-      {/* Animated gradient background */}
       <div
         style={{
           position: "absolute",
@@ -297,8 +302,6 @@ function MissionCard() {
           transition: "all 0.3s ease",
         }}
       />
-
-      {/* Hover light effect */}
       {isHovered && (
         <div
           style={{
@@ -314,8 +317,6 @@ function MissionCard() {
           }}
         />
       )}
-
-      {/* Animated border */}
       <div
         style={{
           position: "absolute",
@@ -327,17 +328,13 @@ function MissionCard() {
             : "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05), rgba(255,255,255,0.05))",
           backgroundClip: "padding-box",
           border: isHovered ? "2px solid transparent" : "1px solid transparent",
-          WebkitMask: isHovered
-            ? "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)"
-            : "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
           padding: "1px",
           transition: "all 0.3s ease",
         }}
       />
-
-      {/* Content */}
       <div
         style={{
           position: "relative",
@@ -351,7 +348,6 @@ function MissionCard() {
           transition: "transform 0.3s ease",
         }}
       >
-        {/* Icon with animation */}
         <div
           style={{
             marginBottom: "24px",
@@ -374,7 +370,6 @@ function MissionCard() {
             <Heart size={40} color="#ffffff" fill="#ffffff" />
           </div>
         </div>
-
         <h2
           style={{
             fontSize: "36px",
@@ -386,15 +381,12 @@ function MissionCard() {
         >
           Our Mission
         </h2>
-
         <p style={{ color: "#ffffff", lineHeight: 1.8, fontSize: "15px", margin: "0", marginBottom: "16px" }}>
           Our mission is to provide compassionate and personalized support that enables individuals to remain safely and comfortably in their own homes. We are dedicated to upholding dignity, respect, and independence as central principles of our service. Through customized care plans and attentive assistance, we strive to improve the quality of life for each client.
         </p>
         <p style={{ color: "rgba(255,255,255,0.95)", lineHeight: 1.8, fontSize: "15px", margin: "0" }}>
           Establishing meaningful relationships is integral to our approach, as we aim to build trust with clients and their families. Our primary objective is to foster security and well-being, guaranteeing that every individual receives the highest standard of care in a familiar environment. Our commitment extends to supporting families, offering assurance and peace of mind throughout the care process.
         </p>
-
-        {/* Decorative line at bottom */}
         <div
           style={{
             marginTop: "24px",
@@ -413,13 +405,7 @@ function MissionCard() {
 function WhyChooseUsCard() {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const features = [
-    "Personalized Care Plans",
-    "Trusted Caregivers",
-    "Family Support",
-  ];
-
+  const features = ["Personalized Care Plans", "Trusted Caregivers", "Family Support"];
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
@@ -427,7 +413,6 @@ function WhyChooseUsCard() {
       y: e.clientY - rect.top,
     });
   };
-
   return (
     <div
       style={{
@@ -441,7 +426,6 @@ function WhyChooseUsCard() {
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
     >
-      {/* Animated gradient background */}
       <div
         style={{
           position: "absolute",
@@ -450,8 +434,6 @@ function WhyChooseUsCard() {
           transition: "all 0.3s ease",
         }}
       />
-
-      {/* Hover light effect */}
       {isHovered && (
         <div
           style={{
@@ -467,8 +449,6 @@ function WhyChooseUsCard() {
           }}
         />
       )}
-
-      {/* Animated border */}
       <div
         style={{
           position: "absolute",
@@ -480,17 +460,13 @@ function WhyChooseUsCard() {
             : "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05), rgba(255,255,255,0.05))",
           backgroundClip: "padding-box",
           border: isHovered ? "2px solid transparent" : "1px solid transparent",
-          WebkitMask: isHovered
-            ? "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)"
-            : "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
           padding: "1px",
           transition: "all 0.3s ease",
         }}
       />
-
-      {/* Content */}
       <div
         style={{
           position: "relative",
@@ -504,9 +480,7 @@ function WhyChooseUsCard() {
           transition: "transform 0.3s ease",
         }}
       >
-        {/* Top section */}
         <div>
-          {/* Icon with animation */}
           <div
             style={{
               marginBottom: "24px",
@@ -529,7 +503,6 @@ function WhyChooseUsCard() {
               <Award size={40} color="#ffffff" />
             </div>
           </div>
-
           <h2
             style={{
               fontSize: "36px",
@@ -541,7 +514,6 @@ function WhyChooseUsCard() {
           >
             Why Families Choose Us
           </h2>
-
           <p style={{ color: "#ffffff", lineHeight: 1.8, fontSize: "15px", margin: "0", marginBottom: "16px" }}>
             Families choose Only Health Solutions for private home care because we offer compassionate, individualized support. By tailoring care plans to each person's needs and preferences, our trained caregivers provide attentive assistance that prioritizes independence, comfort, and dignity at home.
           </p>
@@ -549,8 +521,6 @@ function WhyChooseUsCard() {
             Our dedication to respect, dignity, and independence distinguishes us. Through customized services and genuine compassion, we consistently deliver reliable care families can trust.
           </p>
         </div>
-
-        {/* Feature highlights */}
         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
           {features.map((feature, idx) => (
             <div
@@ -580,7 +550,6 @@ function WhyChooseUsCard() {
 function ValueCard({ value }) {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = value.icon;
-
   return (
     <div
       style={{
