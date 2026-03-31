@@ -9,25 +9,23 @@ export default function AboutPage() {
     {
       icon: HeartHandshake,
       title: "Compassionate Care",
-      description:
-        "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship.",
+      description: "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship."
     },
     {
       icon: Shield,
       title: "Safety & Dignity",
-      description:
-        "Your loved one's independence and personal dignity are paramount in every aspect of our service.",
+      description: "Your loved one's independence and personal dignity are paramount in every aspect of our service."
     },
     {
       icon: Users,
       title: "Family Partnership",
-      description: "We work closely with families to understand unique needs and build a care plan that truly fits.",
+      description: "We work closely with families to understand unique needs and build a care plan that truly fits."
     },
     {
       icon: Star,
       title: "Quality Assurance",
-      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care.",
-    },
+      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care."
+    }
   ];
 
   return (
@@ -36,6 +34,7 @@ export default function AboutPage() {
         <PageHero
           title={
             <>
+              {/* ALL CAPS always first */}
               <span
                 style={{
                   display: "block",
@@ -51,16 +50,59 @@ export default function AboutPage() {
               >
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
               </span>
-              About Only Health Solutions
+              {/* Desktop only: Big title and subtitle */}
+              <span className="about-mobile-hide" style={{
+                display: "block",
+                fontWeight: 700,
+                fontSize: "32px",
+                color: "white",
+                margin: "0"
+              }}>
+                About Only Health Solutions
+              </span>
+              <span className="about-mobile-hide" style={{
+                display: "block",
+                fontWeight: 400,
+                fontSize: "clamp(15px,3vw,18px)",
+                color: "white",
+                margin: "0"
+              }}>
+                Compassion, dignity, and dependable support are at the center of everything we do.
+              </span>
+              {/* Mobile only: Big title and subtitle, tight grouping, no extra gap */}
+              <span className="about-mobile-show" style={{
+                display: "block",
+                fontWeight: 700,
+                fontSize: "22px",
+                color: "white",
+                margin: "0",
+                lineHeight: "1.2"
+              }}>
+                About Only Health Solutions
+              </span>
+              <span className="about-mobile-show" style={{
+                display: "block",
+                fontWeight: 400,
+                fontSize: "clamp(14px,3vw,17px)",
+                color: "white",
+                lineHeight: "1.3",
+                margin: "0"
+              }}>
+                Compassion, dignity, and dependable support are at the center of everything we do.
+              </span>
             </>
           }
-          subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
+          subtitle=""
           image="1.jpeg"
           height={600}
           background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
         />
         <style>{`
+          .about-mobile-show { display: none !important; }
+          .about-mobile-hide { display: block !important; }
           @media (max-width: 768px) {
+            .about-mobile-show { display: block !important; }
+            .about-mobile-hide { display: none !important; }
             .about-hero .hero-img {
               height: 340px !important;
               min-height: 320px !important;
@@ -84,7 +126,6 @@ export default function AboutPage() {
           paddingBottom: "80px",
         }}
       >
-        {/* Watermark and backgrounds */}
         <div
           style={{
             position: "absolute",
@@ -132,7 +173,6 @@ export default function AboutPage() {
             pointerEvents: "none",
           }}
         />
-
         <div
           className="container"
           style={{
@@ -157,7 +197,6 @@ export default function AboutPage() {
           }
         `}</style>
       </section>
-
       {/* Core Values Section */}
       <section
         style={{
@@ -171,15 +210,14 @@ export default function AboutPage() {
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
+            top: "0",
+            left: "0",
+            right: "0",
             height: "2px",
             background: "linear-gradient(90deg, transparent, #1fa6a0, #6a3fb5, transparent)",
             opacity: 0.5,
           }}
         />
-
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "60px" }}>
             <h2
@@ -199,7 +237,6 @@ export default function AboutPage() {
               These principles guide every decision we make and every interaction we have with our clients and families.
             </p>
           </div>
-
           <div
             style={{
               display: "grid",
@@ -213,7 +250,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
       {/* Trust & Commitment Section */}
       <section
         style={{
@@ -237,7 +273,6 @@ export default function AboutPage() {
             pointerEvents: "none",
           }}
         />
-
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
             <h2
