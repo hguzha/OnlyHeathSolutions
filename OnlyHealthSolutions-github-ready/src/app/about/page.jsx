@@ -31,8 +31,7 @@ export default function AboutPage() {
   return (
     <main>
       <PageHero
-        title="About Only Health Solutions"
-        subtitle={
+        title={
           <>
             <span
               style={{
@@ -45,9 +44,10 @@ export default function AboutPage() {
             >
               YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
             </span>
-            Compassion, dignity, and dependable support are at the center of everything we do.
+            About Only Health Solutions
           </>
         }
+        subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
         image="1.jpeg"
         height={600}
         background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
