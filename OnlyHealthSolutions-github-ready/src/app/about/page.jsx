@@ -65,7 +65,6 @@ export default function AboutPage() {
               font-size: 18px !important;       /* Bigger for mobile only */
               font-weight: 500 !important;      /* Optionally bolden a bit more on mobile */
               letter-spacing: 0.04em !important;
-              white-space: nowrap !important;
             }
             .about-hero .hero-img {
               height: 260px !important;
