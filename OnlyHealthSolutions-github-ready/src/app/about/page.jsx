@@ -35,11 +35,12 @@ export default function AboutPage() {
           title={
             <>
               <span
+                className="about-mobile-hide"
                 style={{
                   display: "block",
                   textTransform: "uppercase",
                   fontWeight: 400,
-                  fontSize: "clamp(13px, 2vw, 16px)", // smaller, subtitle-style
+                  fontSize: "clamp(13px, 2vw, 16px)",
                   color: "white",
                   lineHeight: 1.6,
                   maxWidth: "760px",
@@ -49,16 +50,57 @@ export default function AboutPage() {
               >
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
               </span>
-              About Only Health Solutions
+              <span className="about-mobile-hide">
+                About Only Health Solutions
+              </span>
             </>
           }
-          subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
+          subtitle={
+            <>
+              <span
+                className="about-mobile-show"
+                style={{
+                  display: "block",
+                  textTransform: "uppercase",
+                  fontWeight: 400,
+                  fontSize: "clamp(13px, 2vw, 16px)",
+                  color: "white",
+                  lineHeight: 1.6,
+                  maxWidth: "760px",
+                  margin: "0 auto 10px auto",
+                  letterSpacing: "0.03em"
+                }}
+              >
+                YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
+              </span>
+              Compassion, dignity, and dependable support are at the center of everything we do.
+              <span
+                className="about-mobile-show"
+                style={{
+                  display: "block",
+                  fontWeight: 700,
+                  fontSize: "22px",
+                  lineHeight: 1.3,
+                  margin: "18px auto 0 auto",
+                  color: "white"
+                }}
+              >
+                About Only Health Solutions
+              </span>
+            </>
+          }
           image="1.jpeg"
           height={600}
           background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
         />
         <style>{`
+          @media (min-width: 769px) {
+            .about-mobile-show { display: none !important; }
+            .about-mobile-hide { display: inline !important; }
+          }
           @media (max-width: 768px) {
+            .about-mobile-show { display: block !important; }
+            .about-mobile-hide { display: none !important; }
             .about-hero .hero-img {
               height: 340px !important;
               min-height: 320px !important;
