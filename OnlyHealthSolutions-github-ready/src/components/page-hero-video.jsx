@@ -148,7 +148,7 @@ export default function PageHeroVideo() {
         </div>
       </section>
 
-      {/* (Only this part changed for mobile video height) */}
+      {/* Updated only the video height for mobile */}
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
@@ -164,7 +164,7 @@ export default function PageHeroVideo() {
           [data-hero-video] video {
             position: relative !important;
             width: 100% !important;
-            height: 75vh !important; /* Increased from 55vh to 75vh */
+            height: 35vh !important; /* Decreased from previous value */
             object-fit: contain !important;
             object-position: center !important;
             order: 1 !important;
