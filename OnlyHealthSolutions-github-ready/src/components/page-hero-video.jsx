@@ -148,7 +148,7 @@ export default function PageHeroVideo() {
         </div>
       </section>
 
-      {/* Only mobile video styling updated here */}
+      {/* Updated mobile video height */}
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
@@ -163,8 +163,8 @@ export default function PageHeroVideo() {
 
           [data-hero-video] video {
             position: relative !important;
-            width: 100vw !important;   /* Full screen width */
-            height: 25vh !important;   /* 25vh height */
+            width: 100vw !important;
+            height: 28vh !important;  /* <--- Changed here ONLY */
             left: 50% !important;
             transform: translateX(-50%) !important;
             object-fit: cover !important;
