@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { brand } from "@/lib/site-data";
+import Link from "next/link";
+import { Phone, MessageSquare } from "lucide-react";
 
 export default function PageHero({
   title,
@@ -123,6 +125,51 @@ export default function PageHero({
               >
                 {subtitle}
               </p>
+
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
+                <Link
+                  href="/services#new-client-inquiry"
+                  className="btn"
+                  style={{
+                    background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+                    color: "white",
+                  }}
+                >
+                  Request a Consult
+                </Link>
+
+                <a
+                  href={brand.phoneHref}
+                  className="btn"
+                  style={{
+                    background: "rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(255,255,255,0.22)",
+                    color: "white",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <Phone size={16} />
+                  {brand.phoneDisplay}
+                </a>
+
+                <Link
+                  href="/contact#contact-form-section"
+                  className="btn"
+                  style={{
+                    background: "rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(255,255,255,0.22)",
+                    color: "white",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <MessageSquare size={16} />
+                  Send Us a Message
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -143,6 +190,19 @@ export default function PageHero({
               height: auto !important;
               min-height: 300px !important;
             }
+
+            .hero-content div[style*="gap: 14"] {
+              flex-direction: column;
+              width: 100%;
+            }
+
+            .hero-content .btn {
+              width: 100%;
+              padding: 14px 20px !important;
+              font-size: 14px !important;
+              display: flex !important;
+              justify-content: center !important;
+            }
           }
 
           @media (max-width: 480px) {
@@ -156,6 +216,12 @@ export default function PageHero({
 
             .hero-content p {
               font-size: 14px !important;
+            }
+
+            .hero-content .btn {
+              width: 100%;
+              padding: 14px 16px !important;
+              font-size: 13px !important;
             }
           }
         `}</style>
@@ -260,6 +326,51 @@ export default function PageHero({
               {subtitle}
             </p>
 
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
+              <Link
+                href="/services#new-client-inquiry"
+                className="btn"
+                style={{
+                  background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+                  color: "white",
+                }}
+              >
+                Request a Consult
+              </Link>
+
+              <a
+                href={brand.phoneHref}
+                className="btn"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "white",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                <Phone size={16} />
+                {brand.phoneDisplay}
+              </a>
+
+              <Link
+                href="/contact#contact-form-section"
+                className="btn"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "white",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                <MessageSquare size={16} />
+                Send Us a Message
+              </Link>
+            </div>
+
             {slides.length > 1 && (
               <div
                 style={{
@@ -317,6 +428,27 @@ export default function PageHero({
           
           .hero-img {
             height: 300px !important;
+          }
+
+          .hero-content div[style*="gap: 14"] {
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .hero-content .btn {
+            width: 100%;
+            padding: 14px 20px !important;
+            font-size: 14px !important;
+            display: flex !important;
+            justify-content: center !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-content .btn {
+            width: 100%;
+            padding: 14px 16px !important;
+            font-size: 13px !important;
           }
         }
       `}</style>
