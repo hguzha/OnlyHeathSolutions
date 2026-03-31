@@ -339,7 +339,7 @@ article img:not(.hero-img):not(.gallery-card img),
   }
 
   .section {
-    padding: 48px 0;
+    padding: 0px 0;
   }
 
   /* Header Mobile */
@@ -484,7 +484,7 @@ article img:not(.hero-img):not(.gallery-card img),
   }
 
   .section {
-    padding: 32px 0;
+    padding: 0px 0;
   }
 
   /* Header Small */
