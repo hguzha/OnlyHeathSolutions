@@ -166,7 +166,7 @@ export default function PageHeroVideo() {
           [data-hero-video] video {
             position: relative !important;
             width: 100vw !important;
-            height: 32vh !important; /* CHANGED TO 32vh */
+            height: 36vh !important; /* CHANGED TO 36vh */
             left: 50% !important;
             transform: translateX(-50%) !important;
             object-fit: cover !important;
