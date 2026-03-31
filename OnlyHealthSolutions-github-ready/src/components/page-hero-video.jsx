@@ -4,7 +4,6 @@ import { Phone, MessageSquare } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 export default function PageHeroVideo() {
-  // Add mobile detection for correct style on mobile only
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -52,7 +51,6 @@ export default function PageHeroVideo() {
           }}
         />
 
-        {/* KEY: Mobile fix on the container below */}
         <div
           className="container"
           style={{
@@ -148,7 +146,6 @@ export default function PageHeroVideo() {
         </div>
       </section>
 
-      {/* Mobile-only: section width/stretch and background full screen */}
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
@@ -169,7 +166,7 @@ export default function PageHeroVideo() {
           [data-hero-video] video {
             position: relative !important;
             width: 100vw !important;
-            height: 30vh !important; /* CHANGED HERE */
+            height: 32vh !important; /* CHANGED TO 32vh */
             left: 50% !important;
             transform: translateX(-50%) !important;
             object-fit: cover !important;
