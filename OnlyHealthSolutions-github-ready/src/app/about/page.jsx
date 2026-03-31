@@ -117,12 +117,12 @@ export default function AboutPage() {
               min-height: 3em;
             }
             .about-hero .hero-img {
-              height: 380px !important;
-              min-height: 340px !important;
+              height: 260px !important;
+              min-height: 220px !important;
               max-height: unset !important;
             }
             .about-hero .hero {
-              min-height: 380px !important;
+              min-height: 260px !important;
               height: auto !important;
             }
           }
