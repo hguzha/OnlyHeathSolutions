@@ -47,7 +47,8 @@ export default function AboutPage() {
                   letterSpacing: "0.03em"
                 }}
               >
-                YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
+      YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
+            </span>
           }
           subtitle={
             <>
