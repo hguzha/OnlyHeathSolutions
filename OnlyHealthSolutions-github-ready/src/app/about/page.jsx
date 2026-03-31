@@ -62,7 +62,7 @@ export default function AboutPage() {
           @media (max-width: 768px) {
             .about-hero-allcaps {
               margin-bottom: 3em !important;
-              font-size: 15px !important;       /* Bigger for mobile only */
+              font-size: 13px !important;       /* Bigger for mobile only */
               font-weight: 500 !important;      /* Optionally bolden a bit more on mobile */
               letter-spacing: 0.04em !important;
             }
