@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Phone, MessageSquare } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 export default function PageHeroVideo() {
-  // Add mobile detection for correct style on mobile only
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handler = () => setIsMobile(window.innerWidth <= 768);
@@ -52,7 +53,6 @@ export default function PageHeroVideo() {
           }}
         />
 
-        {/* KEY: Mobile fix on the container below */}
         <div
           className="container"
           style={{
@@ -100,55 +100,57 @@ export default function PageHeroVideo() {
               Personalized support that brings comfort, dignity, and peace of mind at home.
             </p>
 
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28 }}>
-              <Link
-                href="/services#new-client-inquiry"
-                className="btn"
-                style={{
-                  background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
-                  color: "white",
-                }}
-              >
-                Request a Consult
-              </Link>
+            {/* Show on all pages on desktop, and only home on mobile */}
+            {(!isMobile || pathname === "/") && (
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28 }}>
+                <Link
+                  href="/services#new-client-inquiry"
+                  className="btn"
+                  style={{
+                    background: "linear-gradient(135deg,#1fa6a0,#6a3fb5)",
+                    color: "white",
+                  }}
+                >
+                  Request a Consult
+                </Link>
 
-              <a
-                href={brand.phoneHref}
-                className="btn"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.22)",
-                  color: "white",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <Phone size={16} />
-                {brand.phoneDisplay}
-              </a>
+                <a
+                  href={brand.phoneHref}
+                  className="btn"
+                  style={{
+                    background: "rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(255,255,255,0.22)",
+                    color: "white",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <Phone size={16} />
+                  {brand.phoneDisplay}
+                </a>
 
-              <Link
-                href="/contact#contact-form-section"
-                className="btn"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.22)",
-                  color: "white",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <MessageSquare size={16} />
-                Send Us a Message
-              </Link>
-            </div>
+                <Link
+                  href="/contact#contact-form-section"
+                  className="btn"
+                  style={{
+                    background: "rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(255,255,255,0.22)",
+                    color: "white",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <MessageSquare size={16} />
+                  Send Us a Message
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Mobile-only: section width/stretch and background full screen */}
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
