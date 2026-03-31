@@ -36,10 +36,14 @@ export default function AboutPage() {
             <span
               style={{
                 display: "block",
-                fontWeight: 800,
-                letterSpacing: "0.03em",
-                fontSize: "1em",
-                marginBottom: "10px"
+                textTransform: "uppercase",
+                fontWeight: 400,
+                fontSize: "clamp(16px, 3vw, 20px)",
+                color: "white",
+                lineHeight: 1.6,
+                maxWidth: "760px",
+                margin: "0 auto 10px auto",
+                letterSpacing: "0.03em"
               }}
             >
               YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
@@ -125,10 +129,7 @@ export default function AboutPage() {
             alignItems: "stretch",
           }}
         >
-          {/* Our Mission Card - Creative */}
           <MissionCard />
-
-          {/* Why Families Choose Us Card - Creative */}
           <WhyChooseUsCard />
         </div>
 
