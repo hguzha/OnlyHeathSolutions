@@ -50,7 +50,8 @@ export default function AboutPage() {
               >
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
               </span>
-              {/* Desktop only: Big title and subtitle */}
+
+              {/* Desktop only: Title and Subtitle are tightly grouped */}
               <span className="about-mobile-hide" style={{
                 display: "block",
                 fontWeight: 700,
@@ -69,7 +70,9 @@ export default function AboutPage() {
               }}>
                 Compassion, dignity, and dependable support are at the center of everything we do.
               </span>
-              {/* Mobile only: Big title and subtitle, tight grouping, no extra gap */}
+
+              {/* Mobile only: Spacer then Title and Subtitle */}
+              <span className="about-mobile-show about-mobile-spacer" aria-hidden="true"></span>
               <span className="about-mobile-show" style={{
                 display: "block",
                 fontWeight: 700,
@@ -98,11 +101,16 @@ export default function AboutPage() {
           background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
         />
         <style>{`
-          .about-mobile-show { display: none !important; }
+          .about-mobile-show, .about-mobile-spacer { display: none !important; }
           .about-mobile-hide { display: block !important; }
           @media (max-width: 768px) {
             .about-mobile-show { display: block !important; }
             .about-mobile-hide { display: none !important; }
+            .about-mobile-spacer { 
+              display: block !important;
+              width: 100%; 
+              min-height: 3em;
+            }
             .about-hero .hero-img {
               height: 340px !important;
               min-height: 320px !important;
