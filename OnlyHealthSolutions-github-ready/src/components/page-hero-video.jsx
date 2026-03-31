@@ -145,7 +145,7 @@ export default function PageHeroVideo() {
             display: flex !important;
             flex-direction: column !important;
             background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
-            padding-bottom: 0px !important;
+            padding-bottom: 40px !important;
           }
 
           [data-hero-video] video {
@@ -169,12 +169,11 @@ export default function PageHeroVideo() {
             min-height: auto !important;
             align-items: center !important;
             justify-content: center !important;
-            padding: 20px 16px 0 16px !important;
+            padding: 30px 16px 0 16px !important;
             background: transparent !important;
             order: 2 !important;
             margin-top: 0 !important;
             display: flex !important;
-            padding-bottom: 0px !important;
           }
 
           [data-hero-video] div[style*="maxWidth: 760px"] {
