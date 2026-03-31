@@ -175,9 +175,9 @@ export default function HomePage() {
 
   return (
     <FixedBackgroundShell>
-      {/* Hero Video - FURTHER REDUCED SIZE */}
+      {/* Hero Video - FIXED OVERFLOW ISSUE */}
       <div style={{ width: "100%", padding: isMobile ? "0 12px" : "0 20px", margin: "0", marginTop: isMobile ? "-2px" : "-8px" }}>
-        <div style={{ height: isMobile ? "400px" : "750px", overflow: "hidden", borderRadius: "12px", maxWidth: "100%", display: "block" }}>
+        <div style={{ height: isMobile ? "auto" : "750px", overflow: "visible", borderRadius: "12px", maxWidth: "100%", display: "block" }}>
           <PageHeroVideo />
         </div>
       </div>
