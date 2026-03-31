@@ -1,15 +1,29 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Phone, MessageSquare } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 export default function PageHeroVideo() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <section
         data-hero-video
         style={{
           position: "relative",
-          minHeight: "88vh",
+          minHeight: isMobile ? "auto" : "88vh",
           overflow: "hidden",
           borderBottom: "1px solid #e5e7eb",
         }}
@@ -46,10 +60,10 @@ export default function PageHeroVideo() {
           style={{
             position: "relative",
             zIndex: 2,
-            minHeight: "88vh",
+            minHeight: isMobile ? "auto" : "88vh",
             display: "flex",
             alignItems: "flex-end",
-            paddingBottom: "80px",
+            paddingBottom: isMobile ? "0px" : "80px",
           }}
         >
           <div style={{ maxWidth: "760px", color: "white" }}>
@@ -145,7 +159,7 @@ export default function PageHeroVideo() {
             display: flex !important;
             flex-direction: column !important;
             background: linear-gradient(180deg, rgba(10,15,25,0.8) 0%, rgba(10,15,25,0.9) 100%);
-            padding-bottom: 40px !important;
+            padding-bottom: 0px !important;
           }
 
           [data-hero-video] video {
@@ -169,11 +183,12 @@ export default function PageHeroVideo() {
             min-height: auto !important;
             align-items: center !important;
             justify-content: center !important;
-            padding: 30px 16px 0 16px !important;
+            padding: 20px 16px 0 16px !important;
             background: transparent !important;
             order: 2 !important;
             margin-top: 0 !important;
             display: flex !important;
+            padding-bottom: 0px !important;
           }
 
           [data-hero-video] div[style*="maxWidth: 760px"] {
