@@ -30,7 +30,7 @@ export default function PageHero({
   // If video prop is provided, render video instead
   if (video) {
     return (
-      <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
+      <section className="hero" style={{ position: "relative", overflow: "visible" }}>
         <div style={{ position: "relative", width: "100%", height }}>
           <video
             autoPlay
