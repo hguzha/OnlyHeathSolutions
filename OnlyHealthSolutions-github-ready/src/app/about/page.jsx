@@ -36,6 +36,7 @@ export default function AboutPage() {
             <>
               {/* ALL CAPS always first */}
               <span
+                className="about-hero-allcaps"
                 style={{
                   display: "block",
                   textTransform: "uppercase",
@@ -107,12 +108,13 @@ export default function AboutPage() {
           .about-mobile-show, .about-mobile-spacer { display: none !important; }
           .about-mobile-hide { display: block !important; }
           @media (max-width: 768px) {
+            .about-hero-allcaps { margin-top: 38px !important; } /* move all-caps phrase down */
             .about-mobile-show { display: block !important; }
             .about-mobile-hide { display: none !important; }
             .about-mobile-spacer { 
               display: block !important;
               width: 100%;
-              min-height: 3em;   /* 3 lines of vertical space */
+              min-height: 3em;
             }
             .about-hero .hero-img {
               height: 380px !important;
@@ -309,9 +311,11 @@ export default function AboutPage() {
   );
 }
 
+// ...MissionCard, WhyChooseUsCard, ValueCard unchanged...
 function MissionCard() {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
