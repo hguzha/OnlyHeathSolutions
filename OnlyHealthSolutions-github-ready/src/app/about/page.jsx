@@ -48,9 +48,6 @@ export default function AboutPage() {
                 }}
               >
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
-              </span>
-              About Only Health Solutions
-            </>
           }
           subtitle={
             <>
