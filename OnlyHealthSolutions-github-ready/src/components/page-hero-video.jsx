@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Phone, MessageSquare } from "lucide-react";
 import { brand } from "@/lib/site-data";
 
 export default function PageHeroVideo() {
+  // Add mobile detection for correct style on mobile only
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 768);
+    handler();
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+
   return (
     <>
       <section
@@ -41,15 +52,16 @@ export default function PageHeroVideo() {
           }}
         />
 
+        {/* KEY: Mobile fix on the container below */}
         <div
           className="container"
           style={{
             position: "relative",
             zIndex: 2,
-            minHeight: "88vh",
+            minHeight: isMobile ? "auto" : "88vh",
             display: "flex",
-            alignItems: "flex-end",
-            paddingBottom: "80px",
+            alignItems: isMobile ? "center" : "flex-end",
+            paddingBottom: isMobile ? "0px" : "80px",
           }}
         >
           <div style={{ maxWidth: "760px", color: "white" }}>
@@ -136,6 +148,7 @@ export default function PageHeroVideo() {
         </div>
       </section>
 
+      {/* (Optional) Your style block can stay if you want further tweaks */}
       <style>{`
         @media (max-width: 768px) {
           [data-hero-video] {
