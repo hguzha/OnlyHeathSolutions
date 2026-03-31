@@ -30,7 +30,7 @@ export default function PageHero({
   // If video prop is provided, render video instead
   if (video) {
     return (
-      <section className="hero" style={{ position: "relative", overflow: "visible" }}>
+      <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
         <div style={{ position: "relative", width: "100%", height }}>
           <video
             autoPlay
@@ -178,6 +178,7 @@ export default function PageHero({
           @media (max-width: 768px) {
             .hero {
               height: auto;
+              overflow: visible;
             }
             
             .hero-content {
@@ -419,6 +420,7 @@ export default function PageHero({
         @media (max-width: 768px) {
           .hero {
             height: auto;
+            overflow: visible;
           }
           
           .hero-content {
