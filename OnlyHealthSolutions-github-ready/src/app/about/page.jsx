@@ -115,12 +115,12 @@ export default function AboutPage() {
               min-height: 3em;   /* 3 lines of vertical space */
             }
             .about-hero .hero-img {
-              height: 340px !important;
-              min-height: 320px !important;
+              height: 440px !important;
+              min-height: 420px !important;
               max-height: unset !important;
             }
             .about-hero .hero {
-              min-height: 340px !important;
+              min-height: 440px !important;
               height: auto !important;
             }
           }
