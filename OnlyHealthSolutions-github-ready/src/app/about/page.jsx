@@ -51,14 +51,16 @@ export default function AboutPage() {
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
               </span>
 
-              {/* Desktop only: Title and Subtitle are tightly grouped */}
-              <span className="about-mobile-hide" style={{
-                display: "block",
-                fontWeight: 700,
-                fontSize: "32px",
-                color: "white",
-                margin: "0"
-              }}>
+              {/* Desktop only: Big title and subtitle */}
+              <span className="about-mobile-hide"
+                style={{
+                  display: "block",
+                  fontWeight: 800,
+                  fontSize: "clamp(34px,5vw,54px)",   // BIG headline on desktop
+                  color: "white",
+                  margin: 0,
+                  lineHeight: "1.13"
+                }}>
                 About Only Health Solutions
               </span>
               <span className="about-mobile-hide" style={{
@@ -66,21 +68,22 @@ export default function AboutPage() {
                 fontWeight: 400,
                 fontSize: "clamp(15px,3vw,18px)",
                 color: "white",
-                margin: "0"
+                margin: 0
               }}>
                 Compassion, dignity, and dependable support are at the center of everything we do.
               </span>
 
-              {/* Mobile only: Spacer then Title and Subtitle */}
+              {/* Mobile only: Spacer then Big title and subtitle */}
               <span className="about-mobile-show about-mobile-spacer" aria-hidden="true"></span>
-              <span className="about-mobile-show" style={{
-                display: "block",
-                fontWeight: 700,
-                fontSize: "22px",
-                color: "white",
-                margin: "0",
-                lineHeight: "1.2"
-              }}>
+              <span className="about-mobile-show"
+                style={{
+                  display: "block",
+                  fontWeight: 800,
+                  fontSize: "clamp(32px,8vw,38px)",   // BIG headline on mobile
+                  color: "white",
+                  margin: 0,
+                  lineHeight: "1.16"
+                }}>
                 About Only Health Solutions
               </span>
               <span className="about-mobile-show" style={{
@@ -89,7 +92,7 @@ export default function AboutPage() {
                 fontSize: "clamp(14px,3vw,17px)",
                 color: "white",
                 lineHeight: "1.3",
-                margin: "0"
+                margin: 0
               }}>
                 Compassion, dignity, and dependable support are at the center of everything we do.
               </span>
@@ -108,8 +111,8 @@ export default function AboutPage() {
             .about-mobile-hide { display: none !important; }
             .about-mobile-spacer { 
               display: block !important;
-              width: 100%; 
-              min-height: 3em;
+              width: 100%;
+              min-height: 3em;   /* 3 lines of vertical space */
             }
             .about-hero .hero-img {
               height: 340px !important;
@@ -309,7 +312,6 @@ export default function AboutPage() {
 function MissionCard() {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
@@ -317,7 +319,6 @@ function MissionCard() {
       y: e.clientY - rect.top,
     });
   };
-
   return (
     <div
       style={{
@@ -339,7 +340,6 @@ function MissionCard() {
           transition: "all 0.3s ease",
         }}
       />
-
       {isHovered && (
         <div
           style={{
@@ -355,7 +355,6 @@ function MissionCard() {
           }}
         />
       )}
-
       <div
         style={{
           position: "absolute",
