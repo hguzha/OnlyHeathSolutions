@@ -47,6 +47,13 @@ export default function HomePage() {
       .scroll-container:hover {
         animation-play-state: paused;
       }
+      
+      @media (max-width: 768px) {
+        [data-signature-services] {
+          padding: 0px 0 !important;
+          margin: 0 !important;
+        }
+      }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
@@ -187,7 +194,9 @@ export default function HomePage() {
         {renderWhiteSection(topSectionItems)}
       </div>
 
-      <SignatureServices />
+      <div data-signature-services>
+        <SignatureServices />
+      </div>
 
       {/* White Separator Section 1 - Scrolling */}
       <div style={{ width: "100%", backgroundColor: "#ffffff", padding: "60px 0", overflow: "hidden" }}>
