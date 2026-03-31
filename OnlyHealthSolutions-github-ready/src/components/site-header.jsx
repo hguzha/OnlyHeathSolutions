@@ -7,6 +7,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { brand, navLinks } from "@/lib/site-data";
 import { HeartHandshake, Users, Stethoscope, BedDouble, Brain, CalendarHeart } from "lucide-react";
 
+// Service items and fallback navigation
 const serviceItems = [
   { label: "All Services", href: "/services", isHeader: true },
   { label: "Personal Care Assistance", href: "/services?service=personal-care", icon: HeartHandshake },
@@ -44,18 +45,13 @@ export default function SiteHeader() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        setMobileOpen(false);
-      }
+      if (window.innerWidth >= 768) setMobileOpen(false);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
     handleResize();
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
@@ -66,7 +62,6 @@ export default function SiteHeader() {
     setServicesDropdownOpen(false);
     setMobileServicesOpen(false);
     setMobileOpen(false);
-    
     if (isAllServices) {
       window.location.href = href;
     } else {
@@ -78,9 +73,7 @@ export default function SiteHeader() {
     setMobileOpen(false);
     if (pathname === "/services") {
       const element = document.getElementById('new-client-inquiry');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     } else {
       router.push("/services#new-client-inquiry");
     }
@@ -113,10 +106,10 @@ export default function SiteHeader() {
           maxWidth: "1400px",
           margin: "0 auto",
           padding: isMobile ? "0 8px" : "0 12px",
-          minHeight: isMobile ? "75px" : "100px",
+          minHeight: isMobile ? "48px" : "100px",      // SMALLER HEADER HEIGHT
         }}
       >
-        {/* Logo - BIGGER SIZE, CONTROLLED HEIGHT */}
+        {/* Logo */}
         <Link
           href="/"
           style={{
@@ -130,7 +123,7 @@ export default function SiteHeader() {
             src={brand.logo}
             alt={brand.name}
             style={{
-              height: isMobile ? "90px" : "160px",
+              height: isMobile ? "48px" : "160px",      // SMALLER LOGO HEIGHT
               width: "auto",
               display: "block",
               maxHeight: "100%",
@@ -174,13 +167,12 @@ export default function SiteHeader() {
                         fontSize: "14px",
                         transition: "color 0.3s ease",
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
+                      onMouseEnter={e => (e.currentTarget.style.color = "#d4af37")}
+                      onMouseLeave={e => (e.currentTarget.style.color = "#ffffff")}
                     >
                       {item.label}
                       <ChevronDown size={11} style={{ transform: servicesDropdownOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
                     </button>
-
                     {servicesDropdownOpen && (
                       <>
                         <div style={{ position: "absolute", top: "100%", left: 0, right: 0, height: "6px", pointerEvents: "auto" }} />
@@ -220,11 +212,11 @@ export default function SiteHeader() {
                                   textAlign: "left",
                                   transition: "all 0.2s ease",
                                 }}
-                                onMouseEnter={(e) => {
+                                onMouseEnter={e => {
                                   e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.15)";
                                   e.currentTarget.style.color = "#d4af37";
                                 }}
-                                onMouseLeave={(e) => {
+                                onMouseLeave={e => {
                                   e.currentTarget.style.backgroundColor = service.isHeader ? "rgba(31, 166, 160, 0.1)" : "transparent";
                                   e.currentTarget.style.color = service.isHeader ? "#d4af37" : "rgba(255, 255, 255, 0.88)";
                                 }}
@@ -253,8 +245,8 @@ export default function SiteHeader() {
                     fontWeight: 600,
                     fontSize: "14px",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#d4af37")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
+                  onMouseEnter={e => (e.currentTarget.style.color = "#d4af37")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "#ffffff")}
                 >
                   {item.label}
                 </Link>
@@ -280,8 +272,8 @@ export default function SiteHeader() {
                 transition: "transform 0.3s ease",
                 whiteSpace: "nowrap",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.05)")}
+              onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
             >
               Request a Consult
             </button>
@@ -310,12 +302,12 @@ export default function SiteHeader() {
         )}
       </div>
 
-      {/* Mobile Dropdown Menu - Only shows on mobile */}
+      {/* Mobile Dropdown Menu */}
       {isMobile && mobileOpen && (
         <div
           style={{
             position: "fixed",
-            top: "90px",
+            top: "48px", // SMALLER MOBILE MENU OFFSET
             left: 0,
             right: 0,
             backgroundColor: "rgba(11, 19, 32, 0.95)",
@@ -324,13 +316,13 @@ export default function SiteHeader() {
             display: "flex",
             flexDirection: "column",
             gap: "0",
-            maxHeight: "calc(100vh - 90px)",
+            maxHeight: "calc(100vh - 48px)",
             overflowY: "auto",
             zIndex: 999,
             backdropFilter: "blur(10px)",
           }}
         >
-          {/* Mobile Consult Button - AT THE TOP */}
+          {/* Mobile Request Consult Button */}
           <button
             onClick={handleRequestConsult}
             style={{
@@ -375,8 +367,8 @@ export default function SiteHeader() {
                       transition: "all 0.3s ease",
                       fontSize: "12px",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.1)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.1)")}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
                   >
                     {item.label}
                     <ChevronDown 
@@ -411,8 +403,8 @@ export default function SiteHeader() {
                             cursor: "pointer",
                             transition: "all 0.2s ease",
                           }}
-                          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.15)")}
-                          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                          onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.15)")}
+                          onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
                         >
                           {service.isHeader ? null : (service.icon && <service.icon size={12} />)}
                           {service.label}
@@ -440,8 +432,8 @@ export default function SiteHeader() {
                   fontSize: "12px",
                 }}
                 onClick={() => setMobileOpen(false)}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.1)")}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(31, 166, 160, 0.1)")}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
               >
                 {item.label}
               </Link>
@@ -449,6 +441,18 @@ export default function SiteHeader() {
           })}
         </div>
       )}
+
+      {/* Extra CSS for mobile header/logo */}
+      <style>{`
+        @media (max-width: 768px) {
+          header {
+            min-height: 48px !important;
+          }
+          header img {
+            height: 48px !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }
