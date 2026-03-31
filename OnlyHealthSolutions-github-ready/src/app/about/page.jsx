@@ -30,32 +30,47 @@ export default function AboutPage() {
 
   return (
     <main>
-<PageHero
-  title={
-    <>
-      <span
-        style={{
-          display: "block",
-          textTransform: "uppercase",
-          fontWeight: 400,
-          fontSize: "clamp(13px, 2vw, 16px)", // smaller than subtitle
-          color: "white",
-          lineHeight: 1.6,
-          maxWidth: "760px",
-          margin: "0 auto 10px auto",
-          letterSpacing: "0.03em"
-        }}
-      >
-        YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
-      </span>
-      About Only Health Solutions
-    </>
-  }
-  subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
-  image="1.jpeg"
-  height={600}
-  background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
-/>
+      <div className="about-hero">
+        <PageHero
+          title={
+            <>
+              <span
+                style={{
+                  display: "block",
+                  textTransform: "uppercase",
+                  fontWeight: 400,
+                  fontSize: "clamp(13px, 2vw, 16px)", // smaller, subtitle-style
+                  color: "white",
+                  lineHeight: 1.6,
+                  maxWidth: "760px",
+                  margin: "0 auto 10px auto",
+                  letterSpacing: "0.03em"
+                }}
+              >
+                YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
+              </span>
+              About Only Health Solutions
+            </>
+          }
+          subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
+          image="1.jpeg"
+          height={600}
+          background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
+        />
+        <style>{`
+          @media (max-width: 768px) {
+            .about-hero .hero-img {
+              height: 340px !important;
+              min-height: 320px !important;
+              max-height: unset !important;
+            }
+            .about-hero .hero {
+              min-height: 340px !important;
+              height: auto !important;
+            }
+          }
+        `}</style>
+      </div>
 
       {/* Mission & Why Choose Us - Creative Layout */}
       <section
