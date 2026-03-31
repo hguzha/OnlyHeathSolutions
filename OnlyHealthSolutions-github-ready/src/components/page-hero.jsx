@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { brand } from "@/lib/site-data";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // ← Import pathname
+import { usePathname } from "next/navigation";
 import { Phone, MessageSquare } from "lucide-react";
 
 export default function PageHero({
@@ -17,8 +17,8 @@ export default function PageHero({
 }) {
   const slides = images.length > 0 ? images : image ? [image] : [];
   const [current, setCurrent] = useState(0);
-  const pathname = usePathname(); // ← Get current path
-  const [isMobile, setIsMobile] = useState(false); // ← Track mobile
+  const pathname = usePathname(); // Get current path
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (slides.length <= 1) return;
@@ -30,12 +30,10 @@ export default function PageHero({
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Track screen size for mobile
   useEffect(() => {
     const handler = () => setIsMobile(window.innerWidth <= 768);
     handler();
     window.addEventListener("resize", handler);
-
     return () => window.removeEventListener("resize", handler);
   }, []);
 
@@ -138,8 +136,8 @@ export default function PageHero({
                 {subtitle}
               </p>
 
-              {/* THE BUTTON GROUP: show on desktop everywhere, on mobile only on home page */}
-              {(!isMobile || pathname === "/") && (
+              {/* BUTTON GROUP: Show only on home page, any device */}
+              {pathname === "/" && (
                 <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
                   <Link
                     href="/services#new-client-inquiry"
@@ -195,12 +193,12 @@ export default function PageHero({
               height: auto;
               overflow: visible;
             }
-            
+
             .hero-content {
               bottom: 20px !important;
               padding: 0 12px !important;
             }
-            
+
             video {
               width: 100% !important;
               height: auto !important;
@@ -342,8 +340,8 @@ export default function PageHero({
               {subtitle}
             </p>
 
-            {/* THE BUTTON GROUP: show on desktop everywhere, on mobile only on home page */}
-            {(!isMobile || pathname === "/") && (
+            {/* BUTTON GROUP: Show only on home page, any device */}
+            {pathname === "/" && (
               <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28, justifyContent: "center" }}>
                 <Link
                   href="/services#new-client-inquiry"
@@ -440,12 +438,12 @@ export default function PageHero({
             height: auto;
             overflow: visible;
           }
-          
+
           .hero-content {
             bottom: 30px !important;
             padding: 0 16px !important;
           }
-          
+
           .hero-img {
             height: 300px !important;
           }
