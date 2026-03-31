@@ -9,23 +9,25 @@ export default function AboutPage() {
     {
       icon: HeartHandshake,
       title: "Compassionate Care",
-      description: "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship."
+      description:
+        "We treat every client with genuine warmth, respect, and empathy, viewing care as a meaningful relationship.",
     },
     {
       icon: Shield,
       title: "Safety & Dignity",
-      description: "Your loved one's independence and personal dignity are paramount in every aspect of our service."
+      description:
+        "Your loved one's independence and personal dignity are paramount in every aspect of our service.",
     },
     {
       icon: Users,
       title: "Family Partnership",
-      description: "We work closely with families to understand unique needs and build a care plan that truly fits."
+      description: "We work closely with families to understand unique needs and build a care plan that truly fits.",
     },
     {
       icon: Star,
       title: "Quality Assurance",
-      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care."
-    }
+      description: "Our carefully trained caregivers maintain the highest standards of professionalism and care.",
+    },
   ];
 
   return (
@@ -35,72 +37,30 @@ export default function AboutPage() {
           title={
             <>
               <span
-                className="about-mobile-hide"
                 style={{
                   display: "block",
                   textTransform: "uppercase",
                   fontWeight: 400,
-                  fontSize: "clamp(13px, 2vw, 16px)",
+                  fontSize: "clamp(13px, 2vw, 16px)", // smaller, subtitle-style
                   color: "white",
                   lineHeight: 1.6,
                   maxWidth: "760px",
                   margin: "0 auto 10px auto",
-                  letterSpacing: "0.03em"
+                  letterSpacing: "0.03em",
                 }}
               >
                 YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
               </span>
-              <span className="about-mobile-hide">
-                About Only Health Solutions
-              </span>
+              About Only Health Solutions
             </>
           }
-          subtitle={
-            <>
-              <span
-                className="about-mobile-show"
-                style={{
-                  display: "block",
-                  textTransform: "uppercase",
-                  fontWeight: 400,
-                  fontSize: "clamp(13px, 2vw, 16px)",
-                  color: "white",
-                  lineHeight: 1.6,
-                  maxWidth: "760px",
-                  margin: "0 auto 10px auto",
-                  letterSpacing: "0.03em"
-                }}
-              >
-                YOUR HOME. YOUR HEALTH. OUR COMMITMENT.
-              </span>
-              Compassion, dignity, and dependable support are at the center of everything we do.
-              <span
-                className="about-mobile-show"
-                style={{
-                  display: "block",
-                  fontWeight: 700,
-                  fontSize: "22px",
-                  lineHeight: 1.3,
-                  margin: "18px auto 0 auto",
-                  color: "white"
-                }}
-              >
-                About Only Health Solutions
-              </span>
-            </>
-          }
+          subtitle="Compassion, dignity, and dependable support are at the center of everything we do."
           image="1.jpeg"
           height={600}
           background="linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))"
         />
         <style>{`
-          @media (min-width: 769px) {
-            .about-mobile-show { display: none !important; }
-            .about-mobile-hide { display: inline !important; }
-          }
           @media (max-width: 768px) {
-            .about-mobile-show { display: block !important; }
-            .about-mobile-hide { display: none !important; }
             .about-hero .hero-img {
               height: 340px !important;
               min-height: 320px !important;
@@ -124,7 +84,7 @@ export default function AboutPage() {
           paddingBottom: "80px",
         }}
       >
-        {/* Watermark */}
+        {/* Watermark and backgrounds */}
         <div
           style={{
             position: "absolute",
@@ -148,8 +108,6 @@ export default function AboutPage() {
             }}
           />
         </div>
-
-        {/* Decorative background elements */}
         <div
           style={{
             position: "absolute",
@@ -189,7 +147,6 @@ export default function AboutPage() {
           <MissionCard />
           <WhyChooseUsCard />
         </div>
-
         <style>{`
           @media (max-width: 768px) {
             .container {
@@ -214,9 +171,9 @@ export default function AboutPage() {
         <div
           style={{
             position: "absolute",
-            top: "0",
-            left: "0",
-            right: "0",
+            top: 0,
+            left: 0,
+            right: 0,
             height: "2px",
             background: "linear-gradient(90deg, transparent, #1fa6a0, #6a3fb5, transparent)",
             opacity: 0.5,
